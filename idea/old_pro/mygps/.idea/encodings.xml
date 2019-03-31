@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/src/org/zstuky/wechat/util/MessageUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/org/zstuky/wechat/util/MyX509TrustManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/org/zstuky/wechat/util/WeixinUtil.java" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>
