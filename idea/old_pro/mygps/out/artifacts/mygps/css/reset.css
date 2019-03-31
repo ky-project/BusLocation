@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+/*---reset---*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td{
+	margin:0px;
+	padding:0px;
+	border:0px;
+	outline:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+	font:14px "微软雅黑","宋体";
+	color:#646464;
+}
+ul{
+	list-style:none;
+}
+table{
+	border-collapse:separate;
+	border-spacing:0;
+}
+th,td{
+	text-align:left;
+	font-weight:normal;
+}
+a:link,a:active,a:visited{
+	color:#767676;
+	text-decoration:none;
+}
+a:hover{
+	color:#2DA1ED;
+	text-decoration:none;
+}
+/*清除浮动*/
+.clearfix:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.clearfix {display: inline-block;}
+.clearfix {display: block;}
+
+
+/*链接属性*/
+a{
+	text-decoration:none;
+}
