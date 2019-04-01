@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" xmlns:tx="http://www.springframework.org/schema/tx">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" p:dataSource-ref="dataSource">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="AdminDAO" class="com.hibernatespring.AdminDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+   </bean>
+	<bean id="StationDAO" class="com.hibernatespring.StationDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="BusDAO" class="com.hibernatespring.BusDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="RegubusDAO" class="com.hibernatespring.RegubusDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TmenuDAO" class="com.hibernatespring.TmenuDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="GpsDAO" class="com.hibernatespring.GpsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TeacherDAO" class="com.hibernatespring.TeacherDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="NewsDAO" class="com.hibernatespring.NewsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="persistenceLayerLiuhx"
+		class="com.persistencelayer.PersistenceLayerLiuhx"
+		abstract="false" lazy-init="default" autowire="default" p:adminDAO-ref="AdminDAO" 
+		p:busDAO-ref="BusDAO" p:gpsDAO-ref="GpsDAO" 
+		p:regubusDAO-ref="RegubusDAO" p:stationDAO-ref="StationDAO" 
+		p:menuDAO-ref="TmenuDAO" p:teacherDAO-ref="TeacherDAO" p:newsDAO-ref="NewsDAO">
+	</bean>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		abstract="false" lazy-init="default" autowire="default"
+		p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://localhost:3306/gps?characterEncoding=utf-8" p:username="root"
+		p:password="">
+	</bean>
+
+	</beans>
