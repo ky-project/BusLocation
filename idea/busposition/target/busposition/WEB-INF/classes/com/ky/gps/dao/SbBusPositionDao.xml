@@ -5,10 +5,10 @@
     <resultMap id="BaseSbBusPositionMap" type="com.ky.gps.entity.SbBusPosition">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="sbp_recode_time" jdbcType="TIMESTAMP" property="sbpRecodeTime"/>
-        <result column="sbp_longitude" jdbcType="FLOAT" property="sbpLongitude"/>
-        <result column="sbp_latitude" jdbcType="FLOAT" property="sbpLatitude"/>
-        <result column="sbp_velocity" jdbcType="FLOAT" property="sbpVelocity"/>
-        <result column="sbp_direction" jdbcType="FLOAT" property="sbpDirection"/>
+        <result column="sbp_longitude" jdbcType="DOUBLE" property="sbpLongitude"/>
+        <result column="sbp_latitude" jdbcType="DOUBLE" property="sbpLatitude"/>
+        <result column="sbp_velocity" jdbcType="DOUBLE" property="sbpVelocity"/>
+        <result column="sbp_direction" jdbcType="DOUBLE" property="sbpDirection"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
         <result column="remark1" jdbcType="VARCHAR" property="remark1"/>
         <result column="remark2" jdbcType="VARCHAR" property="remark2"/>
@@ -21,7 +21,17 @@
     </resultMap>
 
     <insert id="savePosition" parameterType="sbbusposition">
-        insert into sb_busposition(SB__ID, sbp_recode_time, sbp_longitude, sbp_latitude, sbp_velocity, sbp_direction, created_by, updated_by, valid)
-        values(#{sbBus.id}, #{sbpRecodeTime}, #{sbpLongitude}, #{sbpLatitude}, #{sbpVelocity}, #{sbpDirection}, 'system', 'system', 1)
+        insert into sb_busposition(SB__ID, sbp_recode_time, sbp_longitude, sbp_latitude, sbp_velocity, sbp_direction,
+                                   created_by, updated_by, valid)
+        values (#{sbBus.id}, #{sbpRecodeTime}, #{sbpLongitude}, #{sbpLatitude}, #{sbpVelocity}, #{sbpDirection},
+                'system', 'system', 1)
     </insert>
+
+    <select id="findAllPositionByBusId" resultType="hashmap" parameterType="integer">
+        select SBP_LONGITUDE longitude, SBP_LATITUDE latitude, SBP_VELOCITY velocity, SBP_DIRECTION direction
+        from sb_busposition
+        where Valid=1 and SB__ID=#{busId}
+        order by SBP_RECODE_TIME
+    </select>
+
 </mapper>

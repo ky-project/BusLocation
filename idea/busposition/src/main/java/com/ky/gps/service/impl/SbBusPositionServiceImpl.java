@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Daye
@@ -23,5 +25,11 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
     @Override
     public synchronized void savePosition(SbBusPosition sbBusPosition) {
         sbBusPositionDao.savePosition(sbBusPosition);
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public List<Map<String, Object>> findAllPositionByBusId(Integer busId) {
+        return sbBusPositionDao.findAllPositionByBusId(busId);
     }
 }
