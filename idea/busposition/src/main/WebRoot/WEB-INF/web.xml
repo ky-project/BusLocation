@@ -16,6 +16,15 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
+  <!-- log4j监听器 -->
+  <context-param>
+    <param-name>log4jConfiguration</param-name>
+    <param-value>classpath:log/log4j.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+  </listener>
+
   <!--配置编码过滤器-->
   <filter>
     <filter-name>characterEncodingFilter</filter-name>

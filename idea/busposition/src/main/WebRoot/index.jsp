@@ -5,8 +5,8 @@
     <title>tmp</title>
 </head>
 <body>
-    <form action="teacher/login" method="post">
-        <input name="jobNumber" type="text"/><br/>
+    <form action="user/login" method="post">
+        <input name="userName" type="text"/><br/>
         <input name="password" type="text"/><br/>
         <input value="提交" type="submit"/>
     </form>
