@@ -5,7 +5,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:component-scan base-package="com.ky.gps.dao"/>
-    <context:component-scan base-package="com.ky.gps.entity"/>
     <context:property-placeholder location="classpath:jdbc/jdbc.properties"/>
     <!-- 配置dbcp2数据源 -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">

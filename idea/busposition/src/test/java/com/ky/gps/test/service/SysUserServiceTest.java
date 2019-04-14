@@ -1,6 +1,5 @@
 package com.ky.gps.test.service;
 
-import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.service.inter.SysUserService;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,16 +11,17 @@ import java.util.Map;
 
 public class SysUserServiceTest {
     private ApplicationContext applicationContext;
+    private SysUserService sysUserService;
 
     @Before
     public void init(){
         applicationContext =
                 new ClassPathXmlApplicationContext("spring/applicationContext-service.xml");
+        sysUserService = applicationContext.getBean(SysUserService.class);
     }
 
     @Test
     public void test01(){
-        SysUserService sysUserService = applicationContext.getBean(SysUserService.class);
         Map<String, Object> map = new HashMap<>(16);
         map.put("userName", "admin");
         map.put("password", "admin");

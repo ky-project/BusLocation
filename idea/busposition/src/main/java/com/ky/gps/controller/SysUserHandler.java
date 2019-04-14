@@ -58,6 +58,7 @@ public class SysUserHandler {
         try {
             //获取用户验证后的信息，如果通过，则获取基本信息，反之为null
             Map<String, Object> baseInfo = sysUserService.simpleUserLogin(map);
+
             //对返回结果进行判断
             if (null == baseInfo) {
                 //如果为null，则说明验证失败
