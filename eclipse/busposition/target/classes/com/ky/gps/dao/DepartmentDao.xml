@@ -24,7 +24,7 @@
         <if test="_parameter != null and _parameter > 0">
             select `NAME`
             from b_department
-            where ID=#{id}
+            where Valid=1 and ID=#{id}
         </if>
     </select>
 </mapper>
