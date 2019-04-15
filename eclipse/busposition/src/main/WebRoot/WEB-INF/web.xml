@@ -66,4 +66,7 @@
     <servlet-name>springDispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <listener>
+    <listener-class>com.ky.gps.listener.GPSThreadLietener</listener-class>
+  </listener>
 </web-app>
