@@ -6,8 +6,6 @@ import com.ky.gps.entity.SysLog;
 import com.ky.gps.service.inter.SysUserService;
 import com.ky.gps.util.IpUtil;
 import com.ky.gps.util.ResultWrapperUtil;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,7 +75,6 @@ public class SysUserHandler {
             //TODO 获取ip和mac地址
             sysLog.setIpAddress(IpUtil.getIpAddress(request));
 
-
             //将基本日志信息存入session中
             request.getSession().setAttribute("sysLog", sysLog);
             //将存放用户的基本信息的map封装进result中
@@ -86,6 +83,7 @@ public class SysUserHandler {
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
             e.printStackTrace();
         }
+
         return resultWrapper;
     }
 }

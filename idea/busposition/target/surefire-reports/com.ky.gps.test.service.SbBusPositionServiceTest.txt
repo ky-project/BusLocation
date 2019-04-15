@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.ky.gps.test.service.SbBusPositionServiceTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.584 s - in com.ky.gps.test.service.SbBusPositionServiceTest
