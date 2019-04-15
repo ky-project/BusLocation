@@ -15,13 +15,13 @@ public class SbBusPosition extends AbstractEntity {
     /** 记录时间 */
     private Timestamp sbpRecodeTime;
     /** 实时经度 */
-    private Float sbpLongitude;
+    private Double sbpLongitude;
     /** 实时纬度 */
-    private Float sbpLatitude;
+    private Double sbpLatitude;
     /** 速度 */
-    private Float sbpVelocity;
+    private Double sbpVelocity;
     /** 方向角 */
-    private Float sbpDirection;
+    private Double sbpDirection;
 
     /** 无参构造方法 */
     public SbBusPosition() {
@@ -29,9 +29,9 @@ public class SbBusPosition extends AbstractEntity {
 
     /** 有参构造方法-自身属性 */
     public SbBusPosition(Integer id, SbBus sbBus,
-                         Timestamp sbpRecodeTime, Float sbpLongitude,
-                         Float sbpLatitude, Float sbpVelocity,
-                         Float sbpDirection) {
+                         Timestamp sbpRecodeTime, Double sbpLongitude,
+                         Double sbpLatitude, Double sbpVelocity,
+                         Double sbpDirection) {
         this.id = id;
         this.sbBus = sbBus;
         this.sbpRecodeTime = sbpRecodeTime;
@@ -47,9 +47,9 @@ public class SbBusPosition extends AbstractEntity {
                          Timestamp createdDate, String createdBy,
                          Timestamp updatedDate, String updatedBy,
                          Boolean valid, Integer id, SbBus sbBus,
-                         Timestamp sbpRecodeTime, Float sbpLongitude,
-                         Float sbpLatitude, Float sbpVelocity,
-                         Float sbpDirection) {
+                         Timestamp sbpRecodeTime, Double sbpLongitude,
+                         Double sbpLatitude, Double sbpVelocity,
+                         Double sbpDirection) {
         super(remark, remark1, remark2, remark3, createdDate, createdBy, updatedDate, updatedBy, valid);
         this.id = id;
         this.sbBus = sbBus;
@@ -102,35 +102,35 @@ public class SbBusPosition extends AbstractEntity {
         this.sbpRecodeTime = sbpRecodeTime;
     }
 
-    public Float getSbpLongitude() {
+    public Double getSbpLongitude() {
         return sbpLongitude;
     }
 
-    public void setSbpLongitude(Float sbpLongitude) {
+    public void setSbpLongitude(Double sbpLongitude) {
         this.sbpLongitude = sbpLongitude;
     }
 
-    public Float getSbpLatitude() {
+    public Double getSbpLatitude() {
         return sbpLatitude;
     }
 
-    public void setSbpLatitude(Float sbpLatitude) {
+    public void setSbpLatitude(Double sbpLatitude) {
         this.sbpLatitude = sbpLatitude;
     }
 
-    public Float getSbpVelocity() {
+    public Double getSbpVelocity() {
         return sbpVelocity;
     }
 
-    public void setSbpVelocity(Float sbpVelocity) {
+    public void setSbpVelocity(Double sbpVelocity) {
         this.sbpVelocity = sbpVelocity;
     }
 
-    public Float getSbpDirection() {
+    public Double getSbpDirection() {
         return sbpDirection;
     }
 
-    public void setSbpDirection(Float sbpDirection) {
+    public void setSbpDirection(Double sbpDirection) {
         this.sbpDirection = sbpDirection;
     }
 }
