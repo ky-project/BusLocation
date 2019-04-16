@@ -18,9 +18,9 @@ public interface SbBusPositionDao {
     void savePosition(SbBusPosition sbBusPosition);
 
     /**
-     * 根据校车Id查询该校车所有位置信息
-     * @param busId 校车id
+     * 根据GPSId查询该校车所有位置信息
+     * @param gpsId GPSid
      * @return 返回存放位置基本信息的list
      */
-    List<Map<String, Object>> findAllPositionByBusId(Integer busId);
+    List<Map<String, Object>> findAllPositionByBusId(String gpsId);
 }

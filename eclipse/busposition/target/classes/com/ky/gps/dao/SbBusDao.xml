@@ -23,7 +23,7 @@
         <if test="_parameter != null and _parameter > 0">
             select SBB_PLATE_NUMBER
             from sb_bus
-            where ID=#{id}
+            where Valid=1 and ID=#{id}
         </if>
     </select>
 </mapper>

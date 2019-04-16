@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="sb_gps_sys_test@localhost" uuid="ab1cacb4-81ff-487f-96a3-081b4f47e883">
+    <data-source source="LOCAL" name="sb_gps_sys@localhost" uuid="caae7555-603b-4ff1-8fcd-58a1500f70a6">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/sb_gps_sys_test</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/sb_gps_sys</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

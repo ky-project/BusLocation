@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/locationTest.css">
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+
+    <script>
+        // $("#sub").click(function() {
+        //     console.log(curPosition.coords.longitude);
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "http://127.0.0.1:8080/busposition/position/gain",
+        //         contentType: "application/json; charset=utf-8",
+        //         data: JSON.stringify(GetJsonData()),
+        //         dataType: "json"
+        //     });
+        //     console.log("123");
+        // });
+        function GetJsonData() {
+            var json = {
+                "sbpRecodeTime": "2019-04-15 01:57:02",
+                "sbpLongitude": 104.038748,
+                "sbpLatitude": 30.641821,
+                "sbpVelocity": 65.25,
+                "sbpDirection": 60.4
+            };
+            return json;
+        }
+
+        function load() {
+            //下面两种方法效果是一样的
+            document.getElementById("sub").click();
+        }
+
+        function test() {
+            console.log("123");
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:8080/busposition/position/gain",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(GetJsonData()),
+                dataType: "json"
+            });
+        }
+    </script>
+    <input type="button" id="sub" onclick="test()" value="发送">
+</body>
+</html>

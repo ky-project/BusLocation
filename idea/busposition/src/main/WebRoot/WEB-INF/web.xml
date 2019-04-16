@@ -5,7 +5,7 @@
          version="4.0">
 
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>locationTest.html</welcome-file>
   </welcome-file-list>
   <!-- Spring监听器 -->
   <context-param>
@@ -16,6 +16,11 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
+  <!---->
+  <listener>
+    <listener-class>com.ky.gps.listener.GPSThreadLietener</listener-class>
+  </listener>
+
   <!-- log4j监听器 -->
   <context-param>
     <param-name>log4jConfiguration</param-name>
@@ -24,6 +29,17 @@
   <listener>
     <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
   </listener>
+
+  <!-- 取消CORS的限制 -->
+  <filter>
+    <filter-name>CorsFilter</filter-name>
+    <filter-class>com.ky.gps.filter.CorsFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>CorsFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <!--配置编码过滤器-->
   <filter>

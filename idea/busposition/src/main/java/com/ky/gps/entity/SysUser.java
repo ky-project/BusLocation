@@ -1,8 +1,5 @@
 package com.ky.gps.entity;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -16,8 +13,6 @@ public class SysUser extends AbstractEntity {
     private Integer id;
     /** 部门对象 */
     private Department department;
-    /** 用户账号 */
-    private String loginName;
     /** 职工编号 */
     private String workId;
     /** 姓名 */
@@ -44,14 +39,13 @@ public class SysUser extends AbstractEntity {
 
     /** 有参构造方法-自身属性 */
     public SysUser(Integer id, Department department,
-                   String loginName, String workId,
-                   String realName, String password,
-                   String salt, String idCard,
-                   String phone, String email,
-                   Date accountDate, Date lastPsdDate) {
+                   String workId, String realName,
+                   String password, String salt,
+                   String idCard, String phone,
+                   String email, Date accountDate,
+                   Date lastPsdDate) {
         this.id = id;
         this.department = department;
-        this.loginName = loginName;
         this.workId = workId;
         this.realName = realName;
         this.password = password;
@@ -69,12 +63,11 @@ public class SysUser extends AbstractEntity {
                    Timestamp createdDate, String createdBy,
                    Timestamp updatedDate, String updatedBy,
                    Boolean valid, Integer id,
-                   Department department, String loginName,
-                   String workId, String realName,
-                   String password, String salt,
-                   String idCard, String phone,
-                   String email, Date accountDate,
-                   Date lastPsdDate) {
+                   Department department, String workId,
+                   String realName, String password,
+                   String salt, String idCard,
+                   String phone, String email,
+                   Date accountDate, Date lastPsdDate) {
         super(remark, remark1,
                 remark2, remark3,
                 createdDate, createdBy,
@@ -82,7 +75,6 @@ public class SysUser extends AbstractEntity {
                 valid);
         this.id = id;
         this.department = department;
-        this.loginName = loginName;
         this.workId = workId;
         this.realName = realName;
         this.password = password;
@@ -103,7 +95,6 @@ public class SysUser extends AbstractEntity {
         return "SysUser{" +
                 "id=" + id +
                 ", department=" + department +
-                ", loginName='" + loginName + '\'' +
                 ", workId='" + workId + '\'' +
                 ", realName='" + realName + '\'' +
                 ", password='" + password + '\'' +
@@ -132,14 +123,6 @@ public class SysUser extends AbstractEntity {
 
     public void setDepartment(Department department) {
         this.department = department;
-    }
-
-    public String getLoginName() {
-        return loginName;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
     }
 
     public String getWorkId() {

@@ -29,7 +29,7 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
-    public List<Map<String, Object>> findAllPositionByBusId(Integer busId) {
+    public List<Map<String, Object>> findAllPositionByBusId(String busId) {
         return sbBusPositionDao.findAllPositionByBusId(busId);
     }
 }
