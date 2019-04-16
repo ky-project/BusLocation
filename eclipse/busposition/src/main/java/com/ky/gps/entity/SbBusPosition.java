@@ -10,8 +10,8 @@ public class SbBusPosition extends AbstractEntity {
 
     /** id */
     private Integer id;
-    /** 所属校车 */
-    private SbBus sbBus;
+    /** 所属GPS */
+    private SbGps sbGps;
     /** 记录时间 */
     private Timestamp sbpRecodeTime;
     /** 实时经度 */
@@ -28,12 +28,12 @@ public class SbBusPosition extends AbstractEntity {
     }
 
     /** 有参构造方法-自身属性 */
-    public SbBusPosition(Integer id, SbBus sbBus,
+    public SbBusPosition(Integer id, SbGps sbGps,
                          Timestamp sbpRecodeTime, Double sbpLongitude,
                          Double sbpLatitude, Double sbpVelocity,
                          Double sbpDirection) {
         this.id = id;
-        this.sbBus = sbBus;
+        this.sbGps = sbGps;
         this.sbpRecodeTime = sbpRecodeTime;
         this.sbpLongitude = sbpLongitude;
         this.sbpLatitude = sbpLatitude;
@@ -46,13 +46,13 @@ public class SbBusPosition extends AbstractEntity {
                          String remark2, String remark3,
                          Timestamp createdDate, String createdBy,
                          Timestamp updatedDate, String updatedBy,
-                         Boolean valid, Integer id, SbBus sbBus,
+                         Boolean valid, Integer id, SbGps sbGps,
                          Timestamp sbpRecodeTime, Double sbpLongitude,
                          Double sbpLatitude, Double sbpVelocity,
                          Double sbpDirection) {
         super(remark, remark1, remark2, remark3, createdDate, createdBy, updatedDate, updatedBy, valid);
         this.id = id;
-        this.sbBus = sbBus;
+        this.sbGps = sbGps;
         this.sbpRecodeTime = sbpRecodeTime;
         this.sbpLongitude = sbpLongitude;
         this.sbpLatitude = sbpLatitude;
@@ -68,7 +68,7 @@ public class SbBusPosition extends AbstractEntity {
     public String toString() {
         return "SbBusPosition{" +
                 "id=" + id +
-                ", sbBus=" + sbBus +
+                ", sbGps=" + sbGps +
                 ", sbpRecodeTime=" + sbpRecodeTime +
                 ", sbpLongitude=" + sbpLongitude +
                 ", sbpLatitude=" + sbpLatitude +
@@ -86,12 +86,12 @@ public class SbBusPosition extends AbstractEntity {
         this.id = id;
     }
 
-    public SbBus getSbBus() {
-        return sbBus;
+    public SbGps getSbGps() {
+        return sbGps;
     }
 
-    public void setSbBus(SbBus sbBus) {
-        this.sbBus = sbBus;
+    public void setSbGps(SbGps sbGps) {
+        this.sbGps = sbGps;
     }
 
     public Timestamp getSbpRecodeTime() {

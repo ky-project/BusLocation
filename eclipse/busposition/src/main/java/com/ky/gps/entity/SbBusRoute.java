@@ -5,13 +5,6 @@ import java.sql.Timestamp;
 /**
  * @author Daye
  * 校车与路线对应的实体类
- * Name	            Code	            Comment	Data Type
- * ID	            ID		            int
- * 校车_ID	        SB__ID		        int
- * 校车路_ID	        SB__ID2		        int
- * 星期	            SBBR_WEEK		    varchar(100)
- * 开始时间	        SBBR_START_TIME		varchar(100)
- * 结束时间	        SBBR_END_TIME		varchar(100)
  */
 public class SbBusRoute extends AbstractEntity {
 

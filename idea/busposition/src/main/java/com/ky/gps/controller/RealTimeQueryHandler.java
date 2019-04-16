@@ -5,6 +5,7 @@ import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusRoute;
 import com.ky.gps.service.inter.SbBusPositionService;
 import com.ky.gps.service.inter.SbBusRouteService;
+import com.ky.gps.service.inter.SbGpsService;
 import com.ky.gps.service.inter.SbRouteService;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.context.annotation.Scope;
@@ -34,6 +35,8 @@ public class RealTimeQueryHandler {
     private SbBusPositionService sbBusPositionService;
     @Resource
     private SbRouteService sbRouteService;
+    @Resource
+    private SbGpsService sbGpsService;
 
     /**
      * 根据路线查询所有对应校车的位置信息
@@ -50,8 +53,10 @@ public class RealTimeQueryHandler {
             List<SbBusRoute> allRelation = sbBusRouteService.findAllRelation();
             //遍历该list
             for (SbBusRoute sbBusRoute : allRelation) {
-                //根据每辆车的id获取位置list
-                List<Map<String, Object>> positionList = sbBusPositionService.findAllPositionByBusId(sbBusRoute.getSbBus().getId());
+                //根据每辆车的id获取GPSID
+                String gpsId = sbGpsService.findIdByBusId(sbBusRoute.getSbBus().getId());
+                //根据GPSID获取所有位置
+                List<Map<String, Object>> positionList = sbBusPositionService.findAllPositionByBusId(gpsId);
                 //获取路线名
                 String routeName = sbRouteService.findNameById(sbBusRoute.getSbRoute().getId());
                 //存放该路线和对应位置的信息

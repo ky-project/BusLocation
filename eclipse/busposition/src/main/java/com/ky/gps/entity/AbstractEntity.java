@@ -29,10 +29,10 @@ public abstract class AbstractEntity implements Serializable {
     private Boolean valid;
 
     /** 构造方法 */
-    public AbstractEntity() {
+    AbstractEntity() {
     }
 
-    public AbstractEntity(String remark, String remark1,
+    AbstractEntity(String remark, String remark1,
                           String remark2, String remark3,
                           Timestamp createdDate, String createdBy,
                           Timestamp updatedDate, String updatedBy,

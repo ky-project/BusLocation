@@ -23,5 +23,5 @@ public interface SbBusPositionService {
      * @param busId 校车id
      * @return 返回存放位置基本信息的list
      */
-    List<Map<String, Object>> findAllPositionByBusId(Integer busId);
+    List<Map<String, Object>> findAllPositionByBusId(String busId);
 }

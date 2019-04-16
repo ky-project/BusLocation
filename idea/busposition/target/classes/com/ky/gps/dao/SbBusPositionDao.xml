@@ -27,10 +27,10 @@
                 'system', 'system', 1)
     </insert>
 
-    <select id="findAllPositionByBusId" resultType="hashmap" parameterType="integer">
+    <select id="findAllPositionByBusId" resultType="hashmap" parameterType="string">
         select SBP_LONGITUDE longitude, SBP_LATITUDE latitude, SBP_VELOCITY velocity, SBP_DIRECTION direction
         from sb_busposition
-        where Valid=1 and SB__ID=#{busId}
+        where Valid=1 and SB__ID=#{gpsId}
         order by SBP_RECODE_TIME
     </select>
 

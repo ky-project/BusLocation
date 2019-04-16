@@ -2,6 +2,7 @@ package com.ky.gps.util;
 
 import com.ky.gps.entity.SbBus;
 import com.ky.gps.entity.SbBusPosition;
+import com.ky.gps.entity.SbGps;
 import com.ky.gps.sys.ParseGPS;
 import com.ky.gps.util.SbBusPositionServiceUtil;
 
@@ -9,7 +10,7 @@ public class ParseGPSUtil {
 	
 	private SbBusPosition sbBusPosition;
 	private SbBusPositionServiceUtil sbpsu;
-	private SbBus sbBus;
+	private SbGps sbGps;
 		
 	public ParseGPSUtil() {
 		super();
@@ -18,11 +19,11 @@ public class ParseGPSUtil {
 	public void init() {
 		sbBusPosition = new SbBusPosition();
 		sbpsu = new SbBusPositionServiceUtil();
-		sbBus = new SbBus();
+		sbGps = new SbGps();
 	}
 
-	public void setSbBus(Integer id) {
-		sbBus.setId(id);
+	public void setSbGps(String id) {
+		sbGps.setId(id);
 	}
 
 	public void parse(String sign) {
@@ -32,7 +33,7 @@ public class ParseGPSUtil {
 		switch (parseGPS.parse(sign)) {
 		case 0:
 			System.out.println("定位成功！");
-			sbBusPosition.setSbBus(sbBus);
+			sbBusPosition.setSbGps(sbGps);
 			sbpsu.init();
 			sbpsu.save(sbBusPosition);
 			break;

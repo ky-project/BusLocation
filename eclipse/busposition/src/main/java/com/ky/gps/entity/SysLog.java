@@ -3,11 +3,13 @@ package com.ky.gps.entity;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+
 /**
  * @author Daye
  * 用户操作记录
  */
-public class SysLog {
+public class SysLog extends AbstractEntity {
 
     /** 用户id */
     private Integer sysUserId;
@@ -32,12 +34,38 @@ public class SysLog {
     public SysLog() {
     }
 
-    /** 有参构造函数 */
+    /** 有参构造函数-自身属性 */
     public SysLog(Integer sysUserId, String userName,
                   String realName, String departmentName,
                   String operate, String module,
                   String ipAddress, String macAddress,
                   String content) {
+        this.sysUserId = sysUserId;
+        this.userName = userName;
+        this.realName = realName;
+        this.departmentName = departmentName;
+        this.operate = operate;
+        this.module = module;
+        this.ipAddress = ipAddress;
+        this.macAddress = macAddress;
+        this.content = content;
+    }
+
+    /** 有参构造函数-所有属性 */
+    public SysLog(String remark, String remark1,
+                  String remark2, String remark3,
+                  Timestamp createdDate, String createdBy,
+                  Timestamp updatedDate, String updatedBy,
+                  Boolean valid, Integer sysUserId,
+                  String userName, String realName,
+                  String departmentName, String operate,
+                  String module, String ipAddress,
+                  String macAddress, String content) {
+        super(remark, remark1,
+                remark2, remark3,
+                createdDate, createdBy,
+                updatedDate, updatedBy,
+                valid);
         this.sysUserId = sysUserId;
         this.userName = userName;
         this.realName = realName;
