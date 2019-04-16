@@ -32,4 +32,7 @@
     <!-- 加入两个常规配置，引入.js和.css文件 -->
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/css/" mapping="/css/**" />
+    <mvc:resources location="/images/" mapping="/images/**" />
 </beans>

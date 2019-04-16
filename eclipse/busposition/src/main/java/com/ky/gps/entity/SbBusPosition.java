@@ -1,5 +1,7 @@
 package com.ky.gps.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 
 /**
@@ -13,6 +15,7 @@ public class SbBusPosition extends AbstractEntity {
     /** 所属GPS */
     private SbGps sbGps;
     /** 记录时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Timestamp sbpRecodeTime;
     /** 实时经度 */
     private Double sbpLongitude;

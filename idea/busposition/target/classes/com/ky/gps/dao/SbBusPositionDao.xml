@@ -23,7 +23,7 @@
     <insert id="savePosition" parameterType="sbbusposition">
         insert into sb_busposition(SB__ID, sbp_recode_time, sbp_longitude, sbp_latitude, sbp_velocity, sbp_direction,
                                    created_by, updated_by, valid)
-        values (#{sbBus.id}, #{sbpRecodeTime}, #{sbpLongitude}, #{sbpLatitude}, #{sbpVelocity}, #{sbpDirection},
+        values (#{sbGps.id}, #{sbpRecodeTime}, #{sbpLongitude}, #{sbpLatitude}, #{sbpVelocity}, #{sbpDirection},
                 'system', 'system', 1)
     </insert>
 
