@@ -1,10 +1,6 @@
 package com.ky.gps.sys;
 
-import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 
 /**
@@ -33,7 +29,7 @@ public class StartThread implements Runnable {
 		/*
 		 * 创建服务器，开启守护线程 
 		 */
-		NIOServerSocket nss = new NIOServerSocket(GPSprot);
+		NIOServerSocket nss = new NIOServerSocket(8080);
 		try {
 			
 			nss.start();

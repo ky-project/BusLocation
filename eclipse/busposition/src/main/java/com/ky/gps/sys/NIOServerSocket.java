@@ -158,7 +158,7 @@ public class NIOServerSocket {
 					
 					//-------------------------------------------------------------------------//
 					
-					parseGPSUtil.setSbBus(1);
+					parseGPSUtil.setSbGPS("20001030");
 					parseGPSUtil.parse(request);
 					
 					//-------------------------------------------------------------------------//
