@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import com.ky.gps.entity.SbBus;
 import com.ky.gps.entity.SbBusPosition;
+import com.ky.gps.entity.SbGps;
 import com.ky.gps.sys.ParseGPS;
 import com.ky.gps.util.SbBusPositionServiceUtil;
 
@@ -27,7 +28,7 @@ public class ParseGPSTest {
 		switch (parseGPS.parse(sign)) {
 		case 0:
 			System.out.println("定位成功！");
-			sbBusPosition.setSbBus(new SbBus(1));
+			sbBusPosition.setSbGps(new SbGps());
 			sbpsu.init();
 			sbpsu.save(sbBusPosition);
 			break;
