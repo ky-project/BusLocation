@@ -30,6 +30,11 @@
     <select id="findNameById" resultType="string" parameterType="integer">
         select SBR_ROUTENAME
         from sb_route
-        where ID=#{id}
+        where ID=#{id} and Valid=1
+    </select>
+    <select id="findAllBaseInfo" resultType="java.util.Map">
+        select id, sbr_routename routeName, sbr_start_station startStation, sbr_end_station endStation, sbr_depart_time departTime, sbr_desc `desc`
+        from sb_route
+        where Valid=1
     </select>
 </mapper>

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Daye
@@ -28,5 +30,11 @@ public class SbRouteServiceImpl implements SbRouteService {
     @Override
     public String findNameById(Integer id) {
         return sbRouteDao.findNameById(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> findAllBaseInfo() {
+        //TODO 判断当前时间是否在开始结束时间内
+        return sbRouteDao.findAllBaseInfo();
     }
 }

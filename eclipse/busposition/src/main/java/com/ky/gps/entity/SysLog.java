@@ -1,8 +1,5 @@
 package com.ky.gps.entity;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import java.sql.Timestamp;
 
 /**
@@ -11,37 +8,64 @@ import java.sql.Timestamp;
  */
 public class SysLog extends AbstractEntity {
 
-    /** 用户id */
+    /**
+     * 记录id
+     */
+    private Integer id;
+    /**
+     * 用户id
+     */
     private Integer sysUserId;
-    /** 用户的登录名，用户账号/职工编号 */
-    private String userName;
-    /** 真实姓名 */
+    /**
+     * 用户的职工编号
+     */
+    private String workId;
+    /**
+     * 真实姓名
+     */
     private String realName;
-    /** 所在部门名 */
+    /**
+     * 所在部门名
+     */
     private String departmentName;
-    /** 操作 */
+    /**
+     * 操作
+     */
     private String operate;
-    /** 模块 */
+    /**
+     * 模块
+     */
     private String module;
-    /** ip地址 */
+    /**
+     * ip地址
+     */
     private String ipAddress;
-    /** 物理地址 */
+    /**
+     * 物理地址
+     */
     private String macAddress;
-    /** 内容 */
+    /**
+     * 内容
+     */
     private String content;
 
-    /** 无参构造函数 */
+    /**
+     * 无参构造函数
+     */
     public SysLog() {
     }
 
-    /** 有参构造函数-自身属性 */
-    public SysLog(Integer sysUserId, String userName,
-                  String realName, String departmentName,
-                  String operate, String module,
-                  String ipAddress, String macAddress,
-                  String content) {
+    /**
+     * 有参构造函数-自身属性
+     */
+    public SysLog(Integer id, Integer sysUserId,
+                  String workId, String realName,
+                  String departmentName, String operate,
+                  String module, String ipAddress,
+                  String macAddress, String content) {
+        this.id = id;
         this.sysUserId = sysUserId;
-        this.userName = userName;
+        this.workId = workId;
         this.realName = realName;
         this.departmentName = departmentName;
         this.operate = operate;
@@ -51,23 +75,22 @@ public class SysLog extends AbstractEntity {
         this.content = content;
     }
 
-    /** 有参构造函数-所有属性 */
+    /**
+     * 有参构造函数-所有属性
+     */
     public SysLog(String remark, String remark1,
                   String remark2, String remark3,
                   Timestamp createdDate, String createdBy,
                   Timestamp updatedDate, String updatedBy,
-                  Boolean valid, Integer sysUserId,
-                  String userName, String realName,
+                  Boolean valid, Integer id, Integer sysUserId,
+                  String workId, String realName,
                   String departmentName, String operate,
                   String module, String ipAddress,
                   String macAddress, String content) {
-        super(remark, remark1,
-                remark2, remark3,
-                createdDate, createdBy,
-                updatedDate, updatedBy,
-                valid);
+        super(remark, remark1, remark2, remark3, createdDate, createdBy, updatedDate, updatedBy, valid);
+        this.id = id;
         this.sysUserId = sysUserId;
-        this.userName = userName;
+        this.workId = workId;
         this.realName = realName;
         this.departmentName = departmentName;
         this.operate = operate;
@@ -77,11 +100,13 @@ public class SysLog extends AbstractEntity {
         this.content = content;
     }
 
+
     @Override
     public String toString() {
         return "SysLog{" +
-                "sysUserId=" + sysUserId +
-                ", userName='" + userName + '\'' +
+                "id=" + id +
+                ", sysUserId=" + sysUserId +
+                ", workId='" + workId + '\'' +
                 ", realName='" + realName + '\'' +
                 ", departmentName='" + departmentName + '\'' +
                 ", operate='" + operate + '\'' +
@@ -92,7 +117,17 @@ public class SysLog extends AbstractEntity {
                 '}';
     }
 
-    /** getter/setter */
+    /**
+     * getter/setter
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getSysUserId() {
         return sysUserId;
     }
@@ -101,12 +136,12 @@ public class SysLog extends AbstractEntity {
         this.sysUserId = sysUserId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getWorkId() {
+        return workId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setWorkId(String workId) {
+        this.workId = workId;
     }
 
     public String getRealName() {

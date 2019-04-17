@@ -3,10 +3,7 @@ package com.ky.gps.controller;
 import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusRoute;
-import com.ky.gps.service.inter.SbBusPositionService;
-import com.ky.gps.service.inter.SbBusRouteService;
-import com.ky.gps.service.inter.SbGpsService;
-import com.ky.gps.service.inter.SbRouteService;
+import com.ky.gps.service.inter.*;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -37,6 +34,34 @@ public class RealTimeQueryHandler {
     private SbRouteService sbRouteService;
     @Resource
     private SbGpsService sbGpsService;
+    @Resource
+    private SbRouteStationService sbRouteStationService;
+
+    /**
+     * 获取每条路线的站点信息
+     * @return 路线和站点信息
+     */
+    @RequestMapping(value = "/route/station", method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public ResultWrapper getStationByRoute(){
+        ResultWrapper resultWrapper;
+        try {
+            List<Map<String, Object>> baseInfoMapList = sbRouteService.findAllBaseInfo();
+            List<Map<String, Object>> res = new ArrayList<>();
+            for (Map<String, Object> baseInfoMap : baseInfoMapList) {
+                Map<String, Object> baseInfo = new HashMap<>();
+                baseInfo.put("routeName", baseInfoMap.get("routeName"));
+                List<Map<String, Object>> stationMapList = sbRouteStationService.findStationByRouteId((Integer) baseInfoMap.get("id"));
+                baseInfo.put("stationInfo", stationMapList);
+                res.add(baseInfo);
+            }
+            resultWrapper = ResultWrapperUtil.setSuccessOf(res);
+        } catch (Exception e){
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+
+    }
 
     /**
      * 根据路线查询所有对应校车的位置信息
@@ -45,6 +70,7 @@ public class RealTimeQueryHandler {
     @RequestMapping(value = "/track", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public ResultWrapper getPositionByRoute(){
+
         ResultWrapper resultWrapper;
         //存放路线和路线对应的校车位置list，实际存放的是路线名和位置的mapList
         List<Map<String, Object>> routePositionList = new ArrayList<>();

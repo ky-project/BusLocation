@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 16/04/2019 13:34:01
+ Date: 17/04/2019 23:48:33
 */
 
 SET NAMES utf8mb4;
@@ -180,21 +180,21 @@ CREATE TABLE `sb_bus_route`  (
 -- ----------------------------
 -- Records of sb_bus_route
 -- ----------------------------
-INSERT INTO `sb_bus_route` VALUES (1, 1, 2, '星期一', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 21:58:17', 'system', '2019-04-14 21:55:36', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (2, 1, 2, '星期二', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 21:57:54', 'system', '2019-04-14 21:57:54', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (3, 1, 2, '星期三', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 21:58:15', 'system', '2019-04-14 21:58:15', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (4, 1, 2, '星期四', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 21:58:52', 'system', '2019-04-14 21:58:52', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (5, 1, 2, '星期五', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 21:59:36', 'system', '2019-04-14 21:59:03', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (6, 2, 5, '星期一', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:00:03', 'system', '2019-04-14 22:00:03', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (7, 2, 5, '星期二', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:00:42', 'system', '2019-04-14 22:00:03', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (8, 2, 5, '星期三', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:00:45', 'system', '2019-04-14 22:00:03', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (9, 2, 5, '星期四', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:00:47', 'system', '2019-04-14 22:00:03', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (10, 2, 5, '星期五', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:02:37', 'system', '2019-04-14 22:00:03', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (11, 3, 3, '星期一', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:02:35', 'system', '2019-04-14 22:02:35', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (12, 3, 3, '星期二', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:03:16', 'system', '2019-04-14 22:02:35', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (13, 3, 3, '星期三', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:03:19', 'system', '2019-04-14 22:02:35', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (14, 3, 3, '星期四', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:03:21', 'system', '2019-04-14 22:02:35', 'system', 1);
-INSERT INTO `sb_bus_route` VALUES (15, 3, 3, '星期五', '6:00 AM', '8:00 AM', NULL, NULL, NULL, NULL, '2019-04-14 22:03:23', 'system', '2019-04-14 22:02:35', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (1, 1, 2, '星期一', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:19', 'system', '2019-04-17 10:32:19', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (2, 1, 2, '星期二', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:20', 'system', '2019-04-17 10:32:20', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (3, 1, 2, '星期三', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:21', 'system', '2019-04-17 10:32:21', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (4, 1, 2, '星期四', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:22', 'system', '2019-04-17 10:32:22', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (5, 1, 2, '星期五', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:24', 'system', '2019-04-17 10:32:24', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (6, 2, 5, '星期一', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:25', 'system', '2019-04-17 10:32:25', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (7, 2, 5, '星期二', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:26', 'system', '2019-04-17 10:32:26', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (8, 2, 5, '星期三', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:27', 'system', '2019-04-17 10:32:27', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (9, 2, 5, '星期四', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:29', 'system', '2019-04-17 10:32:29', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (10, 2, 5, '星期五', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:30', 'system', '2019-04-17 10:32:30', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (11, 3, 3, '星期一', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:31', 'system', '2019-04-17 10:32:31', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (12, 3, 3, '星期二', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:32', 'system', '2019-04-17 10:32:32', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (13, 3, 3, '星期三', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:33', 'system', '2019-04-17 10:32:33', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (14, 3, 3, '星期四', '6:00', '8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:32:35', 'system', '2019-04-17 10:32:35', 'system', 1);
+INSERT INTO `sb_bus_route` VALUES (15, 3, 3, '星期五', '6:00', ' 8:00', NULL, NULL, NULL, NULL, '2019-04-17 10:49:04', 'system', '2019-04-17 10:49:04', 'system', 1);
 
 -- ----------------------------
 -- Table structure for sb_busposition
@@ -220,7 +220,7 @@ CREATE TABLE `sb_busposition`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `FK_Relationship_24`(`SB__ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_24` FOREIGN KEY (`SB__ID`) REFERENCES `sb_gps` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sb_busposition
@@ -247,6 +247,8 @@ INSERT INTO `sb_busposition` VALUES (19, '20170409', '2019-04-15 02:34:45', 105.
 INSERT INTO `sb_busposition` VALUES (20, '20170409', '2019-04-15 02:34:46', 105.063959, 31.655336, 45.123, 95.45, NULL, NULL, NULL, NULL, '2019-04-15 02:06:56', NULL, '2019-04-15 02:06:56', NULL, 1);
 INSERT INTO `sb_busposition` VALUES (21, '20170409', '2019-04-15 02:34:46', 105.064, 31.657, 79.04, 9.14, NULL, NULL, NULL, NULL, '2019-04-15 02:07:13', NULL, '2019-04-15 02:07:13', NULL, 1);
 INSERT INTO `sb_busposition` VALUES (22, '20170409', '2019-04-15 02:34:48', 105.065, 31.658, 14.01, 11.58, NULL, NULL, NULL, NULL, '2019-04-15 02:07:29', NULL, '2019-04-15 02:07:29', NULL, 1);
+INSERT INTO `sb_busposition` VALUES (23, '20190304', '2019-04-15 09:57:02', 104.038748, 30.641821, 65.25, 60.4, NULL, NULL, NULL, NULL, '2019-04-16 17:15:49', 'system', '2019-04-16 17:15:49', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (24, '20190304', '2019-04-15 09:57:02', 104.038748, 30.641821, 65.25, 60.4, NULL, NULL, NULL, NULL, '2019-04-16 17:53:50', 'system', '2019-04-16 17:53:50', 'system', 1);
 
 -- ----------------------------
 -- Table structure for sb_busposition_his
@@ -370,8 +372,8 @@ INSERT INTO `sb_route` VALUES (6, '余杭四号线', '雅仕苑', '上虞', '6:0
 DROP TABLE IF EXISTS `sb_route_station`;
 CREATE TABLE `sb_route_station`  (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '设定自增_',
-  `SB__ID` int(11) NOT NULL,
-  `SB__ID2` int(11) NOT NULL,
+  `SB__ID` int(11) NOT NULL COMMENT '站点id',
+  `SB__ID2` int(11) NOT NULL COMMENT '路线id',
   `REMARK` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `REMARK1` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `REMARK2` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
@@ -386,7 +388,22 @@ CREATE TABLE `sb_route_station`  (
   INDEX `FK_Relationship_9`(`SB__ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_8` FOREIGN KEY (`SB__ID2`) REFERENCES `sb_route` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK_Relationship_9` FOREIGN KEY (`SB__ID`) REFERENCES `sb_station` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sb_route_station
+-- ----------------------------
+INSERT INTO `sb_route_station` VALUES (1, 1, 2, NULL, NULL, NULL, NULL, '2019-04-17 11:06:40', NULL, '2019-04-17 11:06:40', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (2, 2, 2, NULL, NULL, NULL, NULL, '2019-04-17 11:06:45', NULL, '2019-04-17 11:06:45', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (3, 3, 2, NULL, NULL, NULL, NULL, '2019-04-17 11:06:49', NULL, '2019-04-17 11:06:49', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (4, 4, 2, NULL, NULL, NULL, NULL, '2019-04-17 11:06:53', NULL, '2019-04-17 11:06:53', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (5, 5, 2, NULL, NULL, NULL, NULL, '2019-04-17 11:06:57', NULL, '2019-04-17 11:06:57', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (6, 6, 2, NULL, NULL, NULL, NULL, '2019-04-17 11:07:01', NULL, '2019-04-17 11:07:01', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (7, 7, 3, NULL, NULL, NULL, NULL, '2019-04-17 11:07:20', NULL, '2019-04-17 11:07:20', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (8, 8, 3, NULL, NULL, NULL, NULL, '2019-04-17 11:07:30', NULL, '2019-04-17 11:07:30', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (9, 9, 3, NULL, NULL, NULL, NULL, '2019-04-17 11:07:34', NULL, '2019-04-17 11:07:34', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (10, 10, 3, NULL, NULL, NULL, NULL, '2019-04-17 11:07:43', NULL, '2019-04-17 11:07:43', NULL, 1);
+INSERT INTO `sb_route_station` VALUES (11, 11, 3, NULL, NULL, NULL, NULL, '2019-04-17 11:07:50', NULL, '2019-04-17 11:07:50', NULL, 1);
 
 -- ----------------------------
 -- Table structure for sb_station
@@ -395,8 +412,8 @@ DROP TABLE IF EXISTS `sb_station`;
 CREATE TABLE `sb_station`  (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '设定自增_',
   `SBS_STATION` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `SBS_LONGITUDE` float NULL DEFAULT NULL,
-  `SBS_LATITUDE` float NULL DEFAULT NULL,
+  `SBS_LONGITUDE` double NULL DEFAULT NULL,
+  `SBS_LATITUDE` double NULL DEFAULT NULL,
   `SBS_DEPART_TIME` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `SBS_DESC` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `REMARK` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
@@ -409,7 +426,22 @@ CREATE TABLE `sb_station`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sb_station
+-- ----------------------------
+INSERT INTO `sb_station` VALUES (1, '文一校区', 104.038748, 30.641821, '7:00', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:14:33', NULL, '2019-04-17 10:14:33', NULL, 1);
+INSERT INTO `sb_station` VALUES (2, '德信早城北门', 104.047789, 30.648128, '8:00', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:15:22', NULL, '2019-04-17 10:15:22', NULL, 1);
+INSERT INTO `sb_station` VALUES (3, '老物美', 104.063959, 30.655336, '9:00', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:15:50', NULL, '2019-04-17 10:15:50', NULL, 1);
+INSERT INTO `sb_station` VALUES (4, '下沙理工南门', 104.067264, 30.660307, '10:00', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:16:09', NULL, '2019-04-17 10:16:09', NULL, 1);
+INSERT INTO `sb_station` VALUES (5, '清雅苑', 104.067264, 30.664438, '10:20', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:16:40', NULL, '2019-04-17 10:16:40', NULL, 1);
+INSERT INTO `sb_station` VALUES (6, '大学城北', 104.064008, 30.665316, '10:30', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:17:03', NULL, '2019-04-17 10:17:03', NULL, 1);
+INSERT INTO `sb_station` VALUES (7, '金沙学府', 105.038748, 31.641821, '7:00', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:17:32', NULL, '2019-04-17 10:17:32', NULL, 1);
+INSERT INTO `sb_station` VALUES (8, '下沙江滨地铁站', 105.047789, 31.648128, '7:30', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:17:49', NULL, '2019-04-17 10:17:49', NULL, 1);
+INSERT INTO `sb_station` VALUES (9, '保利东湾', 105.063959, 31.655336, '8:30', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:18:08', NULL, '2019-04-17 10:18:08', NULL, 1);
+INSERT INTO `sb_station` VALUES (10, '金隅观澜时代', 105.067264, 31.660307, '9:00', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:18:29', NULL, '2019-04-17 10:18:29', NULL, 1);
+INSERT INTO `sb_station` VALUES (11, '下沙理工北门', 105.067264, 31.664438, '10:00', NULL, NULL, NULL, NULL, NULL, '2019-04-17 10:22:58', NULL, '2019-04-17 10:22:58', NULL, 1);
 
 -- ----------------------------
 -- Table structure for sb_user_bus
@@ -504,7 +536,13 @@ CREATE TABLE `sys_log`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_log
+-- ----------------------------
+INSERT INTO `sys_log` VALUES (1, 'Xb16620208', '陆宇豪', '开发小组', '登录', '登录模块', '127.0.0.1', NULL, '成功登录', NULL, NULL, NULL, NULL, '2019-04-17 00:55:48', '陆宇豪', '2019-04-17 00:55:48', '陆宇豪', 1);
+INSERT INTO `sys_log` VALUES (2, 'admin', '管理员', '开发小组', '登录', '登录模块', '127.0.0.1', NULL, '成功登录', NULL, NULL, NULL, NULL, '2019-04-17 00:59:08', '管理员', '2019-04-17 00:59:08', '管理员', 1);
 
 -- ----------------------------
 -- Table structure for sys_parameter

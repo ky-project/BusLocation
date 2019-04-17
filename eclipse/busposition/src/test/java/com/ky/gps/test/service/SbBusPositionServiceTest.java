@@ -1,6 +1,5 @@
 package com.ky.gps.test.service;
 
-import com.ky.gps.entity.SbBus;
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.entity.SbGps;
 import com.ky.gps.service.inter.SbBusPositionService;
@@ -10,7 +9,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
