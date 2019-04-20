@@ -1,5 +1,6 @@
 package com.ky.gps.test.service;
 
+import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.entity.SbGps;
 import com.ky.gps.service.inter.SbBusPositionService;
@@ -24,6 +25,20 @@ public class SbBusPositionServiceTest {
     }
 
     @Test
+    public void test03(){
+        ResultWrapper allEffectiveRoutePosition = sbBusPositionService.findAllEffectiveRoutePosition();
+    }
+
+    @Test
+    public void test02(){
+        List<Map<String, Object>> maps = sbBusPositionService.findAllPositionByBusId("20180401");
+
+        for (Map<String, Object> map : maps) {
+            System.out.println(map);
+        }
+    }
+
+    @Test
     public void test01(){
         //new一个对象，待存入数据库
         SbBusPosition sbBusPosition = new SbBusPosition();
@@ -44,12 +59,5 @@ public class SbBusPositionServiceTest {
         sbBusPositionService.savePosition(sbBusPosition);
     }
 
-    @Test
-    public void test02(){
-        List<Map<String, Object>> maps = sbBusPositionService.findAllPositionByBusId("20180401");
 
-        for (Map<String, Object> map : maps) {
-            System.out.println(map);
-        }
-    }
 }

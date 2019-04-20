@@ -17,10 +17,31 @@
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
     <select id="findStationByRouteId" resultType="java.util.Map" parameterType="integer">
-        SELECT ss.SBS_STATION stationName, ss.SBS_LONGITUDE longtidue, ss.SBS_LATITUDE latitude, ss.SBS_DEPART_TIME departTime
+        SELECT ss.SBS_STATION     stationName,
+               ss.SBS_LONGITUDE   longtidue,
+               ss.SBS_LATITUDE    latitude,
+               ss.SBS_DEPART_TIME departTime
         FROM sb_route_station srs
-                 LEFT JOIN sb_route sr ON srs.SB__ID2=sr.ID
-                 LEFT JOIN sb_station ss ON srs.SB__ID=ss.ID
-        WHERE sr.ID=#{routeId}
+                 LEFT JOIN sb_route sr ON srs.SB__ID2 = sr.ID
+                 LEFT JOIN sb_station ss ON srs.SB__ID = ss.ID
+        WHERE srs.Valid = 1
+          and ss.Valid = 1
+          and sr.Valid = 1
+          and sr.ID = #{routeId}
+    </select>
+    <select id="findAllRouteStation" resultType="java.util.Map">
+        SELECT sb_route.SBR_ROUTENAME     routeName,
+               sb_station.SBS_STATION     stationName,
+               sb_station.SBS_LONGITUDE   longitude,
+               sb_station.SBS_LATITUDE    latitude,
+               sb_station.SBS_DEPART_TIME departTime
+        FROM sb_route_station
+                 LEFT JOIN sb_station ON sb_station.ID = sb_route_station.SB__ID
+                 LEFT JOIN sb_route ON sb_route.ID = sb_route_station.SB__ID2
+        WHERE sb_route.Valid = 1
+          AND sb_station.Valid = 1
+          AND sb_route_station.Valid = 1
+        ORDER BY sb_route.SBR_ROUTENAME
+
     </select>
 </mapper>

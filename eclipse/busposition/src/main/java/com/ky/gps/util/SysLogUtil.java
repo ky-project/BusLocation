@@ -16,7 +16,7 @@ public class SysLogUtil {
     private static final String SESSION_SYSLOG = "sysLog";
 
     /**
-     * 初始化sysLog对象，将其存入session中
+     * 初始化sysLog对象
      *
      * @param baseInfo 存放用户的基本信息sysUserId-用户id, realName-真实姓名, workId-职工编号, departmentName-部门名
      * @param request request请求

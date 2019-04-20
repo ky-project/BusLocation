@@ -1,5 +1,6 @@
 package com.ky.gps.service.inter;
 
+import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusPosition;
 
 import java.util.List;
@@ -24,4 +25,10 @@ public interface SbBusPositionService {
      * @return 返回存放位置基本信息的list
      */
     List<Map<String, Object>> findAllPositionByBusId(String busId);
+
+    /**
+     * 查找本星期,本时间段的所有路线的校车定位信息
+     * @return 返回过滤好并封装进结果封装对象中
+     */
+    ResultWrapper findAllEffectiveRoutePosition();
 }

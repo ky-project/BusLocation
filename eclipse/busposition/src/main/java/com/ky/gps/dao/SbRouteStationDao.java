@@ -15,4 +15,12 @@ public interface SbRouteStationDao {
      * @return 所有有效站点List集合
      */
     List<Map<String, Object>> findStationByRouteId(Integer routeId);
+
+    /**
+     * 查询所有路线对应的站点信息
+     * 但未根据发车时间排序，因此程序需要对发车时间进行排序
+     *
+     * @return 所有路线对应站点的信息，keys={routeName, stationName, longitude, latitude, departTime}
+     */
+    List<Map<String, Object>> findAllRouteStation();
 }
