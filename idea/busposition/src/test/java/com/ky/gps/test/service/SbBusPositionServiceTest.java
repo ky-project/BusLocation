@@ -44,7 +44,7 @@ public class SbBusPositionServiceTest {
         SbBusPosition sbBusPosition = new SbBusPosition();
         //set一个SbGPS对象，需给定它的id
 //        sbBusPosition.setSbBus(new SbBus(1));
-        sbBusPosition.setSbGps(new SbGps("20170409"));
+        sbBusPosition.setSbGps(new SbGps("20190421"));
         //setGPS信号的时间
         sbBusPosition.setSbpRecodeTime(Timestamp.valueOf("2019-04-14 14:45:35"));
         //set经度

@@ -11,6 +11,12 @@
         <input value="提交" type="submit"/>
     </form>
 
+    <form action="user/admin/login" method="post">
+        <input name="workId" type="text"/><br/>
+        <input name="password" type="text"/><br/>
+        <input value="提交" type="submit"/>
+    </form>
+
     <hr/>
     <a href="bus/track">查询所有路线的实时定位</a>
     <hr/>

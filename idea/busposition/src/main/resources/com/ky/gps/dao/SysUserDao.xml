@@ -26,12 +26,33 @@
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
     <select id="findBaseInfoByWorkIdAndPassword" parameterType="map" resultType="map">
-        select sys_user.ID sysUserId, sys_user.REAL_NAME realName, sys_user.WORKID workId, b_department.`NAME` departmentName
+        select sys_user.ID         sysUserId,
+               sys_user.REAL_NAME  realName,
+               sys_user.WORKID     workId,
+               b_department.`NAME` departmentName
         from sys_user,
              b_department
         where sys_user.Valid = 1
+          and b_department.Valid = 1
           and sys_user.WORKID = #{workId}
           and sys_user.PASSWORD = #{password}
           and sys_user.B_D_ID = b_department.ID
+    </select>
+    <select id="findAdminBaseInfoByWordIdAndPassword" resultType="map" parameterType="map">
+        SELECT admin_info.sysUserId, admin_info.realName, admin_info.workId, b_department.`NAME` departmentName
+        FROM b_department,
+             (SELECT sys_user.ID sysUserId, sys_user.REAL_NAME realName, sys_user.WORKID workId, sys_user.B_D_ID
+              FROM sb_user_role
+                       LEFT JOIN sys_user ON sb_user_role.SYS_ID2 = sys_user.ID
+                       LEFT JOIN sys_role ON sb_user_role.SYS_ID = sys_role.ID
+              WHERE sb_user_role.Valid = 1
+                AND sys_user.Valid = 1
+                AND sys_role.Valid = 1
+                AND sys_role.SR_MANAGE = 1
+                AND sys_user.WORKID = #{workId}
+                AND sys_user.`PASSWORD` = #{password}) admin_info
+        WHERE b_department.Valid = 1
+          AND b_department.ID = admin_info.B_D_ID
+        LIMIT 1
     </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.ky.gps.dao;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ import java.util.Map;
  * @author Daye
  * 路线站点对应Dao
  */
+@Repository
 public interface SbRouteStationDao {
 
     /**

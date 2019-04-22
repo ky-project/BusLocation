@@ -1,6 +1,7 @@
 package com.ky.gps.dao;
 
 import com.ky.gps.entity.SbBusPosition;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
  * @author Daye
  * 校车位置表的Dao
  */
+@Repository
 public interface SbBusPositionDao {
 
     /**

@@ -2,7 +2,6 @@ package com.ky.gps.controller;
 
 import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
-import com.ky.gps.entity.SbBusRoute;
 import com.ky.gps.service.inter.*;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.context.annotation.Scope;
@@ -12,10 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Daye
@@ -51,7 +46,7 @@ public class RealTimeQueryHandler {
             resultWrapper = sbRouteStationService.findAllRouteStation();
         } catch (Exception e){
             //异常处理
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR, e.getMessage());
         }
         return resultWrapper;
 

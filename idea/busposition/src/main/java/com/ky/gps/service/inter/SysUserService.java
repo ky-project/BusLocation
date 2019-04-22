@@ -15,4 +15,11 @@ public interface SysUserService {
      * @return 返回查询结果并封装进map中
      */
     Map<String, Object> simpleUserLogin(Map<String, Object> map);
+
+    /**
+     * 根据用户教工号、密码来查询管理员信息
+     * @param map workId:教工号;password:密码
+     * @return 返回查询结果封装进map中
+     */
+    Map<String, Object> adminUserLogin(Map<String, Object> map);
 }

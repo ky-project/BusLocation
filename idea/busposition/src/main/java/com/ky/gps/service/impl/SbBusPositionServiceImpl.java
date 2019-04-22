@@ -85,6 +85,15 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
                     filterTmpRouteMap.put("routeName", routeNameTmp);
                     //将该站点的所有定位信息保存下来
                     filterTmpRouteMap.put("trackRoute", filterTmpPositionList);
+                    //TODO 针对测试进行的数据筛选，之后需要删除
+                    if(filterTmpPositionList.size() >= 50){
+                        int removeNumber = 40;
+                        for(int index= 0; index <= removeNumber; index++){
+                            filterTmpPositionList.remove(index);
+                            index --;
+                            removeNumber--;
+                        }
+                    }//TODO 待删除
                     //将该map存入总的list中
                     effectiveRoutePosition.add(filterTmpRouteMap);
                     //重置routeName
@@ -110,7 +119,7 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
             filterTmpRouteMap.put("trackRoute", filterTmpPositionList);
             //将该map存入总的list中
             effectiveRoutePosition.add(filterTmpRouteMap);
-            //将最后的有效路线定位存入结果对象中
+           //将最后的有效路线定位存入结果对象中
             resultWrapper = ResultWrapperUtil.setSuccessOf(effectiveRoutePosition);
         } catch (Exception e) {
             //异常处理

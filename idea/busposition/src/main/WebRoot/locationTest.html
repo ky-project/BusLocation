@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <title>Title</title>
     <link rel="stylesheet" href="css/locationTest.css">
 </head>
@@ -69,14 +70,13 @@
             navigator.geolocation.getCurrentPosition(function(position){
                 //移除所有覆盖物
                 map.clearOverlays();
-                console.log(map);
                 //gps转json
                 let jsonPosition = positionToJson(position);
                 //发送当前gps位置信息
-                // $.ajax("http://127.0.0.1/PHP-Repository/test.php",{
-                //     type: "post",
-                //     data: jsonPosition
-                // });
+                $.ajax("http://127.0.0.1/PHP-Repository/test.php",{
+                    type: "post",
+                    data: jsonPosition
+                });
                 //存放gps位置
                 let x = position.coords.longitude;
                 let y = position.coords.latitude;

@@ -57,12 +57,6 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
             }
             //创建一个待存入最终路线站点map
             findAllRouteStationSortList(routeStationList, routeName, sortRouteStationList);
-
-            for (Map<String, Object> map : routeStationList) {
-                for (Map.Entry<String, Object> entry : map.entrySet()) {
-                    System.out.println(entry.getKey() + "\t" + entry.getValue());
-                }
-            }
             resultWrapper = ResultWrapperUtil.setSuccessOf(routeStationList);
         } catch (Exception e) {
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);

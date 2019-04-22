@@ -1,9 +1,12 @@
 package com.ky.gps.dao;
 
+import org.springframework.stereotype.Repository;
+
 /**
  * @author Daye
  * 校车类的Dao
  */
+@Repository
 public interface SbBusDao {
 
     /**
