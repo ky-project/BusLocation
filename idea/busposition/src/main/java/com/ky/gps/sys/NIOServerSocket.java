@@ -158,7 +158,7 @@ public class NIOServerSocket {
 					
 					//-------------------------------------------------------------------------//
 					
-					parseGPSUtil.setSbGps("20190304");
+					parseGPSUtil.setSbGPS("20001030");
 					parseGPSUtil.parse(request);
 					
 					//-------------------------------------------------------------------------//

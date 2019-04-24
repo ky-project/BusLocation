@@ -3,10 +3,7 @@ package com.ky.gps.controller;
 import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusRoute;
-import com.ky.gps.service.inter.SbBusPositionService;
-import com.ky.gps.service.inter.SbBusRouteService;
-import com.ky.gps.service.inter.SbGpsService;
-import com.ky.gps.service.inter.SbRouteService;
+import com.ky.gps.service.inter.*;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -37,44 +34,49 @@ public class RealTimeQueryHandler {
     private SbRouteService sbRouteService;
     @Resource
     private SbGpsService sbGpsService;
+    @Resource
+    private SbRouteStationService sbRouteStationService;
 
     /**
-     * 根据路线查询所有对应校车的位置信息
-     * @return 返回所有路线的车辆位置信息
+     * 获取每条路线的站点信息
+     *
+     * @return 路线和站点信息
+     */
+    @RequestMapping(value = "/route/station", method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public ResultWrapper getStationByRoute() {
+        ResultWrapper resultWrapper;
+        try {
+            //获取所有路线站点信息
+            resultWrapper = sbRouteStationService.findAllRouteStation();
+        } catch (Exception e){
+            //异常处理
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+
+    }
+
+    /**
+     * 测试阶段关闭时间段检测
+     * 查询所有路线的校车当然定位信息
+     *
+     * @return resultWrapper
      */
     @RequestMapping(value = "/track", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public ResultWrapper getPositionByRoute(){
+    public ResultWrapper getPositionByRoute() {
+        //创建待返回的封装对象
         ResultWrapper resultWrapper;
-        //存放路线和路线对应的校车位置list，实际存放的是路线名和位置的mapList
-        List<Map<String, Object>> routePositionList = new ArrayList<>();
         try {
-            //得到所有路线与校车关联信息
-            List<SbBusRoute> allRelation = sbBusRouteService.findAllRelation();
-            //遍历该list
-            for (SbBusRoute sbBusRoute : allRelation) {
-                //根据每辆车的id获取GPSID
-                String gpsId = sbGpsService.findIdByBusId(sbBusRoute.getSbBus().getId());
-                //根据GPSID获取所有位置
-                List<Map<String, Object>> positionList = sbBusPositionService.findAllPositionByBusId(gpsId);
-                //获取路线名
-                String routeName = sbRouteService.findNameById(sbBusRoute.getSbRoute().getId());
-                //存放该路线和对应位置的信息
-                Map<String, Object> routePositionMap = new HashMap<>(16);
-                //路线实时位置
-                routePositionMap.put("trackRoute", positionList);
-                //放入路线名
-                routePositionMap.put("routeName", routeName);
-                //放入List中
-                routePositionList.add(routePositionMap);
-            }
-            //将最终的list存入对象中等待返回
-            resultWrapper = ResultWrapperUtil.setSuccessOf(routePositionList);
-        }catch (Exception e){
+            //获取结果
+            resultWrapper = sbBusPositionService.findAllEffectiveRoutePosition();
+        } catch (Exception e) {
             //异常处理
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR, e.getMessage());
-            e.printStackTrace();
         }
+        //返回结果对象
         return resultWrapper;
     }
+
 }

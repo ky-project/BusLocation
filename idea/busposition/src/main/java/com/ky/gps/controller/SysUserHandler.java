@@ -3,9 +3,11 @@ package com.ky.gps.controller;
 import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SysLog;
+import com.ky.gps.service.inter.SysLogService;
 import com.ky.gps.service.inter.SysUserService;
 import com.ky.gps.util.IpUtil;
 import com.ky.gps.util.ResultWrapperUtil;
+import com.ky.gps.util.SysLogUtil;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,63 +29,90 @@ import java.util.Map;
 @Scope(value = "prototype")
 public class SysUserHandler {
 
+    private final static String[] LOGIN_TYPE = {"admin", "simple"};
+
     @Resource
     private SysUserService sysUserService;
+    @Resource
+    private SysLogService sysLogService;
 
     /**
      * 普通用户登录接口
-     * @param userName 登录账号:用户账号/职工编号
+     *
+     * @param workId   登录账号:职工编号
      * @param password 登录密码
-     * @param request request请求
+     * @param request  request请求W
      * @return 返回json格式数据
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper loginCheck(@RequestParam(value = "userName") String userName,
-                                    @RequestParam(value = "password") String password,
-                                    HttpServletRequest request) {
-        //存放登录账号/密码的键值对
-        Map<String, Object> map = new HashMap<>(16);
-        //待返回的结果对象
-        ResultWrapper resultWrapper;
+    public ResultWrapper adminLoginCheck(@RequestParam(value = "workId") String workId,
+                                         @RequestParam(value = "password") String password,
+                                         HttpServletRequest request) {
+        return loginWrapper(workId, password, request, LOGIN_TYPE[0]);
+    }
+
+    private ResultWrapper loginWrapper(@RequestParam("workId") String workId,
+                                       @RequestParam("password") String password,
+                                       HttpServletRequest request,
+                                       String loginType) {
         //对参数进行判断
-        if ("".equals(userName) || null == userName || "".equals(password) || null == password) {
+        if ("".equals(workId) || null == workId || "".equals(password) || null == password) {
             return ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
         }
+        //待返回的结果对象
+        ResultWrapper resultWrapper;
+        //存放登录账号/密码的键值对
+        Map<String, Object> map = new HashMap<>(16);
         //将账号密码存入map中
-        map.put("userName", userName);
+        map.put("workId", workId);
         map.put("password", password);
         try {
             //获取用户验证后的信息，如果通过，则获取基本信息，反之为null
-            Map<String, Object> baseInfo = sysUserService.simpleUserLogin(map);
-
+            Map<String, Object> baseInfo = null;
+            //管理员/普通用户登录
+            if(LOGIN_TYPE[0].equals(loginType)){
+                //管理员登录
+                baseInfo = sysUserService.adminUserLogin(map);
+            } else if(LOGIN_TYPE[1].equals(loginType)){
+                //普通用户登录
+                baseInfo = sysUserService.simpleUserLogin(map);
+            }
             //对返回结果进行判断
             if (null == baseInfo) {
                 //如果为null，则说明验证失败
                 return ResultWrapperUtil.setErrorOf(ErrorCode.Login_ERROR);
             }
-            //备份一份基本信息，封装到SysLog对象中，用于存入session，方便之后操作的查询和日志打印
-            SysLog sysLog = new SysLog();
-            //获取用户id
-            sysLog.setSysUserId((Integer) baseInfo.get("sysUserId"));
-            //获取用户登录账号/教工号
-            sysLog.setUserName(userName);
-            //获取真实姓名
-            sysLog.setRealName(baseInfo.get("realName").toString());
-            //获取部门名
-            sysLog.setDepartmentName(baseInfo.get("departmentName").toString());
-            //TODO 获取ip和mac地址
-            sysLog.setIpAddress(IpUtil.getIpAddress(request));
-
+            //获取封装好的syslog对象
+            SysLog sysLog = SysLogUtil.initSysLog(baseInfo, request);
             //将基本日志信息存入session中
             request.getSession().setAttribute("sysLog", sysLog);
+            //将用户操作记录记入数据库
+            sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "登录", "登录模块", "成功登录"));
             //将存放用户的基本信息的map封装进result中
             resultWrapper = ResultWrapperUtil.setSuccessOf(baseInfo);
-        }catch (Exception e){
+        } catch (Exception e) {
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
             e.printStackTrace();
         }
-
         return resultWrapper;
     }
+
+    /**
+     * 普通用户登录接口
+     *
+     * @param workId   登录账号:职工编号
+     * @param password 登录密码
+     * @param request  request请求
+     * @return 返回json格式数据
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper loginCheck(@RequestParam(value = "workId") String workId,
+                                    @RequestParam(value = "password") String password,
+                                    HttpServletRequest request) {
+        return loginWrapper(workId, password, request, LOGIN_TYPE[1]);
+    }
+
+
 }

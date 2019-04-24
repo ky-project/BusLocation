@@ -1,6 +1,5 @@
 package com.ky.gps.util;
 
-import com.ky.gps.entity.SbBus;
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.entity.SbGps;
 import com.ky.gps.sys.ParseGPS;
@@ -22,7 +21,7 @@ public class ParseGPSUtil {
 		sbGps = new SbGps();
 	}
 
-	public void setSbGps(String id) {
+	public void setSbGPS(String id) {
 		sbGps.setId(id);
 	}
 

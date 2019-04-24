@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <!--运行ie最新渲染模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--调整设备视口-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <!--兼容ie低版本(html5,css3)-->
+    <!--<script src="js/html5shiv.js"></script>-->
+    <!--<script src="js/respond.min.js"></script>-->
+    <!--引入bootstrap样式-->
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/teacherLogin.css">
+</head>
+<body>
+    <div class="container small-container">
+        <h1>
+            登录
+            <small>教师</small>
+        </h1>
+        <form class="login-form" action="" method="post">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="iconfont icon-icon-user"></i></span>
+                    <input type="text" class="form-control" placeholder="请输入工号" name="workId">
+                    <span class="glyphicon glyphicon-remove  form-control-feedback hidden" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="iconfont icon-ziyuanxhdpi"></i></span>
+                    <input type="password" class="form-control" placeholder="请输入密码" name="password">
+                    <span class="glyphicon glyphicon-remove  form-control-feedback hidden" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="checkbox">
+                <span>7天内免登陆</span>
+                <a href="#" class="pull-right">忘记密码？</a>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-danger btn-block" value="登陆">
+            </div>
+        </form>
+    </div>
+<!--引入jQuery-->
+<script src="js/jquery-1.12.4.js"></script>
+<!--引入bootstrap插件-->
+<script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script>
+    $(function(){
+        let $user = $('input[name="user"]');
+        let $psw = $('input[name="psw"]');
+        let $submit = $('input[type="submit"]');
+        let $input = $('input').not('input[type="submit"]').not('input[type="checkbox"]');
+        $user.focus();
+        $submit.click(function(){
+            //1.清除样式
+            $input.each(function(){
+                $(this).parents('.form-group').removeClass('my-error');
+                $(this).next().addClass('hidden');
+            });
+            //2.判空
+            let flag = true;
+            $input.each(function(){
+                if($(this).val().trim() === ''){
+                    $(this).parents('.form-group').addClass('my-error');
+                    $(this).next().removeClass('hidden');
+                    $(this).get(0).focus();
+                    flag = false;
+                    return false;
+                }
+            });
+            //3.发送ajax
+            if(flag){
+                let str = $('.login-form').serialize();
+                console.log(str);
+                $.ajax('http://47.95.14.126:8080/busposition/user/login',{
+                    type: 'post',
+                    data: str,
+                    success: function(data){
+                        // console.log(data);
+                        // console.log(data.message);
+                        let mes = data.message;
+                        if(data.success === true){
+                            alert("登录成功！");
+                        } else {
+                            alert("用户名或密码错误!");
+                        }
+                    },
+                    error: function(xhr){
+                        console.log(xhr.status);
+                    }
+                })
+            }
+            return false;
+        })
+
+    })
+</script>
+</body>
+</html>

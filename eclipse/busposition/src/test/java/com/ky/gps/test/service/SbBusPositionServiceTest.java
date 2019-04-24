@@ -1,6 +1,6 @@
 package com.ky.gps.test.service;
 
-import com.ky.gps.entity.SbBus;
+import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.entity.SbGps;
 import com.ky.gps.service.inter.SbBusPositionService;
@@ -10,7 +10,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +22,20 @@ public class SbBusPositionServiceTest {
         applicationContext =
                 new ClassPathXmlApplicationContext("spring/applicationContext-service.xml");
         sbBusPositionService = applicationContext.getBean(SbBusPositionService.class);
+    }
+
+    @Test
+    public void test03(){
+        ResultWrapper allEffectiveRoutePosition = sbBusPositionService.findAllEffectiveRoutePosition();
+    }
+
+    @Test
+    public void test02(){
+        List<Map<String, Object>> maps = sbBusPositionService.findAllPositionByBusId("20180401");
+
+        for (Map<String, Object> map : maps) {
+            System.out.println(map);
+        }
     }
 
     @Test
@@ -46,12 +59,5 @@ public class SbBusPositionServiceTest {
         sbBusPositionService.savePosition(sbBusPosition);
     }
 
-    @Test
-    public void test02(){
-        List<Map<String, Object>> maps = sbBusPositionService.findAllPositionByBusId("20180401");
 
-        for (Map<String, Object> map : maps) {
-            System.out.println(map);
-        }
-    }
 }

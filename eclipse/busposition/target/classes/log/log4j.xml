@@ -15,21 +15,21 @@
         </console>
         <!--${web:rootDir}-->
         <!-- fileName：输出路径  filePattern：命名规则 -->
-        <RollingFile name="RollingFileUsrInfo" fileName="${web:rootDir}/logs/usr/today-0.log"
-                     filePattern="${web:rootDir}/logs/usr/%d{yyyy-MM-dd-HH}-%i.log">
-            <Filters>
-                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
-            </Filters>
-            <!-- 输出格式 -->
-            <PatternLayout pattern="${UsrFilePatter}"/>
-            <Policies>
-                <TimeBasedTriggeringPolicy modulate="true" interval="24"/>
-                <!-- SizeBasedTriggeringPolicy单个文件的大小限制 -->
-                <SizeBasedTriggeringPolicy size="1 K"/>
-            </Policies>
-            <!-- DefaultRolloverStrategy同一个文件下的最大文件数 -->
-            <!--<DefaultRolloverStrategy max="50"/>-->
-        </RollingFile>
+        <!--<RollingFile name="RollingFileUsrInfo" fileName="${web:rootDir}/logs/usr/today-0.log"-->
+                     <!--filePattern="${web:rootDir}/logs/usr/%d{yyyy-MM-dd-HH}-%i.log">-->
+            <!--<Filters>-->
+                <!--<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
+            <!--</Filters>-->
+            <!--&lt;!&ndash; 输出格式 &ndash;&gt;-->
+            <!--<PatternLayout pattern="${UsrFilePatter}"/>-->
+            <!--<Policies>-->
+                <!--<TimeBasedTriggeringPolicy modulate="true" interval="24"/>-->
+                <!--&lt;!&ndash; SizeBasedTriggeringPolicy单个文件的大小限制 &ndash;&gt;-->
+                <!--<SizeBasedTriggeringPolicy size="1 K"/>-->
+            <!--</Policies>-->
+            <!--&lt;!&ndash; DefaultRolloverStrategy同一个文件下的最大文件数 &ndash;&gt;-->
+            <!--&lt;!&ndash;<DefaultRolloverStrategy max="50"/>&ndash;&gt;-->
+        <!--</RollingFile>-->
 
     </appenders>
 
@@ -45,7 +45,6 @@
         <logger name="org.mybatis" level="info"/>
         <logger name="java.sql" level="info"/>
         <logger name="org.apache.ibatis" level="info"/>
-        <logger name="com.ky.gps" level="debug"/>
     </loggers>
 
 </configuration>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <!--运行ie最新渲染模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--调整设备视口-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <!--兼容ie低版本(html5,css3)-->
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <!--引入bootstrap样式-->
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="css/managerMain.css">
+</head>
+<body>
+    <!--头部开始-->
+    <div class="header navbar navbar-default">
+        <div class="container clearfix">
+            <i class="menu iconfont icon-weibiaoti12 visible-xs-inline-block"></i>
+            <a href="#" class="logo navbar-brand">LOGO</a>
+            <button href="#" class="user-list navbar-btn btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <i class="iconfont icon-icon-user"></i>
+                <span class="caret"></span>
+            </button>
+            <ul class="user-menu dropdown-menu">
+                <li><a href="">个人信息</a></li>
+                <li><a href="">修改密码</a></li>
+                <li class="divider"></li>
+                <li><a href=""><i class="iconfont icon-tuichu"></i>登出</a></li>
+            </ul>
+            <p class="navbar-text navbar-right hidden-xs">欢迎管理员<span>XXX</span></p>
+        </div>
+    </div>
+    <!--头部结束-->
+    <!--内容区开始-->
+    <div class="main container clearfix">
+        <div class="sidebar list-group col-sm-3 hidden-xs">
+            <a href="#" class="list-group-item active">
+                <i class="iconfont icon-caidan"></i>
+                分类导航
+            </a>
+            <a href="#" class="list-group-item">
+                <i class="iconfont icon-jiaoshiguanli"></i>
+                教师信息
+            </a>
+            <a href="#sub-menu" class="bus-manage list-group-item" data-toggle="collapse">
+                <i class="iconfont icon-cheliangguanli1"></i>
+                校车信息
+                <b class="iconfont icon-zuojiantou1
+"></b>
+            </a>
+            <div id="sub-menu" class="collapse in">
+                <a href="#" class="list-group-item">
+                    指定校车
+                </a>
+                <a href="#" class="list-group-item">
+                    校车信息
+                </a>
+                <a href="#" class="list-group-item">
+                    站点信息
+                </a>
+                <a href="#" class="list-group-item">
+                    路线信息
+                </a>
+                <a href="#" class="list-group-item">
+                    历史路线
+                </a>
+            </div>
+            <a href="#" class="list-group-item">
+                <i class="iconfont icon-gonggao"></i>
+                新闻公告
+            </a>
+        </div>
+        <div class="contain col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="#">校车管理</a></li>
+                <li class="acitve">指定路线</li>
+            </ol>
+            <form action="">
+                <div class="form-group">
+                    <i class="hidden-xs iconfont icon-cheliang
+"></i>
+                    <select name="" id="bus-no" class="">
+                        <option value="">--选择校车--</option>
+                        <option value="">1号车</option>
+                        <option value="">2号车</option>
+                        <option value="">2号车</option>
+                        <option value="">3号车</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <i class="hidden-xs iconfont icon-luxian
+"></i>
+                    <select name="" id="route-no">
+                        <option value="">--选择路线--</option>
+                        <option value="">1路线</option>
+                        <option value="">2路线</option>
+                        <option value="">3路线</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="iconfont icon-xiugai1"></i>
+                        修改
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="iconfont icon-icon-test"></i>
+                        添加
+                    </button>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>校车ID</th>
+                        <th>路线ID</th>
+                        <th>路线名</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>
+                            <a href="">
+                                <i class="iconfont icon-iconfontshanchu1
+    "></i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>
+                            <a href="">
+                                <i class="iconfont icon-iconfontshanchu1
+    "></i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>
+                            <a href="">
+                                <i class="iconfont icon-iconfontshanchu1
+    "></i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>
+                            <a href="">
+                                <i class="iconfont icon-iconfontshanchu1
+    "></i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>
+                            <a href="">
+                                <i class="iconfont icon-iconfontshanchu1
+    "></i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="page navigation">
+                <ul class="pagination pagination-lg">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!--内容区结束-->
+    <!--遮罩层开始-->
+    <div class="mask"></div>
+    <!--遮罩层结束-->
+    <!--手机导航栏开始-->
+    <div class="phone-navbar visible-xs">
+        <div class="welcome">
+            <img src="./images/tx.jpg" alt="">
+            <small>欢迎您</small>
+            <p>XXX</p>
+        </div>
+        <div class="sidebar list-group">
+            <a href="#" class="list-group-item">
+                <i class="iconfont icon-jiaoshiguanli"></i>
+                教师信息
+            </a>
+            <a href="#sub-menu2" class="bus-manage list-group-item" data-toggle="collapse">
+                <i class="iconfont icon-cheliangguanli1"></i>
+                校车信息
+                <b class="iconfont icon-zuojiantou1
+"></b>
+            </a>
+            <div id="sub-menu2" class="collapse in">
+                <a href="#" class="list-group-item">
+                    指定校车
+                </a>
+                <a href="#" class="list-group-item">
+                    校车信息
+                </a>
+                <a href="#" class="list-group-item">
+                    站点信息
+                </a>
+                <a href="#" class="list-group-item">
+                    路线信息
+                </a>
+                <a href="#" class="list-group-item">
+                    历史路线
+                </a>
+            </div>
+            <a href="#" class="list-group-item">
+                <i class="iconfont icon-gonggao"></i>
+                新闻公告
+            </a>
+    </div>
+    </div>
+    <!--手机导航条结束-->
+    
+<!--引入jQuery-->
+<script src="js/map-1.12.4.js"></script>
+<!--引入bootstrap插件-->
+<script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<!--显示隐藏手机菜单-->
+<script src="./js/template.js"></script>
+</body>
+</html>

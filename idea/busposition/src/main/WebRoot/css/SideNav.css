@@ -1,0 +1,41 @@
+/*侧边导航栏开始*/
+.sidenav .list-group-item:first-child i {
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.sidenav .list-group-item i {
+    font-size: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.sidenav .list-group-item {
+    font-size: 18px;
+}
+.sidenav .bus-manage b {
+    float: right;
+    font-size: 20px;
+    transform: rotate(-90deg);
+    transition: all 0.5s;
+}
+.sidenav #sub-menu .list-group-item {
+    padding-left: 50px;
+    border-radius: 0 !important;
+}
+.sidenav #sub-menu .list-group-item:last-child {
+    border-bottom: none;
+}
+.sidenav .collapsed b{
+    transform: rotate(0);
+}
+/*侧边导航栏结束*/
+/*兼容模式开始*/
+@media (max-width: 991px) {
+    .sidenav .list-group-item {
+        font-size: 16px;
+    }
+    .sidenav .list-group-item:first-child i {
+        font-size: 16px;
+    }
+}
+/*兼容模式结束*/

@@ -6,6 +6,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,11 +25,11 @@ public class SysUserServiceTest {
 
     @Test
     public void test01(){
-//        Map<String, Object> map = new HashMap<>(16);
-//        map.put("userName", "admin");
-//        map.put("password", "admin");
-//        Map<String, Object> baseInfo = sysUserService.simpleUserLogin(map);
-//        System.out.println(baseInfo);
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("userName", "admin");
+        map.put("password", "admin");
+        Map<String, Object> baseInfo = sysUserService.simpleUserLogin(map);
+        System.out.println(baseInfo);
 
     }
 

@@ -166,7 +166,7 @@ create table SB_BUS
 create table SB_BUSPOSITION
 (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '设定自增_',
-  `SB__ID` int NOT NULL comment 'GPS信号中自带的识别码作为主键',
+  `SB__ID` varchar(100) NOT NULL comment 'GPS信号中自带的识别码作为主键',
   `SBP_RECODE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `SBP_LONGITUDE` double NULL DEFAULT NULL,
   `SBP_LATITUDE` double NULL DEFAULT NULL,
@@ -190,7 +190,7 @@ create table SB_BUSPOSITION
 create table SB_BUSPOSITION_HIS
 (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '设定自增_',
-  `SB__ID` int NOT NULL  comment 'GPS信号中自带的识别码作为主键',
+  `SB__ID` varchar(100) NOT NULL  comment 'GPS信号中自带的识别码作为主键',
   `SBP_RECODE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `SBP_LONGITUDE` double NULL DEFAULT NULL,
   `SBP_LATITUDE` double NULL DEFAULT NULL,
@@ -236,7 +236,7 @@ create table SB_BUS_ROUTE
 /*==============================================================*/
 create table SB_GPS
 (
-  `ID` int(11) NOT NULL COMMENT '设定自增_GPS信号中自带的识别码作为主键',
+  `ID` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'GPS信号中自带的识别码作为主键',
   `SB__ID` int(11) NOT NULL,
    SBG_NUMBER           varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
    SBG_TYPE             varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,

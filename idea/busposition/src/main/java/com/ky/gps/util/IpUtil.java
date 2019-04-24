@@ -15,19 +15,29 @@ import java.net.NetworkInterface;
  */
 public class IpUtil {
 
-    /** 从request中获取ip时可能会存在unknown */
+    /**
+     * 从request中获取ip时可能会存在unknown
+     */
     private static final String UNKNOWN = "unknown";
-    /** 本地的ipv6地址 */
+    /**
+     * 本地的ipv6地址
+     */
     private static final String LOCAL_IPV6_ADDRESS = "0:0:0:0:0:0:0:1";
-    /** 本地的ip地址 */
+    /**
+     * 本地的ip地址
+     */
     private static final String LOOPBACK_ADDRESS = "127.0.0.1";
-    /** 获取mac地址时的前缀 */
+    /**
+     * 获取mac地址时的前缀
+     */
     private static final String MAC_ADDRESS_PREFIX = "MAC Address = ";
+
 
     /**
      * 获取用户真实ip
      * 获取用户真实IP地址，不使用request.getRemoteAddr()的原因是有可能用户使用了代理软件方式避免真实IP地址,
      * 可是，如果通过了多级反向代理的话，X-Forwarded-For的值并不止一个，而是一串IP值
+     *
      * @param request 用户的request请求信息
      * @return 返回用户ip
      */
@@ -48,15 +58,19 @@ public class IpUtil {
         if (ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
+        if (LOCAL_IPV6_ADDRESS.equals(ip)) {
+            ip = LOOPBACK_ADDRESS;
+        }
         return ip;
     }
 
     /**
      * 通过IP地址获取MAC地址
+     *
      * @param ip String,127.0.0.1格式
      * @return mac String
      */
-    public String getMacAddress(String ip) {
+    public static synchronized  String getMacAddress(String ip) {
         String line = "";
         String macAddress = "";
 
@@ -81,16 +95,13 @@ public class IpUtil {
                 return macAddress;
             }
             //获取非本地IP的MAC地址
-
             Process p = Runtime.getRuntime().exec("nbtstat -A " + ip);
             InputStreamReader isr = new InputStreamReader(p.getInputStream());
             BufferedReader br = new BufferedReader(isr);
             while ((line = br.readLine()) != null) {
-                if (line != null) {
-                    int index = line.indexOf(MAC_ADDRESS_PREFIX);
-                    if (index != -1) {
-                        macAddress = line.substring(index + MAC_ADDRESS_PREFIX.length()).trim().toUpperCase();
-                    }
+                int index = line.indexOf(MAC_ADDRESS_PREFIX);
+                if (index != -1) {
+                    macAddress = line.substring(index + MAC_ADDRESS_PREFIX.length()).trim().toUpperCase();
                 }
             }
             br.close();

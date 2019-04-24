@@ -29,7 +29,7 @@ public class StartThread implements Runnable {
 		/*
 		 * 创建服务器，开启守护线程 
 		 */
-		NIOServerSocket nss = new NIOServerSocket(8080);
+		NIOServerSocket nss = new NIOServerSocket(GPSprot);
 		try {
 			
 			nss.start();
