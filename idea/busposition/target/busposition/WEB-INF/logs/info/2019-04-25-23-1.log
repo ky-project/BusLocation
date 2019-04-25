@@ -1,0 +1,25 @@
+2019-04-25 00:40:04 [RMI TCP Connection(3)-127.0.0.1-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-04-25 00:40:07 [RMI TCP Connection(3)-127.0.0.1-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3002 ms
+2019-04-25 00:40:07 [RMI TCP Connection(3)-127.0.0.1-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-04-25 00:40:09 [RMI TCP Connection(3)-127.0.0.1-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1922 ms
+2019-04-25 00:40:11 [http-nio-8080-exec-3-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-04-25 14:39:17 [RMI TCP Connection(2)-127.0.0.1-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-04-25 14:39:21 [RMI TCP Connection(2)-127.0.0.1-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3549 ms
+2019-04-25 14:39:21 [RMI TCP Connection(2)-127.0.0.1-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-04-25 14:39:22 [RMI TCP Connection(2)-127.0.0.1-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1738 ms
+2019-04-25 14:39:24 [http-nio-8080-exec-3-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-04-25 15:20:18 [RMI TCP Connection(3)-127.0.0.1-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-04-25 15:20:21 [RMI TCP Connection(3)-127.0.0.1-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 2792 ms
+2019-04-25 15:20:21 [RMI TCP Connection(3)-127.0.0.1-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-04-25 15:20:23 [RMI TCP Connection(3)-127.0.0.1-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2585 ms
+2019-04-25 15:20:25 [http-nio-8080-exec-3-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-04-25 15:26:01 [RMI TCP Connection(3)-127.0.0.1-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-04-25 15:26:04 [RMI TCP Connection(3)-127.0.0.1-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 2715 ms
+2019-04-25 15:26:04 [RMI TCP Connection(3)-127.0.0.1-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-04-25 15:26:06 [RMI TCP Connection(3)-127.0.0.1-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1658 ms
+2019-04-25 15:26:07 [http-nio-8080-exec-4-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-04-25 22:10:13 [RMI TCP Connection(3)-127.0.0.1-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-04-25 22:10:16 [RMI TCP Connection(3)-127.0.0.1-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 2733 ms
+2019-04-25 22:10:16 [RMI TCP Connection(3)-127.0.0.1-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-04-25 22:10:18 [RMI TCP Connection(3)-127.0.0.1-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1690 ms
+2019-04-25 22:10:19 [http-nio-8080-exec-3-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited

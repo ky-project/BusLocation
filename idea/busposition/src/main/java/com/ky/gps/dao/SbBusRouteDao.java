@@ -1,7 +1,6 @@
 package com.ky.gps.dao;
 
 import com.ky.gps.entity.SbBusRoute;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -9,7 +8,6 @@ import java.util.List;
  * @author Daye
  * SbBusRoute实体(校车与路线对应关系)的Dao
  */
-@Repository
 public interface SbBusRouteDao {
 
     /**

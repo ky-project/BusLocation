@@ -8,5 +8,7 @@
         <setting name="lazyLoadingEnabled" value="true"/>
         <!-- 不主动的发出语句 -->
         <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 缓存级别为会话级别 -->
+        <setting name="localCacheScope" value="SESSION"/>
     </settings>
 </configuration>

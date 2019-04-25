@@ -1,14 +1,11 @@
 package com.ky.gps.dao;
 
-import org.springframework.stereotype.Repository;
-
 import java.util.Map;
 
 /**
  * @author Daye
  * 系统用户Dao类
  */
-@Repository
 public interface SysUserDao {
     /**
      * 根据用户教工号、密码来查询普通用户信息

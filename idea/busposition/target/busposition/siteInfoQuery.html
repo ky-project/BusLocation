@@ -113,7 +113,7 @@
         let $select = $('.search > select');
         //1.获取路线信息
         let routeMessage = [];
-        $.ajax('http://47.95.14.126:8080/busposition/bus/route/station',{
+        $.ajax('bus/route/station',{
             type: 'get',
             success: function(data){
                 routeMessage = data.data;

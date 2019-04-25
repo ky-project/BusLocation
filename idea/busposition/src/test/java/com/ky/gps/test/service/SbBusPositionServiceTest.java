@@ -31,11 +31,9 @@ public class SbBusPositionServiceTest {
 
     @Test
     public void test02(){
+
         List<Map<String, Object>> maps = sbBusPositionService.findAllPositionByBusId("20180401");
 
-        for (Map<String, Object> map : maps) {
-            System.out.println(map);
-        }
     }
 
     @Test

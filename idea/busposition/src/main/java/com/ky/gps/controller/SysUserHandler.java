@@ -5,10 +5,10 @@ import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SysLog;
 import com.ky.gps.service.inter.SysLogService;
 import com.ky.gps.service.inter.SysUserService;
-import com.ky.gps.util.IpUtil;
 import com.ky.gps.util.ResultWrapperUtil;
 import com.ky.gps.util.SysLogUtil;
-import org.springframework.context.annotation.Scope;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,9 +26,11 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/user")
-@Scope(value = "prototype")
 public class SysUserHandler {
 
+    /** 日志打印对象 */
+    private final static Logger LOGGER = LoggerFactory.getLogger(SysUserHandler.class);
+    /** 用户身份数组 */
     private final static String[] LOGIN_TYPE = {"admin", "simple"};
 
     @Resource
@@ -37,7 +39,7 @@ public class SysUserHandler {
     private SysLogService sysLogService;
 
     /**
-     * 普通用户登录接口
+     * 管理员用户登录接口
      *
      * @param workId   登录账号:职工编号
      * @param password 登录密码
@@ -50,6 +52,22 @@ public class SysUserHandler {
                                          @RequestParam(value = "password") String password,
                                          HttpServletRequest request) {
         return loginWrapper(workId, password, request, LOGIN_TYPE[0]);
+    }
+
+    /**
+     * 普通用户登录接口
+     *
+     * @param workId   登录账号:职工编号
+     * @param password 登录密码
+     * @param request  request请求
+     * @return 返回json格式数据
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper loginCheck(@RequestParam(value = "workId") String workId,
+                                    @RequestParam(value = "password") String password,
+                                    HttpServletRequest request) {
+        return loginWrapper(workId, password, request, LOGIN_TYPE[1]);
     }
 
     private ResultWrapper loginWrapper(@RequestParam("workId") String workId,
@@ -93,26 +111,9 @@ public class SysUserHandler {
             resultWrapper = ResultWrapperUtil.setSuccessOf(baseInfo);
         } catch (Exception e) {
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
         return resultWrapper;
     }
-
-    /**
-     * 普通用户登录接口
-     *
-     * @param workId   登录账号:职工编号
-     * @param password 登录密码
-     * @param request  request请求
-     * @return 返回json格式数据
-     */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    public ResultWrapper loginCheck(@RequestParam(value = "workId") String workId,
-                                    @RequestParam(value = "password") String password,
-                                    HttpServletRequest request) {
-        return loginWrapper(workId, password, request, LOGIN_TYPE[1]);
-    }
-
 
 }

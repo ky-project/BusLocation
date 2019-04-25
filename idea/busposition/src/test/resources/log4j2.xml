@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--设置log4j2的自身log级别为DEBUG-->
+<configuration status="OFF">
+    <Properties>
+        <property name="Patter">%d{yyyy-MM-dd HH:mm:ss} [%t-%L] %-5level %logger{36} - %msg%n</property>
+        <property name="DebugPatter">%d{yyyy-MM-dd HH:mm:ss} %logger{36} - %msg%n</property>
+        <property name="UsrFilePatter">%d{yyyy-MM-dd HH:mm:ss} %n%msg%n%n</property>
+    </Properties>
+    <appenders>
+        <!-- 控制台输出 -->
+        <console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${Patter}"/>
+        </console>
+    </appenders>
+
+    <loggers>
+        <logger name="org.springframework" level="info"/>
+        <logger name="org.mybatis" level="info"/>
+        <logger name="java.sql" level="info"/>
+        <logger name="org.apache.ibatis" level="info"/>
+        <logger name="com.ky.gps" level="debug" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
+        <root level="all">
+            <appender-ref ref="Console"/>
+        </root>
+    </loggers>
+
+</configuration>
