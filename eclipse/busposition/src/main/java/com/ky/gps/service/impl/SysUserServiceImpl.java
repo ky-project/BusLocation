@@ -24,8 +24,13 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
+    public Map<String, Object> adminUserLogin(Map<String, Object> map) {
+        return sysUserDao.findAdminBaseInfoByWordIdAndPassword(map);
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
     public Map<String, Object> simpleUserLogin(Map<String, Object> map) {
-        sysUserDao.findBaseInfoByWorkIdAndPassword(map);
         return sysUserDao.findBaseInfoByWorkIdAndPassword(map);
     }
 }

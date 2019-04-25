@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.gps.dao.SysUserDao">
+
+    <resultMap id="BaseSysUserMap" type="com.ky.gps.entity.SysUser">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="department_id" jdbcType="INTEGER" property="department.id"/>
+        <result column="workid" jdbcType="VARCHAR" property="workId"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="id_card" jdbcType="VARCHAR" property="idCard"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="account_date" jdbcType="DATE" property="accountDate"/>
+        <result column="last_psd_date" jdbcType="DATE" property="lastPsdDate"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="remark1" jdbcType="VARCHAR" property="remark1"/>
+        <result column="remark2" jdbcType="VARCHAR" property="remark2"/>
+        <result column="remark3" jdbcType="VARCHAR" property="remark3"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="valid" jdbcType="TINYINT" property="valid"/>
+    </resultMap>
+    <select id="findBaseInfoByWorkIdAndPassword" parameterType="map" resultType="map">
+        select sys_user.ID         sysUserId,
+               sys_user.REAL_NAME  realName,
+               sys_user.WORKID     workId,
+               b_department.`NAME` departmentName
+        from sys_user,
+             b_department
+        where sys_user.Valid = 1
+          and b_department.Valid = 1
+          and sys_user.WORKID = #{workId}
+          and sys_user.PASSWORD = #{password}
+          and sys_user.DEPARTMENT_ID = b_department.ID
+    </select>
+    <select id="findAdminBaseInfoByWordIdAndPassword" resultType="map" parameterType="map">
+        SELECT admin_info.sysUserId, admin_info.realName, admin_info.workId, b_department.`NAME` departmentName
+        FROM b_department,
+             (SELECT sys_user.ID sysUserId, sys_user.REAL_NAME realName, sys_user.WORKID workId, sys_user.DEPARTMENT_ID
+              FROM sb_user_role
+                       LEFT JOIN sys_user ON sb_user_role.USER_ID = sys_user.ID
+                       LEFT JOIN sys_role ON sb_user_role.ROLE_ID = sys_role.ID
+              WHERE sb_user_role.Valid = 1
+                AND sys_user.Valid = 1
+                AND sys_role.Valid = 1
+                AND sys_role.SR_MANAGE = 1
+                AND sys_user.WORKID = #{workId}
+                AND sys_user.`PASSWORD` = #{password}) admin_info
+        WHERE b_department.Valid = 1
+          AND b_department.ID = admin_info.DEPARTMENT_ID
+        LIMIT 1
+    </select>
+</mapper>

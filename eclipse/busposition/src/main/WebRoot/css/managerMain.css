@@ -1,0 +1,102 @@
+body {
+    padding-bottom: 200px;
+}
+/*面包屑导航开始*/
+.breadcrumb li {
+    font-size: 16px;
+}
+/*面包屑导航结束*/
+/*表单组开始*/
+form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+form select {
+    font-size: 16px;
+    height: 38px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+form select:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);;
+}
+form .form-group i {
+    display: inline-block;
+    font-size: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+    font-weight: normal;
+}
+form button[type="submit"] {
+    height: 38px;
+    margin-bottom: 20px;
+}
+/*表单组结束*/
+/*表格开始*/
+.table th {
+    font-size: 16px;
+}
+.table td a {
+    text-decoration: none !important;
+}
+.table td a i {
+    font-size: 18px;
+}
+/*表格结束*/
+/*分页开始*/
+.page {
+    text-align: center;
+    background-color: #f8f8f8;
+    border-radius: 0 0 4px 4px;
+}
+.page ul {
+    display: inline-block;
+    margin: 0;
+}
+.page ul li a {
+    background-color: #f8f8f8;
+    border: none;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/*分页结束*/
+/*响应式布局开始*/
+@media (max-width: 991px){
+    .page ul li a {
+        background-color: #f8f8f8;
+        border: none;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+@media (max-width: 767px) {
+    form {
+        display: block;
+    }
+    form select {
+        width: 100%;
+    }
+    form button {
+        width: 100%;
+    }
+    .page ul li a {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media (max-width: 410px){
+    .table th {
+        font-size: 14px;
+    }
+    .page ul li a {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+/*响应式布局结束*/

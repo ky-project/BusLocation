@@ -15,4 +15,6 @@ public interface DepartmentDao {
      * @return 将name封装到对象中返回
      */
     Department findNameById(@Param("id") Integer id);
+
+
 }

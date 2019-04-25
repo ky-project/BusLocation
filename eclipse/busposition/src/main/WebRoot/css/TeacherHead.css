@@ -1,0 +1,58 @@
+/*头部开始*/
+.header {
+    position: relative;
+}
+.header .nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+}
+.header .nav li {
+    margin: 0 30px;
+}
+.header .user-list {
+    float: right;
+    margin-right: 0;
+    margin-left: 15px;
+    border: none;
+    background-color: #f8f8f8;
+}
+.header .user-list:active {
+    outline: none;
+}
+.header .user-list i {
+    font-size: 18px;
+}
+.header .user-menu {
+    right: 0;
+    left: auto;
+    top: 55px;
+}
+.header .user-menu li:last-child i {
+    margin-right: 5px;
+}
+.header p {
+    float: right;
+    margin-right: 0;
+    font-size: 16px;
+}
+/*头部结束*/
+/*响应式模式开始*/
+@media (max-width: 991px) {
+    .header .nav li {
+        margin: 0 10px;
+    }
+}
+@media (max-width: 767px) {
+    .header .nav li {
+        margin: 0;
+    }
+    .header .user-menu {
+        min-width: 100px;
+    }
+    .header .user-menu .divider {
+        margin: 0;
+    }
+}
+/*响应式模式结束*/

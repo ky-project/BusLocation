@@ -23,4 +23,5 @@ public interface SbRouteStationDao {
      * @return 所有路线对应站点的信息，keys={routeName, stationName, longitude, latitude, departTime}
      */
     List<Map<String, Object>> findAllRouteStation();
+
 }

@@ -31,4 +31,9 @@ public interface SbRouteDao {
      */
     List<Map<String, Object>> findAllBaseInfo();
 
+    /**
+     * 查询所有路线的id和路线名
+     * @return 返回routeList
+     */
+    List<Map<String, Object>> findAllIdAndName();
 }
