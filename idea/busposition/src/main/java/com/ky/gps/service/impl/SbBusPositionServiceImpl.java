@@ -1,6 +1,7 @@
 package com.ky.gps.service.impl;
 
 import com.ky.gps.dao.SbBusPositionDao;
+import com.ky.gps.dao.SbBusPositionHisDao;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.service.inter.SbBusPositionService;
@@ -25,7 +26,17 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
 
     @Resource
     private SbBusPositionDao sbBusPositionDao;
+    @Resource
+    private SbBusPositionHisDao sbBusPositionHisDao;
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void deletePositionAndMoveToHis() {
+        //将当天记录插入历史表
+        sbBusPositionHisDao.insertFromSbBusPosition();
+        //清空当天位置表
+        sbBusPositionDao.deleteAll();
+    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -55,6 +66,7 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
         List<Map<String, Object>> filterTmpPositionList = new ArrayList<>();
         //临时站点名,初始化为第一条数据的站点名
         String routeNameTmp = allRoutePosition.get(0).get("routeName").toString();
+        Integer routeId = (Integer)allRoutePosition.get(0).get("routeId");
         //遍历筛选，Keys={routeName, startTime, endTime, recodeTime, longitude, latitude, velocity, direction}
         for (int i = 0; i < allRoutePosition.size(); i++) {
             //获取map
@@ -77,29 +89,15 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
             //判断站点名是否已经被记录下来
             if (!routePositionMap.get("routeName").toString().equals(routeNameTmp)) {
                 //如果未被记录下来，说明开始新的站点定位数据的记录
-                //创建存放站点的所有站点和站点名Map
-                Map<String, Object> filterTmpRouteMap = new HashMap<>(16);
-                //将站点名记录保存
-                filterTmpRouteMap.put("routeName", routeNameTmp);
-                //将该站点的所有定位信息保存下来
-                filterTmpRouteMap.put("trackRoute", filterTmpPositionList);
-                //TODO 针对测试进行的数据筛选，之后需要删除
-                if (filterTmpPositionList.size() >= 40) {
-                    int removeNumber = 20;
-                    for (int index = 0; index <= removeNumber; index++) {
-                        filterTmpPositionList.remove(index);
-                        index--;
-                        removeNumber--;
-                    }
-                }//TODO 待删除
-                //将该map存入总的list中
-                effectiveRoutePosition.add(filterTmpRouteMap);
+                addToEffectiveRoutePosition(effectiveRoutePosition, filterTmpPositionList, routeNameTmp, routeId);
                 //重置routeName
                 routeNameTmp = routePositionMap.get("routeName").toString();
+                routeId = (Integer)routePositionMap.get("routeId");
                 //清空前一个站点的所有定位
                 filterTmpPositionList = new ArrayList<>();
             }
             routePositionMap.remove("routeName");
+            routePositionMap.remove("routeId");
             //然后将本定位信息存入临时站点list
             filterTmpPositionList.add(routePositionMap);
 
@@ -110,16 +108,31 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
             return ResultWrapperUtil.setSuccessOf(allRoutePosition);
         }
         //保存最后一组记录
+        addToEffectiveRoutePosition(effectiveRoutePosition, filterTmpPositionList, routeNameTmp, routeId);
+        //将最后的有效路线定位存入结果对象中
+        resultWrapper = ResultWrapperUtil.setSuccessOf(effectiveRoutePosition);
+        return resultWrapper;
+    }
+
+    /**
+     * 将路线名、id和轨迹信息存入临时map中，并加入到有效路线轨迹list
+     * @param effectiveRoutePosition 待进的有效路线轨迹list
+     * @param filterTmpPositionList 已过滤的该路线的轨迹记录list
+     * @param routeNameTmp 路线名
+     * @param routeId 路线id
+     */
+    private void addToEffectiveRoutePosition(List<Map<String, Object>> effectiveRoutePosition, List<Map<String, Object>> filterTmpPositionList, String routeNameTmp, Integer routeId) {
+        //创建存放站点的所有站点和站点名Map
         Map<String, Object> filterTmpRouteMap = new HashMap<>(16);
+        //TODO 针对测试进行的数据筛选，之后需要删除
+        optimizeTmp(filterTmpPositionList);
         //将站点名记录保存
         filterTmpRouteMap.put("routeName", routeNameTmp);
+        filterTmpRouteMap.put("routeId", routeId);
         //将该站点的所有定位信息保存下来
         filterTmpRouteMap.put("trackRoute", filterTmpPositionList);
         //将该map存入总的list中
         effectiveRoutePosition.add(filterTmpRouteMap);
-        //将最后的有效路线定位存入结果对象中
-        resultWrapper = ResultWrapperUtil.setSuccessOf(effectiveRoutePosition);
-        return resultWrapper;
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
@@ -139,20 +152,33 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
             routePositionMap.remove("recodeTime");
 
         }
+        //创建待返回的有效list集合，含定位和routeId
+        Map<String, Object> resultMap = new HashMap<>(16);
+        //存放routeId
+        resultMap.put("routeId", routeId);
+        //存入定位信息
+        resultMap.put("trackRoute", routePositionList);
         //如果全部站定位数据都不符合时间段，则时间返回空list
         if (0 == routePositionList.size()) {
-            return ResultWrapperUtil.setSuccessOf(routePositionList);
+            return ResultWrapperUtil.setSuccessOf(resultMap);
         }
-        //TODO 针对测试进行的数据筛选，之后需要删除
-        if (routePositionList.size() >= 40) {
+        if(0 == startIndex) {
+            //TODO 针对测试进行的数据筛选，之后需要删除
+            optimizeTmp(routePositionList);
+        }
+
+        resultWrapper = ResultWrapperUtil.setSuccessOf(resultMap);
+        return resultWrapper;
+    }
+
+    private void optimizeTmp(List<Map<String, Object>> optimizeList){
+        if (optimizeList.size() >= 40) {
             int removeNumber = 20;
             for (int index = 0; index <= removeNumber; index++) {
-                routePositionList.remove(index);
+                optimizeList.remove(index);
                 index--;
                 removeNumber--;
             }
-        }//TODO 待删除
-        resultWrapper = ResultWrapperUtil.setSuccessOf(routePositionList);
-        return resultWrapper;
+        }
     }
 }

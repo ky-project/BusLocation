@@ -12,6 +12,8 @@ import java.util.Iterator;
 import java.util.Set;
 
 import com.ky.gps.util.ParseGPSUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -27,6 +29,7 @@ public class NIOServerSocket {
 //	private static ServerSocket serverSocket;	// 通信服务
 	private static ParseGPSUtil parseGPSUtil;
 	private int port;
+	private final static Logger LOGGER = LoggerFactory.getLogger(NIOServerSocket.class);
 	
 
 	public NIOServerSocket(int port) {
@@ -96,7 +99,8 @@ public class NIOServerSocket {
 					}
 					
 				} catch (Exception e) {
-					System.err.println("通道开启失败！");
+//					System.out.println("通道开启失败！");
+					LOGGER.info("通道开启失败！");
 					e.printStackTrace();
 				} finally {
 					if (selectionKeys != null) {
@@ -105,7 +109,8 @@ public class NIOServerSocket {
 				}
 			}
 		} catch (IOException e) {
-			System.err.println("监听开启失败! ");
+//			System.out.println("监听开启失败!");
+			LOGGER.info("监听开启失败!");
 			e.printStackTrace();
 		} finally {
 			shutdown();
@@ -137,11 +142,12 @@ public class NIOServerSocket {
 				
 				ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
 				SocketChannel sc = ssc.accept();		// 定义有新请求的通道
-				System.out.println("客户端请求连接...");
+//				System.out.println("客户端请求连接...");
+				LOGGER.info("客户端请求连接...");
 				sc.configureBlocking(false);			// 设置非阻塞模式
 				sc.register(selector, SelectionKey.OP_READ);	// 注册该通道为可读可写状态
-				System.out.println("Client: " + sc.getRemoteAddress() + " --> 连接成功! ");
-				
+//				System.out.println("Client: " + sc.getRemoteAddress() + " --> 连接成功! ");
+				LOGGER.info("Client: " + sc.getRemoteAddress() + " --> 连接成功! ");
 			}else if (key.isReadable()) {		// 判断通道是否可读
 				
 				SocketChannel sc = (SocketChannel) key.channel();		// 获取之前注册的socket通道对象
@@ -154,8 +160,8 @@ public class NIOServerSocket {
 					byte[] bytes = new byte[readBuffer.remaining()];	// 根据缓冲区的数据长度创建相应大小的byte数组，接收缓冲区的数据
 					readBuffer.get(bytes);		// 接收缓冲数据
 					String request = new String(bytes, "UTF-8"); 		// 接收到的输入，并设置编码格式
-					System.out.println("Client: " + sc.getRemoteAddress() + " --> msg: " + request);
-					
+//					System.out.println("Client: " + sc.getRemoteAddress() + " --> msg: " + request);
+					LOGGER.info("Client: " + sc.getRemoteAddress() + " --> msg: " + request);
 					//-------------------------------------------------------------------------//
 					
 					parseGPSUtil.setSbGPS("20001030");

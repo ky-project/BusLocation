@@ -43,4 +43,9 @@ public interface SbBusPositionService {
      * @return 返回处理完成的结果封装对象中
      */
     ResultWrapper findAllEffectiveRoutePositionByRouteId(Integer routeId, Integer startIndex);
+
+    /**
+     * 将当天位置表中的内容迁移到历史表，并清空当天位置表
+     */
+    void deletePositionAndMoveToHis();
 }

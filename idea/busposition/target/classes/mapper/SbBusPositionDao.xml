@@ -28,6 +28,10 @@
                 'system', 'system', 1)
     </insert>
 
+    <delete id="deleteAll">
+        truncate sb_busposition
+    </delete>
+
     <select id="findAllPositionByBusId" resultType="hashmap" parameterType="string">
         select SBP_LONGITUDE longitude, SBP_LATITUDE latitude, SBP_VELOCITY velocity, SBP_DIRECTION direction
         from sb_busposition
@@ -36,7 +40,8 @@
         order by SBP_RECODE_TIME
     </select>
     <select id="findAllRoutePosition" resultType="hashmap" parameterType="string">
-        SELECT route_gps.routeName,
+        SELECT route_gps.routeId,
+               route_gps.routeName,
                route_gps.startTime,
                route_gps.endTime,
                sb_busposition.SBP_RECODE_TIME recodeTime,
@@ -45,7 +50,8 @@
                sb_busposition.SBP_VELOCITY    velocity,
                sb_busposition.SBP_DIRECTION   direction
         FROM sb_busposition,
-             (SELECT sb_route.SBR_ROUTENAME       routeName,
+             (SELECT sb_route.ID                  routeId,
+                     sb_route.SBR_ROUTENAME       routeName,
                      sb_gps.ID                    gpsId,
                      sb_bus_route.SBBR_WEEK       `week`,
                      sb_bus_route.SBBR_START_TIME startTime,

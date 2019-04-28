@@ -81,7 +81,11 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
             station.put("prevStation", "无");
             station.put("nextStation", "无");
         }
-        return ResultWrapperUtil.setSuccessOf(stationList);
+        //存放站点信息和路线id
+        Map<String, Object> resultMap = new HashMap<>(16);
+        resultMap.put("stationInfo", stationList);
+        resultMap.put("routeId", routeId);
+        return ResultWrapperUtil.setSuccessOf(resultMap);
     }
 
     /**

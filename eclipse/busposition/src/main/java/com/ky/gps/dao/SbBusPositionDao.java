@@ -54,4 +54,10 @@ public interface SbBusPositionDao {
      * @return 返回记录总数
      */
     Integer findCountByRouteId(@Param("week") String week, @Param("routeId") Integer routeId);
+
+    /**
+     * 删除表中的所有记录
+     */
+    void deleteAll();
+
 }
