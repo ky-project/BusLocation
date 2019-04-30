@@ -25,7 +25,7 @@ public class StartThread implements Runnable {
 		ServerSocket serverSocket = null;
 		
 		
-		int GPSprot = 20086;
+		int GPSprot = 8001;
 //		System.out.println("-------------监听端口GPSport: "+GPSprot+"-------------");
 		LOGGER.info("-------------监听端口GPSport: "+GPSprot+"-------------");
 		/*

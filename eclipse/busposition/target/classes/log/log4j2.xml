@@ -87,6 +87,8 @@
         <logger name="org.apache.ibatis" level="info"/>
         <logger name="com.ky.gps" level="debug" additivity="false">
             <appender-ref ref="ProDebugLog"/>
+            <appender-ref ref="InfoLog"/>
+            <appender-ref ref="WarnLog"/>
             <appender-ref ref="ErrorLog"/>
             <appender-ref ref="Console"/>
         </logger>

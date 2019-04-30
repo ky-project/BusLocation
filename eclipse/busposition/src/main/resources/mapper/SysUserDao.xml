@@ -55,4 +55,37 @@
           AND b_department.ID = admin_info.DEPARTMENT_ID
         LIMIT 1
     </select>
+    <select id="findAllUser" resultType="java.util.Map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CODE    idCode,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user,
+             b_department
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = b_department.ID
+    </select>
+    <select id="findUserByPages" resultType="java.util.Map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CODE    idCode,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user,
+             b_department
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = b_department.ID
+        LIMIT #{param1}, #{param2}
+    </select>
+    <insert id="saveUserBaseInfo" parameterType="SysUser" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_user(department_id, workid, real_name, password, salt, id_code, phone, email, account_date, created_by, updated_by, valid)
+        values(#{department.id}, #{wordId}, #{realName}, #{password}, #{salt}, #{idCard}, #{phone}, #{email}, #{accountDate}, #{createBy}, #{updated_by}, 1)
+    </insert>
 </mapper>
