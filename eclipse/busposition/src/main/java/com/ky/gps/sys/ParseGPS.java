@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.StringTokenizer;
 
 import com.ky.gps.entity.SbBusPosition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //import org.junit.Test;
 
@@ -20,6 +22,7 @@ public class ParseGPS {
 	private boolean valid;
 
 	private SbBusPosition sbBusPosition;
+	private final static Logger LOGGER = LoggerFactory.getLogger(ParseGPS.class);
 
 	public ParseGPS() {
 	}
@@ -160,10 +163,14 @@ public class ParseGPS {
 			
 			this.valid = true;// 转换成功，产生的数据有效
 			sbBusPosition.setValid(valid);
-			System.out.println("时间：" + sbBusPosition.getSbpRecodeTime());
-			System.out.println("定位：" + sbBusPosition.getSbpLatitude() + "," + sbBusPosition.getSbpLongitude());
-			System.out.println("速度：" + sbBusPosition.getSbpVelocity() + "km/h");
-			System.out.println("方向角：" + sbBusPosition.getSbpDirection() + "度");
+//			System.out.println("时间：" + sbBusPosition.getSbpRecodeTime());
+//			System.out.println("定位：" + sbBusPosition.getSbpLatitude() + "," + sbBusPosition.getSbpLongitude());
+//			System.out.println("速度：" + sbBusPosition.getSbpVelocity() + "km/h");
+//			System.out.println("方向角：" + sbBusPosition.getSbpDirection() + "度");
+			LOGGER.info("时间：" + sbBusPosition.getSbpRecodeTime());
+			LOGGER.info("定位：" + sbBusPosition.getSbpLatitude() + "," + sbBusPosition.getSbpLongitude());
+			LOGGER.info("速度：" + sbBusPosition.getSbpVelocity() + "km/h");
+			LOGGER.info("方向角：" + sbBusPosition.getSbpDirection() + "度");
 			return 0;
 		} catch (Exception e) {
 			return -1;

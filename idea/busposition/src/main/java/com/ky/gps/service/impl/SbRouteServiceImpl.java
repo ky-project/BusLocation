@@ -1,8 +1,11 @@
 package com.ky.gps.service.impl;
 
 import com.ky.gps.dao.SbRouteDao;
+import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbRoute;
 import com.ky.gps.service.inter.SbRouteService;
+import com.ky.gps.util.ResultWrapperUtil;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,9 +35,22 @@ public class SbRouteServiceImpl implements SbRouteService {
         return sbRouteDao.findNameById(id);
     }
 
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public List<Map<String, Object>> findAllBaseInfo() {
         //TODO 判断当前时间是否在开始结束时间内
         return sbRouteDao.findAllBaseInfo();
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper findAllIdAndName() {
+        //创建待返回的结果对象
+        ResultWrapper resultWrapper = null;
+        //接收查询的结果集合
+        List<Map<String, Object>> sbRouteList = sbRouteDao.findAllIdAndName();
+        //将结果集合存入结果对象中
+        resultWrapper = ResultWrapperUtil.setSuccessOf(sbRouteList);
+        return resultWrapper;
     }
 }

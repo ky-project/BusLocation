@@ -2,9 +2,11 @@ package com.ky.gps.controller;
 
 import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
-import com.ky.gps.service.inter.*;
+import com.ky.gps.service.inter.SbBusPositionService;
+import com.ky.gps.service.inter.SbRouteStationService;
 import com.ky.gps.util.ResultWrapperUtil;
-import org.springframework.context.annotation.Scope;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,17 +20,12 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping("/bus")
-@Scope(value = "prototype")
 public class RealTimeQueryHandler {
+    /** 日志打印对象 */
+    private final static Logger LOGGER = LoggerFactory.getLogger(RealTimeQueryHandler.class);
 
     @Resource
-    private SbBusRouteService sbBusRouteService;
-    @Resource
     private SbBusPositionService sbBusPositionService;
-    @Resource
-    private SbRouteService sbRouteService;
-    @Resource
-    private SbGpsService sbGpsService;
     @Resource
     private SbRouteStationService sbRouteStationService;
 
@@ -44,9 +41,10 @@ public class RealTimeQueryHandler {
         try {
             //获取所有路线站点信息
             resultWrapper = sbRouteStationService.findAllRouteStation();
-        } catch (Exception e){
+        } catch (Exception e) {
             //异常处理
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR, e.getMessage());
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+            LOGGER.error(e.getMessage());
         }
         return resultWrapper;
 
@@ -68,7 +66,8 @@ public class RealTimeQueryHandler {
             resultWrapper = sbBusPositionService.findAllEffectiveRoutePosition();
         } catch (Exception e) {
             //异常处理
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR, e.getMessage());
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+            LOGGER.error(e.getMessage());
         }
         //返回结果对象
         return resultWrapper;

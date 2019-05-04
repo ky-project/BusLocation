@@ -1,12 +1,9 @@
 package com.ky.gps.dao;
 
-import org.springframework.stereotype.Repository;
-
 /**
  * @author Daye
  * GPS设备的Dao
  */
-@Repository
 public interface SbGpsDao {
 
     /**

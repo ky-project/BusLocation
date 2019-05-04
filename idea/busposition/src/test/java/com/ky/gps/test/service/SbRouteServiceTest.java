@@ -24,8 +24,5 @@ public class SbRouteServiceTest {
     @Test
     public void findAllBaseInfoTest01(){
         List<Map<String, Object>> baseInfoList = sbRouteService.findAllBaseInfo();
-        for (Map<String, Object> baseInfo : baseInfoList) {
-            System.out.println(baseInfo);
-        }
     }
 }

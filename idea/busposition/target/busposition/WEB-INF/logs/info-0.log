@@ -1,0 +1,10 @@
+2019-04-30 19:12:53 [RMI TCP Connection(3)-127.0.0.1-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-04-30 19:12:57 [RMI TCP Connection(3)-127.0.0.1-295] INFO  org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-04-30 19:12:57 [RMI TCP Connection(3)-127.0.0.1-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3378 ms
+2019-04-30 19:12:57 [RMI TCP Connection(3)-127.0.0.1-34] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-04-30 19:12:57 [RMI TCP Connection(3)-127.0.0.1-42] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-04-30 19:12:57 [MyThread-30] INFO  com.ky.gps.sys.StartThread - -------------监听端口GPSport: 8001-------------
+2019-04-30 19:12:57 [RMI TCP Connection(3)-127.0.0.1-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-04-30 19:12:59 [RMI TCP Connection(3)-127.0.0.1-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1898 ms
+2019-04-30 19:13:04 [http-nio-8080-exec-3-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-04-30 19:13:05 [http-nio-8080-exec-3-48] ERROR com.ky.gps.controller.RealTimeQueryHandler - / by zero

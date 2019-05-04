@@ -1,7 +1,5 @@
 package com.ky.gps.entity;
 
-import org.springframework.stereotype.Component;
-
 import java.sql.Timestamp;
 
 /**

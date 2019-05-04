@@ -5,6 +5,8 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServlet;
 
 import com.ky.gps.sys.StartThread;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -15,6 +17,7 @@ import com.ky.gps.sys.StartThread;
  */
 public class GPSThreadLietener extends HttpServlet implements ServletContextListener {
 
+	private final static Logger LOGGER = LoggerFactory.getLogger(GPSThreadLietener.class);
     
     public GPSThreadLietener() {
     	
@@ -27,14 +30,16 @@ public class GPSThreadLietener extends HttpServlet implements ServletContextList
 
 	@Override
     public void contextInitialized(ServletContextEvent arg0)  { 
-    	System.out.println("----------- GPS解析系统启动 -----------");
+//    	System.out.println("----------- GPS解析系统启动 -----------");
+		LOGGER.info("----------- GPS解析系统启动 -----------");
     	
     	Thread startThread = new Thread(new StartThread());	//创建主线程对象
     	startThread.setName("MyThread");
     	startThread.setDaemon(true);	//设置为守护线程
     	startThread.start();			//启动主线程
     	
-    	System.out.println("----------- GPS信号监听开始 -----------");
+//    	System.out.println("----------- GPS信号监听开始 -----------");
+		LOGGER.info("----------- GPS信号监听开始 -----------");
     }
 	
 }

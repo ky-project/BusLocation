@@ -1,0 +1,7 @@
+2019-04-30 19:12:57 com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-04-30 19:12:57 com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-04-30 19:12:57 com.ky.gps.sys.StartThread - -------------监听端口GPSport: 8001-------------
+2019-04-30 19:13:04 com.ky.gps.dao.SbRouteStationDao.findAllRouteStation - ==>  Preparing: SELECT sb_route.ID routeId, sb_route.SBR_ROUTENAME routeName, sb_station.SBS_STATION stationName, sb_station.SBS_LONGITUDE longitude, sb_station.SBS_LATITUDE latitude, sb_route_station.SBS_DEPART_TIME departTime FROM sb_route_station LEFT JOIN sb_station ON sb_station.ID = sb_route_station.STATION_ID LEFT JOIN sb_route ON sb_route.ID = sb_route_station.ROUTE_ID WHERE sb_route.Valid = 1 AND sb_station.Valid = 1 AND sb_route_station.Valid = 1 ORDER BY sb_route.SBR_ROUTENAME 
+2019-04-30 19:13:05 com.ky.gps.dao.SbRouteStationDao.findAllRouteStation - ==> Parameters: 
+2019-04-30 19:13:05 com.ky.gps.dao.SbRouteStationDao.findAllRouteStation - <==      Total: 164
+2019-04-30 19:13:05 com.ky.gps.controller.RealTimeQueryHandler - / by zero

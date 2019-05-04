@@ -1,5 +1,6 @@
 package com.ky.gps.service.inter;
 
+import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbRoute;
 
 import java.util.List;
@@ -29,4 +30,10 @@ public interface SbRouteService {
      * @return 所有路线基本信息的list
      */
     List<Map<String, Object>> findAllBaseInfo();
+
+    /**
+     * 查询所有路线的id和路线名
+     * @return 返回resultWrapper
+     */
+    ResultWrapper findAllIdAndName();
 }

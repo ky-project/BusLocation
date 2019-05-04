@@ -1,7 +1,6 @@
 package com.ky.gps.dao;
 
 import com.ky.gps.entity.SbRoute;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +9,6 @@ import java.util.Map;
  * @author Daye
  * 校车路线Dao
  */
-@Repository
 public interface SbRouteDao {
 
     /**
@@ -33,4 +31,9 @@ public interface SbRouteDao {
      */
     List<Map<String, Object>> findAllBaseInfo();
 
+    /**
+     * 查询所有路线的id和路线名
+     * @return 返回routeList
+     */
+    List<Map<String, Object>> findAllIdAndName();
 }

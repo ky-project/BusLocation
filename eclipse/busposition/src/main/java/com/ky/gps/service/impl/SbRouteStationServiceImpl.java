@@ -29,46 +29,63 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
         ResultWrapper resultWrapper;
         //创建待存放的路线站点list
         List<Map<String, Object>> routeStationList = new ArrayList<>();
-        try {
-            //查询所有路线和站点信息
-            List<Map<String, Object>> allRouteStationMapList = sbRouteStationDao.findAllRouteStation();
-            //如果没有数据，则直接封装并返回结果对象
-            if (0 == allRouteStationMapList.size()) {
-                return ResultWrapperUtil.setSuccessOf(allRouteStationMapList);
-            }
-            //创建临时的路线名，初始化为第一条路线的name
-            String routeName = allRouteStationMapList.get(0).get("routeName").toString();
-            //创建临时站点信息list
-            List<Map<String, Object>> sortRouteStationList = new ArrayList<>();
-            //keys={routeName, stationName, longitude, latitude, departTime}
-            for (Map<String, Object> allRouteStationMap : allRouteStationMapList) {
-                //判断路线名是否相同，若不同，则表示将要存放下一条路线的站点信息
-                if (!routeName.equals(allRouteStationMap.get("routeName").toString())) {
-                    findAllRouteStationSortList(routeStationList, routeName, sortRouteStationList);
-                    //重置sortRouteStationList
-                    sortRouteStationList = new ArrayList<>();
-                    //对routeName进行重新赋值
-                    routeName = allRouteStationMap.get("routeName").toString();
-                }
-                //移除routeName字段
-                allRouteStationMap.remove("routeName");
-                //将该map存入list中
-                sortRouteStationList.add(allRouteStationMap);
-            }
-            //创建一个待存入最终路线站点map
-            findAllRouteStationSortList(routeStationList, routeName, sortRouteStationList);
-
-            for (Map<String, Object> map : routeStationList) {
-                for (Map.Entry<String, Object> entry : map.entrySet()) {
-                    System.out.println(entry.getKey() + "\t" + entry.getValue());
-                }
-            }
-            resultWrapper = ResultWrapperUtil.setSuccessOf(routeStationList);
-        } catch (Exception e) {
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            e.printStackTrace();
+        //查询所有路线和站点信息
+        List<Map<String, Object>> allRouteStationMapList = sbRouteStationDao.findAllRouteStation();
+        //如果没有数据，则直接封装并返回结果对象
+        if (0 == allRouteStationMapList.size()) {
+            return ResultWrapperUtil.setSuccessOf(allRouteStationMapList);
         }
+        //创建临时的路线名，初始化为第一条路线的name
+        String routeName = allRouteStationMapList.get(0).get("routeName").toString();
+        //创建临时的路线id，初始化为第一条路线的id
+        Integer routeId = (Integer)allRouteStationMapList.get(0).get("routeId");
+        //创建临时站点信息list
+        List<Map<String, Object>> sortRouteStationList = new ArrayList<>();
+        //keys={routeName, stationName, longitude, latitude, departTime}
+        for (Map<String, Object> allRouteStationMap : allRouteStationMapList) {
+            //判断路线名是否相同，若不同，则表示将要存放下一条路线的站点信息
+            if (!routeName.equals(allRouteStationMap.get("routeName").toString())) {
+                findAllRouteStationSortList(routeStationList, routeName, routeId, sortRouteStationList);
+                //重置sortRouteStationList
+                sortRouteStationList = new ArrayList<>();
+                //对routeName进行重新赋值
+                routeName = allRouteStationMap.get("routeName").toString();
+                routeId = (Integer)allRouteStationMap.get("routeId");
+            }
+            //移除routeName字段
+            allRouteStationMap.remove("routeName");
+            allRouteStationMap.remove("routeId");
+            //将该map存入list中
+            sortRouteStationList.add(allRouteStationMap);
+        }
+        //处理最后一条记录
+        findAllRouteStationSortList(routeStationList, routeName, routeId, sortRouteStationList);
+        //创建一个待存入最终路线站点map
+        resultWrapper = ResultWrapperUtil.setSuccessOf(routeStationList);
         return resultWrapper;
+    }
+
+    @Override
+    public ResultWrapper findStationByRouteId(Integer routeId) {
+        //获取该路线的所有站点信息
+        List<Map<String, Object>> stationList = sbRouteStationDao.findStationByRouteId(routeId);
+        //判断list的大小，两种特殊情况处理
+        if (1 < stationList.size()) {
+            //对stationList根据departTime进行排序
+            sortByDepartTime(stationList);
+            //路线存在两站及以上站点时，遍历list
+            findAllRouteStationAddPrevAndNext(stationList);
+        } else if (1 == stationList.size()) {
+            //如果只有一个站点，则上一站下一站都为无
+            Map<String, Object> station = stationList.get(0);
+            station.put("prevStation", "无");
+            station.put("nextStation", "无");
+        }
+        //存放站点信息和路线id
+        Map<String, Object> resultMap = new HashMap<>(16);
+        resultMap.put("stationInfo", stationList);
+        resultMap.put("routeId", routeId);
+        return ResultWrapperUtil.setSuccessOf(resultMap);
     }
 
     /**
@@ -76,15 +93,39 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
      *
      * @param routeStationList     最终汇总的路线站点list
      * @param routeName            路线名
+     * @param routeId              路线id
      * @param sortRouteStationList 排序好的该路线的所有站点list
      */
     private void findAllRouteStationSortList(List<Map<String, Object>> routeStationList,
                                              String routeName,
+                                             Integer routeId,
                                              List<Map<String, Object>> sortRouteStationList) {
         //创建一个待存入最终路线站点map
         Map<String, Object> routeStationTmpMap = new HashMap<>(16);
-        //将路线名存入
+        //将路线名和id存入
         routeStationTmpMap.put("routeName", routeName);
+        routeStationTmpMap.put("routeId", routeId);
+        sortByDepartTime(sortRouteStationList);
+        //设置前一站和后一站
+        if (1 == sortRouteStationList.size()) {
+            //如果只有一个站点，则上一站下一站都为无
+            Map<String, Object> station = sortRouteStationList.get(0);
+            station.put("prevStation", "无");
+            station.put("nextStation", "无");
+        } else {
+            findAllRouteStationAddPrevAndNext(sortRouteStationList);
+        }
+        //将排序好的路线站点信息存入map
+        routeStationTmpMap.put("stationInfo", sortRouteStationList);
+        //将临时map加入最终结果中
+        routeStationList.add(routeStationTmpMap);
+    }
+
+    /**
+     * 根据departTime对list进行排序
+     * @param sortRouteStationList 待排序的list
+     */
+    private void sortByDepartTime(List<Map<String, Object>> sortRouteStationList) {
         //根据departTime进行排序
         sortRouteStationList.sort(new Comparator<Map<String, Object>>() {
             @Override
@@ -113,19 +154,6 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
                 }
             }
         });
-        //设置前一站和后一站
-        if (1 == sortRouteStationList.size()) {
-            //如果只有一个站点，则上一站下一站都为无
-            Map<String, Object> station = sortRouteStationList.get(0);
-            station.put("prevStation", "无");
-            station.put("nextStation", "无");
-        }else {
-            findAllRouteStationAddPrevAndNext(sortRouteStationList);
-        }
-        //将排序好的路线站点信息存入map
-        routeStationTmpMap.put("stationInfo", sortRouteStationList);
-        //将临时map加入最终结果中
-        routeStationList.add(routeStationTmpMap);
     }
 
     /**
@@ -158,25 +186,4 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
         }
     }
 
-
-    @Override
-    public List<Map<String, Object>> findStationByRouteId(Integer routeId) {
-        //获取该路线的所有站点信息
-        List<Map<String, Object>> stationList = sbRouteStationDao.findStationByRouteId(routeId);
-        //判断list的大小，两种特殊情况处理
-        if (0 == stationList.size()) {
-            //如果只有0，说明无站点，直接返回即可
-            return stationList;
-        } else if (1 == stationList.size()) {
-            //如果只有一个站点，则上一站下一站都为无
-            Map<String, Object> station = stationList.get(0);
-            station.put("prevStation", "无");
-            station.put("nextStation", "无");
-            //返回设置好后的list
-            return stationList;
-        }
-        //路线存在两站及以上站点时，遍历list
-        findAllRouteStationAddPrevAndNext(stationList);
-        return stationList;
-    }
 }

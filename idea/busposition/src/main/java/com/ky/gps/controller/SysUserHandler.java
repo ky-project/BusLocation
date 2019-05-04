@@ -3,17 +3,15 @@ package com.ky.gps.controller;
 import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SysLog;
+import com.ky.gps.entity.SysUser;
 import com.ky.gps.service.inter.SysLogService;
 import com.ky.gps.service.inter.SysUserService;
-import com.ky.gps.util.IpUtil;
 import com.ky.gps.util.ResultWrapperUtil;
 import com.ky.gps.util.SysLogUtil;
-import org.springframework.context.annotation.Scope;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -26,9 +24,11 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/user")
-@Scope(value = "prototype")
 public class SysUserHandler {
 
+    /** 日志打印对象 */
+    private final static Logger LOGGER = LoggerFactory.getLogger(SysUserHandler.class);
+    /** 用户身份数组 */
     private final static String[] LOGIN_TYPE = {"admin", "simple"};
 
     @Resource
@@ -37,7 +37,77 @@ public class SysUserHandler {
     private SysLogService sysLogService;
 
     /**
-     * 普通用户登录接口
+     * 添加用户基本信息
+     *
+     * @param sysUser 用户信息
+     * @return 返回刚添加的用户id
+     */
+    @RequestMapping(value = "/info/add")
+    @ResponseBody
+    public ResultWrapper saveUserBaseInfo(SysUser sysUser){
+        ResultWrapper resultWrapper;
+        try {
+            System.out.println(sysUser);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 分页查询用户信息
+     * @param pageNow 当前页数
+     * @param pageSize 一页查询的数量
+     * @return 返回json格式数据
+     */
+    @RequestMapping(value = "/info/list/pages", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper userListPages(Integer pageNow, Integer pageSize){
+        ResultWrapper resultWrapper;
+        try{
+            //算出需要查询位置索引
+            Integer startIndex = (pageNow - 1) * pageSize;
+            //获取查询结果
+            resultWrapper = sysUserService.findUserByPages(startIndex, pageSize);
+        }catch (Exception e){
+            //异常日志记录
+            LOGGER.error(e.getMessage());
+            //异常信息返回
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 查询所有用户的基本信息
+     * @return 返回json格式
+     */
+    @RequestMapping(value = "/info/list", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultWrapper userList(){
+        //创建待返回的json对象
+        ResultWrapper resultWrapper;
+        try{
+            //获取存放所有用户的json封装类
+            ResultWrapper userList = sysUserService.findUserList();
+            //判断data是否为空
+            if(userList.getData() != null){
+                //不为空，则将返回的userList赋值给resultWrapper
+                resultWrapper = userList;
+            }else{
+                //为空则提示异常
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR);
+            }
+        }catch (Exception e){
+            //异常处理
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+            LOGGER.error(e.getMessage());
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 管理员用户登录接口
      *
      * @param workId   登录账号:职工编号
      * @param password 登录密码
@@ -50,6 +120,22 @@ public class SysUserHandler {
                                          @RequestParam(value = "password") String password,
                                          HttpServletRequest request) {
         return loginWrapper(workId, password, request, LOGIN_TYPE[0]);
+    }
+
+    /**
+     * 普通用户登录接口
+     *
+     * @param workId   登录账号:职工编号
+     * @param password 登录密码
+     * @param request  request请求
+     * @return 返回json格式数据
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper loginCheck(@RequestParam(value = "workId") String workId,
+                                    @RequestParam(value = "password") String password,
+                                    HttpServletRequest request) {
+        return loginWrapper(workId, password, request, LOGIN_TYPE[1]);
     }
 
     private ResultWrapper loginWrapper(@RequestParam("workId") String workId,
@@ -93,26 +179,9 @@ public class SysUserHandler {
             resultWrapper = ResultWrapperUtil.setSuccessOf(baseInfo);
         } catch (Exception e) {
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
         return resultWrapper;
     }
-
-    /**
-     * 普通用户登录接口
-     *
-     * @param workId   登录账号:职工编号
-     * @param password 登录密码
-     * @param request  request请求
-     * @return 返回json格式数据
-     */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    public ResultWrapper loginCheck(@RequestParam(value = "workId") String workId,
-                                    @RequestParam(value = "password") String password,
-                                    HttpServletRequest request) {
-        return loginWrapper(workId, password, request, LOGIN_TYPE[1]);
-    }
-
 
 }
