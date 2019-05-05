@@ -6,8 +6,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SbBusPositionServiceUtil {
-    private ApplicationContext applicationContext;
-    private SbBusPositionService sbBusPositionService;
+    private static ApplicationContext applicationContext;
+    private static SbBusPositionService sbBusPositionService;
 
     public void init(){
         applicationContext =
@@ -15,7 +15,7 @@ public class SbBusPositionServiceUtil {
         sbBusPositionService = applicationContext.getBean(SbBusPositionService.class);
     }
     
-    public void save(SbBusPosition sbBusPosition){
+    public static void save(SbBusPosition sbBusPosition){
         sbBusPositionService.savePosition(sbBusPosition);
     }
 }

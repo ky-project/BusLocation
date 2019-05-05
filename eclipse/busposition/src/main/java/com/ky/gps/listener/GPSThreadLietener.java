@@ -4,15 +4,16 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServlet;
 
-import com.ky.gps.sys.StartThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.ky.gps.sys.StartThread;
 
 
 /**
  * 监听器
  * 
- * @author Alienware-Rocky
+ * @author Rocky
  *
  */
 public class GPSThreadLietener extends HttpServlet implements ServletContextListener {
