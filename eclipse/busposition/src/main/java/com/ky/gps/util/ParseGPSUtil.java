@@ -238,6 +238,7 @@ public class ParseGPSUtil {
 		}
 		else {
 			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" 心跳检测");
+			sbTerminal.getSbBusPosition().setValid(true);
 			sbTerminal.setAgreement("TRVDP01#");
 			return sbTerminal;
 		}
@@ -249,6 +250,7 @@ public class ParseGPSUtil {
 			return sbTerminal;
 		}else {
 			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" IMSI号及ICCID号码响应");
+			sbTerminal.getSbBusPosition().setValid(true);
 			sbTerminal.setAgreement("TRVZP02#");
 			return sbTerminal;
 		}
