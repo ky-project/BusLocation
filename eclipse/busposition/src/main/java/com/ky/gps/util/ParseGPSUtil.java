@@ -97,10 +97,11 @@ public class ParseGPSUtil {
 				case "CP01":
 					return getCP01(str);
 				
-				case "AP57":
-					break;
+				case "YP02":
+					return getYP02();
 					
 				default:
+					LOGGER.info("协议未开通-"+gpsProtocol);
 					break;
 			}
 			return sbTerminal;
@@ -128,7 +129,7 @@ public class ParseGPSUtil {
 	}
 	
 	private SbTerminal getAP01(String str) {
-		if (str.length() != 75 || !CheckValidUtil.isValid(sbTerminal)) {
+		if (str.length() < 45 || !CheckValidUtil.isValid(sbTerminal)) {
 			sbTerminal.getSbBusPosition().setValid(false);
 			return sbTerminal;
 		}
@@ -238,6 +239,17 @@ public class ParseGPSUtil {
 		else {
 			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" 心跳检测");
 			sbTerminal.setAgreement("TRVDP01#");
+			return sbTerminal;
+		}
+	}
+	
+	private SbTerminal getYP02() {
+		if (!CheckValidUtil.isValid(sbTerminal)) {
+			sbTerminal.getSbBusPosition().setValid(false);
+			return sbTerminal;
+		}else {
+			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" IMSI号及ICCID号码响应");
+			sbTerminal.setAgreement("TRVZP02#");
 			return sbTerminal;
 		}
 	}
