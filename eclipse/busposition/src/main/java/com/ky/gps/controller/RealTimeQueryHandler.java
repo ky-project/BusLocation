@@ -44,7 +44,7 @@ public class RealTimeQueryHandler {
         } catch (Exception e) {
             //异常处理
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            LOGGER.error(e.getMessage());
+            LOGGER.error("", e);
         }
         return resultWrapper;
 
@@ -67,7 +67,7 @@ public class RealTimeQueryHandler {
         } catch (Exception e) {
             //异常处理
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            LOGGER.error(e.getMessage());
+            LOGGER.error("", e);
         }
         //返回结果对象
         return resultWrapper;

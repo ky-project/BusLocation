@@ -25,7 +25,8 @@ public class GPSThreadLietener extends HttpServlet implements ServletContextList
 
     @Override
     public void contextDestroyed(ServletContextEvent arg0)  { 
-    	System.out.println("----------- GPS解析系统停止 -----------");
+//    	System.out.println("----------- GPS解析系统停止 -----------");
+		LOGGER.info("----------- GPS解析系统停止 -----------");
     }
 
 	@Override

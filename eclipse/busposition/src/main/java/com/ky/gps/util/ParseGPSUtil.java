@@ -37,7 +37,7 @@ public class ParseGPSUtil {
 
 	/**
 	 *  
-	 * @param 返回值 1 正确 0校验失败 2非TRV信息 3无效定位 4格式错误
+	 * @param by 1 正确 0校验失败 2非TRV信息 3无效定位 4格式错误
 	 * @return
 	 */
 	public SbTerminal parse(String by) {
@@ -238,7 +238,6 @@ public class ParseGPSUtil {
 		}
 		else {
 			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" 心跳检测");
-			sbTerminal.getSbBusPosition().setValid(true);
 			sbTerminal.setAgreement("TRVDP01#");
 			return sbTerminal;
 		}
@@ -250,7 +249,6 @@ public class ParseGPSUtil {
 			return sbTerminal;
 		}else {
 			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" IMSI号及ICCID号码响应");
-			sbTerminal.getSbBusPosition().setValid(true);
 			sbTerminal.setAgreement("TRVZP02#");
 			return sbTerminal;
 		}

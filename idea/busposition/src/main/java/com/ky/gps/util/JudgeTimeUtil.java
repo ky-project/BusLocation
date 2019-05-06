@@ -23,7 +23,7 @@ public class JudgeTimeUtil {
      * @param endTime HH:mm
      * @return true or false
      */
-    public static synchronized boolean isEffectiveTimestamp(Timestamp time, String startTime, String endTime){
+    public static boolean isEffectiveTimestamp(Timestamp time, String startTime, String endTime){
         //确定时间格式-时分
         DateFormat dfHm = new SimpleDateFormat("HH:mm");
         //确定时间格式-时分
@@ -56,7 +56,7 @@ public class JudgeTimeUtil {
      * @param endTime   结束时间 HH:mm
      * @return 是：true,否:false
      */
-    public static synchronized boolean isEffectiveDate(String startTime, String endTime) {
+    public static boolean isEffectiveDate(String startTime, String endTime) {
         try {
             Calendar cal = Calendar.getInstance();
             //24小时制

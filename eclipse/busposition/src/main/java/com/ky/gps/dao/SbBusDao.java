@@ -1,5 +1,7 @@
 package com.ky.gps.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 /**
  * @author Daye
  * 校车类的Dao
@@ -11,5 +13,5 @@ public interface SbBusDao {
      * @param id 待查询的校车id
      * @return 车牌号
      */
-    String findPlateNumberById(Integer id);
+    String findPlateNumberById(@Param("id") Integer id);
 }

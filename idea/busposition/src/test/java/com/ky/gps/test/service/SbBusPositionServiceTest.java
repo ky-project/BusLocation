@@ -3,6 +3,7 @@ package com.ky.gps.test.service;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.entity.SbGps;
+import com.ky.gps.service.impl.SbBusPositionServiceImpl;
 import com.ky.gps.service.inter.SbBusPositionService;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,27 +18,28 @@ public class SbBusPositionServiceTest {
     private ApplicationContext applicationContext;
     private SbBusPositionService sbBusPositionService;
 
-    @Before
+//    @Before
     public void init(){
         applicationContext =
                 new ClassPathXmlApplicationContext("spring/applicationContext-service.xml");
         sbBusPositionService = applicationContext.getBean(SbBusPositionService.class);
     }
 
-    @Test
-    public void test03(){
-        ResultWrapper allEffectiveRoutePosition = sbBusPositionService.findAllEffectiveRoutePosition();
-    }
-
-    @Test
-    public void test02(){
-
-        List<Map<String, Object>> maps = sbBusPositionService.findAllPositionByBusId("20180401");
-
-    }
+//    @Test
+//    public void test03(){
+//        ResultWrapper allEffectiveRoutePosition = sbBusPositionService.findAllEffectiveRoutePosition();
+//    }
+//
+//    @Test
+//    public void test02(){
+//
+//        List<Map<String, Object>> maps = sbBusPositionService.findAllPositionByBusId("20180401");
+//
+//    }
 
     @Test
     public void test01(){
+    	SbBusPositionService sbBusPositionService = new SbBusPositionServiceImpl();
         //new一个对象，待存入数据库
         SbBusPosition sbBusPosition = new SbBusPosition();
         //set一个SbGPS对象，需给定它的id
@@ -53,6 +55,7 @@ public class SbBusPositionServiceTest {
         sbBusPosition.setSbpVelocity(77.32);
         //set方向角
         sbBusPosition.setSbpDirection(55.7);
+        sbBusPosition.setValid(true);
         //保存该对象
         sbBusPositionService.savePosition(sbBusPosition);
     }
