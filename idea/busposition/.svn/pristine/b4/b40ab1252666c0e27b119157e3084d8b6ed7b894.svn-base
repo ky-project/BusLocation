@@ -1,0 +1,14 @@
+2019-05-06 17:16:22 org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-06 17:16:26 org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-06 17:16:26 org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3278 ms
+2019-05-06 17:16:26 com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-06 17:16:26 com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-06 17:16:26 com.ky.gps.sys.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-06 17:16:26 org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-06 17:16:27 io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0x2b1ee026]'
+2019-05-06 17:16:28 org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2102 ms
+2019-05-06 17:16:33 com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-05-06 17:16:33 com.ky.gps.dao.SbBusPositionDao.findAllRoutePosition - ==>  Preparing: SELECT route_gps.routeId, route_gps.routeName, route_gps.startTime, route_gps.endTime, sb_busposition.SBP_RECODE_TIME recodeTime, sb_busposition.SBP_LONGITUDE longitude, sb_busposition.SBP_LATITUDE latitude, sb_busposition.SBP_VELOCITY velocity, sb_busposition.SBP_DIRECTION direction FROM sb_busposition, (SELECT sb_route.ID routeId, sb_route.SBR_ROUTENAME routeName, sb_gps.ID gpsId, sb_bus_route.SBBR_WEEK `week`, sb_bus_route.SBBR_START_TIME startTime, sb_bus_route.SBBR_END_TIME endTime FROM sb_bus_route LEFT JOIN sb_route ON sb_bus_route.ROUTE_ID = sb_route.ID LEFT JOIN sb_gps ON sb_bus_route.BUS_ID = sb_gps.BUS_ID WHERE sb_bus_route.Valid = 1 AND sb_route.Valid = 1 AND sb_gps.Valid = 1) route_gps WHERE route_gps.gpsId = sb_busposition.GPS_ID AND route_gps.`week` = ? AND sb_busposition.Valid = 1 ORDER BY route_gps.routeName, sb_busposition.SBP_RECODE_TIME 
+2019-05-06 17:16:34 com.ky.gps.dao.SbBusPositionDao.findAllRoutePosition - ==> Parameters: 星期一(String)
+2019-05-06 17:16:34 com.ky.gps.dao.SbBusPositionDao.findAllRoutePosition - <==      Total: 1877
+2019-05-06 17:16:34 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20000} enter cache

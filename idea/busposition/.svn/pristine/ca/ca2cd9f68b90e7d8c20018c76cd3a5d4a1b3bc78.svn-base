@@ -1,0 +1,41 @@
+2019-05-08 11:51:26 org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-08 11:51:30 org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-08 11:51:30 org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3699 ms
+2019-05-08 11:51:30 com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-08 11:51:30 com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-08 11:51:30 com.ky.gps.sys.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-08 11:51:30 org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-08 11:51:31 io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0x95cf27d6]'
+2019-05-08 11:51:32 org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1739 ms
+2019-05-08 11:51:35 com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:51:40 com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:51:45 com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:51:50 com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:51:53 com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-05-08 11:51:53 com.ky.gps.dao.SbRouteStationDao.findAllRouteStation - ==>  Preparing: SELECT sb_route.ID routeId, sb_route.SBR_ROUTENAME routeName, sb_station.SBS_STATION stationName, sb_station.SBS_LONGITUDE longitude, sb_station.SBS_LATITUDE latitude, sb_route_station.SBS_DEPART_TIME departTime FROM sb_route_station LEFT JOIN sb_station ON sb_station.ID = sb_route_station.STATION_ID LEFT JOIN sb_route ON sb_route.ID = sb_route_station.ROUTE_ID WHERE sb_route.Valid = 1 AND sb_station.Valid = 1 AND sb_route_station.Valid = 1 ORDER BY sb_route.SBR_ROUTENAME 
+2019-05-08 11:51:53 com.ky.gps.dao.SbBusPositionDao.findAllRoutePosition - ==>  Preparing: SELECT route_gps.routeId, route_gps.routeName, route_gps.startTime, route_gps.endTime, sb_busposition.SBP_RECODE_TIME recodeTime, sb_busposition.SBP_LONGITUDE longitude, sb_busposition.SBP_LATITUDE latitude, sb_busposition.SBP_VELOCITY velocity, sb_busposition.SBP_DIRECTION direction FROM sb_busposition, (SELECT sb_route.ID routeId, sb_route.SBR_ROUTENAME routeName, sb_gps.ID gpsId, sb_bus_route.SBBR_WEEK `week`, sb_bus_route.SBBR_START_TIME startTime, sb_bus_route.SBBR_END_TIME endTime FROM sb_bus_route LEFT JOIN sb_route ON sb_bus_route.ROUTE_ID = sb_route.ID LEFT JOIN sb_gps ON sb_bus_route.BUS_ID = sb_gps.BUS_ID WHERE sb_bus_route.Valid = 1 AND sb_route.Valid = 1 AND sb_gps.Valid = 1) route_gps WHERE route_gps.gpsId = sb_busposition.GPS_ID AND route_gps.`week` = ? AND sb_busposition.Valid = 1 ORDER BY route_gps.routeName, sb_busposition.SBP_RECODE_TIME 
+2019-05-08 11:51:54 com.ky.gps.dao.SbRouteDao.findAllIdAndName - ==>  Preparing: select id, SBR_ROUTENAME routeName from sb_route where Valid = 1 
+2019-05-08 11:51:54 com.ky.gps.dao.SbRouteDao.findAllIdAndName - ==> Parameters: 
+2019-05-08 11:51:54 com.ky.gps.dao.SbRouteStationDao.findAllRouteStation - ==> Parameters: 
+2019-05-08 11:51:54 com.ky.gps.dao.SbBusPositionDao.findAllRoutePosition - ==> Parameters: 星期三(String)
+2019-05-08 11:51:54 com.ky.gps.dao.SbRouteDao.findAllIdAndName - <==      Total: 25
+2019-05-08 11:51:54 com.alibaba.druid.pool.PreparedStatementPool - {conn-10003, pstmt-20000} enter cache
+2019-05-08 11:51:54 com.ky.gps.dao.SbRouteStationDao.findAllRouteStation - <==      Total: 164
+2019-05-08 11:51:54 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20002} enter cache
+2019-05-08 11:51:54 com.ky.gps.dao.SbBusPositionDao.findAllRoutePosition - <==      Total: 1877
+2019-05-08 11:51:54 com.alibaba.druid.pool.PreparedStatementPool - {conn-10004, pstmt-20001} enter cache
+2019-05-08 11:51:55 com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:51:59 com.ky.gps.dao.SbRouteDao.findAllIdAndName - ==>  Preparing: select id, SBR_ROUTENAME routeName from sb_route where Valid = 1 
+2019-05-08 11:51:59 com.ky.gps.dao.SbRouteDao.findAllIdAndName - ==> Parameters: 
+2019-05-08 11:51:59 com.ky.gps.dao.SbRouteDao.findAllIdAndName - <==      Total: 25
+2019-05-08 11:51:59 com.alibaba.druid.pool.PreparedStatementPool - {conn-10004, pstmt-20003} enter cache
+2019-05-08 11:51:59 com.ky.gps.dao.SbRouteStationDao.findAllRouteStation - ==>  Preparing: SELECT sb_route.ID routeId, sb_route.SBR_ROUTENAME routeName, sb_station.SBS_STATION stationName, sb_station.SBS_LONGITUDE longitude, sb_station.SBS_LATITUDE latitude, sb_route_station.SBS_DEPART_TIME departTime FROM sb_route_station LEFT JOIN sb_station ON sb_station.ID = sb_route_station.STATION_ID LEFT JOIN sb_route ON sb_route.ID = sb_route_station.ROUTE_ID WHERE sb_route.Valid = 1 AND sb_station.Valid = 1 AND sb_route_station.Valid = 1 ORDER BY sb_route.SBR_ROUTENAME 
+2019-05-08 11:51:59 com.ky.gps.dao.SbRouteStationDao.findAllRouteStation - ==> Parameters: 
+2019-05-08 11:51:59 com.ky.gps.dao.SbRouteStationDao.findAllRouteStation - <==      Total: 164
+2019-05-08 11:51:59 com.alibaba.druid.pool.PreparedStatementPool - {conn-10004, pstmt-20004} enter cache
+2019-05-08 11:51:59 com.ky.gps.dao.SbBusPositionDao.findAllRoutePosition - ==>  Preparing: SELECT route_gps.routeId, route_gps.routeName, route_gps.startTime, route_gps.endTime, sb_busposition.SBP_RECODE_TIME recodeTime, sb_busposition.SBP_LONGITUDE longitude, sb_busposition.SBP_LATITUDE latitude, sb_busposition.SBP_VELOCITY velocity, sb_busposition.SBP_DIRECTION direction FROM sb_busposition, (SELECT sb_route.ID routeId, sb_route.SBR_ROUTENAME routeName, sb_gps.ID gpsId, sb_bus_route.SBBR_WEEK `week`, sb_bus_route.SBBR_START_TIME startTime, sb_bus_route.SBBR_END_TIME endTime FROM sb_bus_route LEFT JOIN sb_route ON sb_bus_route.ROUTE_ID = sb_route.ID LEFT JOIN sb_gps ON sb_bus_route.BUS_ID = sb_gps.BUS_ID WHERE sb_bus_route.Valid = 1 AND sb_route.Valid = 1 AND sb_gps.Valid = 1) route_gps WHERE route_gps.gpsId = sb_busposition.GPS_ID AND route_gps.`week` = ? AND sb_busposition.Valid = 1 ORDER BY route_gps.routeName, sb_busposition.SBP_RECODE_TIME 
+2019-05-08 11:51:59 com.ky.gps.dao.SbBusPositionDao.findAllRoutePosition - ==> Parameters: 星期三(String)
+2019-05-08 11:51:59 com.ky.gps.dao.SbBusPositionDao.findAllRoutePosition - <==      Total: 1877
+2019-05-08 11:52:00 com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:52:05 com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:52:10 com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作

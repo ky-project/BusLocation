@@ -6,7 +6,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <context:component-scan base-package="com.ky.gps.dao"/>
-    <context:component-scan base-package="com.ky.gps.timer"/>
 
     <context:property-placeholder location="classpath:jdbc/jdbc.properties"/>
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
@@ -92,9 +91,6 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="basePackage" value="com.ky.gps.dao"/>
     </bean>
-
-    <!-- 设置定时任务 -->
-    <task:annotation-driven/>
 
     <!-- 创建bean -->
     <bean id="druid-stat-interceptor"

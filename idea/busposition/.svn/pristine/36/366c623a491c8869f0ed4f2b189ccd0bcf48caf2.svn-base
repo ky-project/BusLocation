@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>普通用户api</title>
+</head>
+<body>
+    <h1>普通用户登录</h1>
+    <form action="/busposition/user/login" method="post">
+        workId：<input name="workId" type="text"/><br/>
+        password：<input name="password" type="text"/><br/>
+        <input value="提交" type="submit"/>
+    </form>
+    <hr/>
+    <h1>用户更新自己的基本信息（必须登录才能使用）</h1>
+    <form action="/busposition/user/update/info" method="post">
+        realName:<input name="realName" type="text"/><br/>
+        idCard:<input name="idCard" type="text"/><br/>
+        phone:<input name="phone" type="text"/><br/>
+        email:<input name="email" type="text"/><br/>
+        <input value="提交" type="submit"/>
+    </form>
+    <hr/>
+    <a href="/busposition/user/self/info">获取用户自身的基本信息（必须登录才能使用）</a>
+    <hr/>
+    <h1>修改用户自身密码（必须登录才能使用）</h1>
+    <form action="/busposition/user/modify/pwd" method="post">
+        oldPassword:<input name="oldPassword" type="text"/><br/>
+        newPassword:<input name="newPassword" type="text"/><br/>
+        <input value="提交" type="submit"/>
+    </form>
+</body>
+</html>

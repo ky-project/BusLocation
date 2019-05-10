@@ -1,0 +1,18 @@
+2019-05-08 11:51:26 [RMI TCP Connection(3)-127.0.0.1-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-08 11:51:30 [RMI TCP Connection(3)-127.0.0.1-295] INFO  org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-08 11:51:30 [RMI TCP Connection(3)-127.0.0.1-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3699 ms
+2019-05-08 11:51:30 [RMI TCP Connection(3)-127.0.0.1-35] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-08 11:51:30 [RMI TCP Connection(3)-127.0.0.1-43] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-08 11:51:30 [MyThread-32] INFO  com.ky.gps.sys.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-08 11:51:30 [RMI TCP Connection(3)-127.0.0.1-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-08 11:51:31 [MyThread-460] WARN  io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0x95cf27d6]'
+2019-05-08 11:51:32 [RMI TCP Connection(3)-127.0.0.1-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1739 ms
+2019-05-08 11:51:35 [pool-2-thread-1-28] INFO  com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:51:40 [pool-2-thread-1-28] INFO  com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:51:45 [pool-2-thread-1-28] INFO  com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:51:50 [pool-2-thread-1-28] INFO  com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:51:53 [http-nio-8080-exec-8-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-05-08 11:51:55 [pool-2-thread-1-28] INFO  com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:52:00 [pool-2-thread-1-28] INFO  com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:52:05 [pool-2-thread-1-28] INFO  com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
+2019-05-08 11:52:10 [pool-2-thread-1-28] INFO  com.ky.gps.timer.MovePositionTimer - 准备执行数据库表的迁移工作
