@@ -17,6 +17,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
+import io.netty.util.ResourceLeakDetector;
 
 public class EchoServer {
 	
@@ -58,10 +59,11 @@ public class EchoServer {
 				protected void initChannel(SocketChannel ch) throws Exception {
 					//使用了netty自带的编码器和解码器
 					//心跳检测，读超时，写超时，读写超时
-					ch.pipeline().addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
+					ch.pipeline().addLast(new IdleStateHandler(180, 0, 0, TimeUnit.SECONDS));
 					ch.pipeline().addLast(new ServerHandler());
 				}
 			});
+		ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.ADVANCED);
 	}
 	
 	
