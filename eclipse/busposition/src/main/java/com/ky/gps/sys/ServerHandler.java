@@ -15,6 +15,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
+import io.netty.util.ResourceLeakDetector;
 
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 	
@@ -47,31 +48,45 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 	 */
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-
+		
+		ByteBuf buf = null;
+		ByteBuf pingMessage = null;
 		LOGGER.info("接收: "+ctx.name()+"-->msg: "+msg);
-		ByteBuf buf = (ByteBuf) msg;
-		byte[] req = new byte[buf.readableBytes()];
-		buf.readBytes(req);
-		String body = new String(req, "UTF-8");
-		LOGGER.info("接收客户端数据:" + body);
-
-		/*
-		 * 解析信息
-		 */
-		String response = parseGPS.parse(body);
-		if (response != null && !response.isEmpty()) {
-			byte[] resp = response.getBytes();
-			ByteBuf pingMessage = Unpooled.buffer();
-			pingMessage.writeBytes(resp);
-			ctx.writeAndFlush(pingMessage);
+		try {
+			buf = (ByteBuf) msg;
+			ReferenceCountUtil.retain(buf);
+			byte[] req = new byte[buf.readableBytes()];
+			buf.readBytes(req).release();
+			String body = new String(req, "UTF-8");
+			LOGGER.info("接收客户端数据:" + body);
 			
+			/*
+			 * 解析信息
+			 */
+			String response = parseGPS.parse(body);
+			if (response != null && !response.isEmpty()) {
+				byte[] resp = response.getBytes();
+				pingMessage = Unpooled.buffer();
+				ReferenceCountUtil.retain(pingMessage);
+				pingMessage.writeBytes(resp);
+				ctx.writeAndFlush(pingMessage);
 				
-			if (response.equals("TRVBP01#") && !HashThreadUtil.hasThread(ctx.channel().id().toString())) {
-				Thread thread = new Thread(new RequestThread(ctx));
-				thread.setName(ctx.channel().id().toString());
-				thread.setDaemon(true);
-				thread.start();
 				
+				if (response.equals("TRVBP01#") && !HashThreadUtil.hasThread(ctx.channel().id().toString())) {
+					Thread thread = new Thread(new RequestThread(ctx));
+					thread.setName(ctx.channel().id().toString());
+//					thread.setDaemon(true);
+					thread.start();
+				}
+			}
+		} catch (Exception e) {
+			LOGGER.error("",e);
+		}finally {
+			if (pingMessage != null) {
+				ReferenceCountUtil.release(pingMessage);
+			}
+			if (buf != null) {
+				ReferenceCountUtil.release(buf);
 			}
 		}
 		
