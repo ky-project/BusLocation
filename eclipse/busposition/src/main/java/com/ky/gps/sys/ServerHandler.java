@@ -1,12 +1,20 @@
 package com.ky.gps.sys;
 
+import java.lang.Thread.State;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ky.gps.util.HashThreadUtil;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.handler.timeout.IdleStateEvent;
+import io.netty.util.ReferenceCountUtil;
 
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 	
@@ -29,8 +37,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 	 */
 	@Override
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-		ctx.channel().closeFuture();
-		LOGGER.info("客户端与服务端连接关闭...");
+		Runtime.getRuntime().gc();
+		ctx.channel().close();
+		LOGGER.info("客户端与服务端连接关闭: "+Thread.currentThread().toString()+" "+new Date());
 	}
 	
 	/**
@@ -50,10 +59,59 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 		 * 解析信息
 		 */
 		String response = parseGPS.parse(body);
-		byte[] resp = response.getBytes();
-		ByteBuf pingMessage = Unpooled.buffer();
-		pingMessage.writeBytes(resp);
-		ctx.writeAndFlush(pingMessage);
+		if (response != null && !response.isEmpty()) {
+			byte[] resp = response.getBytes();
+			ByteBuf pingMessage = Unpooled.buffer();
+			pingMessage.writeBytes(resp);
+			ctx.writeAndFlush(pingMessage);
+			
+				
+			if (response.equals("TRVBP01#") && !HashThreadUtil.hasThread(ctx.channel().id().toString())) {
+				Thread thread = new Thread(new RequestThread(ctx));
+				thread.setName(ctx.channel().id().toString());
+				thread.setDaemon(true);
+				thread.start();
+				
+			}
+		}
+		
+		LOGGER.info("{当前线程: [存活: "+Thread.activeCount()+"|参数: "+Thread.currentThread().toString()+
+				"|状态: "+Thread.currentThread().getState()+"}");
+//		Thread[] tarray = new Thread[100];
+//		Thread.enumerate(tarray);
+//		for (Thread thread : tarray) {
+//			if (thread == null) {
+//				continue;
+//			}
+//			System.err.println(thread.toString()+" "+thread.getState());
+//			if (thread.getState() == State.TIMED_WAITING && thread.getThreadGroup().getName().equals("main")
+//					&& thread.getName().contains("pool") && thread.getName().contains("thread")) {
+//				thread.stop();
+//			}
+//		}
+		
+	}
+	
+	@Override
+	public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+		if (evt instanceof IdleStateEvent){
+            IdleStateEvent  event = (IdleStateEvent)evt;
+            String eventType =  null;
+            switch (event.state()){
+                case READER_IDLE:
+                    eventType = "读空闲";
+                    break;
+                case  WRITER_IDLE:
+                    eventType="写空闲";
+                    break;
+                case ALL_IDLE:
+                    eventType="读写空闲";
+                    break;
+            }
+            LOGGER.info(ctx.channel().remoteAddress()  + "超时事件->" + eventType);
+            ctx.channel().closeFuture().addListener(ChannelFutureListener.CLOSE);
+            ctx.channel().close();
+        }
 	}
 	
 	/**
@@ -62,7 +120,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 	@Override
 	public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
 		ctx.flush();
-		LOGGER.info("信息接收完毕...");
+		LOGGER.info("信息交互完毕...\n");
 	}
 	
 	/**
@@ -71,6 +129,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
     	LOGGER.error("",cause);
-        ctx.close();
+    	ctx.close();
     }
+    
 }

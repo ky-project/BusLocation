@@ -1,5 +1,6 @@
 package com.ky.gps.dao;
 
+import com.ky.gps.entity.Department;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -11,9 +12,9 @@ public interface DepartmentDao {
     /**
      * 根据id查询部门name
      * @param id 部门id
-     * @return name值
+     * @return 将name封装到对象中返回
      */
-    String findNameById(@Param("id") Integer id);
+    Department findNameById(@Param("id") Integer id);
 
 
 }

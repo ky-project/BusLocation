@@ -8,8 +8,6 @@ import java.sql.Timestamp;
  * 系统角色表实体类
  */
 public class SysRole extends AbstractEntity {
-    /** id */
-    private Integer id;
     /** 角色名 */
     private String srName;
     /** 是否有管理权限 0-否;1-是 */
@@ -21,14 +19,8 @@ public class SysRole extends AbstractEntity {
     public SysRole() {
     }
 
-    /** 有参构造方法-id */
-    public SysRole(Integer id) {
-        this.id = id;
-    }
-
     /** 有参构造方法-自身属性 */
-    public SysRole(Integer id, String srName, Boolean srManage, Integer srLevel) {
-        this.id = id;
+    public SysRole(String srName, Boolean srManage, Integer srLevel) {
         this.srName = srName;
         this.srManage = srManage;
         this.srLevel = srLevel;
@@ -39,15 +31,9 @@ public class SysRole extends AbstractEntity {
                    String remark2, String remark3,
                    Timestamp createdDate, String createdBy,
                    Timestamp updatedDate, String updatedBy,
-                   Boolean valid, Integer id,
-                   String srName, Boolean srManage,
-                   Integer srLevel) {
-        super(remark, remark1,
-                remark2, remark3,
-                createdDate, createdBy,
-                updatedDate, updatedBy,
-                valid);
-        this.id = id;
+                   Boolean valid, String srName,
+                   Boolean srManage, Integer srLevel) {
+        super(remark, remark1, remark2, remark3, createdDate, createdBy, updatedDate, updatedBy, valid);
         this.srName = srName;
         this.srManage = srManage;
         this.srLevel = srLevel;
@@ -60,8 +46,7 @@ public class SysRole extends AbstractEntity {
     @Override
     public String toString() {
         return "SysRole{" +
-                "id=" + id +
-                ", srName='" + srName + '\'' +
+                "srName='" + srName + '\'' +
                 ", srManage=" + srManage +
                 ", srLevel=" + srLevel +
                 '}';
@@ -70,14 +55,6 @@ public class SysRole extends AbstractEntity {
     /** getter/setter */
     public String getSrName() {
         return srName;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public void setSrName(String srName) {

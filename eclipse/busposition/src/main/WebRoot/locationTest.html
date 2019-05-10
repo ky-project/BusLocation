@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="css/locationTest.css">
+</head>
+<body>
+<div id="message">
+    <p>经度：<span class="longitude">0</span></p>
+    <p>纬度：<span class="latitude">0</span></p>
+    <p>方向：<span class="heading">0</span></p>
+    <p>速度：<span class="speed">0</span></p>
+    <p>时间：<span class="timestamp">0</span></p>
+</div>
+<button>开&nbsp;始</button>
+<div id="map"></div>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+    let map;
+    function initialize() {
+        map = new BMap.Map('map');
+        map.centerAndZoom(new BMap.Point(116.404, 39.915), 15);
+    }
+    function loadScript() {
+        let script = document.createElement("script");
+        script.src = "http://api.map.baidu.com/api?v=2.0&ak=Hn8yCUyLlsPxzhCIdG8wETGiGtViLCHI&callback=initialize";
+        document.body.appendChild(script);
+    }
+
+    $(function(){
+        loadScript();
+        let $map = $('#map');
+        let $btn = $('button');
+        let windowWidth = $(window).width();
+        let windowHeight = $(window).height();
+
+        let $longitude = $('.longitude');
+        let $latitude = $('.latitude');
+        let $heading = $('.heading');
+        let $speed = $('.speed');
+        let $timestamp = $('.timestamp');
+
+        let BDpoints = [];
+        let GPSpoints = [];    //gps位置信息
+        let curPoint = null; //当前百度位置
+
+        let timer;
+        let flag = false;
+        //初始化地图
+        $map.width(windowWidth);
+        $map.height(windowHeight);
+
+        //判断是否支持geolocation
+        if(navigator.geolocation){
+            $btn.click(function(){
+                if(!flag){
+                    start();
+                } else {
+                    end();
+                }
+            })
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+
+        //获取地理位置
+        function getLocation() {
+            navigator.geolocation.getCurrentPosition(function(position){
+                //移除所有覆盖物
+                map.clearOverlays();
+                //gps转json
+                let jsonPosition = positionToJson(position);
+                //发送当前gps位置信息
+                $.ajax("http://127.0.0.1/PHP-Repository/test.php",{
+                    type: "post",
+                    data: jsonPosition
+                });
+                //存放gps位置
+                let x = position.coords.longitude;
+                let y = position.coords.latitude;
+                GPSpoints = [];
+                GPSpoints.push(new BMap.Point(x,y));
+                //gps转bd09并设置轨迹
+                let translateCallback = function (data){
+                    if(data.status === 0) {
+                        //设置当前bd09位置
+                        curPoint = data.points[0];
+                        //存入BD坐标数组
+                        BDpoints.push(curPoint);
+
+                        //设置中心点
+                        map.setCenter(curPoint);
+                        //添加箭头
+                        addRow(map,curPoint,position.coords.heading - 45);
+                        //添加轨迹
+                        addRoute(map,BDpoints);
+                        //设置参数
+                        $longitude.text(curPoint.lng.toFixed(4));
+                        $latitude.text(curPoint.lat.toFixed(4));
+                        $heading.text(position.coords.heading);
+                        $speed.text(position.coords.speed);
+                        $timestamp.text(position.timestamp);
+                    }
+                };
+                setTimeout(function(){
+                    let convertor = new BMap.Convertor();
+                    convertor.translate(GPSpoints, 1, 5, translateCallback);
+                }, 100);  //坐标转换是异步执行设置定时器
+                },function(error) {
+                    switch(error.code)
+                    {
+                        case error.PERMISSION_DENIED:
+                            alert("用户拒绝位置请求");
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            alert("位置信息不可得");
+                            break;
+                        case error.TIMEOUT:
+                            alert("获取位置超时");
+                            break;
+                        default:
+                            alert("未知错误");
+                            break;
+                    }
+                    end();
+                });
+        }
+        //添加轨迹
+        function addRoute(oMap,aPoints){
+            let polyline = new BMap.Polyline(aPoints, {
+                strokeColor: "red",
+                strokeWeight: 3,
+                strokeOpacity: 1
+            });
+            oMap.addOverlay(polyline);
+            return polyline;
+        }
+        //添加标注
+        function addMarker(map,point,iconUrl,sizeX,sizeY,offsetX,offsetY,rotate = 0){
+            let myIcon = new BMap.Icon(iconUrl,new BMap.Size(sizeX,sizeY),{anchor: new BMap.Size(offsetX, offsetY)});
+            let marker = new BMap.Marker(point,{icon:myIcon});
+            marker.setRotation(rotate);
+            map.addOverlay(marker);
+            return marker;
+        }
+        //添加箭头   js = 地理 - 45
+        function addRow(map,point,rotate){
+            addMarker(map,point,'./images/jiantou.png',16,16,8,8,rotate);
+        }
+        //位置转json
+        function positionToJson(position){
+            let pos = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+                direction: position.coords.heading,
+                velocity: position.coords.speed,
+                timestamp: position.timestamp
+            };
+            return JSON.stringify(pos);
+        }
+        //开始记录
+        function start(){
+            timer = setInterval(getLocation,3000);
+            getLocation();
+            flag = true;
+            $btn.addClass('start');
+            $btn.text('结  束');
+        }
+        //结束记录
+        function end(){
+            clearInterval(timer);
+            flag = false;
+            $btn.removeClass('start');
+            $btn.text('开  始');
+        }
+    })
+</script>
+</body>
+</html>

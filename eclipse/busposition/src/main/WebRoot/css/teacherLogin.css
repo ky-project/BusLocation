@@ -1,0 +1,56 @@
+
+.small-container {
+    max-width: 500px;
+}
+
+.login-form .input-group i {
+    font-size: 20px !important;
+}
+
+.login-form .input-group .input-group-addon {
+    /*border: none;*/
+    padding-right: 0;
+    border-right: none;
+    background-color: #fff;
+}
+
+.login-form .form-group input[type="checkbox"] {
+    vertical-align: top;
+}
+
+.login-form .input-group .form-control {
+    border-left: none;
+    padding-left: 10px;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0 4px 4px 0 !important;
+}
+
+.login-form .input-group .form-control:focus {
+    z-index: 0;
+    box-shadow: none;
+    /*border-color: #ccc;*/
+}
+
+.my-error .input-group-addon {
+    border-color: #a94442;
+    color: #a94442;
+}
+
+
+.my-error .form-control {
+    border-color: #a94442;
+}
+
+.my-error .form-control:focus {
+    border-color: #a94442;
+}
+
+.my-error .glyphicon-remove {
+    color: #a94442;
+}
+
+.form-control:focus {
+    border-color: #ccc;
+}
+

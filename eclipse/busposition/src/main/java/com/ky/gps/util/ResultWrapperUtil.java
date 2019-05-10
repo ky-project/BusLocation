@@ -14,7 +14,7 @@ public class ResultWrapperUtil{
      * @param object 需要返回前端的data
      * @return 返回封装信息类
      */
-    public static ResultWrapper setSuccessOf(Object object) {
+    public static synchronized ResultWrapper setSuccessOf(Object object) {
         //将操作成功信息封装到结果对象中返回
         ResultWrapper resultWrapper = new ResultWrapper();
         resultWrapper.setCode(1);
@@ -29,7 +29,7 @@ public class ResultWrapperUtil{
      * @param errorCode 错误信息
      * @return 返回封装信息类
      */
-    public static ResultWrapper setErrorOf(ErrorCode errorCode) {
+    public static synchronized ResultWrapper setErrorOf(ErrorCode errorCode) {
         //将操作失败信息封装到结果对象中返回
         ResultWrapper resultWrapper = new ResultWrapper();
         resultWrapper.setCode(0);
@@ -45,7 +45,7 @@ public class ResultWrapperUtil{
      * @param errorMessage 额外的错误提示
      * @return 返回封装信息类
      */
-    public static ResultWrapper setErrorOf(ErrorCode errorCode, String errorMessage) {
+    public static synchronized ResultWrapper setErrorOf(ErrorCode errorCode, String errorMessage) {
         //将操作失败信息和额外提示信息封装到结果对象中返回
         ResultWrapper resultWrapper = new ResultWrapper();
         resultWrapper.setCode(0);

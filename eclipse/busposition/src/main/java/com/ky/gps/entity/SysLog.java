@@ -15,7 +15,7 @@ public class SysLog extends AbstractEntity {
     /**
      * 用户id
      */
-    private Integer userId;
+    private Integer sysUserId;
     /**
      * 用户的职工编号
      */
@@ -58,13 +58,13 @@ public class SysLog extends AbstractEntity {
     /**
      * 有参构造函数-自身属性
      */
-    public SysLog(Integer id, Integer userId,
+    public SysLog(Integer id, Integer sysUserId,
                   String workId, String realName,
                   String departmentName, String operate,
                   String module, String ipAddress,
                   String macAddress, String content) {
         this.id = id;
-        this.userId = userId;
+        this.sysUserId = sysUserId;
         this.workId = workId;
         this.realName = realName;
         this.departmentName = departmentName;
@@ -82,14 +82,14 @@ public class SysLog extends AbstractEntity {
                   String remark2, String remark3,
                   Timestamp createdDate, String createdBy,
                   Timestamp updatedDate, String updatedBy,
-                  Boolean valid, Integer id, Integer userId,
+                  Boolean valid, Integer id, Integer sysUserId,
                   String workId, String realName,
                   String departmentName, String operate,
                   String module, String ipAddress,
                   String macAddress, String content) {
         super(remark, remark1, remark2, remark3, createdDate, createdBy, updatedDate, updatedBy, valid);
         this.id = id;
-        this.userId = userId;
+        this.sysUserId = sysUserId;
         this.workId = workId;
         this.realName = realName;
         this.departmentName = departmentName;
@@ -105,7 +105,7 @@ public class SysLog extends AbstractEntity {
     public String toString() {
         return "SysLog{" +
                 "id=" + id +
-                ", userId=" + userId +
+                ", sysUserId=" + sysUserId +
                 ", workId='" + workId + '\'' +
                 ", realName='" + realName + '\'' +
                 ", departmentName='" + departmentName + '\'' +
@@ -128,12 +128,12 @@ public class SysLog extends AbstractEntity {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getSysUserId() {
+        return sysUserId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setSysUserId(Integer sysUserId) {
+        this.sysUserId = sysUserId;
     }
 
     public String getWorkId() {

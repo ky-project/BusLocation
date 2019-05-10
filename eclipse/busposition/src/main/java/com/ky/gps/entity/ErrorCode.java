@@ -6,8 +6,6 @@ package com.ky.gps.entity;
  */
 public enum ErrorCode {
 
-    /** 数据格式化错误 */
-    PARAMETER_ERROR("参数类型错误！"),
     /** 登录账号/密码错误 */
     Login_ERROR("账号/密码错误"),
     /** 查询失败 */

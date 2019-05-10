@@ -1,6 +1,5 @@
 package com.ky.gps.test.service;
 
-import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.service.inter.SysUserService;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,17 +21,6 @@ public class SysUserServiceTest {
         applicationContext =
                 new ClassPathXmlApplicationContext("spring/applicationContext-service.xml");
         sysUserService = applicationContext.getBean(SysUserService.class);
-    }
-
-    @Test
-    public void test02(){
-        ResultWrapper userList = sysUserService.findUserList();
-        System.out.println(userList);
-        if(null == userList.getData()){
-            System.out.println("error");
-        } else{
-            System.out.println("yes");
-        }
     }
 
     @Test
