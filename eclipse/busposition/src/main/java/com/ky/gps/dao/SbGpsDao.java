@@ -1,5 +1,7 @@
 package com.ky.gps.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 /**
  * @author Daye
  * GPS设备的Dao
@@ -11,5 +13,5 @@ public interface SbGpsDao {
      * @param busId 校车id
      * @return GPS的id
      */
-    String findIdByBusId(Integer busId);
+    String findIdByBusId(@Param("busId") Integer busId);
 }

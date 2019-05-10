@@ -20,7 +20,7 @@ public class SysLogServiceImpl implements SysLogService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public synchronized void saveSysLog(SysLog sysLog) {
+    public void saveSysLog(SysLog sysLog) {
         sysLogDao.saveSysLog(sysLog);
     }
 }

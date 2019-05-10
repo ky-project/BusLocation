@@ -85,6 +85,7 @@
         <logger name="org.mybatis" level="info"/>
         <logger name="java.sql" level="info"/>
         <logger name="org.apache.ibatis" level="info"/>
+        <logger name="io.netty" level="info"/>
         <logger name="com.ky.gps" level="debug" additivity="false">
             <appender-ref ref="ProDebugLog"/>
             <appender-ref ref="InfoLog"/>

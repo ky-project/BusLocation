@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : AliMySql
+ Source Server         : 60.12.85.238
  Source Server Type    : MySQL
- Source Server Version : 50725
- Source Host           : 47.95.14.126:3306
+ Source Server Version : 50644
+ Source Host           : 60.12.85.238:3306
  Source Schema         : sb_gps_sys
 
  Target Server Type    : MySQL
- Target Server Version : 50725
+ Target Server Version : 50644
  File Encoding         : 65001
 
- Date: 04/05/2019 14:54:53
+ Date: 06/05/2019 17:07:18
 */
 
 SET NAMES utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `b_department`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of b_department
@@ -47,7 +47,7 @@ INSERT INTO `b_department` VALUES (1, '开发小组', 'ky_0000', '无', 0, 0, NU
 INSERT INTO `b_department` VALUES (2, '院领导', 'ky_0001', '无', 0, 0, NULL, NULL, NULL, NULL, '2019-04-20 22:34:36', NULL, '2019-04-20 22:34:36', NULL, 1);
 INSERT INTO `b_department` VALUES (3, '经销商', 'sb_0002', '无', 0, 0, NULL, NULL, NULL, NULL, '2019-04-20 22:39:19', NULL, '2019-04-20 22:39:29', NULL, 1);
 INSERT INTO `b_department` VALUES (5, '无部门', 'ky_0000', '无', 0, 0, NULL, NULL, NULL, NULL, '2019-04-22 10:38:47', NULL, '2019-04-22 10:38:53', NULL, 1);
-INSERT INTO `b_department` VALUES (6, '党政办', 'ky_0003', '无', 0, 0, NULL, NULL, NULL, NULL, '2019-05-02 16:44:02', NULL, '2019-05-02 16:44:02', NULL, 1);
+INSERT INTO `b_department` VALUES (6, '党政办', 'ky_0003', '无', 0, 0, NULL, NULL, NULL, NULL, '2019-05-03 00:47:27', NULL, '2019-05-03 00:47:27', NULL, 1);
 
 -- ----------------------------
 -- Table structure for file_attach
@@ -70,7 +70,7 @@ CREATE TABLE `file_attach`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for p_notice
@@ -96,7 +96,7 @@ CREATE TABLE `p_notice`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `FK_Relationship_12`(`USER_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_12` FOREIGN KEY (`USER_ID`) REFERENCES `sys_user` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '0-新闻 1-公告 2-供需发布 3-活动发布 4-法律服务' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '0-新闻 1-公告 2-供需发布 3-活动发布 4-法律服务' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for p_notice_attach
@@ -120,7 +120,7 @@ CREATE TABLE `p_notice_attach`  (
   INDEX `FK_Relationship_14`(`FILE_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_13` FOREIGN KEY (`NOTICE_ID`) REFERENCES `p_notice` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK_Relationship_14` FOREIGN KEY (`FILE_ID`) REFERENCES `file_attach` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sb_bus
@@ -143,7 +143,7 @@ CREATE TABLE `sb_bus`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sb_bus
@@ -182,7 +182,7 @@ CREATE TABLE `sb_bus_route`  (
   INDEX `FK_Relationship_7`(`ROUTE_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_6` FOREIGN KEY (`BUS_ID`) REFERENCES `sb_bus` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK_Relationship_7` FOREIGN KEY (`ROUTE_ID`) REFERENCES `sb_route` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sb_bus_route
@@ -222,6 +222,7 @@ INSERT INTO `sb_bus_route` VALUES (32, 7, 8, '星期四', '6:00', '24:00', NULL,
 INSERT INTO `sb_bus_route` VALUES (33, 7, 8, '星期五', '6:00', '24:00', NULL, NULL, NULL, NULL, '2019-04-26 00:54:27', NULL, '2019-04-26 00:54:27', NULL, 1);
 INSERT INTO `sb_bus_route` VALUES (34, 7, 8, '星期六', '6:00', '24:00', NULL, NULL, NULL, NULL, '2019-04-26 00:54:39', NULL, '2019-04-26 00:54:42', NULL, 1);
 INSERT INTO `sb_bus_route` VALUES (35, 7, 8, '星期日', '6:00', '24:00', NULL, NULL, NULL, NULL, '2019-04-26 00:54:52', NULL, '2019-04-26 00:54:52', NULL, 1);
+INSERT INTO `sb_bus_route` VALUES (36, 8, 1, '星期一', '6:00', '24:00', NULL, NULL, NULL, NULL, '2019-05-06 14:53:35', NULL, '2019-05-06 14:53:35', NULL, 1);
 
 -- ----------------------------
 -- Table structure for sb_busposition
@@ -247,7 +248,7 @@ CREATE TABLE `sb_busposition`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `FK_Relationship_24`(`GPS_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_24` FOREIGN KEY (`GPS_ID`) REFERENCES `sb_gps` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1878 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1912 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sb_busposition
@@ -2129,6 +2130,32 @@ INSERT INTO `sb_busposition` VALUES (1874, '20190422', '2019-04-22 19:18:28', 12
 INSERT INTO `sb_busposition` VALUES (1875, '20190422', '2019-04-22 19:18:29', 120.817731, 30.185647, 0, 0, NULL, NULL, NULL, NULL, '2019-04-22 11:18:29', 'system', '2019-04-22 11:18:29', 'system', 1);
 INSERT INTO `sb_busposition` VALUES (1876, '20190422', '2019-04-22 19:18:29', 120.817731, 30.185647, 0, 0, NULL, NULL, NULL, NULL, '2019-04-22 11:18:29', 'system', '2019-04-22 11:18:29', 'system', 1);
 INSERT INTO `sb_busposition` VALUES (1877, '20190422', '2019-04-22 19:18:29', 120.817731, 30.185647, 0, 0, NULL, NULL, NULL, NULL, '2019-04-22 11:18:29', 'system', '2019-04-22 11:18:29', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1886, '861903660100873', '2019-05-06 07:01:41', 120.82497542143433, 30.190035852682552, 0, 0, NULL, NULL, NULL, NULL, '2019-05-06 15:02:04', 'system', '2019-05-06 15:02:04', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1887, '861903660100873', '2019-05-06 07:02:32', 120.82530361550305, 30.189740930762756, 19.9, 91.28, NULL, NULL, NULL, NULL, '2019-05-06 15:02:56', 'system', '2019-05-06 15:02:56', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1888, '861903660100873', '2019-05-06 07:02:41', 120.82589158061649, 30.18974646878008, 21.2, 85.92, NULL, NULL, NULL, NULL, '2019-05-06 15:03:06', 'system', '2019-05-06 15:03:06', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1889, '861903660100873', '2019-05-06 07:02:51', 120.8265077617987, 30.189730589204604, 22.9, 90.36, NULL, NULL, NULL, NULL, '2019-05-06 15:03:16', 'system', '2019-05-06 15:03:16', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1890, '861903660100873', '2019-05-06 07:03:00', 120.82714387136082, 30.189708133966676, 22.8, 90.47, NULL, NULL, NULL, NULL, '2019-05-06 15:03:26', 'system', '2019-05-06 15:03:26', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1891, '861903660100873', '2019-05-06 07:03:10', 120.82778165839616, 30.18971714310572, 23.5, 94.99, NULL, NULL, NULL, NULL, '2019-05-06 15:03:36', 'system', '2019-05-06 15:03:36', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1892, '861903660100873', '2019-05-06 07:03:20', 120.82807119448921, 30.190139410473016, 22.7, 5.17, NULL, NULL, NULL, NULL, '2019-05-06 15:03:46', 'system', '2019-05-06 15:03:46', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1893, '861903660100873', '2019-05-06 07:03:30', 120.82808395927776, 30.190674484872897, 21.7, 0.69, NULL, NULL, NULL, NULL, '2019-05-06 15:03:56', 'system', '2019-05-06 15:03:56', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1894, '861903660100873', '2019-05-06 07:03:40', 120.82851441877392, 30.19101196257488, 17.9, 92.06, NULL, NULL, NULL, NULL, '2019-05-06 15:04:06', 'system', '2019-05-06 15:04:06', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1895, '861903660100873', '2019-05-06 07:03:50', 120.82906603220755, 30.191162632155507, 22.7, 8.91, NULL, NULL, NULL, NULL, '2019-05-06 15:04:16', 'system', '2019-05-06 15:04:16', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1896, '861903660100873', '2019-05-06 07:04:00', 120.82910037015712, 30.191671322728627, 14.1, 11.42, NULL, NULL, NULL, NULL, '2019-05-06 15:04:26', 'system', '2019-05-06 15:04:26', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1897, '861903660100873', '2019-05-06 07:04:10', 120.82860977183556, 30.191838094939204, 21.8, 270.74, NULL, NULL, NULL, NULL, '2019-05-06 15:04:36', 'system', '2019-05-06 15:04:36', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1898, '861903660100873', '2019-05-06 07:04:20', 120.82801998630607, 30.19180005902482, 20.5, 253.88, NULL, NULL, NULL, NULL, '2019-05-06 15:04:46', 'system', '2019-05-06 15:04:46', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1899, '861903660100873', '2019-05-06 07:04:30', 120.82740040953861, 30.191783062184722, 20.4, 259.91, NULL, NULL, NULL, NULL, '2019-05-06 15:04:56', 'system', '2019-05-06 15:04:56', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1900, '861903660100873', '2019-05-06 07:04:40', 120.82680733688774, 30.19181956015199, 23.5, 269.14, NULL, NULL, NULL, NULL, '2019-05-06 15:05:06', 'system', '2019-05-06 15:05:06', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1901, '861903660100873', '2019-05-06 07:04:50', 120.8261016519768, 30.191880865918048, 24.8, 276.57, NULL, NULL, NULL, NULL, '2019-05-06 15:05:16', 'system', '2019-05-06 15:05:16', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1902, '861903660100873', '2019-05-06 07:05:00', 120.82547727153236, 30.191836510116122, 17.3, 259.57, NULL, NULL, NULL, NULL, '2019-05-06 15:05:26', 'system', '2019-05-06 15:05:26', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1903, '861903660100873', '2019-05-06 07:05:10', 120.82487274948978, 30.191853933559162, 22.2, 274.69, NULL, NULL, NULL, NULL, '2019-05-06 15:05:36', 'system', '2019-05-06 15:05:36', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1904, '861903660100873', '2019-05-06 07:05:20', 120.8241954185718, 30.191846724867535, 23.8, 269.59, NULL, NULL, NULL, NULL, '2019-05-06 15:05:46', 'system', '2019-05-06 15:05:46', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1905, '861903660100873', '2019-05-06 07:05:30', 120.82352146904047, 30.19180605589523, 19.8, 252.26, NULL, NULL, NULL, NULL, '2019-05-06 15:05:56', 'system', '2019-05-06 15:05:56', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1906, '861903660100873', '2019-05-06 07:05:40', 120.82361777823452, 30.191510979624056, 17.6, 115.41, NULL, NULL, NULL, NULL, '2019-05-06 15:06:06', 'system', '2019-05-06 15:06:06', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1907, '861903660100873', '2019-05-06 07:05:50', 120.8236000393634, 30.190982460986024, 22, 181.4, NULL, NULL, NULL, NULL, '2019-05-06 15:06:16', 'system', '2019-05-06 15:06:16', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1908, '861903660100873', '2019-05-06 07:06:00', 120.82361712432171, 30.190404507667868, 21, 155.38, NULL, NULL, NULL, NULL, '2019-05-06 15:06:26', 'system', '2019-05-06 15:06:26', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1909, '861903660100873', '2019-05-06 07:06:10', 120.8242100602302, 30.190305573560597, 19.1, 124.52, NULL, NULL, NULL, NULL, '2019-05-06 15:06:36', 'system', '2019-05-06 15:06:36', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1910, '861903660100873', '2019-05-06 07:06:20', 120.8244902684004, 30.189940026248884, 18.1, 98.49, NULL, NULL, NULL, NULL, '2019-05-06 15:06:46', 'system', '2019-05-06 15:06:46', 'system', 1);
+INSERT INTO `sb_busposition` VALUES (1911, '861903660100873', '2019-05-06 07:06:29', 120.82497217646795, 30.1899624833321, 11.3, 55.89, NULL, NULL, NULL, NULL, '2019-05-06 15:06:56', 'system', '2019-05-06 15:06:56', 'system', 1);
 
 -- ----------------------------
 -- Table structure for sb_busposition_his
@@ -2154,7 +2181,7 @@ CREATE TABLE `sb_busposition_his`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `FK_Relationship_25`(`GPS_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_25` FOREIGN KEY (`GPS_ID`) REFERENCES `sb_gps` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sb_gps
@@ -2178,7 +2205,7 @@ CREATE TABLE `sb_gps`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `FK_Relationship_20`(`BUS_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_20` FOREIGN KEY (`BUS_ID`) REFERENCES `sb_bus` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sb_gps
@@ -2214,7 +2241,7 @@ CREATE TABLE `sb_role_authority`  (
   INDEX `FK_Relationship_22`(`AUTHORITY_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_21` FOREIGN KEY (`ROLE_ID`) REFERENCES `sys_role` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK_Relationship_22` FOREIGN KEY (`AUTHORITY_ID`) REFERENCES `sys_authority` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sb_route
@@ -2237,7 +2264,7 @@ CREATE TABLE `sb_route`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sb_route
@@ -2291,7 +2318,7 @@ CREATE TABLE `sb_route_station`  (
   INDEX `FK_Relationship_9`(`STATION_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_8` FOREIGN KEY (`ROUTE_ID`) REFERENCES `sb_route` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK_Relationship_9` FOREIGN KEY (`STATION_ID`) REFERENCES `sb_station` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 167 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 167 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sb_route_station
@@ -2481,7 +2508,7 @@ CREATE TABLE `sb_station`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 70 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 70 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sb_station
@@ -2577,7 +2604,7 @@ CREATE TABLE `sb_user_bus`  (
   INDEX `FK_Relationship_17`(`ROUTE_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_16` FOREIGN KEY (`USER_ID`) REFERENCES `sys_user` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK_Relationship_17` FOREIGN KEY (`ROUTE_ID`) REFERENCES `sb_route` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sb_user_role
@@ -2601,7 +2628,7 @@ CREATE TABLE `sb_user_role`  (
   INDEX `FK_Relationship_18`(`ROLE_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_15` FOREIGN KEY (`USER_ID`) REFERENCES `sys_user` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK_Relationship_18` FOREIGN KEY (`ROLE_ID`) REFERENCES `sys_role` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sb_user_role
@@ -2614,7 +2641,7 @@ INSERT INTO `sb_user_role` VALUES (5, 2, 5, NULL, NULL, NULL, NULL, '2019-04-20 
 INSERT INTO `sb_user_role` VALUES (6, 2, 6, NULL, NULL, NULL, NULL, '2019-04-20 22:43:16', NULL, '2019-04-20 22:43:16', NULL, 1);
 INSERT INTO `sb_user_role` VALUES (7, 3, 7, NULL, NULL, NULL, NULL, '2019-04-20 22:43:33', NULL, '2019-04-20 22:43:33', NULL, 1);
 INSERT INTO `sb_user_role` VALUES (8, 4, 4, NULL, NULL, NULL, NULL, '2019-04-21 10:52:41', NULL, '2019-04-21 10:52:41', NULL, 1);
-INSERT INTO `sb_user_role` VALUES (9, 2, 8, NULL, NULL, NULL, NULL, '2019-05-02 16:45:59', 'Xb16620208', '2019-05-02 16:45:59', 'Xb16620208', 1);
+INSERT INTO `sb_user_role` VALUES (9, 2, 8, NULL, NULL, NULL, NULL, '2019-05-03 00:47:47', 'Xb16620208', '2019-05-03 00:47:47', 'Xb16620208', 1);
 
 -- ----------------------------
 -- Table structure for sys_authority
@@ -2635,7 +2662,7 @@ CREATE TABLE `sys_authority`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统权限表,分组,细化到每个动作上' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统权限表,分组,细化到每个动作上' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -2661,13 +2688,13 @@ CREATE TABLE `sys_log`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_log
 -- ----------------------------
-INSERT INTO `sys_log` VALUES (1, 'Xb16620208', '陆宇豪', '开发小组', '登录', '/user/admin/login', '36.26.219.147', NULL, '成功登录', NULL, NULL, NULL, NULL, '2019-05-02 16:45:41', '陆宇豪', '2019-05-02 16:45:41', '陆宇豪', 1);
-INSERT INTO `sys_log` VALUES (2, 'Xb16620208', '陆宇豪', '开发小组', '添加用户', '/user/info/add', '36.26.219.147', NULL, '添加用户:20190430', NULL, NULL, NULL, NULL, '2019-05-02 16:45:59', '陆宇豪', '2019-05-02 16:45:59', '陆宇豪', 1);
+INSERT INTO `sys_log` VALUES (1, 'Xb16620208', '陆宇豪', '开发小组', '登录', '/user/admin/login', '36.26.219.147', NULL, '成功登录', NULL, NULL, NULL, NULL, '2019-05-03 00:47:34', '陆宇豪', '2019-05-03 00:47:34', '陆宇豪', 1);
+INSERT INTO `sys_log` VALUES (2, 'Xb16620208', '陆宇豪', '开发小组', '添加用户', '/user/info/add', '36.26.219.147', NULL, '添加用户:20190430', NULL, NULL, NULL, NULL, '2019-05-03 00:47:47', '陆宇豪', '2019-05-03 00:47:47', '陆宇豪', 1);
 
 -- ----------------------------
 -- Table structure for sys_parameter
@@ -2690,7 +2717,7 @@ CREATE TABLE `sys_parameter`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用于存放系统参数' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用于存放系统参数' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -2711,7 +2738,7 @@ CREATE TABLE `sys_role`  (
   `UPDATED_BY` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `Valid` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统拥有的各类角色' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统拥有的各类角色' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_role
@@ -2749,7 +2776,7 @@ CREATE TABLE `sys_user`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `FK_Relationship_19`(`DEPARTMENT_ID`) USING BTREE,
   CONSTRAINT `FK_Relationship_19` FOREIGN KEY (`DEPARTMENT_ID`) REFERENCES `b_department` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_user
@@ -2761,7 +2788,6 @@ INSERT INTO `sys_user` VALUES (4, 1, 'admin', '管理员', 'admin', '', '', '', 
 INSERT INTO `sys_user` VALUES (5, 2, '20112241', '吕松', '123', '', '', '', '', '2019-04-29', '2019-04-25', NULL, NULL, NULL, NULL, '2019-04-20 22:36:18', NULL, '2019-04-28 19:11:05', NULL, 1);
 INSERT INTO `sys_user` VALUES (6, 2, '20112240', '许国成', '123', '', '', '', '', '2019-04-28', '2019-04-30', NULL, NULL, NULL, NULL, '2019-04-20 22:37:55', NULL, '2019-04-28 19:11:30', NULL, 1);
 INSERT INTO `sys_user` VALUES (7, 3, 'N20190420', '卡萨诺', '123', '', '', '', '', '2019-04-11', '2019-04-13', NULL, NULL, NULL, NULL, '2019-04-20 22:40:48', NULL, '2019-04-28 19:11:45', NULL, 1);
-INSERT INTO `sys_user` VALUES (8, 6, '20190430', '毛可骏', '123', '123', '111111111111', '13588351457', 'jack@123.com', '2019-05-03', NULL, NULL, NULL, NULL, NULL, '2019-05-02 16:45:58', 'Xb16620208', '2019-05-02 16:45:58', 'Xb16620208', 1);
-INSERT INTO `sys_user` VALUES (9, 1, 'Xb16620218\r\n', '许鑫磊', '123', '', '', '', '', '2019-05-04', NULL, NULL, NULL, NULL, NULL, '2019-05-04 12:40:28', NULL, '2019-05-04 04:43:39', NULL, 1);
+INSERT INTO `sys_user` VALUES (8, 6, '20190430', '毛可骏', '123', '123', '111111111111', '13588351457', 'jack1@123.com', '2019-05-03', NULL, NULL, NULL, NULL, NULL, '2019-05-03 00:47:47', 'Xb16620208', '2019-05-03 00:47:47', 'Xb16620208', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

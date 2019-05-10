@@ -1,5 +1,7 @@
 package com.ky.gps.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +16,7 @@ public interface SbRouteStationDao {
      * @param routeId 路线id
      * @return 所有有效站点List集合
      */
-    List<Map<String, Object>> findStationByRouteId(Integer routeId);
+    List<Map<String, Object>> findStationByRouteId(@Param("routeId") Integer routeId);
 
     /**
      * 查询所有路线对应的站点信息

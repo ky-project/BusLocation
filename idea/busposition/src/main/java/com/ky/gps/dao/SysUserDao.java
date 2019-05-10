@@ -1,6 +1,7 @@
 package com.ky.gps.dao;
 
 import com.ky.gps.entity.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public interface SysUserDao {
      * @param pageSize   查询条数
      * @return keys={id, departmentName, workId, realName, idCode, phone, email}
      */
-    List<Map<String, Object>> findUserByPages(Integer startIndex, Integer pageSize);
+    List<Map<String, Object>> findUserByPages(@Param("startIndex") Integer startIndex, @Param("pageSize") Integer pageSize);
 
     /**
      * 添加用户的基本信息
@@ -51,4 +52,53 @@ public interface SysUserDao {
      * @return 返回刚添加的用户id
      */
     Integer saveUserBaseInfo(SysUser sysUser);
+
+    /**
+     * 根据用户id删除用户
+     * 不是真删除，而是将Valid设为0，即无效
+     *
+     * @param userId   用户id
+     * @param updateBy 更新者workId
+     */
+    void deleteUserByUserId(@Param("userId") Integer userId, @Param("updateBy") String updateBy);
+
+    /**
+     * 根据用户id查询用户的真实姓名
+     *
+     * @param id 用户id
+     * @return 用户的真实姓名
+     */
+    String findRealNameById(@Param("id") Integer id);
+
+    /**
+     * 更新用户基本信息
+     *
+     * @param sysUser 待更新的用户对象
+     */
+    void updateUserBaseInfo(SysUser sysUser);
+
+    /**
+     * 根据用户id查询该id的所有基本信息
+     *
+     * @param userId 用户id
+     * @return 用户基本信息list-keys={id, departmentName, workId, realName, idCode, phone, email}
+     */
+    List<Map<String, Object>> findSelfBaseInfoByUserId(@Param("userId") Integer userId);
+
+    /**
+     * 根据用户id和密码查询用户的真实姓名
+     *
+     * @param password 密码
+     * @param userId   用户id
+     * @return 返回realName
+     */
+    String findRealNameByPasswordAndUserId(@Param("password") String password, @Param("userId") Integer userId);
+
+    /**
+     * 根据id更新用户的密码和加密的密码
+     * password、salt、lastPsdDate和updateBy
+     *
+     * @param sysUser 待更新用户对象
+     */
+    void updatePassword(SysUser sysUser);
 }

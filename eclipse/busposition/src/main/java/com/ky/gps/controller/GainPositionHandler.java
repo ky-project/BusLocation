@@ -39,7 +39,7 @@ public class GainPositionHandler {
             sbBusPosition.setUpdatedBy("test");
             sbBusPositionService.savePosition(sbBusPosition);
         }catch (Exception e){
-            LOGGER.error(e.getMessage());
+            LOGGER.error("", e);
         }
     }
 }

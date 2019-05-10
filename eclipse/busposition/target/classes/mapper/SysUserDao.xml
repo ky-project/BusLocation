@@ -84,8 +84,79 @@
           AND sys_user.DEPARTMENT_ID = b_department.ID
         LIMIT #{param1}, #{param2}
     </select>
-    <insert id="saveUserBaseInfo" parameterType="SysUser" useGeneratedKeys="true" keyProperty="id">
-        insert into sys_user(department_id, workid, real_name, password, salt, id_code, phone, email, account_date, created_by, updated_by, valid)
-        values(#{department.id}, #{wordId}, #{realName}, #{password}, #{salt}, #{idCard}, #{phone}, #{email}, #{accountDate}, #{createBy}, #{updated_by}, 1)
+    <insert id="saveUserBaseInfo" parameterType="SysUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into sys_user(department_id, workid, real_name, password, salt, id_code, phone, email, account_date,
+                             created_by, updated_by, valid)
+        values (#{department.id}, #{workId}, #{realName}, #{password}, #{salt}, #{idCard}, #{phone}, #{email},
+                #{accountDate}, #{createdBy}, #{updatedBy}, 1)
     </insert>
+    <update id="deleteUserByUserId">
+        UPDATE sys_user
+        SET Valid      = 0,
+            UPDATED_BY = #{updateBy}
+        WHERE ID = #{userId}
+    </update>
+    <select id="findRealNameById" resultType="java.lang.String" parameterType="integer">
+        select REAL_NAME
+        from sys_user
+        where Valid = 1
+          and ID = #{id}
+    </select>
+    <update id="updateUserBaseInfo" parameterType="sysuser">
+        UPDATE sys_user
+        <set>
+            <if test="null != department">
+                <if test="0 != department.id and null != department.id">
+                    DEPARTMENT_ID = #{department.id},
+                </if>
+            </if>
+            <if test="workId != null and workId != ''">
+                WORKID = #{workId},
+            </if>
+            <if test="realName != null and realName != ''">
+                REAL_NAME = #{realName},
+            </if>
+            <if test="idCard != null and idCard != ''">
+                ID_CODE = #{idCard},
+            </if>
+            <if test="phone != null and phone != ''">
+                PHONE = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                EMAIL = #{email},
+            </if>
+            <if test="updatedBy != null and updatedBy != ''">
+                UPDATED_BY = #{updatedBy}
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
+
+    <select id="findSelfBaseInfoByUserId" resultType="java.util.Map" parameterType="integer">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CODE    idCode,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user,
+             b_department
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = b_department.ID
+          AND sys_user.ID = #{userId};
+    </select>
+    <select id="findRealNameByPasswordAndUserId" resultType="java.lang.String">
+        SELECT REAL_NAME
+        FROM sys_user
+        WHERE Valid = 1
+          AND ID = #{userId}
+          AND `PASSWORD` = #{password}
+    </select>
+    <update id="updatePassword" parameterType="SysUser">
+        UPDATE sys_user
+        SET `PASSWORD` = #{password}, SALT = #{salt}, LAST_PSD_DATE = #{lastPsdDate}, UPDATED_BY = #{updatedBy}
+        WHERE ID = #{id}
+    </update>
 </mapper>

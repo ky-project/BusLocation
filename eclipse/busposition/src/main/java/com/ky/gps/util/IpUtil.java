@@ -41,7 +41,7 @@ public class IpUtil {
      * @param request 用户的request请求信息
      * @return 返回用户ip
      */
-    public static synchronized String getIpAddress(HttpServletRequest request) {
+    public static String getIpAddress(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
@@ -70,7 +70,7 @@ public class IpUtil {
      * @param ip String,127.0.0.1格式
      * @return mac String
      */
-    public static synchronized  String getMacAddress(String ip) {
+    public static String getMacAddress(String ip) {
         String line = "";
         String macAddress = "";
 

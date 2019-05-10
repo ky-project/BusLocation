@@ -11,7 +11,6 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.ky.gps.util.ParseGPSUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +26,7 @@ public class NIOServerSocket {
 	private Selector selector;					// 选择器
 	private ServerSocketChannel socketChannel;	// 通信管道
 //	private static ServerSocket serverSocket;	// 通信服务
-	private static ParseGPSUtil parseGPSUtil;
+	private static ParseGPS parseGPS;
 	private int port;
 	private final static Logger LOGGER = LoggerFactory.getLogger(NIOServerSocket.class);
 	
@@ -45,8 +44,7 @@ public class NIOServerSocket {
 		selector = Selector.open();						// 创建通道选择器，并打开
 		socketChannel = ServerSocketChannel.open();		// 创建ServerSocketChannel通道，并打开
 		socketChannel.configureBlocking(false);			// 设置非阻塞模式，true为阻塞，
-		parseGPSUtil = new ParseGPSUtil();
-		parseGPSUtil.init();
+		
 	}
 	
 	/*
@@ -79,6 +77,8 @@ public class NIOServerSocket {
 				
 				try {
 					
+					parseGPS = new ParseGPS();
+					parseGPS.init();
 					while (iterator.hasNext()) {		// 循环遍历SelectionKeySet中的所有的SelectionKey
 						
 						key = iterator.next();			// 选择一个元素
@@ -89,6 +89,7 @@ public class NIOServerSocket {
 							handleEvent(selector,key);	// 自定义事件处理
 							
 						} catch (Exception e) {
+							LOGGER.error("",e);
 							if (key != null) {
 								key.cancel();
 								if (key.channel() != null)
@@ -163,9 +164,8 @@ public class NIOServerSocket {
 //					System.out.println("Client: " + sc.getRemoteAddress() + " --> msg: " + request);
 					LOGGER.info("Client: " + sc.getRemoteAddress() + " --> msg: " + request);
 					//-------------------------------------------------------------------------//
-					
-					parseGPSUtil.setSbGPS("20001030");
-					parseGPSUtil.parse(request);
+					LOGGER.info(parseGPS.hashCode()+"");
+					parseGPS.parse(request);
 					
 					//-------------------------------------------------------------------------//
 					

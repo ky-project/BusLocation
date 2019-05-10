@@ -25,7 +25,7 @@ public interface SbBusPositionDao {
      * @param gpsId GPSid
      * @return 返回存放位置基本信息的list
      */
-    List<Map<String, Object>> findAllPositionByBusId(String gpsId);
+    List<Map<String, Object>> findAllPositionByBusId(@Param("gpsId") String gpsId);
 
     /**
      * 查找本星期的所有路线的校车定位信息
@@ -33,7 +33,7 @@ public interface SbBusPositionDao {
      * @param week 本星期的星期几，星期一、星期二...
      * @return 返回所有路线的校车定位信息, Keys={routeName, startTime, endTime, recodeTime, longitude, latitude, velocity, direction}
      */
-    List<Map<String, Object>> findAllRoutePosition(String week);
+    List<Map<String, Object>> findAllRoutePosition(@Param("week") String week);
 
     /**
      * 根据路线id查询对应星期的该路线的校车定位信息
