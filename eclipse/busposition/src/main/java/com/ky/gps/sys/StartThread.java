@@ -3,10 +3,6 @@ package com.ky.gps.sys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ky.gps.sys.EchoServer;
-
-import java.net.ServerSocket;
-
 
 /**
  * 主线程
@@ -24,8 +20,6 @@ public class StartThread implements Runnable {
 
 	@Override
 	public void run() {
-		ServerSocket serverSocket = null;
-		
 		
 		int GPSprot = 20086;
 //		System.out.println("-------------监听端口GPSport: "+GPSprot+"-------------");

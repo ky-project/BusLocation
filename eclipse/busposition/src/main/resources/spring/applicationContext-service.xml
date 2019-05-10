@@ -6,4 +6,5 @@
 
     <import resource="applicationContext-dao.xml"/>
     <context:component-scan base-package="com.ky.gps.service.impl"/>
+    <context:component-scan base-package="com.ky.gps.util"/>
 </beans>

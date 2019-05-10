@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class SysLogUtil {
 
-    public static final String SESSION_SYSLOG = "sysLog";
+    private static final String SESSION_SYSLOG = "sysLog";
 
     /**
      * 初始化sysLog对象
@@ -22,11 +22,11 @@ public class SysLogUtil {
      * @param request request请求
      * @return 返回封装好的sysLog对象
      */
-    public static SysLog initSysLog(Map<String, Object> baseInfo, HttpServletRequest request){
+    public static synchronized SysLog initSysLog(Map<String, Object> baseInfo, HttpServletRequest request){
         //备份一份基本信息，封装到SysLog对象中，用于存入session，方便之后操作的查询和日志打印
         SysLog sysLog = new SysLog();
         //设置用户id
-        sysLog.setUserId((int)baseInfo.get("sysUserId"));
+        sysLog.setSysUserId((Integer) baseInfo.get("sysUserId"));
         //设置用户教工号
         sysLog.setWorkId(baseInfo.get("workId").toString());
         //设置真实姓名
@@ -37,9 +37,9 @@ public class SysLogUtil {
         sysLog.setIpAddress(IpUtil.getIpAddress(request));
         //TODO mac地址
         //设置创建者
-        sysLog.setCreatedBy("System");
+        sysLog.setCreatedBy(baseInfo.get("realName").toString());
         //设置更新者
-        sysLog.setUpdatedBy("System");
+        sysLog.setUpdatedBy(baseInfo.get("realName").toString());
         //返回对象
         return sysLog;
     }
@@ -51,7 +51,7 @@ public class SysLogUtil {
      * @param content 操作内容
      * @return 封装好的sysLog对象
      */
-    public static SysLog setOperateInfo(HttpServletRequest request,
+    public static synchronized SysLog setOperateInfo(HttpServletRequest request,
                                                      String operate,
                                                      String module,
                                                      String content){

@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+#message {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 120px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: 100;
+}
+#message span {
+    color: red;
+}
+button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50px;
+    width: 50%;
+    height: 50px;
+    border-radius: 5px;
+    background-color: deepskyblue;
+    color: #fff;
+    font-size: 20px;
+    z-index: 100;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+button.start {
+    background-color: red;
+}
+#map {
+    width: 500px;
+    height: 500px;
+}

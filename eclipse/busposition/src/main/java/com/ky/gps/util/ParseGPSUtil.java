@@ -23,97 +23,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class ParseGPSUtil {
 	
-	private SbTerminal sbTerminal;
 	private final static Logger LOGGER = LoggerFactory.getLogger(ParseGPSUtil.class);
-	private SbBusPositionService sbBusPositionService;
 	
-	
-	public ParseGPSUtil(SbTerminal sbTerminal) {
-		ApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("spring/applicationContext-service.xml");
-        sbBusPositionService = applicationContext.getBean(SbBusPositionService.class);
-		this.sbTerminal = sbTerminal;
-	}
-
-	/**
-	 *  
-	 * @param by 1 正确 0校验失败 2非TRV信息 3无效定位 4格式错误
-	 * @return
-	 */
-	public SbTerminal parse(String by) {
-		
-		try {
-			
-			{
-				if (by == null || by.isEmpty()) {// 判断非空
-					sbTerminal.getSbBusPosition().setValid(false);
-					LOGGER.info("信息为空，无效");
-					return sbTerminal;
-				}
-			}
-			// if (checksum(by.getBytes()) == false)// 计算校验和并与语句中的校验和比较
-			// return 5;
-			
-			/*
-			 * 确定是TRV
-			 */
-			{
-				if (!by.startsWith("TRV")) {
-					sbTerminal.getSbBusPosition().setValid(false);
-					LOGGER.info("非GPS终端信息，无效");
-					return sbTerminal;
-				}
-			}
-			
-			{
-				if (!by.endsWith("#")) {
-					sbTerminal.getSbBusPosition().setValid(false);
-					LOGGER.info("GPS信息无中断，无效");
-					return sbTerminal;
-				}
-			}
-			
-			String gpsProtocol = by.substring(3, 7);
-			String str = by.substring(7,by.length()-1);
-			if (str.charAt(0) == ',') {
-				str = str.replaceFirst(",", "");
-			}
-			
-			/*
-			 * 协议选择器
-			 */
-			switch (gpsProtocol){
-			
-				case "AP00":
-					return getAP00(str);
-			
-				case "AP01":
-					sbTerminal = getAP01(str);
-					if (sbTerminal.getSbBusPosition().getValid()) {
-						sbBusPositionService.savePosition(sbTerminal.getSbBusPosition());
-					}
-					return sbTerminal;
-				
-				case "CP01":
-					return getCP01(str);
-				
-				case "YP02":
-					return getYP02();
-					
-				default:
-					LOGGER.info("协议未开通-"+gpsProtocol);
-					break;
-			}
-			return sbTerminal;
-		} catch (Exception e) {
-			LOGGER.error("",e);
-			sbTerminal.getSbBusPosition().setValid(false);
-			return sbTerminal;
-		}
-		
-	}
-
-	private SbTerminal getAP00(String str) {
+	public static SbTerminal getAP00(String str,SbTerminal sbTerminal ) {
 		if (str.length() != 15) {
 			sbTerminal.getSbBusPosition().setValid(false);
 			LOGGER.info("无效协议号 "+str);
@@ -128,7 +40,7 @@ public class ParseGPSUtil {
 		}
 	}
 	
-	private SbTerminal getAP01(String str) {
+	public static SbTerminal getAP01(String str,SbTerminal sbTerminal ) {
 		if (str.length() < 45 || !CheckValidUtil.isValid(sbTerminal)) {
 			sbTerminal.getSbBusPosition().setValid(false);
 			return sbTerminal;
@@ -231,30 +143,44 @@ public class ParseGPSUtil {
 		return sbTerminal;
 	}
 	
-	private SbTerminal getCP01(String str) {
+	public static SbTerminal getCP01(String str,SbTerminal sbTerminal ) {
 		if (str.length() != 28 || !CheckValidUtil.isValid(sbTerminal)) {
 			sbTerminal.getSbBusPosition().setValid(false);
 			return sbTerminal;
 		}
 		else {
 			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" 心跳检测");
+			sbTerminal.getSbBusPosition().setValid(true);
 			sbTerminal.setAgreement("TRVDP01#");
 			return sbTerminal;
 		}
 	}
 	
-	private SbTerminal getYP02() {
+	public static SbTerminal getYP02(SbTerminal sbTerminal) {
 		if (!CheckValidUtil.isValid(sbTerminal)) {
 			sbTerminal.getSbBusPosition().setValid(false);
 			return sbTerminal;
 		}else {
 			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" IMSI号及ICCID号码响应");
+			sbTerminal.getSbBusPosition().setValid(true);
 			sbTerminal.setAgreement("TRVZP02#");
 			return sbTerminal;
 		}
 	}
 	
-	private boolean checksum(byte[] b) {
+	public static SbTerminal getCP35(SbTerminal sbTerminal) {
+		if (!CheckValidUtil.isValid(sbTerminal)) {
+			sbTerminal.getSbBusPosition().setValid(false);
+			return sbTerminal;
+		}else {
+			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" 收到立即定位请求");
+			sbTerminal.getSbBusPosition().setValid(true);
+			sbTerminal.setAgreement("");
+			return sbTerminal;
+		}
+	}
+	
+	public static boolean checksum(byte[] b) {
 		byte chk = 0;// 校验和
 		byte cb = b[1];// 当前字节
 		for (byte c : b) {
