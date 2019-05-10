@@ -1,6 +1,5 @@
 package com.ky.gps.sys;
 
-import java.lang.Thread.State;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -15,7 +14,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
-import io.netty.util.ResourceLeakDetector;
 
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 	
@@ -75,7 +73,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 				if (response.equals("TRVBP01#") && !HashThreadUtil.hasThread(ctx.channel().id().toString())) {
 					Thread thread = new Thread(new RequestThread(ctx));
 					thread.setName(ctx.channel().id().toString());
-//					thread.setDaemon(true);
+					thread.setDaemon(true);
 					thread.start();
 				}
 			}
