@@ -17,8 +17,8 @@ public class RequestThread implements Runnable{
 
 	@Override
 	public void run() {
-		LOGGER.info("子线程开启: 参数: "+Thread.currentThread().toString()+
-				"|状态: "+Thread.currentThread().getState()+"}");
+//		LOGGER.info("子线程开启: 参数: "+Thread.currentThread().toString()+
+//				"|状态: "+Thread.currentThread().getState()+"}");
 		String re = "TRVDP35#";
 		byte[] reby = re.getBytes();
 		ByteBuf msgby = null;
@@ -29,6 +29,7 @@ public class RequestThread implements Runnable{
 				ReferenceCountUtil.retain(msgby);
 				msgby.writeBytes(reby);
 				ctx.writeAndFlush(msgby);
+				ctx.flush();
 				LOGGER.info("子线程: "+Thread.currentThread().getName()+" -> 发送立即定位请求:"+re);
 			//}
 		} catch (InterruptedException e) {
@@ -38,7 +39,7 @@ public class RequestThread implements Runnable{
 				ReferenceCountUtil.release(msgby);
 			}
 		}
-		LOGGER.info("子线程退出: {参数: "+Thread.currentThread().toString()+"}\n");
+//		LOGGER.info("子线程退出: {参数: "+Thread.currentThread().toString()+"}\n");
 	}
 
 }
