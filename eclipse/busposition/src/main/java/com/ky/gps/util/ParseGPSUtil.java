@@ -82,10 +82,8 @@ public class ParseGPSUtil {
 
 		// 获取纬度
 		{
-			// 纬度-度
-			Double lat = Double.parseDouble(info.get(1).substring(0, 2));
-			// 纬度-分
-			lat += Double.parseDouble(info.get(1).substring(2)) / 60;
+			Double lat = Double.parseDouble(info.get(1).substring(0, 2));// 纬度-度
+			lat += Double.parseDouble(info.get(1).substring(2)) / 60;// 纬度-分
 			sbTerminal.getSbBusPosition().setSbpLatitude(lat);
 		}
 		
@@ -125,8 +123,7 @@ public class ParseGPSUtil {
 		{
 			Double speed = 0D;
 			if (!info.get(3).isEmpty()) {
-				// 速度单位转换为千米每小时
-				speed = Double.parseDouble(info.get(3));
+				speed = Double.parseDouble(info.get(3));// 速度单位转换为千米每小时
 			}
 			sbTerminal.getSbBusPosition().setSbpVelocity(speed);
 		}
@@ -184,47 +181,37 @@ public class ParseGPSUtil {
 	}
 	
 	public static boolean checksum(byte[] b) {
-		// 校验和
-		byte chk = 0;
-		// 当前字节
-		byte cb = b[1];
+		byte chk = 0;// 校验和
+		byte cb = b[1];// 当前字节
 		for (byte c : b) {
 			System.out.print((char) c);
 		}
 		System.out.println();
 		int i = 0;
-		if (b[0] != '$') {
+		if (b[0] != '$')
 			return false;
-		}
-		// 计算校验和
-		for (i = 2; i < b.length; i++)
+		for (i = 2; i < b.length; i++)// 计算校验和
 		{
 			if (b[i] == '*')
 				break;
 			cb = (byte) (cb ^ b[i]);
 			System.out.print(cb + " ");
 		}
-		// 校验位不正常
-		if (i != b.length - 3) {
+		if (i != b.length - 3)// 校验位不正常
 			return false;
-		}
 		i++;
-		// 用于存放语句后两位
-		byte[] bb = new byte[2];
+		byte[] bb = new byte[2];// 用于存放语句后两位
 		bb[0] = b[i++];
 		bb[1] = b[i];
 		try {
-			// 后两位转换为一个字节
-			chk = (byte) Integer.parseInt(new String(bb), 16);
-		} catch (Exception e)
+			chk = (byte) Integer.parseInt(new String(bb), 16);// 后两位转换为一个字节
+		} catch (Exception e)// 后两位无法转换为一个字节，格式错误
 		{
-			// 后两位无法转换为一个字节，格式错误
 			return false;
 		}
 		System.out.println("校验信息");
 		System.out.println(" 原文：" + chk);
 		System.out.println(" 计算：" + cb);
-		// 计算出的校验和与语句的数据是否一致
-		return chk == cb;
+		return chk == cb;// 计算出的校验和与语句的数据是否一致
 	}
 }

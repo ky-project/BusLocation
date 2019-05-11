@@ -41,7 +41,7 @@ public class ParseGPS {
 
 	/**
 	 *  
-	 * @param by 返回值 1 正确 0校验失败 2非TRV信息 3无效定位 4格式错误
+	 * @param 返回值 1 正确 0校验失败 2非TRV信息 3无效定位 4格式错误
 	 * @return
 	 */
 	private SbTerminal parseST(String by) {
@@ -49,8 +49,7 @@ public class ParseGPS {
 		try {
 			
 			{
-				// 判断非空
-				if (by == null || by.isEmpty()) {
+				if (by == null || by.isEmpty()) {// 判断非空
 					sbTerminal.getSbBusPosition().setValid(false);
 					LOGGER.info("信息为空，无效");
 					return sbTerminal;
