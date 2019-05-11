@@ -30,7 +30,6 @@ public class NIOServerSocket {
      */
     private ServerSocketChannel socketChannel;
     //	private static ServerSocket serverSocket;	// 通信服务
-    private static ParseGPS parseGPS;
     private int port;
     private final static Logger LOGGER = LoggerFactory.getLogger(NIOServerSocket.class);
 
@@ -57,7 +56,7 @@ public class NIOServerSocket {
      * 监听服务开启
      */
     public void start() {
-
+    	ParseGPS parseGPS = new ParseGPS();
         try {
             init();
         } catch (IOException e) {
@@ -86,9 +85,6 @@ public class NIOServerSocket {
                 SelectionKey key = null;
 
                 try {
-
-                    parseGPS = new ParseGPS();
-                    parseGPS.init();
                     // 循环遍历SelectionKeySet中的所有的SelectionKey
                     while (iterator.hasNext()) {
                         // 选择一个元素
@@ -98,7 +94,7 @@ public class NIOServerSocket {
 
                         try {
                             // 自定义事件处理
-                            handleEvent(selector, key);
+                            handleEvent(selector, key, parseGPS);
 
                         } catch (Exception e) {
                             LOGGER.error("", e);
@@ -146,7 +142,7 @@ public class NIOServerSocket {
         }
     }
 
-    public static void handleEvent(Selector selector, SelectionKey key) throws IOException {
+    public void handleEvent(Selector selector, SelectionKey key, ParseGPS parseGPS) throws IOException {
         // 如果是有效的，则执行下一步
         if (key.isValid()) {
             // 处理新接入的请求消息
@@ -199,7 +195,7 @@ public class NIOServerSocket {
         }
     }
 
-    public static void doWrite(SocketChannel channel, String response) throws IOException {
+    public void doWrite(SocketChannel channel, String response) throws IOException {
 
         if (response != null && response.trim().length() > 0) {
 
