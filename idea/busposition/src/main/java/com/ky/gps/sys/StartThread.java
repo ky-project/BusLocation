@@ -3,10 +3,6 @@ package com.ky.gps.sys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ky.gps.sys.EchoServer;
-
-import java.net.ServerSocket;
-
 
 /**
  * 主线程
@@ -17,6 +13,7 @@ import java.net.ServerSocket;
 public class StartThread implements Runnable {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(StartThread.class);
+	private final static int GPS_PORT = 20086;
 	
 	public StartThread() {
 		
@@ -24,18 +21,14 @@ public class StartThread implements Runnable {
 
 	@Override
 	public void run() {
-		ServerSocket serverSocket = null;
 		
+		LOGGER.info("-------------监听端口GPSport: "+GPS_PORT+"-------------");
 		
-		int GPSprot = 20086;
-//		System.out.println("-------------监听端口GPSport: "+GPSprot+"-------------");
-		LOGGER.info("-------------监听端口GPSport: "+GPSprot+"-------------");
-		
-		EchoServer echoServer = new EchoServer();
+		EchoServer echoServer = null;
 		try {
-			
+			echoServer = new EchoServer();
 			//---------------------------------------------------------------//
-			echoServer.setPort(GPSprot);
+			echoServer.setPort(GPS_PORT);
 			echoServer.init();
 			//---------------------------------------------------------------//
 			try {

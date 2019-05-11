@@ -26,4 +26,11 @@
         FROM sb_bus_route
         order by ROUTE_ID
     </select>
+    <select id="findStartAndEndTimeByRouteId" parameterType="integer" resultType="map">
+        SELECT SBBR_START_TIME startTime, SBBR_END_TIME endTime
+        FROM sb_bus_route
+        WHERE ROUTE_ID = #{routeId}
+        LIMIT 1
+    </select>
+
 </mapper>

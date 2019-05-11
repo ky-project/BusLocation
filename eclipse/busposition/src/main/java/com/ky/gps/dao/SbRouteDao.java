@@ -1,6 +1,7 @@
 package com.ky.gps.dao;
 
 import com.ky.gps.entity.SbRoute;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -16,14 +17,14 @@ public interface SbRouteDao {
      * @param id 查询id
      * @return 返回对象
      */
-    SbRoute findBaseInfoById(Integer id);
+    SbRoute findBaseInfoById(@Param("id") Integer id);
 
     /**
      * 根据id查询路线名
      * @param id 查询id
      * @return 路线名
      */
-    String findNameById(Integer id);
+    String findNameById(@Param("id") Integer id);
 
     /**
      * 查询所有路线的基本信息
