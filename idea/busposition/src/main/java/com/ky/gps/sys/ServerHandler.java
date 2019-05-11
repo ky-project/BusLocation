@@ -74,7 +74,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                     Thread thread = new Thread(new RequestThread(ctx));
                     thread.setName(ctx.channel().id().toString());
                     thread.setDaemon(true);
-                    thread.start();
+                    thread.run();
                 }
             }
         } catch (Exception e) {

@@ -1,11 +1,11 @@
-2019-05-11 00:21:47 [RMI TCP Connection(3)-127.0.0.1-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
-2019-05-11 00:21:50 [RMI TCP Connection(3)-127.0.0.1-295] INFO  org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
-2019-05-11 00:21:50 [RMI TCP Connection(3)-127.0.0.1-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 2947 ms
-2019-05-11 00:21:50 [RMI TCP Connection(3)-127.0.0.1-31] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
-2019-05-11 00:21:50 [RMI TCP Connection(3)-127.0.0.1-40] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
-2019-05-11 00:21:50 [MyThread-25] INFO  com.ky.gps.sys.StartThread - -------------监听端口GPSport: 20086-------------
-2019-05-11 00:21:50 [RMI TCP Connection(3)-127.0.0.1-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
-2019-05-11 00:21:51 [MyThread-460] WARN  io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0xae71c20a]'
-2019-05-11 00:21:51 [MyThread-72] INFO  com.ky.gps.sys.StartThread - 监听服务开启：Thread[MyThread,5,RMI Runtime] Sat May 11 00:21:51 CST 2019
-2019-05-11 00:21:52 [RMI TCP Connection(3)-127.0.0.1-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1611 ms
-2019-05-11 00:21:56 [http-nio-8080-exec-3-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-05-11 10:06:10 [RMI TCP Connection(3)-127.0.0.1-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-11 10:06:13 [RMI TCP Connection(3)-127.0.0.1-295] INFO  org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-11 10:06:13 [RMI TCP Connection(3)-127.0.0.1-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3237 ms
+2019-05-11 10:06:13 [RMI TCP Connection(3)-127.0.0.1-31] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-11 10:06:13 [RMI TCP Connection(3)-127.0.0.1-40] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-11 10:06:13 [MyThread-25] INFO  com.ky.gps.sys.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-11 10:06:13 [RMI TCP Connection(3)-127.0.0.1-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-11 10:06:14 [MyThread-460] WARN  io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0xbdf1cc45]'
+2019-05-11 10:06:14 [MyThread-72] INFO  com.ky.gps.sys.StartThread - 监听服务开启：Thread[MyThread,5,RMI Runtime] Sat May 11 10:06:14 CST 2019
+2019-05-11 10:06:15 [RMI TCP Connection(3)-127.0.0.1-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1645 ms
+2019-05-11 10:06:20 [http-nio-8080-exec-7-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited

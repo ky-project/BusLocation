@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 public class StartThread implements Runnable {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(StartThread.class);
+	private final static int GPS_PORT = 20086;
 	
 	public StartThread() {
 		
@@ -21,15 +22,13 @@ public class StartThread implements Runnable {
 	@Override
 	public void run() {
 		
-		int GPSprot = 20086;
-//		System.out.println("-------------监听端口GPSport: "+GPSprot+"-------------");
-		LOGGER.info("-------------监听端口GPSport: "+GPSprot+"-------------");
+		LOGGER.info("-------------监听端口GPSport: "+GPS_PORT+"-------------");
 		
-		EchoServer echoServer = new EchoServer();
+		EchoServer echoServer = null;
 		try {
-			
+			echoServer = new EchoServer();
 			//---------------------------------------------------------------//
-			echoServer.setPort(GPSprot);
+			echoServer.setPort(GPS_PORT);
 			echoServer.init();
 			//---------------------------------------------------------------//
 			try {

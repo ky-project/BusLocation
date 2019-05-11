@@ -10,26 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd9875d8-efd0-4347-965b-526af6626ecc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/listener/GPSThreadLietener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/listener/GPSThreadLietener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/sys/NIOServerSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/sys/NIOServerSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/sys/ParseGPS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/sys/ParseGPS.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/sys/ServerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/sys/ServerHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/sys/StartThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/sys/StartThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/util/ParseGPSUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/com/ky/gps/util/ParseGPSUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/mapper/SbBusRouteDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/mapper/SbBusRouteDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/logs/debug-0.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/logs/debug-0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/logs/info-0.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/logs/info-0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/logs/warn-0.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/logs/warn-0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ky/gps/listener/GPSThreadLietener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ky/gps/listener/GPSThreadLietener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ky/gps/sys/NIOServerSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ky/gps/sys/NIOServerSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ky/gps/sys/ParseGPS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ky/gps/sys/ParseGPS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/log/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/busposition/WEB-INF/classes/log/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ky/gps/sys/ServerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ky/gps/sys/ServerHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ky/gps/sys/StartThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ky/gps/sys/StartThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ky/gps/util/ParseGPSUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ky/gps/util/ParseGPSUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/SbBusRouteDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/SbBusRouteDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/log/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/log/log4j2.xml" afterDir="false" />
     </list>
     <list id="2c2ddab5-3db0-4073-96f3-da32500f3e0c" name="Revert: " comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -78,26 +62,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/log/log4j2.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="91" column="35" lean-forward="true" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SbBusRouteDao.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -168,11 +133,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/EchoServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/NIOServerSocket.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/ParseGPS.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/ServerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/StartThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/util/ParseGPSUtil.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/SbBusRouteDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/log/log4j2.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/ServerHandler.java" />
       </list>
     </option>
   </component>
@@ -222,7 +187,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -247,6 +212,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="busposition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="busposition" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="busposition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="busposition" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gps" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="busposition" type="b2602c69:ProjectViewProjectNode" />
@@ -282,7 +264,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,19 +283,19 @@
     <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\sys" />
-      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\resources\mapper" />
-      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\util" />
-      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\test\java\com\ky\gps\test\service" />
-      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\entity" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\WebRoot" />
       <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\WebRoot\api" />
       <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\util" />
       <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\resources\log" />
       <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\resources" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\sys" />
+      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\resources\mapper" />
+      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\util" />
+      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\test\java\com\ky\gps\test\service" />
+      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\entity" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -589,7 +571,8 @@
       <workItem from="1557474145147" duration="60000" />
       <workItem from="1557476729986" duration="7477000" />
       <workItem from="1557498921562" duration="3963000" />
-      <workItem from="1557502928109" duration="2712000" />
+      <workItem from="1557502928109" duration="2936000" />
+      <workItem from="1557537471872" duration="1135000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Update">
       <created>1557226925218</created>
@@ -710,7 +693,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557505500451</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="修改请求立即定位">
+      <created>1557540278699</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1557540278699</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -746,7 +736,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="425934000" />
+    <option name="totallyTimeSpent" value="427293000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -759,9 +749,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.65595716" visible="true" weight="0.21258742" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65595716" visible="true" weight="0.21538462" />
       <window_info id="Web" order="1" sideWeight="0.5020325" side_tool="true" weight="0.20979021" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -786,12 +775,12 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info active="true" anchor="right" id="Maven" order="4" sideWeight="0.54563105" visible="true" weight="0.16643357" />
+      <window_info anchor="right" id="Maven" order="4" sideWeight="0.54563105" visible="true" weight="0.16573426" />
       <window_info anchor="right" id="Database" order="5" sideWeight="0.4875" weight="0.2034965" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Mybatis datasource" order="7" side_tool="true" weight="0.3296011" />
       <window_info anchor="right" id="Structure" order="8" sideWeight="0.5970549" weight="0.19020979" />
-      <window_info anchor="right" x="642" y="363" width="345" height="296" id="Documentation" order="9" sideWeight="0.45436892" side_tool="true" visible="true" weight="0.16643357" />
+      <window_info anchor="right" x="642" y="363" width="345" height="296" id="Documentation" order="9" sideWeight="0.45436892" side_tool="true" visible="true" weight="0.16573426" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65595716" visible="true" weight="0.24195804" />
@@ -842,10 +831,10 @@
     <MESSAGE value="bus/route/station接口添加路线的运营时间(startTime,endTime)" />
     <MESSAGE value="规范注释和代码" />
     <MESSAGE value="更新SQL返回值的小错误" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新SQL返回值的小错误" />
+    <MESSAGE value="修改请求立即定位" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改请求立即定位" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/listener/GpsThreadListener.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/util/TransformUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -1081,13 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/sys/EchoServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/sys/NIOServerSocket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3749">
@@ -1103,24 +1085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="798">
           <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/sys/RequestThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding>
-            <element signature="e#452#453#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/sys/ServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="120" column="33" lean-forward="true" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1180,17 +1144,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SbBusRouteDao.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log/log4j2.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+        <state relative-caret-position="1729">
+          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log/log4j2.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SbStationDao.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SbBusRouteDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="91" column="35" lean-forward="true" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
+        <state relative-caret-position="507">
+          <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/sys/ServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-960">
+          <caret line="81" column="19" lean-forward="true" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/sys/RequestThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/sys/EchoServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
         </state>
       </provider>
     </entry>
