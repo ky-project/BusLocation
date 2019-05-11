@@ -29,7 +29,6 @@ public class RequestThread implements Runnable{
 				ReferenceCountUtil.retain(msgby);
 				msgby.writeBytes(reby);
 				ctx.writeAndFlush(msgby);
-				ctx.flush();
 				LOGGER.info("子线程: "+Thread.currentThread().getName()+" -> 发送立即定位请求:"+re);
 			//}
 		} catch (InterruptedException e) {
