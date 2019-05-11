@@ -1,13 +1,13 @@
-2019-05-11 00:21:47 org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
-2019-05-11 00:21:50 org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
-2019-05-11 00:21:50 org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 2947 ms
-2019-05-11 00:21:50 com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
-2019-05-11 00:21:50 com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
-2019-05-11 00:21:50 com.ky.gps.sys.StartThread - -------------监听端口GPSport: 20086-------------
-2019-05-11 00:21:50 org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
-2019-05-11 00:21:51 io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0xae71c20a]'
-2019-05-11 00:21:51 com.ky.gps.sys.StartThread - 监听服务开启：Thread[MyThread,5,RMI Runtime] Sat May 11 00:21:51 CST 2019
-2019-05-11 00:21:52 org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1611 ms
-2019-05-11 00:21:56 com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-2019-05-11 00:21:57 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20000} enter cache
-2019-05-11 00:21:57 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20001} enter cache
+2019-05-11 10:06:10 org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-11 10:06:13 org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-11 10:06:13 org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3237 ms
+2019-05-11 10:06:13 com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-11 10:06:13 com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-11 10:06:13 com.ky.gps.sys.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-11 10:06:13 org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-11 10:06:14 io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0xbdf1cc45]'
+2019-05-11 10:06:14 com.ky.gps.sys.StartThread - 监听服务开启：Thread[MyThread,5,RMI Runtime] Sat May 11 10:06:14 CST 2019
+2019-05-11 10:06:15 org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1645 ms
+2019-05-11 10:06:20 com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-05-11 10:06:20 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20000} enter cache
+2019-05-11 10:06:20 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20001} enter cache

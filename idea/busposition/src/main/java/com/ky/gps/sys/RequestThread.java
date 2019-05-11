@@ -23,14 +23,14 @@ public class RequestThread implements Runnable{
 		byte[] reby = re.getBytes();
 		ByteBuf msgby = null;
 		try {
-			while(true) {
-				Thread.sleep(2000);
+			//while(true) {
+				Thread.sleep(1000);
 				msgby = Unpooled.buffer();
 				ReferenceCountUtil.retain(msgby);
 				msgby.writeBytes(reby);
 				ctx.writeAndFlush(msgby);
 				LOGGER.info("子线程: "+Thread.currentThread().getName()+" -> 发送立即定位请求:"+re);
-			}
+			//}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
