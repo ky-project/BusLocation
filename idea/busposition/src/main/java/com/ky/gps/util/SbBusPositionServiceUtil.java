@@ -2,20 +2,29 @@ package com.ky.gps.util;
 
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.service.inter.SbBusPositionService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+
+/**
+ * @author Daye
+ * 获取sbBusPositionService并调用其方法的工具类
+ */
+@Component
 public class SbBusPositionServiceUtil {
-    private static ApplicationContext applicationContext;
-    private static SbBusPositionService sbBusPositionService;
 
+    @Resource
+    private SbBusPositionService sbBusPositionService;
+    private static SbBusPositionServiceUtil sbBusPositionServiceUtil;
+
+    @PostConstruct
     public void init(){
-        applicationContext =
-                new ClassPathXmlApplicationContext("spring/applicationContext-service.xml");
-        sbBusPositionService = applicationContext.getBean(SbBusPositionService.class);
+        sbBusPositionServiceUtil = this;
+        sbBusPositionServiceUtil.sbBusPositionService = this.sbBusPositionService;
     }
     
-    public static void save(SbBusPosition sbBusPosition){
-        sbBusPositionService.savePosition(sbBusPosition);
+    public static void savePosition(SbBusPosition sbBusPosition){
+        sbBusPositionServiceUtil.sbBusPositionService.savePosition(sbBusPosition);
     }
 }

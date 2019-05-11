@@ -1,5 +1,6 @@
 package com.ky.gps.service.impl;
 
+import com.ky.gps.dao.SbBusRouteDao;
 import com.ky.gps.dao.SbRouteStationDao;
 import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
@@ -22,6 +23,8 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
 
     @Resource
     private SbRouteStationDao sbRouteStationDao;
+    @Resource
+    private SbBusRouteDao sbBusRouteDao;
 
     @Override
     public ResultWrapper findAllRouteStation() {
@@ -105,6 +108,17 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
         //将路线名和id存入
         routeStationTmpMap.put("routeName", routeName);
         routeStationTmpMap.put("routeId", routeId);
+        //获取该路线的起始时间
+        Map<String, Object> startAndEndTimeMap = sbBusRouteDao.findStartAndEndTimeByRouteId(routeId);
+        //TODO 如果运营时间map为null，说明未给这条路安排bus，需要处理
+        //null值处理
+        if(null == startAndEndTimeMap) {
+            startAndEndTimeMap = new HashMap<>(2);
+            startAndEndTimeMap.put("startTime", "0:00");
+            startAndEndTimeMap.put("endTime", "0:00");
+        }
+        //将该map合并到总的map中
+        routeStationTmpMap.putAll(startAndEndTimeMap);
         sortByDepartTime(sortRouteStationList);
         //设置前一站和后一站
         if (1 == sortRouteStationList.size()) {

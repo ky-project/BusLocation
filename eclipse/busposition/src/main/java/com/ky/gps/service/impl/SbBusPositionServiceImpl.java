@@ -40,7 +40,7 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public synchronized void savePosition(SbBusPosition sbBusPosition) {
+    public void savePosition(SbBusPosition sbBusPosition) {
         sbBusPositionDao.savePosition(sbBusPosition);
     }
 
@@ -66,7 +66,7 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
         List<Map<String, Object>> filterTmpPositionList = new ArrayList<>();
         //临时站点名,初始化为第一条数据的站点名
         String routeNameTmp = allRoutePosition.get(0).get("routeName").toString();
-        Integer routeId = (Integer)allRoutePosition.get(0).get("routeId");
+        Integer routeId = (Integer) allRoutePosition.get(0).get("routeId");
         //遍历筛选，Keys={routeName, startTime, endTime, recodeTime, longitude, latitude, velocity, direction}
         for (int i = 0; i < allRoutePosition.size(); i++) {
             //获取map
@@ -92,7 +92,7 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
                 addToEffectiveRoutePosition(effectiveRoutePosition, filterTmpPositionList, routeNameTmp, routeId);
                 //重置routeName
                 routeNameTmp = routePositionMap.get("routeName").toString();
-                routeId = (Integer)routePositionMap.get("routeId");
+                routeId = (Integer) routePositionMap.get("routeId");
                 //清空前一个站点的所有定位
                 filterTmpPositionList = new ArrayList<>();
             }
@@ -116,10 +116,11 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
 
     /**
      * 将路线名、id和轨迹信息存入临时map中，并加入到有效路线轨迹list
+     *
      * @param effectiveRoutePosition 待进的有效路线轨迹list
-     * @param filterTmpPositionList 已过滤的该路线的轨迹记录list
-     * @param routeNameTmp 路线名
-     * @param routeId 路线id
+     * @param filterTmpPositionList  已过滤的该路线的轨迹记录list
+     * @param routeNameTmp           路线名
+     * @param routeId                路线id
      */
     private void addToEffectiveRoutePosition(List<Map<String, Object>> effectiveRoutePosition, List<Map<String, Object>> filterTmpPositionList, String routeNameTmp, Integer routeId) {
         //创建存放站点的所有站点和站点名Map
@@ -141,6 +142,18 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
         ResultWrapper resultWrapper;
         //查询总记录数
         Integer count = sbBusPositionDao.findCountByRouteId(JudgeTimeUtil.getWeek(), routeId);
+        //如果无定位记录，则直接返回一个map，无需再查数据库
+        if (0 == count || startIndex >= count) {
+            //创建待返回的有效list集合，含定位和routeId
+            Map<String, Object> mapTmp = new HashMap<>(16);
+            //存放routeId
+            mapTmp.put("routeId", routeId);
+            //存入定位信息
+            mapTmp.put("trackRoute", new ArrayList<>());
+            return ResultWrapperUtil.setSuccessOf(mapTmp);
+        }
+        //减去已获得的记录数
+        count -= startIndex;
         //查询该路线id从startIndex到count的记录
         List<Map<String, Object>> routePositionList = sbBusPositionDao.findAllRoutePositionByRouteId(JudgeTimeUtil.getWeek(), routeId, startIndex, count);
         //遍历查询到的记录，进行一定的处理
@@ -162,7 +175,7 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
         if (0 == routePositionList.size()) {
             return ResultWrapperUtil.setSuccessOf(resultMap);
         }
-        if(0 == startIndex) {
+        if (0 == startIndex) {
             //TODO 针对测试进行的数据筛选，之后需要删除
             optimizeTmp(routePositionList);
         }
@@ -171,7 +184,7 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
         return resultWrapper;
     }
 
-    private void optimizeTmp(List<Map<String, Object>> optimizeList){
+    private void optimizeTmp(List<Map<String, Object>> optimizeList) {
         if (optimizeList.size() >= 40) {
             int removeNumber = 20;
             for (int index = 0; index <= removeNumber; index++) {
