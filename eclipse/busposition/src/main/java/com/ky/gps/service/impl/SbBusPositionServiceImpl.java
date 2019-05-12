@@ -4,7 +4,7 @@ import com.ky.gps.dao.SbBusPositionDao;
 import com.ky.gps.dao.SbBusPositionHisDao;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusPosition;
-import com.ky.gps.service.inter.SbBusPositionService;
+import com.ky.gps.service.SbBusPositionService;
 import com.ky.gps.util.JudgeTimeUtil;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.stereotype.Service;

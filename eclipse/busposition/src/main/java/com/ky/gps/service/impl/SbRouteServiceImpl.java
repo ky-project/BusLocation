@@ -3,7 +3,7 @@ package com.ky.gps.service.impl;
 import com.ky.gps.dao.SbRouteDao;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbRoute;
-import com.ky.gps.service.inter.SbRouteService;
+import com.ky.gps.service.SbRouteService;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;

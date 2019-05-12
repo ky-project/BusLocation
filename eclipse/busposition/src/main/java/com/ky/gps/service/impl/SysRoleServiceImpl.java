@@ -2,7 +2,7 @@ package com.ky.gps.service.impl;
 
 import com.ky.gps.dao.SysRoleDao;
 import com.ky.gps.entity.ResultWrapper;
-import com.ky.gps.service.inter.SysRoleService;
+import com.ky.gps.service.SysRoleService;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.stereotype.Service;
 

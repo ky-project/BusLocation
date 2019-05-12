@@ -7,7 +7,7 @@ import java.util.Date;
 
 import com.ky.gps.entity.SbGps;
 import com.ky.gps.entity.SbTerminal;
-import com.ky.gps.service.inter.SbBusPositionService;
+import com.ky.gps.service.SbBusPositionService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -178,7 +178,7 @@ public class ParseGPSUtil {
 		}else {
 			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" 收到立即定位请求");
 			sbTerminal.getSbBusPosition().setValid(true);
-			sbTerminal.setAgreement("CP35");
+			sbTerminal.setAgreement("");
 			return sbTerminal;
 		}
 	}

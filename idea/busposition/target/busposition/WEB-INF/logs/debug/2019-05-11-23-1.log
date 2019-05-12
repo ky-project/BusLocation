@@ -1,0 +1,10 @@
+2019-05-11 21:52:19 org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-11 21:52:22 org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-11 21:52:23 org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3840 ms
+2019-05-11 21:52:23 com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-11 21:52:23 com.ky.gps.sys.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-11 21:52:23 com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-11 21:52:23 org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-11 21:52:24 io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0x343e2211]'
+2019-05-11 21:52:24 com.ky.gps.sys.StartThread - 监听服务开启：Thread[MyThread,5,RMI Runtime] Sat May 11 21:52:24 CST 2019
+2019-05-11 21:52:24 org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1815 ms

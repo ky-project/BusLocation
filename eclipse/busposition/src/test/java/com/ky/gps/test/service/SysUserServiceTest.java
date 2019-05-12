@@ -1,7 +1,8 @@
 package com.ky.gps.test.service;
 
 import com.ky.gps.entity.ResultWrapper;
-import com.ky.gps.service.inter.SysUserService;
+import com.ky.gps.service.SysUserService;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

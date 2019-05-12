@@ -3,7 +3,7 @@ package com.ky.gps.service.impl;
 import com.ky.gps.dao.SbUserRoleDao;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbUserRole;
-import com.ky.gps.service.inter.SbUserRoleService;
+import com.ky.gps.service.SbUserRoleService;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

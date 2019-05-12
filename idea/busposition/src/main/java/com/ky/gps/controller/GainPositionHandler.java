@@ -2,10 +2,9 @@ package com.ky.gps.controller;
 
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.entity.SbGps;
-import com.ky.gps.service.inter.SbBusPositionService;
+import com.ky.gps.service.SbBusPositionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
