@@ -1,4 +1,4 @@
-package com.ky.gps.server;
+package com.ky.gps.sys;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
