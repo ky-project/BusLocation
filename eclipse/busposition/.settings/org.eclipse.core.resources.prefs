@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/main/java/com/ky/gps/sys/ParseGPS.java=UTF-8
-encoding//src/main/java/com/ky/gps/sys/ServerHandler.java=UTF-8
+encoding//src/main/java/com/ky/gps/server/ParseGPS.java=UTF-8
+encoding//src/main/java/com/ky/gps/server/ServerHandler.java=UTF-8
 encoding/<project>=UTF-8

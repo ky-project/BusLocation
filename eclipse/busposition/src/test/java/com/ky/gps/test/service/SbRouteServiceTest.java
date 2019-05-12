@@ -1,10 +1,11 @@
 package com.ky.gps.test.service;
 
-import com.ky.gps.service.inter.SbRouteService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.ky.gps.service.SbRouteService;
 
 import java.util.List;
 import java.util.Map;

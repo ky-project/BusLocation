@@ -1,10 +1,10 @@
 package com.ky.gps.controller;
 
 import com.ky.gps.entity.*;
-import com.ky.gps.service.inter.DepartmentService;
-import com.ky.gps.service.inter.SysLogService;
-import com.ky.gps.service.inter.SysRoleService;
-import com.ky.gps.service.inter.SysUserService;
+import com.ky.gps.service.DepartmentService;
+import com.ky.gps.service.SysLogService;
+import com.ky.gps.service.SysRoleService;
+import com.ky.gps.service.SysUserService;
 import com.ky.gps.util.ResultWrapperUtil;
 import com.ky.gps.util.SysLogUtil;
 import org.slf4j.Logger;

@@ -1,6 +1,6 @@
 package com.ky.gps.timer;
 
-import com.ky.gps.service.inter.SbBusPositionService;
+import com.ky.gps.service.SbBusPositionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;

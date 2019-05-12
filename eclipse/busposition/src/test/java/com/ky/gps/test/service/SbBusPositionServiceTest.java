@@ -3,8 +3,9 @@ package com.ky.gps.test.service;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.entity.SbGps;
+import com.ky.gps.service.SbBusPositionService;
 import com.ky.gps.service.impl.SbBusPositionServiceImpl;
-import com.ky.gps.service.inter.SbBusPositionService;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

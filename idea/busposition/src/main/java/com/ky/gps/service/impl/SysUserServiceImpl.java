@@ -4,7 +4,7 @@ import com.ky.gps.dao.SbUserBusDao;
 import com.ky.gps.dao.SbUserRoleDao;
 import com.ky.gps.dao.SysUserDao;
 import com.ky.gps.entity.*;
-import com.ky.gps.service.inter.SysUserService;
+import com.ky.gps.service.SysUserService;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

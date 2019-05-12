@@ -1,7 +1,8 @@
 package com.ky.gps.service.impl;
 
 import com.ky.gps.dao.SbGpsDao;
-import com.ky.gps.service.inter.SbGpsService;
+import com.ky.gps.service.SbGpsService;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

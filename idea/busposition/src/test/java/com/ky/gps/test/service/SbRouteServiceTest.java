@@ -1,6 +1,6 @@
 package com.ky.gps.test.service;
 
-import com.ky.gps.service.inter.SbRouteService;
+import com.ky.gps.service.SbRouteService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
