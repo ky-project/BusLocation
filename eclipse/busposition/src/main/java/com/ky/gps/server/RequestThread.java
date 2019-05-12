@@ -1,4 +1,4 @@
-package com.ky.gps.server;
+package com.ky.gps.sys;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +17,8 @@ public class RequestThread implements Runnable{
 
 	@Override
 	public void run() {
-		LOGGER.info("子线程开启: 参数: "+Thread.currentThread().toString()+
-				"|状态: "+Thread.currentThread().getState()+"}");
+//		LOGGER.info("子线程开启: 参数: "+Thread.currentThread().toString()+
+//				"|状态: "+Thread.currentThread().getState()+"}");
 		String re = "TRVDP35#";
 		byte[] reby = re.getBytes();
 		ByteBuf msgby = null;
@@ -38,7 +38,7 @@ public class RequestThread implements Runnable{
 				ReferenceCountUtil.release(msgby);
 			}
 		}
-		LOGGER.info("子线程退出: {参数: "+Thread.currentThread().toString()+"}\n");
+//		LOGGER.info("子线程退出: {参数: "+Thread.currentThread().toString()+"}\n");
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.ky.gps.server;
+package com.ky.gps.sys;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,10 @@ public class ParseGPS {
 	private final Logger LOGGER = LoggerFactory.getLogger(ParseGPS.class);
 	
 	public ParseGPS() {
+		init();
 	}
 
-	public void init() {
+	private void init() {
 		sbTerminal = new SbTerminal("", new SbBusPosition(), "");
 	}
 
@@ -70,18 +71,18 @@ public class ParseGPS {
 				}
 			}
 			
-			{
-				if (!by.endsWith("#")) {
-					sbTerminal.getSbBusPosition().setValid(false);
-					LOGGER.info("GPS信息无中断，无效");
-					return sbTerminal;
-				}
-			}
+//			{
+//				if (!(by.endsWith("#") || by.length() > 53)) {
+//					sbTerminal.getSbBusPosition().setValid(false);
+//					LOGGER.info("GPS信息无中断，无效");
+//					return sbTerminal;
+//				}
+//			}
 			
 			String gpsProtocol = by.substring(3, 7);
 			String str = null;
-			if (by.length()>8) {
-				str = by.substring(7,by.length()-1);
+			if (by.length()>7) {
+				str = by.substring(7);
 				if (str.charAt(0) == ',') {
 					str = str.replaceFirst(",", "");
 				}
@@ -98,7 +99,7 @@ public class ParseGPS {
 				case "AP01":
 					sbTerminal = ParseGPSUtil.getAP01(str,sbTerminal);
 					if (sbTerminal.getSbBusPosition().getValid()) {
-						SbBusPositionServiceUtil.savePosition(sbTerminal.getSbBusPosition());
+						//SbBusPositionServiceUtil.savePosition(sbTerminal.getSbBusPosition());
 					}
 					return sbTerminal;
 				
