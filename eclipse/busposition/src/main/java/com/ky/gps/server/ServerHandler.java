@@ -73,7 +73,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 				ctx.writeAndFlush(pingMessage);
 				
 //				else if (!HashThreadUtil.hasThread(ctx.channel().id().toString())) {
-				if ("CP35".equals(response) || "TRVZP02#".equals(response)) {
+				if ("TRVBP01#".equals(response)) {
 					RequestThread thread = new RequestThread(ctx);
 //					thread.setName(ctx.channel().id().toString());
 //					thread.setDaemon(true);
