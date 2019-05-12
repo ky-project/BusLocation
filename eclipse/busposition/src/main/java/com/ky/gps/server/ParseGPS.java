@@ -99,7 +99,7 @@ public class ParseGPS {
 				case "AP01":
 					sbTerminal = ParseGPSUtil.getAP01(str,sbTerminal);
 					if (sbTerminal.getSbBusPosition().getValid()) {
-						//SbBusPositionServiceUtil.savePosition(sbTerminal.getSbBusPosition());
+						SbBusPositionServiceUtil.savePosition(sbTerminal.getSbBusPosition());
 					}
 					return sbTerminal;
 				

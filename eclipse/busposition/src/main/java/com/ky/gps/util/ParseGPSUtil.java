@@ -178,7 +178,7 @@ public class ParseGPSUtil {
 		}else {
 			LOGGER.info("GPS:"+sbTerminal.getSbBusPosition().getSbGps().getId()+" 收到立即定位请求");
 			sbTerminal.getSbBusPosition().setValid(true);
-			sbTerminal.setAgreement("CP35");
+			sbTerminal.setAgreement("");
 			return sbTerminal;
 		}
 	}
