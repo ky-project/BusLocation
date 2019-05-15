@@ -1,4 +1,4 @@
-package com.ky.gps.sys;
+package com.ky.gps.server;
 
 import java.util.Date;
 

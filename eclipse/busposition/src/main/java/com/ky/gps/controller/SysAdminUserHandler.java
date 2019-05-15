@@ -1,10 +1,10 @@
 package com.ky.gps.controller;
 
 import com.ky.gps.entity.*;
+import com.ky.gps.service.DepartmentService;
 import com.ky.gps.service.SysLogService;
 import com.ky.gps.service.SysRoleService;
 import com.ky.gps.service.SysUserService;
-import com.ky.gps.service.DepartmentService;
 import com.ky.gps.util.ResultWrapperUtil;
 import com.ky.gps.util.SysLogUtil;
 import org.slf4j.Logger;
@@ -194,7 +194,7 @@ public class SysAdminUserHandler {
                 || "".equals(sysUser.getRealName()) || null == sysUser.getRealName()
                 || "".equals(sysUser.getPassword()) || null == sysUser.getPassword()
                 || "".equals(sysUser.getSalt()) || null == sysUser.getSalt()
-                || "".equals(sysUser.getIdCard()) || null == sysUser.getIdCard()
+                || "".equals(sysUser.getIdCode()) || null == sysUser.getIdCode()
                 || "".equals(sysUser.getPhone()) || null == sysUser.getPhone()
                 || "".equals(sysUser.getEmail()) || null == sysUser.getEmail()
                 || null == sysUser.getAccountDate()

@@ -7,14 +7,12 @@ import com.ky.gps.entity.SysUser;
 import com.ky.gps.service.SysLogService;
 import com.ky.gps.service.SysUserService;
 import com.ky.gps.util.ResultWrapperUtil;
+import com.ky.gps.util.SendMail;
 import com.ky.gps.util.SysLogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +41,110 @@ public class SysUserHandler {
     private SysUserService sysUserService;
     @Resource
     private SysLogService sysLogService;
+
+    /**
+     * 用户忘记密码，通过邮箱来更改密码
+     * @param password 待修改的密码
+     * @return json格式数据
+     */
+    @RequestMapping(value = "/modify/pwd/email", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper modifyPasswordByEmail(String password, String checkCode, HttpServletRequest request){
+        ResultWrapper resultWrapper;
+        try{
+            //判断是否存在空值
+            if(null == checkCode || "".equals(checkCode)
+                    || null == password || "".equals(password)){
+                //空值警告
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
+            }else {
+                //获取ssession中的验证码和邮箱
+                String[] emailModifyPwd = (String[])request.getSession().getAttribute("emailModifyPwd");
+                //session空值判断
+                if(null == emailModifyPwd){
+                    resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR, "无权限修改！");
+                }else {
+                    SysUser sysUser = new SysUser();
+                    sysUser.setPassword(password);
+                    sysUser.setEmail(emailModifyPwd[0]);
+                    //邮箱验证，验证码比较
+                    if (sysUserService.isEffectiveEmail(sysUser.getEmail()) && checkCode.equals(emailModifyPwd[1])) {
+                        //根据email查询用户基本信息
+                        Map<String, Object> baseInfo = sysUserService.findBaseInfoByEmail(sysUser.getEmail());
+                        //TODO 设置加密密码
+                        sysUser.setSalt(sysUser.getPassword());
+                        //设置最后一次密码修改日期
+                        sysUser.setLastPsdDate(new Date());
+                        //设置更新者职工编号
+                        sysUser.setUpdatedBy(baseInfo.get("workId").toString());
+                        //修改密码
+                        resultWrapper = sysUserService.modifyPasswordByEmail(sysUser);
+                        //将其存入SysLog对象中
+                        SysLog sysLog = SysLogUtil.initSysLog(baseInfo, request);
+                        //设置用户操作内容
+                        SysLogUtil.setOperateInfoByObject(sysLog, "用户通过忘记密码修改密码", "/user/modify/pwd/email", "用户:" + baseInfo.get("workId") + "修改密码成功");
+                        //记录日志
+                        sysLogService.saveSysLog(sysLog);
+                    } else {
+                        //返回邮箱不存在提示
+                        resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR, "验证码错误！");
+                    }
+                }
+            }
+        }catch (Exception e){
+            //异常处理
+            LOGGER.error("", e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 发送email给用户邮箱
+     * 忘记密码使用
+     * @param email 邮箱
+     * @return 返回json格式数据
+     */
+    @RequestMapping(value = "/send/email", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper sendEmail(String email, HttpServletRequest request) {
+        ResultWrapper resultWrapper;
+        try {
+            //空值判断
+            //TODO 邮箱格式验证
+            if(null == email || "".equals(email)){
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
+            }else{
+                //邮箱验证
+                if(sysUserService.isEffectiveEmail(email)){
+                    String checkCode = "817264";
+                    //邮箱发送
+                    SendMail.sendEmil(email, checkCode);
+                    //将邮箱存入session中
+                    String[] emailModifyPwd = {email, checkCode};
+                    request.getSession().setAttribute("emailModifyPwd", emailModifyPwd);
+                    //设置成功信息
+                    resultWrapper = ResultWrapperUtil.setSuccessOf(null);
+                    //根据email查询用户基本信息
+                    Map<String, Object> baseInfo = sysUserService.findBaseInfoByEmail(email);
+                    //将其存入SysLog对象中
+                    SysLog sysLog = SysLogUtil.initSysLog(baseInfo, request);
+                    //设置用户操作内容
+                    SysLogUtil.setOperateInfoByObject(sysLog,"用户忘记密码请求", "/user/send/email", "发送更改密码url给" + email);
+                    //记录日志
+                    sysLogService.saveSysLog(sysLog);
+                }else{
+                    //返回邮箱不存在提示
+                    resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR, "邮箱不存在");
+                }
+            }
+        } catch (Exception e) {
+            //异常处理
+            LOGGER.error("", e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
 
     /**
      * 修改用户自身密码
@@ -119,7 +221,7 @@ public class SysUserHandler {
 
     /**
      * 用户更新基本信息
-     * realName、idCard、phone、email
+     * realName、idCode、phone、email
      *
      * @param sysUser 更新后的用户对象
      * @param request request域
@@ -127,7 +229,7 @@ public class SysUserHandler {
      */
     @RequestMapping(value = "/update/info", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper updateSelfInfo(SysUser sysUser, HttpServletRequest request) {
+    public ResultWrapper updateSelfInfo(@RequestBody SysUser sysUser, HttpServletRequest request) {
         ResultWrapper resultWrapper;
         try {
             //获取session中的log对象
@@ -230,7 +332,7 @@ public class SysUserHandler {
             //将用户操作记录记入数据库
             sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "登录", module, "成功登录"));
             //将存放用户的基本信息的map封装进result中
-            resultWrapper = ResultWrapperUtil.setSuccessOf(baseInfo);
+            resultWrapper = ResultWrapperUtil.setSuccessOf(null);
         } catch (Exception e) {
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
             LOGGER.error("", e);

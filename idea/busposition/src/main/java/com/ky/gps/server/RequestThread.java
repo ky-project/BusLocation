@@ -8,6 +8,12 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.ReferenceCountUtil;
 
+/**
+ * 
+ * @author Rocky
+ * 
+ * 2019年5月12日-下午6:29:47
+ */
 public class RequestThread implements Runnable{
 	private final static Logger LOGGER = LoggerFactory.getLogger(StartThread.class);
 	private ChannelHandlerContext ctx;
@@ -24,7 +30,7 @@ public class RequestThread implements Runnable{
 		ByteBuf msgby = null;
 		try {
 			//while(true) {
-				Thread.sleep(1000);
+				Thread.sleep(4000);
 				msgby = Unpooled.buffer();
 				ReferenceCountUtil.retain(msgby);
 				msgby.writeBytes(reby);

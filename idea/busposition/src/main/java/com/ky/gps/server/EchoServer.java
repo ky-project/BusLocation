@@ -17,6 +17,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.ResourceLeakDetector;
 
@@ -67,8 +70,9 @@ public class EchoServer {
                         //使用了netty自带的编码器和解码器
                         //心跳检测，读超时，写超时，读写超时
                     	ByteBuf buf = Unpooled.copiedBuffer("#".getBytes());
+//                    	ch.pipeline().addLast(new MyDecoder(1024,buf));
                     	ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,buf));
-                        ch.pipeline().addLast(new IdleStateHandler(180, 0, 0, TimeUnit.SECONDS));
+                        ch.pipeline().addLast(new IdleStateHandler(180, 6, 0, TimeUnit.SECONDS));
                         ch.pipeline().addLast(new ServerHandler());
                     }
                 });

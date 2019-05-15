@@ -66,14 +66,14 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 			 */
 			String response = parseGPS.parse(body);
 			if (response != null && !response.isEmpty()) {
-				if (!"CP35".equals(response)) {
-					byte[] resp = response.getBytes();
-					pingMessage = Unpooled.buffer();
-					ReferenceCountUtil.retain(pingMessage);
-					pingMessage.writeBytes(resp);
-					ctx.writeAndFlush(pingMessage);
-				}
-				else if (!HashThreadUtil.hasThread(ctx.channel().id().toString())) {
+				byte[] resp = response.getBytes();
+				pingMessage = Unpooled.buffer();
+				ReferenceCountUtil.retain(pingMessage);
+				pingMessage.writeBytes(resp);
+				ctx.writeAndFlush(pingMessage);
+				
+//				else if (!HashThreadUtil.hasThread(ctx.channel().id().toString())) {
+				if ("TRVBP01#".equals(response)) {
 					RequestThread thread = new RequestThread(ctx);
 //					thread.setName(ctx.channel().id().toString());
 //					thread.setDaemon(true);

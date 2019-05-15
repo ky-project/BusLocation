@@ -1,0 +1,1128 @@
+2019-05-14 15:20:40 [main-270] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-14 15:20:41 [main-295] INFO  org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-14 15:20:41 [main-306] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 1136 ms
+2019-05-14 15:20:41 [main-31] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-14 15:20:41 [main-40] INFO  com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-14 15:20:41 [MyThread-25] INFO  com.ky.gps.server.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-14 15:20:41 [main-524] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-14 15:20:42 [main-546] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 933 ms
+2019-05-14 15:20:47 [MyThread-460] WARN  io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0xf3b52361]'
+2019-05-14 15:20:47 [MyThread-85] INFO  com.ky.gps.server.StartThread - 监听服务开启：Thread[MyThread,5,main] Tue May 14 15:20:47 CST 2019
+2019-05-14 15:23:04 [nioEventLoopGroup-3-1-33] INFO  com.ky.gps.server.StartThread - Client: [id: 0x87dbe382, L:/60.12.85.238:20086 - R:/121.201.65.116:59217] --> 连接成功! 
+2019-05-14 15:23:09 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:23:11 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:13 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 1024))
+2019-05-14 15:23:13 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:13 [nioEventLoopGroup-3-1-37] INFO  com.ky.gps.server.ParseGPS - GPS:null 无效信息
+2019-05-14 15:23:13 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 41|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:13 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:14 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 22, cap: 22/22, unwrapped: PooledUnsafeDirectByteBuf(ridx: 23, widx: 23, cap: 1024))
+2019-05-14 15:23:14 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP00861903660100873
+2019-05-14 15:23:14 [nioEventLoopGroup-3-1-33] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 登录成功
+2019-05-14 15:23:14 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:14 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 41|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:14 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:15 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 25, cap: 25/25, unwrapped: PooledUnsafeDirectByteBuf(ridx: 26, widx: 26, cap: 512))
+2019-05-14 15:23:15 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP14,460,0,22613,21749
+2019-05-14 15:23:15 [nioEventLoopGroup-3-1-115] INFO  com.ky.gps.server.ParseGPS - 协议未开通-AP14
+2019-05-14 15:23:15 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:15 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 41|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:15 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:19 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:23:21 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:21 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 45, cap: 45/45, unwrapped: PooledUnsafeDirectByteBuf(ridx: 46, widx: 46, cap: 512))
+2019-05-14 15:23:21 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVYP02,9460042477101984,89860404191792463689
+2019-05-14 15:23:21 [nioEventLoopGroup-3-1-164] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 IMSI号及ICCID号码响应
+2019-05-14 15:23:21 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:21 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 41|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:21 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:23 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 496))
+2019-05-14 15:23:23 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:23 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:23:23 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:23 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 41|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:23 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:26 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:23:28 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:30 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 496))
+2019-05-14 15:23:30 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:30 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:23:30 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:30 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 41|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:30 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:33 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:23:35 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:37 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 480))
+2019-05-14 15:23:37 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2561N12049.0432E000.1072312000.0010000999920000,460,0,22613,21749
+2019-05-14 15:23:37 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:23:37 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:23:37.89
+2019-05-14 15:23:37 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191281828290002,120.8280204523267
+2019-05-14 15:23:37 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：0.1km/h
+2019-05-14 15:23:37 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：0.0度
+2019-05-14 15:23:37 [nioEventLoopGroup-3-1-930] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-05-14 15:23:38 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:40 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:40 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:40 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:40 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 480))
+2019-05-14 15:23:40 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:40 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:23:40 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:40 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:40 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:41 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 464))
+2019-05-14 15:23:41 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2558N12049.0430E000.0072316000.0010000999920000,460,0,22613,21749
+2019-05-14 15:23:41 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:23:41 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:23:41.586
+2019-05-14 15:23:41 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19127678352926,120.82801714342177
+2019-05-14 15:23:41 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：0.0km/h
+2019-05-14 15:23:41 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：0.0度
+2019-05-14 15:23:41 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:43 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:43 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:43 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:43 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 464))
+2019-05-14 15:23:43 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:43 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:23:43 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:43 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:43 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:44 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 448))
+2019-05-14 15:23:44 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2558N12049.0430E000.0072319000.0010000999920000,460,0,22613,21749
+2019-05-14 15:23:44 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:23:44 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:23:44.637
+2019-05-14 15:23:44 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19127678352926,120.82801714342177
+2019-05-14 15:23:44 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：0.0km/h
+2019-05-14 15:23:44 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：0.0度
+2019-05-14 15:23:44 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:46 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:46 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:46 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:46 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 448))
+2019-05-14 15:23:46 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:46 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:23:46 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:46 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:46 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:47 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 432))
+2019-05-14 15:23:47 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2557N12049.0434E001.2072322116.5810000999920000,460,0,22613,21749
+2019-05-14 15:23:47 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:23:47 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:23:47.644
+2019-05-14 15:23:47 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191275208699484,120.82802377176642
+2019-05-14 15:23:47 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：1.2km/h
+2019-05-14 15:23:47 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：116.58度
+2019-05-14 15:23:47 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:49 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:49 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:49 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:49 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 432))
+2019-05-14 15:23:49 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:49 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:23:49 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:49 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:49 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:50 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 416))
+2019-05-14 15:23:50 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2556N12049.0442E000.7072325000.0010000999920000,460,0,22613,21749
+2019-05-14 15:23:50 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:23:50 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:23:50.64
+2019-05-14 15:23:50 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191273725298604,120.82803702696859
+2019-05-14 15:23:50 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：0.7km/h
+2019-05-14 15:23:50 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：0.0度
+2019-05-14 15:23:50 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:52 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:52 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:52 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:52 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 416))
+2019-05-14 15:23:52 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:52 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:23:52 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:52 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:52 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:53 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 400))
+2019-05-14 15:23:53 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2565N12049.0441E004.6072328001.6010000999920000,460,0,22613,21749
+2019-05-14 15:23:53 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:23:53 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:23:53.664
+2019-05-14 15:23:53 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.1912886994524,120.82803535671263
+2019-05-14 15:23:53 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：4.6km/h
+2019-05-14 15:23:53 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：1.6度
+2019-05-14 15:23:53 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:55 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:55 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:55 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:55 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 400))
+2019-05-14 15:23:55 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:55 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:23:55 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:55 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:55 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:56 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 384))
+2019-05-14 15:23:56 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2625N12049.0451E017.4072331006.9010001099920000,460,0,22613,21749
+2019-05-14 15:23:56 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:23:56 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:23:56.701
+2019-05-14 15:23:56 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191388908115513,120.82805183366102
+2019-05-14 15:23:56 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：17.4km/h
+2019-05-14 15:23:56 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：6.9度
+2019-05-14 15:23:56 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:58 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:23:58 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:58 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:58 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 384))
+2019-05-14 15:23:58 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:23:58 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:23:58 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:23:58 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:23:58 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:23:59 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 368))
+2019-05-14 15:23:59 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2721N12049.0452E023.2072334000.0810001099920000,460,0,22613,21749
+2019-05-14 15:23:59 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:23:59 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:23:59.797
+2019-05-14 15:23:59 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191548899241443,120.82805334635177
+2019-05-14 15:23:59 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：23.2km/h
+2019-05-14 15:23:59 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：0.08度
+2019-05-14 15:23:59 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:01 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:01 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:01 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:01 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 368))
+2019-05-14 15:24:01 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:01 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:01 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:01 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:01 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:02 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 352))
+2019-05-14 15:24:02 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2825N12049.0442E021.6072337355.4710001199920000,460,0,22613,21749
+2019-05-14 15:24:02 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:02 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:02.82
+2019-05-14 15:24:02 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191721969807865,120.82803662359461
+2019-05-14 15:24:02 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：21.6km/h
+2019-05-14 15:24:02 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：355.47度
+2019-05-14 15:24:02 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:04 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:04 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:04 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:04 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 352))
+2019-05-14 15:24:04 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:04 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:04 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:04 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:04 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:06 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 336))
+2019-05-14 15:24:06 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2891N12049.0378E019.0072340299.4210000999920000,460,0,22613,21749
+2019-05-14 15:24:06 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:06 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:06.065
+2019-05-14 15:24:06 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191830481830948,120.82793049617071
+2019-05-14 15:24:06 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：19.0km/h
+2019-05-14 15:24:06 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：299.42度
+2019-05-14 15:24:06 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:08 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:08 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:08 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:08 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 336))
+2019-05-14 15:24:08 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:08 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:08 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:08 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:08 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:09 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 320))
+2019-05-14 15:24:09 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2896N12049.0290E022.2072342273.2010000999920000,460,0,22613,21749
+2019-05-14 15:24:09 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:09 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:09.488
+2019-05-14 15:24:09 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19183678680007,120.82778470139904
+2019-05-14 15:24:09 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：22.2km/h
+2019-05-14 15:24:09 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：273.2度
+2019-05-14 15:24:09 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:11 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:11 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:11 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:11 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 320))
+2019-05-14 15:24:11 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:11 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:11 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:11 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:11 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:12 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 304))
+2019-05-14 15:24:12 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2905N12049.0126E024.8072346273.5310001199920000,460,0,22613,21749
+2019-05-14 15:24:12 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:12 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:12.799
+2019-05-14 15:24:12 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191847974611523,120.8275130008499
+2019-05-14 15:24:12 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.8km/h
+2019-05-14 15:24:12 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：273.53度
+2019-05-14 15:24:12 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:14 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:14 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:14 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:14 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 304))
+2019-05-14 15:24:14 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:14 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:14 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:14 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:14 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:15 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 288))
+2019-05-14 15:24:15 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2909N12049.0000E023.8072349270.7610001099920000,460,0,22613,21749
+2019-05-14 15:24:15 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:15 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:15.84
+2019-05-14 15:24:15 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19185168537354,120.82730426608106
+2019-05-14 15:24:15 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：23.8km/h
+2019-05-14 15:24:15 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：270.76度
+2019-05-14 15:24:15 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:17 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:17 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:17 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:17 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 288))
+2019-05-14 15:24:17 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:17 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:17 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:17 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:17 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:19 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 272))
+2019-05-14 15:24:19 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2906N12048.9887E023.1072352273.0910000999920000,460,0,22613,11729
+2019-05-14 15:24:19 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:19 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:19.009
+2019-05-14 15:24:19 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191844016276118,120.82711708190935
+2019-05-14 15:24:19 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：23.1km/h
+2019-05-14 15:24:19 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：273.09度
+2019-05-14 15:24:19 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:21 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:21 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:21 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:21 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 272))
+2019-05-14 15:24:21 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:21 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:21 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:21 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:21 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:24 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 256))
+2019-05-14 15:24:24 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2912N12048.9676E024.8072357272.3207000999920000,460,0,22613,11729
+2019-05-14 15:24:24 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:24 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:24.174
+2019-05-14 15:24:24 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19184897815647,120.82676755523224
+2019-05-14 15:24:24 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.8km/h
+2019-05-14 15:24:24 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：272.32度
+2019-05-14 15:24:24 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:26 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:26 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:26 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:26 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 256))
+2019-05-14 15:24:26 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:26 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:26 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:26 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:26 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:27 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 240))
+2019-05-14 15:24:27 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2916N12048.9566E025.6072400268.4507001199920000,460,0,22613,11729
+2019-05-14 15:24:27 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:27 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:27.397
+2019-05-14 15:24:27 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19185299249553,120.82658534203392
+2019-05-14 15:24:27 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.6km/h
+2019-05-14 15:24:27 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：268.45度
+2019-05-14 15:24:27 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:29 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:29 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:29 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:29 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 240))
+2019-05-14 15:24:29 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:29 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:29 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:29 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:29 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:30 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 224))
+2019-05-14 15:24:30 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2909N12048.9436E025.5072403270.4907001199920000,460,0,22613,11729
+2019-05-14 15:24:30 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:30 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:30.277
+2019-05-14 15:24:30 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191838173011874,120.82637002162876
+2019-05-14 15:24:30 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.5km/h
+2019-05-14 15:24:30 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：270.49度
+2019-05-14 15:24:30 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:32 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:32 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:32 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:32 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 224))
+2019-05-14 15:24:32 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:32 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:32 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:32 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:32 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:33 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 208))
+2019-05-14 15:24:33 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2914N12048.9303E025.2072406268.4310001199920000,460,0,22613,11729
+2019-05-14 15:24:33 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:33 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:33.358
+2019-05-14 15:24:33 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191843252467322,120.82614971965018
+2019-05-14 15:24:33 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.2km/h
+2019-05-14 15:24:33 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：268.43度
+2019-05-14 15:24:33 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:35 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:35 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:35 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:35 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 208))
+2019-05-14 15:24:35 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:35 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:35 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:35 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:35 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:36 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 192))
+2019-05-14 15:24:36 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2907N12048.9152E025.5072409272.2910001199920000,460,0,22613,11729
+2019-05-14 15:24:36 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:36 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:36.464
+2019-05-14 15:24:36 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191827866488858,120.8258996278017
+2019-05-14 15:24:36 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.5km/h
+2019-05-14 15:24:36 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：272.29度
+2019-05-14 15:24:36 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:38 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:38 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:38 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:39 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 192))
+2019-05-14 15:24:39 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:39 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:39 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:39 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:39 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:40 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 93, cap: 176))
+2019-05-14 15:24:40 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2909N12048.8993E020.2072413264.8510001199920000,460,0,22613,11729
+2019-05-14 15:24:40 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:40 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:40.425
+2019-05-14 15:24:40 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19182724756916,120.825636279416
+2019-05-14 15:24:40 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：20.2km/h
+2019-05-14 15:24:40 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：264.85度
+2019-05-14 15:24:40 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:42 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:42 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:42 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 93, widx: 93, cap: 176))
+2019-05-14 15:24:42 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:42 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:42 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:42 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:42 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:43 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 176))
+2019-05-14 15:24:43 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2877N12048.8923E018.5072416231.0210001199920000,460,0,22613,11729
+2019-05-14 15:24:43 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:43 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:43.484
+2019-05-14 15:24:43 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191772174559556,120.82552039120355
+2019-05-14 15:24:43 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：18.5km/h
+2019-05-14 15:24:43 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：231.02度
+2019-05-14 15:24:43 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:45 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:45 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:45 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:45 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 160))
+2019-05-14 15:24:45 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:45 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:45 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:45 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:45 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:46 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 160))
+2019-05-14 15:24:46 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2786N12048.8896E022.7072419178.9510001299920000,460,0,22613,11729
+2019-05-14 15:24:46 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:46 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:46.707
+2019-05-14 15:24:46 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191619861026783,120.82547580930454
+2019-05-14 15:24:46 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：22.7km/h
+2019-05-14 15:24:46 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：178.95度
+2019-05-14 15:24:46 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:48 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:48 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:48 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:48 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 144))
+2019-05-14 15:24:48 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:48 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:48 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:48 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:48 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:49 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 144))
+2019-05-14 15:24:49 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2679N12048.8893E024.0072422182.7210001299920000,460,0,22613,11729
+2019-05-14 15:24:49 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:49 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:49.75
+2019-05-14 15:24:49 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191441487701773,120.82547100086825
+2019-05-14 15:24:49 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.0km/h
+2019-05-14 15:24:49 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：182.72度
+2019-05-14 15:24:49 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:51 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:51 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:51 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:51 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 128))
+2019-05-14 15:24:51 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:51 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:51 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:51 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:51 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:52 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:24:52 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2570N12048.8888E024.4072425179.8910001299920000,460,0,22613,11729
+2019-05-14 15:24:52 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:52 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:52.749
+2019-05-14 15:24:52 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191259731642855,120.82546288348767
+2019-05-14 15:24:52 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.4km/h
+2019-05-14 15:24:52 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：179.89度
+2019-05-14 15:24:52 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:54 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:54 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:54 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:54 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:24:54 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:54 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:54 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:54 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:54 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:55 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:24:55 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2482N12048.8883E022.2072427180.5710001299920000,460,0,22613,11729
+2019-05-14 15:24:55 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:55 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:55.785
+2019-05-14 15:24:55 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19111296870178,120.82545473492154
+2019-05-14 15:24:55 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：22.2km/h
+2019-05-14 15:24:55 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：180.57度
+2019-05-14 15:24:55 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:57 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:24:57 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:57 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:57 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:24:57 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:24:57 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:24:57 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:24:57 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:24:57 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:24:58 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:24:58 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2386N12048.8879E022.6072430181.3410001299920000,460,0,22613,11729
+2019-05-14 15:24:58 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:24:58 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:24:58.804
+2019-05-14 15:24:58 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19095290024969,120.82544825494371
+2019-05-14 15:24:58 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：22.6km/h
+2019-05-14 15:24:58 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：181.34度
+2019-05-14 15:24:58 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:00 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:00 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:00 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:00 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:25:00 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:00 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:00 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:00 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:00 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:01 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:25:01 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2291N12048.8875E026.8072433182.2810001199920000,460,0,22613,11729
+2019-05-14 15:25:01 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:01 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:01.978
+2019-05-14 15:25:01 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.190794498205914,120.82544177379414
+2019-05-14 15:25:01 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：26.8km/h
+2019-05-14 15:25:01 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：182.28度
+2019-05-14 15:25:02 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:04 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:04 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:04 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:04 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:25:04 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:04 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:04 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:04 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:04 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:05 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:25:05 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2176N12048.8869E025.4072436179.3310001199920000,460,0,22613,11729
+2019-05-14 15:25:05 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:05 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:05.037
+2019-05-14 15:25:05 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.190602719377118,120.82543201091714
+2019-05-14 15:25:05 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.4km/h
+2019-05-14 15:25:05 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：179.33度
+2019-05-14 15:25:05 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:07 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:07 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:07 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:07 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 144))
+2019-05-14 15:25:07 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:07 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:07 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:07 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:07 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:09 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:25:09 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2024N12048.8862E025.0072440184.3010001199920000,460,0,22613,11729
+2019-05-14 15:25:09 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:09 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:09.087
+2019-05-14 15:25:09 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19034926130058,120.82542064862949
+2019-05-14 15:25:09 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.0km/h
+2019-05-14 15:25:09 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：184.3度
+2019-05-14 15:25:09 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:11 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:11 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:11 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:11 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 128))
+2019-05-14 15:25:11 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:11 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:11 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:11 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:11 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:12 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:25:12 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1892N12048.8868E025.0072443172.3510001299920000,460,0,22613,11729
+2019-05-14 15:25:12 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:12 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:12.499
+2019-05-14 15:25:12 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19012945658592,120.82543078715251
+2019-05-14 15:25:12 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.0km/h
+2019-05-14 15:25:12 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：172.35度
+2019-05-14 15:25:12 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:14 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:14 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:14 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:14 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:25:14 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:14 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:14 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:14 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:14 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:15 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:25:15 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1800N12048.8810E024.3072446232.8610001299920000,460,0,22613,11729
+2019-05-14 15:25:15 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:15 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:15.622
+2019-05-14 15:25:15 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.189974695425846,120.82533486852202
+2019-05-14 15:25:15 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.3km/h
+2019-05-14 15:25:15 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：232.86度
+2019-05-14 15:25:15 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 45, cap: 112))
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 36, cap: 36/36, unwrapped: PooledUnsafeDirectByteBuf(ridx: 45, widx: 45, cap: 112))
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP01,1000129992000010000000000111
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-152] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 心跳检测
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:17 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:18 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:25:18 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1764N12048.8727E020.1072449230.1110001299920000,460,0,22613,11729
+2019-05-14 15:25:18 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:18 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:18.86
+2019-05-14 15:25:18 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18991261242446,120.82519746112882
+2019-05-14 15:25:18 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：20.1km/h
+2019-05-14 15:25:18 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：230.11度
+2019-05-14 15:25:18 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:20 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:20 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:20 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:20 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:25:20 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:20 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:20 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:20 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:20 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:22 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:25:22 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1679N12048.8726E021.0072452154.2510001299920000,460,0,22613,11729
+2019-05-14 15:25:22 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:22 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:22.239
+2019-05-14 15:25:22 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18977094932738,120.82519593519513
+2019-05-14 15:25:22 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：21.0km/h
+2019-05-14 15:25:22 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：154.25度
+2019-05-14 15:25:22 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:24 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:24 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:24 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:24 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:25:24 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:24 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:24 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:24 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:24 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:25 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:25:25 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1651N12048.8805E020.8072454102.5610001299920000,460,0,22613,11729
+2019-05-14 15:25:25 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:25 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:25.328
+2019-05-14 15:25:25 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18972628671531,120.82532681586731
+2019-05-14 15:25:25 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：20.8km/h
+2019-05-14 15:25:25 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：102.56度
+2019-05-14 15:25:25 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:27 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:27 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:27 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:27 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 144))
+2019-05-14 15:25:27 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:27 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:27 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:27 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:27 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:28 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:25:28 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1642N12048.8962E024.0072458090.0010001299920000,460,0,22613,11729
+2019-05-14 15:25:28 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:28 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:28.399
+2019-05-14 15:25:28 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18971523015367,120.82558685412829
+2019-05-14 15:25:28 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.0km/h
+2019-05-14 15:25:28 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：90.0度
+2019-05-14 15:25:28 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:30 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:30 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:30 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:30 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 128))
+2019-05-14 15:25:30 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:30 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:30 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:30 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:30 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:31 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:25:31 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1637N12048.9087E024.7072501091.5510001299920000,460,0,22613,11729
+2019-05-14 15:25:31 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:31 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:31.447
+2019-05-14 15:25:31 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18971001301746,120.82579389267765
+2019-05-14 15:25:31 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.7km/h
+2019-05-14 15:25:31 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：91.55度
+2019-05-14 15:25:31 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:33 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:33 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:33 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:33 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:25:33 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:33 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:33 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:33 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:33 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:34 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:25:34 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1636N12048.9215E024.9072504088.7210001299920000,460,0,22613,11729
+2019-05-14 15:25:34 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:34 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:34.49
+2019-05-14 15:25:34 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18971151457605,120.8260058985848
+2019-05-14 15:25:34 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.9km/h
+2019-05-14 15:25:34 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：88.72度
+2019-05-14 15:25:34 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:36 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:36 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:36 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:36 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:25:36 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:36 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:36 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:36 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:36 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:37 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:25:37 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1639N12048.9367E025.3072508086.7510001299920000,460,0,22613,11729
+2019-05-14 15:25:37 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:37 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:37.55
+2019-05-14 15:25:37 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.189720246753254,120.82625765558396
+2019-05-14 15:25:37 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.3km/h
+2019-05-14 15:25:37 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：86.75度
+2019-05-14 15:25:37 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:39 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:39 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:39 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:39 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:25:39 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:39 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:39 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:39 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:39 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:40 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:25:40 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1635N12048.9475E025.3072510091.0310001299920000,460,0,22613,11729
+2019-05-14 15:25:40 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:40 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:40.827
+2019-05-14 15:25:40 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18971621469747,120.82643654929954
+2019-05-14 15:25:40 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.3km/h
+2019-05-14 15:25:40 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：91.03度
+2019-05-14 15:25:40 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:42 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:42 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:42 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:42 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:25:42 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:42 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:42 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:42 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:42 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:43 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:25:43 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1631N12048.9605E024.5072513090.9810001299920000,460,0,22613,11729
+2019-05-14 15:25:43 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:43 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:43.87
+2019-05-14 15:25:43 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18971269738286,120.82665188796346
+2019-05-14 15:25:43 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.5km/h
+2019-05-14 15:25:43 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：90.98度
+2019-05-14 15:25:43 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:45 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:45 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:45 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:45 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 144))
+2019-05-14 15:25:45 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:45 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:45 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:45 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:45 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:46 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:25:46 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1630N12048.9733E024.8072516089.5410001299920000,460,0,22613,11729
+2019-05-14 15:25:46 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:46 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:46.894
+2019-05-14 15:25:46 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.189714107086505,120.82686391454146
+2019-05-14 15:25:46 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.8km/h
+2019-05-14 15:25:46 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：89.54度
+2019-05-14 15:25:46 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:48 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:48 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:48 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:48 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 128))
+2019-05-14 15:25:48 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:48 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:48 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:48 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:48 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:49 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:25:49 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1629N12048.9862E024.8072519092.4910001299920000,460,0,22613,11729
+2019-05-14 15:25:49 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:49 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:49.987
+2019-05-14 15:25:49 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18971551676826,120.82707760303083
+2019-05-14 15:25:49 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.8km/h
+2019-05-14 15:25:49 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：92.49度
+2019-05-14 15:25:50 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:52 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:52 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:52 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:52 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:25:52 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:52 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:52 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:52 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:52 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:53 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:25:53 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1624N12048.9990E024.5072522092.4610001299920000,460,0,22613,11729
+2019-05-14 15:25:53 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:53 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:53.189
+2019-05-14 15:25:53 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.189710213010496,120.82728964671287
+2019-05-14 15:25:53 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.5km/h
+2019-05-14 15:25:53 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：92.46度
+2019-05-14 15:25:53 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:55 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:55 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:55 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:55 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:25:55 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:55 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:55 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:55 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:55 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:56 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:25:56 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1621N12049.0118E024.5072525091.3410001299920000,460,0,22613,11729
+2019-05-14 15:25:56 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:56 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:56.214
+2019-05-14 15:25:56 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18970821729141,120.82750169295737
+2019-05-14 15:25:56 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.5km/h
+2019-05-14 15:25:56 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：91.34度
+2019-05-14 15:25:56 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:58 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:25:58 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:58 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:58 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:25:58 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:25:58 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:25:58 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:25:58 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:25:58 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:25:59 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:25:59 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1621N12049.0247E025.1072528091.1810001299920000,460,0,22613,11729
+2019-05-14 15:25:59 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:25:59 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:25:59.209
+2019-05-14 15:25:59 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.189711218690345,120.82771539698469
+2019-05-14 15:25:59 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.1km/h
+2019-05-14 15:25:59 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：91.18度
+2019-05-14 15:25:59 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:01 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:01 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:01 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:01 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:26:01 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:01 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:01 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:01 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:01 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:02 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:26:02 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1625N12049.0377E024.6072531077.7610001299920000,460,0,22613,11729
+2019-05-14 15:26:02 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:02 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:02.244
+2019-05-14 15:26:02 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.18972088251622,120.82793075751145
+2019-05-14 15:26:02 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.6km/h
+2019-05-14 15:26:02 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：77.76度
+2019-05-14 15:26:02 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:04 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:04 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:04 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:04 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 144))
+2019-05-14 15:26:04 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:04 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:04 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:04 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:04 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:05 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:26:05 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1699N12049.0461E023.6072534019.2810001299920000,460,0,22613,11729
+2019-05-14 15:26:05 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:05 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:05.23
+2019-05-14 15:26:05 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.189846114016337,120.82806980722513
+2019-05-14 15:26:05 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：23.6km/h
+2019-05-14 15:26:05 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：19.28度
+2019-05-14 15:26:05 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:07 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:07 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:07 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:07 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 128))
+2019-05-14 15:26:07 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:07 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:07 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:07 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:07 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:08 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:26:08 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1808N12049.0455E024.6072537356.1810001299920000,460,0,22613,11729
+2019-05-14 15:26:08 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:08 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:08.203
+2019-05-14 15:26:08 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19002760666444,120.82805969991963
+2019-05-14 15:26:08 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.6km/h
+2019-05-14 15:26:08 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：356.18度
+2019-05-14 15:26:08 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:10 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:10 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:10 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:10 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:26:10 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:10 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:10 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:10 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:10 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:11 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:26:11 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.1920N12049.0450E025.1072540002.2310001299920000,460,0,22613,11729
+2019-05-14 15:26:11 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:11 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:11.224
+2019-05-14 15:26:11 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19021412119224,120.82805124511262
+2019-05-14 15:26:11 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.1km/h
+2019-05-14 15:26:11 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：2.23度
+2019-05-14 15:26:11 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:13 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:13 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:13 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:13 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:26:13 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:13 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:13 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:13 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:13 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:14 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:26:14 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2035N12049.0454E025.3072543359.0110001199920000,460,0,22613,11729
+2019-05-14 15:26:14 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:14 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:14.326
+2019-05-14 15:26:14 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.190405840418848,120.82805769658101
+2019-05-14 15:26:14 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.3km/h
+2019-05-14 15:26:14 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：359.01度
+2019-05-14 15:26:14 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:16 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:16 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:16 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:16 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:26:16 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:16 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:16 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:16 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:16 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:17 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 96))
+2019-05-14 15:26:17 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2151N12049.0451E025.4072546359.0710001199920000,460,0,22613,11729
+2019-05-14 15:26:17 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:17 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:17.343
+2019-05-14 15:26:17 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.190599066190444,120.8280525499329
+2019-05-14 15:26:17 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：25.4km/h
+2019-05-14 15:26:17 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：359.07度
+2019-05-14 15:26:17 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:19 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:19 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:19 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:19 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 96))
+2019-05-14 15:26:19 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:19 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:19 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:19 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:19 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:20 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:26:20 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2292N12049.0426E023.7072550336.1610001199920000,460,0,22613,11729
+2019-05-14 15:26:20 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:20 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:20.366
+2019-05-14 15:26:20 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.19083344727492,120.82801091820134
+2019-05-14 15:26:20 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：23.7km/h
+2019-05-14 15:26:20 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：336.16度
+2019-05-14 15:26:20 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:22 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:22 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:22 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:22 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 144))
+2019-05-14 15:26:22 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:22 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:22 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:22 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:22 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:23 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 128))
+2019-05-14 15:26:23 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2394N12049.0386E024.4072553358.6810001099920000,460,0,22613,11729
+2019-05-14 15:26:23 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:23 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:23.389
+2019-05-14 15:26:23 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191002496506538,120.82794449586993
+2019-05-14 15:26:23 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：24.4km/h
+2019-05-14 15:26:23 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：358.68度
+2019-05-14 15:26:23 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:25 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:25 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:25 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:25 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 128))
+2019-05-14 15:26:25 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:25 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:25 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:25 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:25 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:26 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:26:26 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2494N12049.0428E022.8072556020.8710000999920000,460,0,22613,11729
+2019-05-14 15:26:26 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:26 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:26.405
+2019-05-14 15:26:26 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191170092351214,120.828013926391
+2019-05-14 15:26:26 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：22.8km/h
+2019-05-14 15:26:26 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：20.87度
+2019-05-14 15:26:26 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:28 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:28 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:28 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:28 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:26:28 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:28 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:28 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:28 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:28 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:29 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 84, cap: 84/84, unwrapped: PooledUnsafeDirectByteBuf(ridx: 85, widx: 85, cap: 112))
+2019-05-14 15:26:29 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVAP01190514A3011.2562N12049.0431E006.5072559349.2210000999920000,460,0,22613,11729
+2019-05-14 15:26:29 [nioEventLoopGroup-3-1-137] INFO  com.ky.gps.util.ParseGPSUtil - GPS终端id：861903660100873
+2019-05-14 15:26:29 [nioEventLoopGroup-3-1-138] INFO  com.ky.gps.util.ParseGPSUtil - 时间：2019-05-14 15:26:29.446
+2019-05-14 15:26:29 [nioEventLoopGroup-3-1-139] INFO  com.ky.gps.util.ParseGPSUtil - 定位：30.191283471747923,120.82801879411223
+2019-05-14 15:26:29 [nioEventLoopGroup-3-1-140] INFO  com.ky.gps.util.ParseGPSUtil - 速度：6.5km/h
+2019-05-14 15:26:29 [nioEventLoopGroup-3-1-141] INFO  com.ky.gps.util.ParseGPSUtil - 方向角：349.22度
+2019-05-14 15:26:29 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:31 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:31 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:31 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:31 [nioEventLoopGroup-3-1-55] INFO  com.ky.gps.server.StartThread - 接收: ServerHandler#0-->msg: PooledSlicedByteBuf(ridx: 0, widx: 7, cap: 7/7, unwrapped: PooledUnsafeDirectByteBuf(ridx: 8, widx: 8, cap: 112))
+2019-05-14 15:26:31 [nioEventLoopGroup-3-1-62] INFO  com.ky.gps.server.StartThread - 接收客户端数据:TRVCP35
+2019-05-14 15:26:31 [nioEventLoopGroup-3-1-176] INFO  com.ky.gps.util.ParseGPSUtil - GPS:861903660100873 收到立即定位请求
+2019-05-14 15:26:31 [nioEventLoopGroup-3-1-29] INFO  com.ky.gps.server.ParseGPS - GPS:861903660100873 信息接收
+2019-05-14 15:26:31 [nioEventLoopGroup-3-1-93] INFO  com.ky.gps.server.StartThread - {当前线程: [存活: 43|参数: Thread[nioEventLoopGroup-3-1,10,main]|状态: RUNNABLE}
+2019-05-14 15:26:31 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:26:36 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:26:38 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:43 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:26:45 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:50 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:26:52 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:26:57 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:26:59 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:27:04 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:27:06 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:27:11 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:27:13 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:27:18 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:27:20 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:27:25 [nioEventLoopGroup-3-1-127] INFO  com.ky.gps.server.StartThread - /121.201.65.116:59217超时事件->写空闲
+2019-05-14 15:27:27 [nioEventLoopGroup-3-1-38] INFO  com.ky.gps.server.StartThread - 子线程: nioEventLoopGroup-3-1 -> 发送立即定位请求:TRVDP35#
+2019-05-14 15:27:27 [nioEventLoopGroup-3-1-146] INFO  com.ky.gps.server.StartThread - 信息交互完毕...
+
+2019-05-14 15:27:27 [nioEventLoopGroup-3-1-44] INFO  com.ky.gps.server.StartThread - 客户端与服务端连接关闭: Thread[nioEventLoopGroup-3-1,10,main] Tue May 14 15:27:27 CST 2019

@@ -1,7 +1,7 @@
 package com.ky.gps.util;
 
 import com.ky.gps.entity.SbBusPosition;
-import com.ky.gps.service.inter.SbBusPositionService;
+import com.ky.gps.service.SbBusPositionService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
