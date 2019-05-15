@@ -101,4 +101,24 @@ public interface SysUserDao {
      * @param sysUser 待更新用户对象
      */
     void updatePassword(SysUser sysUser);
+
+    /**
+     * 根据email查询用户id
+     * @param email 邮箱
+     * @return 返回id
+     */
+    Integer findIdByEmail(String email);
+
+    /**
+     * 根据email查询用户基本信息
+     * @param email 邮箱
+     * @return 用户信息map,keys={sysUserId, realName, workId, departmentName}
+     */
+    Map<String, Object> findBaseInfoByEmail(String email);
+
+    /**
+     * 根据email来修改密码
+     * @param sysUser 存放email、password、salt、lastPsdDate和updatedBy数据的对象
+     */
+    void updatePasswordByEmail(SysUser sysUser);
 }

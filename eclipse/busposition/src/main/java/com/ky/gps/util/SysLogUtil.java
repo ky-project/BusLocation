@@ -66,4 +66,22 @@ public class SysLogUtil {
         return sysLog;
     }
 
+    /**
+     * 设置用户的操作内容等
+     * @param operate 操作名
+     * @param module 操作模块
+     * @param content 操作内容
+     */
+    public static void setOperateInfoByObject(SysLog sysLog,
+                                        String operate,
+                                        String module,
+                                        String content){
+        //设置操作信息
+        sysLog.setOperate(operate);
+        //设置操作模块
+        sysLog.setModule(module);
+        //设置具体内容
+        sysLog.setContent(content);
+    }
+
 }

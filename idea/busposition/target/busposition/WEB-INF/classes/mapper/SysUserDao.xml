@@ -10,7 +10,7 @@
         <result column="real_name" jdbcType="VARCHAR" property="realName"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="salt" jdbcType="VARCHAR" property="salt"/>
-        <result column="id_card" jdbcType="VARCHAR" property="idCard"/>
+        <result column="id_code" jdbcType="VARCHAR" property="idCode"/>
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
         <result column="account_date" jdbcType="DATE" property="accountDate"/>
@@ -87,7 +87,7 @@
     <insert id="saveUserBaseInfo" parameterType="SysUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into sys_user(department_id, workid, real_name, password, salt, id_code, phone, email, account_date,
                              created_by, updated_by, valid)
-        values (#{department.id}, #{workId}, #{realName}, #{password}, #{salt}, #{idCard}, #{phone}, #{email},
+        values (#{department.id}, #{workId}, #{realName}, #{password}, #{salt}, #{idCode}, #{phone}, #{email},
                 #{accountDate}, #{createdBy}, #{updatedBy}, 1)
     </insert>
     <update id="deleteUserByUserId">
@@ -116,8 +116,8 @@
             <if test="realName != null and realName != ''">
                 REAL_NAME = #{realName},
             </if>
-            <if test="idCard != null and idCard != ''">
-                ID_CODE = #{idCard},
+            <if test="idCode != null and idCode != ''">
+                ID_CODE = #{idCode},
             </if>
             <if test="phone != null and phone != ''">
                 PHONE = #{phone},
@@ -156,7 +156,35 @@
     </select>
     <update id="updatePassword" parameterType="SysUser">
         UPDATE sys_user
-        SET `PASSWORD` = #{password}, SALT = #{salt}, LAST_PSD_DATE = #{lastPsdDate}, UPDATED_BY = #{updatedBy}
+        SET `PASSWORD`    = #{password},
+            SALT          = #{salt},
+            LAST_PSD_DATE = #{lastPsdDate},
+            UPDATED_BY    = #{updatedBy}
         WHERE ID = #{id}
+    </update>
+    <select id="findIdByEmail" resultType="java.lang.Integer" parameterType="string">
+        SELECT ID id
+        FROM sys_user
+        where EMAIL = #{email}
+    </select>
+    <select id="findBaseInfoByEmail" resultType="map" parameterType="string">
+        select sys_user.ID         sysUserId,
+               sys_user.REAL_NAME  realName,
+               sys_user.WORKID     workId,
+               b_department.`NAME` departmentName
+        from sys_user,
+             b_department
+        where sys_user.Valid = 1
+          and b_department.Valid = 1
+          and sys_user.EMAIL = #{email}
+          and sys_user.DEPARTMENT_ID = b_department.ID
+    </select>
+    <update id="updatePasswordByEmail">
+        UPDATE sys_user
+        SET `PASSWORD`    = #{password},
+            SALT          = #{salt},
+            LAST_PSD_DATE = #{lastPsdDate},
+            UPDATED_BY    = #{updatedBy}
+        where EMAIL = #{email}
     </update>
 </mapper>

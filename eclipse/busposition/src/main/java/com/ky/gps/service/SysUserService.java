@@ -3,7 +3,6 @@ package com.ky.gps.service;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbUserRole;
 import com.ky.gps.entity.SysUser;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -108,4 +107,26 @@ public interface SysUserService {
      * @return json对象，data为null
      */
     ResultWrapper updatePassword(SysUser sysUser);
+
+    /**
+     * 验证邮箱是否存在
+     *
+     * @param email 邮箱
+     * @return true:存在，false:不存在
+     */
+    Boolean isEffectiveEmail(String email);
+
+    /**
+     * 根据email查询用户基本信息
+     * @param email 邮箱
+     * @return 用户信息map,keys={sysUserId, realName, workId, departmentName}
+     */
+    Map<String, Object> findBaseInfoByEmail(String email);
+
+    /**
+     * 根据邮箱来修改密码
+     * @param sysUser 存放email、password、salt、lastPsdDate和updatedBy数据的对象
+     * @return 返回json格式数据
+     */
+    ResultWrapper modifyPasswordByEmail(SysUser sysUser);
 }

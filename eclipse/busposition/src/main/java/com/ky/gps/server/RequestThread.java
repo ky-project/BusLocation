@@ -1,4 +1,4 @@
-package com.ky.gps.sys;
+package com.ky.gps.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ public class RequestThread implements Runnable{
 		ByteBuf msgby = null;
 		try {
 			//while(true) {
-				Thread.sleep(1000);
+				Thread.sleep(4000);
 				msgby = Unpooled.buffer();
 				ReferenceCountUtil.retain(msgby);
 				msgby.writeBytes(reby);

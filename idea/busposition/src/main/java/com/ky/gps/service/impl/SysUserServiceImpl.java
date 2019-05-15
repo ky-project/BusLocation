@@ -27,6 +27,25 @@ public class SysUserServiceImpl implements SysUserService {
     @Resource
     private SbUserBusDao sbUserBusDao;
 
+    @Override
+    public ResultWrapper modifyPasswordByEmail(SysUser sysUser) {
+        sysUserDao.updatePasswordByEmail(sysUser);
+        return ResultWrapperUtil.setSuccessOf(null);
+    }
+
+    @Override
+    public Map<String, Object> findBaseInfoByEmail(String email) {
+        return sysUserDao.findBaseInfoByEmail(email);
+    }
+
+    @Override
+    public Boolean isEffectiveEmail(String email) {
+        //使用email进行查询，如果存在，则返回email
+        Integer id = sysUserDao.findIdByEmail(email);
+        //如果id存在返回true，反之false
+        return id != null;
+    }
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public ResultWrapper updatePassword(SysUser sysUser) {

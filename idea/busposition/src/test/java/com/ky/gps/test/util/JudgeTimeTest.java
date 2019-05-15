@@ -15,6 +15,5 @@ public class JudgeTimeTest {
         System.out.println(timestamp);
         System.out.println(JudgeTimeUtil.isEffectiveTimestamp(timestamp,"6:00", "24:00"));
 
-
     }
 }

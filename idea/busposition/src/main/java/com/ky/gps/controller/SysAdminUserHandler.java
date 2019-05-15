@@ -194,7 +194,7 @@ public class SysAdminUserHandler {
                 || "".equals(sysUser.getRealName()) || null == sysUser.getRealName()
                 || "".equals(sysUser.getPassword()) || null == sysUser.getPassword()
                 || "".equals(sysUser.getSalt()) || null == sysUser.getSalt()
-                || "".equals(sysUser.getIdCard()) || null == sysUser.getIdCard()
+                || "".equals(sysUser.getIdCode()) || null == sysUser.getIdCode()
                 || "".equals(sysUser.getPhone()) || null == sysUser.getPhone()
                 || "".equals(sysUser.getEmail()) || null == sysUser.getEmail()
                 || null == sysUser.getAccountDate()

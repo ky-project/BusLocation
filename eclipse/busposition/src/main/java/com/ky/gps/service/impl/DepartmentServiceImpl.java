@@ -1,7 +1,6 @@
 package com.ky.gps.service.impl;
 
 import com.ky.gps.dao.DepartmentDao;
-
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.service.DepartmentService;
 import com.ky.gps.util.ResultWrapperUtil;

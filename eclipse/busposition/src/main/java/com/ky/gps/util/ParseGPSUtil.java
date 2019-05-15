@@ -1,18 +1,14 @@
 package com.ky.gps.util;
 
+import com.ky.gps.entity.SbGps;
+import com.ky.gps.entity.SbTerminal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import com.ky.gps.entity.SbGps;
-import com.ky.gps.entity.SbTerminal;
-import com.ky.gps.service.inter.SbBusPositionService;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 //import org.junit.Test;
 
@@ -77,7 +73,8 @@ public class ParseGPSUtil {
 			// 设置当前时间格式
 			String strNow = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 			
-			sbTerminal.getSbBusPosition().setSbpRecodeTime(Timestamp.valueOf(strNow + " " + hms));
+//			sbTerminal.getSbBusPosition().setSbpRecodeTime(Timestamp.valueOf(strNow + " " + hms));
+			sbTerminal.getSbBusPosition().setSbpRecodeTime(new Timestamp(System.currentTimeMillis()));
 		}
 
 		// 获取纬度

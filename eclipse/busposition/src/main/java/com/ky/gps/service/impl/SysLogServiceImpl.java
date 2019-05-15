@@ -3,7 +3,6 @@ package com.ky.gps.service.impl;
 import com.ky.gps.dao.SysLogDao;
 import com.ky.gps.entity.SysLog;
 import com.ky.gps.service.SysLogService;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

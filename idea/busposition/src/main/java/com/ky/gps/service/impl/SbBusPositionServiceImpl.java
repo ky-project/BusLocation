@@ -125,8 +125,6 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
     private void addToEffectiveRoutePosition(List<Map<String, Object>> effectiveRoutePosition, List<Map<String, Object>> filterTmpPositionList, String routeNameTmp, Integer routeId) {
         //创建存放站点的所有站点和站点名Map
         Map<String, Object> filterTmpRouteMap = new HashMap<>(16);
-        //TODO 针对测试进行的数据筛选，之后需要删除
-        optimizeTmp(filterTmpPositionList);
         //将站点名记录保存
         filterTmpRouteMap.put("routeName", routeNameTmp);
         filterTmpRouteMap.put("routeId", routeId);
@@ -175,11 +173,6 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
         if (0 == routePositionList.size()) {
             return ResultWrapperUtil.setSuccessOf(resultMap);
         }
-        if (0 == startIndex) {
-            //TODO 针对测试进行的数据筛选，之后需要删除
-            optimizeTmp(routePositionList);
-        }
-
         resultWrapper = ResultWrapperUtil.setSuccessOf(resultMap);
         return resultWrapper;
     }

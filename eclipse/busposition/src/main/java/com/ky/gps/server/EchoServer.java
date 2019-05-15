@@ -1,4 +1,4 @@
-package com.ky.gps.sys;
+package com.ky.gps.server;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -72,7 +72,7 @@ public class EchoServer {
                     	ByteBuf buf = Unpooled.copiedBuffer("#".getBytes());
 //                    	ch.pipeline().addLast(new MyDecoder(1024,buf));
                     	ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,buf));
-                        ch.pipeline().addLast(new IdleStateHandler(180, 3, 0, TimeUnit.SECONDS));
+                        ch.pipeline().addLast(new IdleStateHandler(180, 6, 0, TimeUnit.SECONDS));
                         ch.pipeline().addLast(new ServerHandler());
                     }
                 });
