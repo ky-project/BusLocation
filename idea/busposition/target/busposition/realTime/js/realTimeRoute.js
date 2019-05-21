@@ -55,7 +55,7 @@ function initialize(){
 
     //1.获取站点信息
     //获取站点
-    $.ajax('http://60.12.85.238:8081/busposition/bus/route/station', {
+    $.ajax('/busposition/bus/route/station', {
         type: 'get',
         success: function (data) {
             if (data.success === true){
@@ -237,7 +237,7 @@ function initialize(){
         var errorCount = 0;
         timer = setInterval(function () {
             // console.log('发送前的索引:'+route.trackIndex);
-            $.ajax('http://60.12.85.238:8081/busposition/route/one/position', {
+            $.ajax('/busposition/route/one/position', {
                 type: 'post',
                 //包头不包尾
                 data: {routeId: routeId, startIndex: route.trackIndex},

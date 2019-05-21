@@ -60,4 +60,13 @@ public interface SbBusPositionDao {
      */
     void deleteAll();
 
+    /**
+     * 根据路线id查询该路线的bus最新的定位数据
+     *
+     * @param routeId 路线id
+     * @param week 当天的星期
+     * @return 将记录存入map返回
+     */
+    Map<String, Object> findNewPositionByRouteId(@Param("week") String week, @Param("routeId") Integer routeId);
+
 }

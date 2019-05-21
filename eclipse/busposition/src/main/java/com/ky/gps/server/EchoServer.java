@@ -72,7 +72,7 @@ public class EchoServer {
                     	ByteBuf buf = Unpooled.copiedBuffer("#".getBytes());
 //                    	ch.pipeline().addLast(new MyDecoder(1024,buf));
                     	ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,buf));
-                        ch.pipeline().addLast(new IdleStateHandler(180, 6, 0, TimeUnit.SECONDS));
+                        ch.pipeline().addLast(new IdleStateHandler(60, 4, 0, TimeUnit.SECONDS));
                         ch.pipeline().addLast(new ServerHandler());
                     }
                 });

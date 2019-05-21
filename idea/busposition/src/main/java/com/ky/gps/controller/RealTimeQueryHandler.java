@@ -30,17 +30,44 @@ public class RealTimeQueryHandler {
     private SbRouteStationService sbRouteStationService;
 
     /**
+     * 根据路线id查询该路线对应的bus的最新的定位
+     *
+     * @param routeId 路线id
+     * @return Json数据
+     */
+    @RequestMapping(value = "/route/track", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper findRealTimeNewPositionByRouteId(Integer routeId){
+        ResultWrapper resultWrapper;
+        try{
+            //空值判断
+            if(null == routeId || routeId <= 0){
+                //如果存在空值，返回错误信息
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR, "routeId <= 0");
+            } else{
+                //反之查询结果并返回
+                resultWrapper = sbBusPositionService.findNewPositionByRouteId(routeId);
+            }
+        }catch (Exception e){
+            //异常处理
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+            LOGGER.error("", e);
+        }
+        return resultWrapper;
+    }
+
+    /**
      * 获取每条路线的站点信息
      *
      * @return 路线和站点信息
      */
     @RequestMapping(value = "/route/station", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public ResultWrapper getStationByRoute() {
+    public ResultWrapper getRealTimeStationByRoute() {
         ResultWrapper resultWrapper;
         try {
-            //获取所有路线站点信息
-            resultWrapper = sbRouteStationService.findAllRouteStation();
+            //获取所有路线站点信息 原方法findAllRouteStation(未过滤)
+            resultWrapper = sbRouteStationService.findRealTimeAllRouteStation();
         } catch (Exception e) {
             //异常处理
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);

@@ -24,5 +24,17 @@
         <input value="提交" type="submit"/>
     </form>
     <hr/>
+    <h1>根据路线id查询路线行驶轨迹</h1>
+    <form action="/busposition/routeposition/find/one" method="post">
+        routeId：<input name="routeId" type="text"/><br/>
+        <input value="提交" type="submit"/>
+    </form>
+    <hr/>
+    <h1>根据路线id查询路线对应bus的最新一个定位点</h1>
+    <form action="/busposition/bus/route/track" method="post">
+        routeId：<input name="routeId" type="text"/><br/>
+        <input value="提交" type="submit"/>
+    </form>
+    <hr/>
 </body>
 </html>

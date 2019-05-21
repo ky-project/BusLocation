@@ -1,7 +1,6 @@
 package com.ky.gps.test.service;
 
 import com.ky.gps.entity.SbBusPosition;
-import com.ky.gps.entity.SbGps;
 import com.ky.gps.server.ParseGPS;
 import com.ky.gps.util.SbBusPositionServiceUtil;
 import org.junit.Test;

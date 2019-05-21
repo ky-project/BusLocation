@@ -24,4 +24,13 @@ public class SbRouteStationServiceTest {
         ResultWrapper allRouteStation = sbRouteStationService.findAllRouteStation();
         System.out.println(System.currentTimeMillis() - l);
     }
+
+    @Test
+    public void test02(){
+        long l = System.currentTimeMillis();
+        ResultWrapper allRouteStation = sbRouteStationService.findRealTimeAllRouteStation();
+        Object data = allRouteStation.getData();
+        System.out.println(data);
+        System.out.println(System.currentTimeMillis() - l);
+    }
 }

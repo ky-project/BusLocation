@@ -48,4 +48,12 @@ public interface SbBusPositionService {
      * 将当天位置表中的内容迁移到历史表，并清空当天位置表
      */
     void deletePositionAndMoveToHis();
+
+    /**
+     * 根据路线id查询该路线的bus最新的定位数据
+     *
+     * @param routeId 路线id
+     * @return Json对象
+     */
+    ResultWrapper findNewPositionByRouteId(Integer routeId);
 }

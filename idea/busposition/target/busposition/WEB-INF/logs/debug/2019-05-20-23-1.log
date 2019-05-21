@@ -1,0 +1,37 @@
+2019-05-20 18:06:56 org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-20 18:07:00 org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-20 18:07:00 org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3868 ms
+2019-05-20 18:07:00 com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-20 18:07:00 com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-20 18:07:00 com.ky.gps.server.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-20 18:07:00 org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-20 18:07:01 io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0x4f8642df]'
+2019-05-20 18:07:01 com.ky.gps.server.StartThread - 监听服务开启：Thread[MyThread,5,RMI Runtime] Mon May 20 18:07:01 CST 2019
+2019-05-20 18:07:02 org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1820 ms
+2019-05-20 18:07:06 com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-05-20 18:07:07 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20000} enter cache
+2019-05-20 22:44:33 org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-20 22:44:36 org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-20 22:44:36 org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3078 ms
+2019-05-20 22:44:36 com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-20 22:44:36 com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-20 22:44:36 com.ky.gps.server.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-20 22:44:36 org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-20 22:44:37 io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0x4c069072]'
+2019-05-20 22:44:37 com.ky.gps.server.StartThread - 监听服务开启：Thread[MyThread,5,RMI Runtime] Mon May 20 22:44:37 CST 2019
+2019-05-20 22:44:38 org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1752 ms
+2019-05-20 22:44:45 com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-05-20 22:44:45 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20000} enter cache
+2019-05-20 22:50:17 org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2019-05-20 22:50:20 org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-05-20 22:50:21 org.springframework.web.context.ContextLoader - Root WebApplicationContext initialized in 3455 ms
+2019-05-20 22:50:21 com.ky.gps.listener.GPSThreadLietener - ----------- GPS解析系统启动 -----------
+2019-05-20 22:50:21 com.ky.gps.server.StartThread - -------------监听端口GPSport: 20086-------------
+2019-05-20 22:50:21 com.ky.gps.listener.GPSThreadLietener - ----------- GPS信号监听开始 -----------
+2019-05-20 22:50:21 org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'springDispatcherServlet'
+2019-05-20 22:50:22 io.netty.bootstrap.ServerBootstrap - Unknown channel option 'TCP_NODELAY' for channel '[id: 0x265ead75]'
+2019-05-20 22:50:22 com.ky.gps.server.StartThread - 监听服务开启：Thread[MyThread,5,RMI Runtime] Mon May 20 22:50:22 CST 2019
+2019-05-20 22:50:22 org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1789 ms
+2019-05-20 22:50:31 com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-05-20 22:50:31 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20000} enter cache
+2019-05-20 22:52:41 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20001} enter cache

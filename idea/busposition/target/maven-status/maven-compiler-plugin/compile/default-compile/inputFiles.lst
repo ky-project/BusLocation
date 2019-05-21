@@ -16,9 +16,11 @@ D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\s
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\entity\SysUser.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\service\DepartmentService.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\dao\DepartmentDao.java
+D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\entity\SbRoutePosition.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\service\SbGpsService.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\dao\SysLogDao.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\server\RequestThread.java
+D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\controller\SbRoutePositionHandler.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\service\impl\SysUserServiceImpl.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\server\ParseGPS.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\entity\SbBusPosition.java
@@ -52,8 +54,11 @@ D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\s
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\util\ParseGPSUtil.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\util\HashThreadUtil.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\util\TransformUtil.java
+D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\service\SbRoutePositionService.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\dao\SysRoleDao.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\util\ResultWrapperUtil.java
+D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\service\impl\SbRoutePositionServiceImpl.java
+D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\dao\SbRoutePositionDao.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\dao\SbUserBusDao.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\service\SysRoleService.java
 D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\dao\SbBusRouteDao.java

@@ -4,8 +4,10 @@ import com.ky.gps.dao.SbBusRouteDao;
 import com.ky.gps.dao.SbRouteStationDao;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.service.SbRouteStationService;
+import com.ky.gps.util.JudgeTimeUtil;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.text.DateFormat;
@@ -25,6 +27,117 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
     @Resource
     private SbBusRouteDao sbBusRouteDao;
 
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper findRealTimeAllRouteStation(){
+        //获取集合,keys={routeId, routeName, stationName, longitude, latitude, departTime, startTime, endTime}
+        List<Map<String, Object>> routeStation = sbRouteStationDao.findRealTimeAllRouteStation(JudgeTimeUtil.getWeek());
+        //过滤非运营时间段数据
+        //TODO 开启过滤
+//        filterNowTime(routeStation);
+        //提取字段
+        List<Map<String, Object>> resultMapList = extractElementOutToMap(routeStation);
+        //封装进Json对象中返回
+        return ResultWrapperUtil.setSuccessOf(resultMapList);
+    }
+
+    /**
+     * 提取元素
+     * 提取map集合中的routeId, routeName, startTime, endTime
+     *
+     * @param routeStation 待提取的集合
+     * @return 将提取的元素放入到外层map中
+     */
+    private List<Map<String, Object>> extractElementOutToMap(List<Map<String, Object>> routeStation){
+        //定义最后存放结果的map
+        List<Map<String, Object>> resultMapList = new ArrayList<>();
+        //定义存放一组路线的站点map集合
+        List<Map<String, Object>> stationInfo = new ArrayList<>();
+        //获取第一个记录的路线id
+        Integer routeId = (Integer)routeStation.get(0).get("routeId");
+        //获取第一个记录路线name
+        String routeName = routeStation.get(0).get("routeName").toString();
+        //获取第一个记录路线的startTime
+        String startTime = routeStation.get(0).get("startTime").toString();
+        //获取第一个记录路线的endTime
+        String endTime = routeStation.get(0).get("endTime").toString();
+        //遍历待提取的map集合
+        for (Map<String, Object> map : routeStation) {
+            //如果名字不同，则说明到达下一组记录
+            if(!routeName.equals(map.get("routeName").toString())){
+                //根据站点最晚发车时间排序
+                sortByDepartTime(stationInfo);
+                //计算前一站和下一站
+                findAllRouteStationAddPrevAndNext(stationInfo);
+                //创建临时map
+                extractLastData(resultMapList, stationInfo, routeId, routeName, startTime, endTime);
+                //初始化进行下一轮提取
+                stationInfo = new ArrayList<>();
+                routeId = (Integer)map.get("routeId");
+                routeName = map.get("routeName").toString();
+                startTime = map.get("startTime").toString();
+                endTime = map.get("endTime").toString();
+            } //名字判断End
+            //移除字段
+            map.remove("routeId");
+            map.remove("routeName");
+            map.remove("startTime");
+            map.remove("endTime");
+            stationInfo.add(map);
+        }
+        //根据站点最晚发车时间排序
+        sortByDepartTime(stationInfo);
+        //计算前一站和下一站
+        findAllRouteStationAddPrevAndNext(stationInfo);
+        //提取最后一组数据
+        extractLastData(resultMapList, stationInfo, routeId, routeName, startTime, endTime);
+        return resultMapList;
+    }
+
+    /**
+     * //提取最后一组数据
+     *
+     * @param resultMap 待存入的map
+     * @param stationInfo 站点信息list
+     * @param routeId 路线id
+     * @param routeName 路线name
+     * @param startTime 开始时间
+     * @param endTime 结束时间
+     */
+    private void extractLastData(List<Map<String, Object>> resultMap, List<Map<String, Object>> stationInfo, Integer routeId, String routeName, String startTime, String endTime) {
+        //创建临时map
+        Map<String, Object> tmpMap = new HashMap<>(16);
+        //将提取出来的元素存入临时map
+        tmpMap.put("routeId", routeId);
+        tmpMap.put("routeName", routeName);
+        tmpMap.put("startTime", startTime);
+        tmpMap.put("endTime", endTime);
+        tmpMap.put("stationInfo", stationInfo);
+        //存入结果map中
+        resultMap.add(tmpMap);
+    }
+
+    /**
+     * 过滤当前时间不在运营时间段内的记录
+     *
+     * @param routeStation 路线的站点信息集合
+     */
+    private void filterNowTime(List<Map<String, Object>> routeStation){
+        //遍历集合
+        for(int i = 0; i < routeStation.size(); i++){
+            //获取开始时间
+            String startTime = routeStation.get(i).get("startTime").toString();
+            //获取结束时间
+            String endTime = routeStation.get(i).get("endTime").toString();
+            //检测是否在时间段内
+            if(!JudgeTimeUtil.isEffectiveDate(startTime, endTime)){
+                //当前时间不在运营时间段内，删除该记录
+                routeStation.remove(i--);
+            }//检测End
+        }
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public ResultWrapper findAllRouteStation() {
         //创建结果封装对象
@@ -67,6 +180,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
         return resultWrapper;
     }
 
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public ResultWrapper findStationByRouteId(Integer routeId) {
         //获取该路线的所有站点信息

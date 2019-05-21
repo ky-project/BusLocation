@@ -5,8 +5,6 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ky.gps.util.HashThreadUtil;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
@@ -24,6 +22,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(StartThread.class);
 	private ParseGPS parseGPS;
+	private boolean flag = false;
 
 	/**
 	 * 连接时调用
@@ -41,6 +40,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 		Runtime.getRuntime().gc();
 		ctx.channel().close();
+		flag = false;
 		LOGGER.info("客户端与服务端连接关闭: " + Thread.currentThread().toString() + " " + new Date());
 	}
 
@@ -74,9 +74,13 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 				
 //				else if (!HashThreadUtil.hasThread(ctx.channel().id().toString())) {
 				if ("TRVBP01#".equals(response)) {
+					flag = true;
 					RequestThread thread = new RequestThread(ctx);
 //					thread.setName(ctx.channel().id().toString());
 //					thread.setDaemon(true);
+					
+					/* 此处修改请求间隔 */
+					Thread.sleep(2000);
 					thread.run();
 				}
 			}
@@ -123,10 +127,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 				ctx.channel().close();
 				break;
 			case WRITER_IDLE:
-				eventType = "写空闲";
-				LOGGER.info(ctx.channel().remoteAddress() + "超时事件->" + eventType);
-				Thread thread = new Thread(new RequestThread(ctx));
-				thread.run();
+				if (flag) {
+					eventType = "写空闲";
+					LOGGER.info(ctx.channel().remoteAddress() + "超时事件->" + eventType);
+					Thread thread = new Thread(new RequestThread(ctx));
+					thread.run();
+				}
 				break;
 			case ALL_IDLE:
 				eventType = "读写空闲";
@@ -152,6 +158,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		LOGGER.error("", cause);
+		flag = false;
 		ctx.close();
 	}
 

@@ -1,6 +1,7 @@
 package com.ky.gps.service;
 
 import com.ky.gps.entity.ResultWrapper;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Daye
@@ -14,6 +15,14 @@ public interface SbRouteStationService {
      * @return 所有有效站点List集合
      */
     ResultWrapper findStationByRouteId(Integer routeId);
+
+    /**
+     * 实时查询路线站点信息
+     * 将过滤不在运营时间内的路线
+     *
+     * @return 返回Json数据
+     */
+    ResultWrapper findRealTimeAllRouteStation();
 
     /**
      * 查询所有路线和其对应的站点信息

@@ -26,4 +26,13 @@ public interface SbRouteStationDao {
      */
     List<Map<String, Object>> findAllRouteStation();
 
+    /**
+     * 实时查询路线站点信息
+     * 将过滤不在运营时间内的路线
+     *
+     * @param week 当天的星期
+     * @return 返回list, keys={routeId, routeName, stationName, longitude, latitude, departTime, startTime, endTime}
+     */
+    List<Map<String, Object>> findRealTimeAllRouteStation(@Param("week") String week);
+
 }

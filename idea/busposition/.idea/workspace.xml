@@ -11,9 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dd9875d8-efd0-4347-965b-526af6626ecc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ky/gps/server/EchoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ky/gps/server/EchoServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ky/gps/server/RequestThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ky/gps/server/RequestThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ky/gps/util/ParseGPSUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ky/gps/util/ParseGPSUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysAdminUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysAdminUserHandler.java" afterDir="false" />
     </list>
     <list id="2c2ddab5-3db0-4073-96f3-da32500f3e0c" name="Revert: " comment="Revert:" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -51,44 +49,39 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="sb_gps_sys: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="sb_gps_sys@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="sb_gps_sys: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="sys_user: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/RequestThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/EchoServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="85" column="17" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysAdminUserHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-811">
-              <caret line="219" column="26" lean-forward="true" selection-start-line="219" selection-start-column="26" selection-end-line="219" selection-end-column="26" />
+            <state relative-caret-position="255">
+              <caret line="124" column="45" selection-start-line="124" selection-start-column="45" selection-end-line="124" selection-end-column="45" />
             </state>
           </provider>
-          <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysUserHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2679">
+              <caret line="159" column="24" selection-start-line="159" selection-start-column="24" selection-end-line="159" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SbRoutePositionHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="798">
+              <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -98,9 +91,9 @@
       <list>
         <option value="Jsp File" />
         <option value="HTML File" />
-        <option value="Interface" />
         <option value="MybatisMapper" />
         <option value="spring-beans.schema" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -116,29 +109,13 @@
       <find>idcard</find>
       <find>MyAuthenticator</find>
       <find>account</find>
+      <find>60</find>
+      <find>ajax</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/listener/GpsThreadListener.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/util/TestUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/TestHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/WebRoot/directory.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/jdbc/jdbc.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/timer/MovePositionTimer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SbBusRouteDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/service/inter/SbBusRouteService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/service/impl/SbRouteStationServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/listener/GPSThreadLietener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/NIOServerSocket.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/StartThread.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/SbBusRouteDao.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/RequestThread.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/ServerHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/ParseGPS.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/sys/EchoServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/Impl/SysUserHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/impl/SysUserHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/impl/GainPositionHandler.java" />
@@ -149,15 +126,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/server/ParseGPS.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ky/gps/test/util/JudgeTimeTest.java" />
         <option value="$PROJECT_DIR$/src/main/WebRoot/realTime/login.html" />
-        <option value="$PROJECT_DIR$/src/main/WebRoot/realTime/js/realTimeRoute.js" />
         <option value="$PROJECT_DIR$/src/main/WebRoot/realTime/js/stationDetail.js" />
         <option value="$PROJECT_DIR$/src/main/WebRoot/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/service/impl/SbBusPositionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/WebRoot/realTime/js/login.js" />
         <option value="$PROJECT_DIR$/src/main/WebRoot/api/adminApi.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/entity/SysUser.java" />
         <option value="$PROJECT_DIR$/src/main/WebRoot/realTime/js/wode.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysAdminUserHandler.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/entity/MyAuthenticator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/util/SysLogUtil.java" />
@@ -167,11 +141,32 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SysUserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/util/SendMail.java" />
         <option value="$PROJECT_DIR$/src/main/WebRoot/api/simpleUserApi.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/log/log4j2.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysUserHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/util/ParseGPSUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/server/RequestThread.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/entity/SbRoutePosition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SbRoutePositionMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SbRoutePositionDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/service/SbRoutePositionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/service/impl/SbRoutePositionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/SbRoutePositionDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/server/ServerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/server/EchoServer.java" />
+        <option value="$PROJECT_DIR$/src/main/WebRoot/realTime/js/realTimeRoute.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/service/SbRouteStationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SbRouteStationDao.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ky/gps/test/service/SbRouteStationServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/SbRouteStationDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SbRoutePositionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SbBusPositionDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/service/SbBusPositionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/RealTimeQueryHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/WebRoot/api/realTimeQueryApi.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/log/log4j2.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/service/impl/SbBusPositionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/SbBusPositionDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/service/impl/SbRouteStationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysAdminUserHandler.java" />
       </list>
     </option>
   </component>
@@ -267,15 +262,22 @@
               <item name="busposition" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+              <item name="WebRoot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="busposition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="busposition" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="WebRoot" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -284,7 +286,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/WebRoot" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -295,10 +297,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\server" />
       <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\entity" />
       <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\WebRoot" />
       <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\util" />
-      <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\java\com\ky\gps\server" />
       <recent name="D:\Mydata\STU\创新项目\校车实时定位\BusLocation_lyh\idea\busposition\src\main\WebRoot\realTime" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -335,22 +337,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DepartmentServiceTest.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="busposition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ky.gps.test.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ky.gps.test.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ky.gps.test.service.DepartmentServiceTest" />
-      <option name="METHOD_NAME" value="test01" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SbBusPositionServiceTest.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="busposition" />
       <extension name="coverage">
@@ -367,7 +353,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SbRouteServiceTest.findAllBaseInfoTest01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SbRouteStationServiceTest.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="busposition" />
       <extension name="coverage">
         <pattern>
@@ -376,8 +362,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ky.gps.test.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ky.gps.test.service.SbRouteServiceTest" />
-      <option name="METHOD_NAME" value="findAllBaseInfoTest01" />
+      <option name="MAIN_CLASS_NAME" value="com.ky.gps.test.service.SbRouteStationServiceTest" />
+      <option name="METHOD_NAME" value="test01" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SbRouteStationServiceTest.test02" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="busposition" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ky.gps.test.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ky.gps.test.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ky.gps.test.service.SbRouteStationServiceTest" />
+      <option name="METHOD_NAME" value="test02" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -475,19 +477,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.SendMail" />
-      <item itemvalue="JUnit.SbRouteServiceTest.findAllBaseInfoTest01" />
       <item itemvalue="JUnit.SbBusPositionServiceTest.test01" />
-      <item itemvalue="JUnit.DepartmentServiceTest.test01" />
       <item itemvalue="JUnit.SysUserServiceTest.test02" />
+      <item itemvalue="JUnit.SbRouteStationServiceTest.test02" />
+      <item itemvalue="JUnit.SbRouteStationServiceTest.test01" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.14" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SbRouteStationServiceTest.test02" />
+        <item itemvalue="JUnit.SbRouteStationServiceTest.test01" />
         <item itemvalue="Application.SendMail" />
         <item itemvalue="JUnit.SbBusPositionServiceTest.test01" />
         <item itemvalue="JUnit.SysUserServiceTest.test02" />
-        <item itemvalue="JUnit.DepartmentServiceTest.test01" />
-        <item itemvalue="JUnit.SbRouteServiceTest.findAllBaseInfoTest01" />
       </list>
     </recent_temporary>
   </component>
@@ -587,7 +589,16 @@
       <workItem from="1557748514817" duration="12754000" />
       <workItem from="1557803260950" duration="7330000" />
       <workItem from="1557846822445" duration="1248000" />
-      <workItem from="1557886039048" duration="863000" />
+      <workItem from="1557886039048" duration="1462000" />
+      <workItem from="1557898310743" duration="1188000" />
+      <workItem from="1557917298676" duration="2012000" />
+      <workItem from="1558063011707" duration="4091000" />
+      <workItem from="1558243035574" duration="14015000" />
+      <workItem from="1558309403142" duration="15639000" />
+      <workItem from="1558404134250" duration="3962000" />
+      <workItem from="1558430873490" duration="10563000" />
+      <workItem from="1558453871536" duration="715000" />
+      <workItem from="1558454834076" duration="526000" />
     </task>
     <task id="LOCAL-00001" summary="Auto Update">
       <created>1557226925218</created>
@@ -841,31 +852,31 @@
       <option name="project" value="LOCAL" />
       <updated>1557803777377</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="添加路线轨迹查询api">
+      <created>1558246063466</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1558246063466</updated>
+    </task>
+    <task id="LOCAL-00038" summary="路线站点过滤">
+      <created>1558407022855</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1558407022855</updated>
+    </task>
+    <task id="LOCAL-00039" summary="添加查询对应路线的bus的最新定位接口-/bus/route/track">
+      <created>1558441034434</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1558441034434</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SysUserServiceTest_test02 - 2019.05.04 at 12h 34m 13s.xml">
-      <configuration name="SysUserServiceTest.test02" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SbBusPositionServiceTest_test01 - 2019.05.04 at 13h 09m 05s.xml">
-      <configuration name="SbBusPositionServiceTest.test01" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JudgeTimeTest_test02 - 2019.05.12 at 14h 29m 00s.xml">
-      <configuration name="JudgeTimeTest.test02" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JudgeTimeTest_test02 - 2019.05.12 at 14h 29m 27s.xml">
-      <configuration name="JudgeTimeTest.test02" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JudgeTimeTest_test02 - 2019.05.12 at 14h 31m 23s.xml">
-      <configuration name="JudgeTimeTest.test02" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JudgeTimeTest_test02 - 2019.05.12 at 14h 31m 46s.xml">
-      <configuration name="JudgeTimeTest.test02" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JudgeTimeTest_test02 - 2019.05.12 at 15h 13m 33s.xml">
-      <configuration name="JudgeTimeTest.test02" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="JudgeTimeTest_test02 - 2019.05.12 at 15h 33m 20s.xml">
       <configuration name="JudgeTimeTest.test02" configurationId="JUnit" />
     </history-entry>
@@ -875,9 +886,30 @@
     <history-entry file="JudgeTimeTest_test02 - 2019.05.12 at 15h 35m 17s.xml">
       <configuration name="JudgeTimeTest.test02" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SbRouteStationServiceTest_test02 - 2019.05.20 at 17h 53m 45s.xml">
+      <configuration name="SbRouteStationServiceTest.test02" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SbRouteStationServiceTest_test02 - 2019.05.20 at 17h 54m 26s.xml">
+      <configuration name="SbRouteStationServiceTest.test02" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SbRouteStationServiceTest_test02 - 2019.05.20 at 17h 55m 43s.xml">
+      <configuration name="SbRouteStationServiceTest.test02" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SbRouteStationServiceTest_test02 - 2019.05.20 at 17h 56m 25s.xml">
+      <configuration name="SbRouteStationServiceTest.test02" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SbRouteStationServiceTest_test02 - 2019.05.20 at 18h 04m 09s.xml">
+      <configuration name="SbRouteStationServiceTest.test02" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SbRouteStationServiceTest_test01 - 2019.05.20 at 18h 04m 18s.xml">
+      <configuration name="SbRouteStationServiceTest.test01" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SbRouteStationServiceTest_test02 - 2019.05.20 at 18h 05m 23s.xml">
+      <configuration name="SbRouteStationServiceTest.test02" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="495410000" />
+    <option name="totallyTimeSpent" value="548720000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -891,7 +923,7 @@
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65595716" visible="true" weight="0.23846154" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65595716" visible="true" weight="0.20503849" />
       <window_info id="Web" order="1" sideWeight="0.5020325" side_tool="true" weight="0.20979021" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -916,23 +948,23 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" sideWeight="0.5274431" visible="true" weight="0.17062937" />
-      <window_info anchor="right" id="Database" order="5" sideWeight="0.4875" weight="0.2034965" />
+      <window_info anchor="right" id="Maven" order="4" sideWeight="0.52476573" weight="0.16946779" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.4875" weight="0.20308124" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Mybatis datasource" order="7" side_tool="true" weight="0.3296011" />
-      <window_info anchor="right" id="Structure" order="8" sideWeight="0.58565736" weight="0.17494752" />
-      <window_info anchor="right" x="642" y="363" width="345" height="296" id="Documentation" order="9" sideWeight="0.4725569" side_tool="true" visible="true" weight="0.17062937" />
+      <window_info anchor="right" id="Structure" order="8" sideWeight="0.58565736" weight="0.17436975" />
+      <window_info anchor="right" x="642" y="363" width="345" height="296" id="Documentation" order="9" sideWeight="0.47523427" side_tool="true" visible="true" weight="0.16993007" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65595716" visible="true" weight="0.22797203" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65595716" visible="true" weight="0.19957983" />
       <window_info id="Web" order="1" sideWeight="0.5020325" side_tool="true" weight="0.20979021" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32931727" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3239625" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.32797858" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34136546" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.32797858" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32931727" />
@@ -949,21 +981,18 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" sideWeight="0.53386456" visible="true" weight="0.17202798" />
-      <window_info anchor="right" id="Database" order="5" sideWeight="0.4875" weight="0.2034965" />
+      <window_info anchor="right" id="Maven" order="4" sideWeight="0.52476573" weight="0.16946779" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.4875" weight="0.20308124" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Mybatis datasource" order="7" side_tool="true" weight="0.3296011" />
-      <window_info anchor="right" id="Structure" order="8" sideWeight="0.58902276" weight="0.14615385" />
-      <window_info anchor="right" x="642" y="363" width="345" height="296" id="Documentation" order="9" sideWeight="0.46706587" side_tool="true" visible="true" weight="0.17202798" />
+      <window_info anchor="right" id="Structure" order="8" sideWeight="0.58565736" weight="0.17436975" />
+      <window_info anchor="right" x="642" y="363" width="345" height="296" id="Documentation" order="9" sideWeight="0.47523427" side_tool="true" visible="true" weight="0.16993007" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="更新定时器任务，解决重复执行问题" />
-    <MESSAGE value="更新log配置文件" />
-    <MESSAGE value="解决too many Connections" />
     <MESSAGE value="更新立即定位请求" />
     <MESSAGE value="重命名" />
     <MESSAGE value="更改参数" />
@@ -986,127 +1015,12 @@
     <MESSAGE value="完成/modify/pwd/email接口，用户通过忘记密码操作来修改密码" />
     <MESSAGE value="修改邮件内容" />
     <MESSAGE value="Auto Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Auto Update" />
+    <MESSAGE value="添加路线轨迹查询api" />
+    <MESSAGE value="路线站点过滤" />
+    <MESSAGE value="添加查询对应路线的bus的最新定位接口-/bus/route/track" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加查询对应路线的bus的最新定位接口-/bus/route/track" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="52" lean-forward="true" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/util/SbBusPositionServiceUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/directory.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/entity/AbstractEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="130" column="16" selection-start-line="130" selection-start-column="16" selection-end-line="130" selection-end-column="16" />
-          <folding>
-            <element signature="e#3090#3091#0" expanded="true" />
-            <element signature="e#3132#3133#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ky/gps/test/util/JudgeTimeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/listener/GPSThreadLietener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/bootstrap-3.3.7-dist/js/npm.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/realTimeRoute.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/js/tools.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/js/realTimeRoute.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/js/scrollList.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/js/stationDetail.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/js/EventWrapper.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SbBusPositionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="81" column="20" lean-forward="true" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SbRouteHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="52" column="61" lean-forward="true" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/service/SbBusPositionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.078.3376/SbBusPositionServiceImpl.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/service/impl/SbBusPositionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="143" column="21" lean-forward="true" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
-          <folding>
-            <element signature="e#1223#1224#0" expanded="true" />
-            <element signature="e#1283#1284#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/GainPositionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Temp/SysUserHandler.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/stationDetails.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/wode.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-472">
@@ -1126,24 +1040,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/api/adminApi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/js/wode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1710">
           <caret line="90" column="42" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysAdminUserHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="185" column="26" lean-forward="true" selection-start-line="185" selection-start-column="26" selection-end-line="185" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1214,62 +1114,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/StartThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/ServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-695">
-          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/ParseGPS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-317">
-          <caret line="78" column="17" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/NIOServerSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log/log4j2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="86" column="15" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysUserHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/RealTimeQueryHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/RequestThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/util/ParseGPSUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
@@ -1280,20 +1124,285 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/EchoServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="85" column="17" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-811">
-          <caret line="219" column="26" lean-forward="true" selection-start-line="219" selection-start-column="26" selection-end-line="219" selection-end-column="26" />
+        <state relative-caret-position="19">
+          <caret line="219" column="26" selection-start-line="219" selection-start-column="26" selection-end-line="219" selection-end-column="26" />
         </state>
       </provider>
       <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/listener/GPSThreadLietener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SbBusRouteDao.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/entity/SbRoutePosition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="e#1349#1350#0" expanded="true" />
+            <element signature="e#1374#1375#0" expanded="true" />
+            <element signature="e#1411#1412#0" expanded="true" />
+            <element signature="e#1439#1440#0" expanded="true" />
+            <element signature="e#1474#1475#0" expanded="true" />
+            <element signature="e#1504#1505#0" expanded="true" />
+            <element signature="e#1551#1552#0" expanded="true" />
+            <element signature="e#1589#1590#0" expanded="true" />
+            <element signature="e#1624#1625#0" expanded="true" />
+            <element signature="e#1655#1656#0" expanded="true" />
+            <element signature="e#1703#1704#0" expanded="true" />
+            <element signature="e#1743#1744#0" expanded="true" />
+            <element signature="e#1782#1783#0" expanded="true" />
+            <element signature="e#1817#1818#0" expanded="true" />
+            <element signature="e#1873#1874#0" expanded="true" />
+            <element signature="e#1921#1922#0" expanded="true" />
+            <element signature="e#1959#1960#0" expanded="true" />
+            <element signature="e#1993#1994#0" expanded="true" />
+            <element signature="e#2047#2048#0" expanded="true" />
+            <element signature="e#2093#2094#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/StartThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-152">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/NIOServerSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/ParseGPS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="78" column="17" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/RequestThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/ServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/server/EchoServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="77" column="19" lean-forward="true" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/GainPositionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/api/adminApi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SbRoutePositionDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/util/JudgeTimeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-737">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SbRouteStationDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="33" column="114" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ky/gps/test/service/SbRouteStationServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SbRouteStationDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="72" column="17" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/js/realTimeRoute.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="239" column="18" selection-start-line="239" selection-start-column="14" selection-end-line="239" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/realTime/realTimeRoute.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/service/impl/SbRoutePositionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="27" column="47" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SbRouteHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="42" column="15" lean-forward="true" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SbRoutePositionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="70" lean-forward="true" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SbRouteDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="91" column="36" lean-forward="true" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/WebRoot/api/realTimeQueryApi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/dao/SbBusPositionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SbBusPositionDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="131" column="47" selection-start-line="131" selection-start-column="47" selection-end-line="131" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/service/SbRoutePositionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/service/SbRouteStationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/service/impl/SbBusPositionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" column="65" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/service/SbBusPositionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/service/impl/SbRouteStationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="37" column="14" lean-forward="true" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/RealTimeQueryHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysAdminUserHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="124" column="45" selection-start-line="124" selection-start-column="45" selection-end-line="124" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SysUserHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2679">
+          <caret line="159" column="24" selection-start-line="159" selection-start-column="24" selection-end-line="159" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ky/gps/controller/SbRoutePositionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

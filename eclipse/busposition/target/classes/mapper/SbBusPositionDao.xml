@@ -115,5 +115,27 @@
                    AND route_gps.`week` = #{week}
                    AND sb_busposition.Valid = 1) ss
     </select>
+    <select id="findNewPositionByRouteId" resultType="map">
+        SELECT sb_busposition.SBP_LONGITUDE longitude,
+               sb_busposition.SBP_LATITUDE  latitude,
+               sb_busposition.SBP_VELOCITY  velocity,
+               sb_busposition.SBP_DIRECTION direction
+        FROM sb_busposition,
+             (
+                 SELECT sb_gps.ID gpsId
+                 FROM sb_bus_route
+                          LEFT JOIN sb_route ON sb_bus_route.ROUTE_ID = sb_route.ID
+                          LEFT JOIN sb_gps ON sb_bus_route.BUS_ID = sb_gps.BUS_ID
+                 WHERE sb_bus_route.Valid = 1
+                   AND sb_route.Valid = 1
+                   AND sb_gps.Valid = 1
+                   AND sb_route.ID = #{routeId}
+                   AND sb_bus_route.SBBR_WEEK = #{week}
+             ) route_gps
+        WHERE route_gps.gpsId = sb_busposition.GPS_ID
+          AND sb_busposition.Valid = 1
+        ORDER BY sb_busposition.SBP_RECODE_TIME DESC
+        LIMIT 1
+    </select>
 
 </mapper>

@@ -80,7 +80,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 //					thread.setDaemon(true);
 					
 					/* 此处修改请求间隔 */
-					Thread.sleep(4000);
+					Thread.sleep(2000);
 					thread.run();
 				}
 			}

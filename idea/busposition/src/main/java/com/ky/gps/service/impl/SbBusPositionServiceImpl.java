@@ -29,6 +29,16 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
     @Resource
     private SbBusPositionHisDao sbBusPositionHisDao;
 
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper findNewPositionByRouteId(Integer routeId) {
+        Map<String, Object> trackRoute = sbBusPositionDao.findNewPositionByRouteId(JudgeTimeUtil.getWeek(), routeId);
+        Map<String, Object> resultMap = new HashMap<>(16);
+        resultMap.put("routeId", routeId);
+        resultMap.put("trackRoute", trackRoute);
+        return ResultWrapperUtil.setSuccessOf(resultMap);
+    }
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void deletePositionAndMoveToHis() {
@@ -169,10 +179,6 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
         resultMap.put("routeId", routeId);
         //存入定位信息
         resultMap.put("trackRoute", routePositionList);
-        //如果全部站定位数据都不符合时间段，则时间返回空list
-        if (0 == routePositionList.size()) {
-            return ResultWrapperUtil.setSuccessOf(resultMap);
-        }
         resultWrapper = ResultWrapperUtil.setSuccessOf(resultMap);
         return resultWrapper;
     }
