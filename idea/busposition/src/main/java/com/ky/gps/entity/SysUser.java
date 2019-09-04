@@ -22,7 +22,7 @@ public class SysUser extends AbstractEntity {
     /** 加密密码 */
     private String salt;
     /** 身份证号码 */
-    private String idCode;
+    private String idCard;
     /** 联系电话 */
     private String phone;
     /** 电子邮件 */
@@ -41,7 +41,7 @@ public class SysUser extends AbstractEntity {
     public SysUser(Integer id, Department department,
                    String workId, String realName,
                    String password, String salt,
-                   String idCode, String phone,
+                   String idCard, String phone,
                    String email, Date accountDate,
                    Date lastPsdDate) {
         this.id = id;
@@ -50,7 +50,7 @@ public class SysUser extends AbstractEntity {
         this.realName = realName;
         this.password = password;
         this.salt = salt;
-        this.idCode = idCode;
+        this.idCard = idCard;
         this.phone = phone;
         this.email = email;
         this.accountDate = accountDate;
@@ -65,7 +65,7 @@ public class SysUser extends AbstractEntity {
                    Boolean valid, Integer id,
                    Department department, String workId,
                    String realName, String password,
-                   String salt, String idCode,
+                   String salt, String idCard,
                    String phone, String email,
                    Date accountDate, Date lastPsdDate) {
         super(remark, remark1,
@@ -79,7 +79,7 @@ public class SysUser extends AbstractEntity {
         this.realName = realName;
         this.password = password;
         this.salt = salt;
-        this.idCode = idCode;
+        this.idCard = idCard;
         this.phone = phone;
         this.email = email;
         this.accountDate = accountDate;
@@ -99,7 +99,7 @@ public class SysUser extends AbstractEntity {
                 ", realName='" + realName + '\'' +
                 ", password='" + password + '\'' +
                 ", salt='" + salt + '\'' +
-                ", idCode='" + idCode + '\'' +
+                ", idCard='" + idCard + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", accountDate=" + accountDate +
@@ -157,12 +157,12 @@ public class SysUser extends AbstractEntity {
         this.salt = salt;
     }
 
-    public String getIdCode() {
-        return idCode;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setIdCode(String idCode) {
-        this.idCode = idCode;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
     public String getPhone() {

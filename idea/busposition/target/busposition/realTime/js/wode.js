@@ -1,106 +1,161 @@
 window.onload = function () {
     //0.获取所需元素
+    var $bodyIn = $('.body-in');
     var $departmentName = $('.department-name');
     var $realName = $('.real-name');
     var $phone = $('.phone');
     var $idCode = $('.id-code');
     var $workId = $('.work-id');
     var $email = $('.email');
-    var $modalMask = $('.modal-mask');
-    var $modalBox = $('.modal-box');
-    var $modalTitle = $('.modal-title');
-    var $modalContent = $('.modal-content');
-    var $modalFooter = $('.modal-footer');
-    var $btnCancel = $('.btn-cancel');
-    var $btnOk = $('.btn-ok');
     var $infoItems = $('.info-list li').not('.department-name').not('.work-id');
-    // console.log($infoItems);
+    var $modifyPsw = $('#modify-psw');
+    var $exit = $('#exit');
+    var $back = $('.back');
+    var flag = true;
 
-    var userInfo = null;
-    //1.获取数据
-    $.ajax('/busposition/user/self/info', {
-        type: 'get',
-        success: function (data) {
-            // console.log(data);
-            if (data.success === true) {
-                userInfo = data.data[0];
-                //2.填充用户数据
-                fillData();
-            } else {
-                var message = new Message(data.message);
-                message.render();
-                message.pop();
-            }
-        },
-        error: function (xhr) {
-            new Message('请求信息发送失败');
-        }
-    });
-    //3.模态窗相关
-    //3.1监听信息列表点击事件
+
+    //1.初始化用户信息
+    initUserInfo();
+    //2.监听用户信息列表点击事件
     $infoItems.click(function () {
-        openModalWindow($modalMask, $modalBox);
-        //3.2初始化模态窗内容
-        var text = $(this).children('h3').text();
-        initModalWindow(text);
-        //3.3初始化确定按钮点击事件
+        //初始化模态窗
+        var modalWindow = new ModalWindow($bodyIn);
+        modalWindow.init();
+        //初始化模态窗标题
+        var text = $(this).children('h3').eq(0).text();
+        modalWindow.setTitle(text);
+        //初始化模态窗内容
+        var $modalInput = $(`<input type="text" placeholder="请输入要修改的${text}">`);
+        modalWindow.$modalContent.append($modalInput);
+        //初始化确定按钮点击事件
         var key = toHumpString(this.className);
-        initBtnOk($btnOk, $modalContent, key);
+        initBtnOk(modalWindow, $modalInput, key);
+        //打开模态窗
+        modalWindow.openModalWindow();
     });
-    //3.4监听遮罩点击事件
-    $modalMask.click(function (event) {
-        closeModalWindow($modalMask, $modalBox);
+    //3.监听密码修改按钮点击事件
+    $modifyPsw.click(function () {
+        //初始化模态窗
+        var modalWindow = new ModalWindow($bodyIn);
+        modalWindow.init();
+        //初始化模态窗标题
+        var text = $(this).text();
+        modalWindow.setTitle(text);
+        //初始化模态窗内容
+        var $oldPsw = $(`<input type="text" placeholder="请输入原密码">`);
+        var $newPsw = $(`<input type="text" placeholder="请输入新密码">`);
+        modalWindow.$modalContent.append($oldPsw);
+        modalWindow.$modalContent.append($newPsw);
+        //打开模态窗
+        modalWindow.openModalWindow();
+        //监听密码框输入事件
+        pswIsEmpty($oldPsw, $newPsw);
+        //初始化模态窗确定事件
+        modalWindow.$btnOk.click(function () {
+            if (flag) {
+                var oldVal = $oldPsw.val();
+                var newVal = $newPsw.val();
+                var obj = {
+                    oldPassword: oldVal,
+                    newPassword: newVal
+                };
+                //发送密码修改请求
+                sendPswModify(obj);
+                modalWindow.closeModalWindow(modalWindow.bomb());
+            }
+        })
+
     });
-    //3.5监听取消按钮点击事件
-    $btnCancel.click(function () {
-        closeModalWindow($modalMask, $modalBox);
+    //4.监听退出登录按钮点击事件
+    $exit.click(function(){
+       $.delCookie('password','/');
+       $.delCookie('workId','/');
+       location.href = './login.html';
     });
-    //3.6设置模态窗按钮按下样式
-    setBtnStyle($modalFooter.children('button'));
+    //5.设置列表按下抬起样式
+    setDownUpStyle($infoItems.add($modifyPsw).add($exit));
+    //6.监听返回按钮点击事件
+    $back.click(function(){
+       history.go(-1);
+    });
+
 
     //初始化确认按钮点击事件
-    function initBtnOk($btnOk, $modalContent, key) {
-        var $input = $modalContent.children('input').eq(0);
-        $btnOk.click(function () {
+    function initBtnOk(modalWindow, $modalInput, key) {
+        modalWindow.$btnOk.click(function () {
+            var value = $modalInput.val();
             //输入检测
-            var value = $input.val();
-            if (value === '') {
-                $input.css({
-                    'border-color': '#5bc0de',
-                });
-                $input.focus();
-                $input.attr('placeholder','输入为空!');
-                return;
-            }
+            var flag = checkInput(key, value, $modalInput);
+            if (!flag) return;
             //发送请求
             var data = {};
             data[key] = value;
-            console.log(data);
-            $.ajax('/busposition/user/update/info', {
-                type: 'post',
-                data: JSON.stringify(data),
-                contentType:'application/json; charset=utf-8',
-                success: function (data) {
-                    if (data.success === true) {
-                        var message = new Message(data.message);
-                        message.render();
-                        message.pop();
-                        //重新加载账号资料页面
-
-                    } else {
-                        var message = new Message(data.message);
-                        message.render();
-                        message.pop();
-                    }
-                },
-                error: function (xhr) {
-                    var message = new Message('请求发送失败');
-                    message.render();
-                    message.pop();
-                }
-            });
-            closeModalWindow($modalMask, $modalBox)
+            sendModify(data);
+            //关闭并删除模态窗
+            modalWindow.closeModalWindow(modalWindow.bomb());
         });
+    }
+
+    //填充用户数据
+    function fillData(userInfo) {
+        $departmentName.children('p').text(userInfo.departmentName);
+        $realName.children('p').text(userInfo.realName);
+        $phone.children('p').text(userInfo.phone);
+        $idCode.children('p').text(userInfo.idCode);
+        $workId.children('p').text(userInfo.workId);
+        $email.children('p').text(userInfo.email);
+    };
+
+    //初始化用户信息
+    function initUserInfo() {
+        $.ajax('/busposition/user/self/info', {
+            type: 'get',
+            success: function (data) {
+                if (data.success === true) {
+                    var userInfo = data.data[0];
+                    //2.填充用户数据
+                    fillData(userInfo);
+                } else {
+                    var promptWindow = new PromptWindow(data.message);
+                    promptWindow.init();
+                }
+            },
+            error: function () {
+                var promptWindow = new PromptWindow('用户信息请求发送失败');
+                promptWindow.init();
+            }
+        });
+    }
+
+    //发送信息修改请求
+    function sendModify(obj) {
+        $.ajax('/busposition/user/update/info', {
+            type: 'post',
+            data: JSON.stringify(obj),
+            contentType: 'application/json',
+            success: function (data) {
+                if (data.success === true) {
+                    var promptWindow = new PromptWindow(data.message);
+                    promptWindow.init();
+                    //重新加载账号资料页面
+                    initUserInfo();
+                } else {
+                    var promptWindow = new PromptWindow(data.message);
+                    promptWindow.init();
+                }
+            },
+            error: function (xhr) {
+                var promptWindow = new PromptWindow('信息修改请求发送失败');
+                promptWindow.init();
+            }
+        });
+    }
+
+    //输入错误提示
+    function errorTip($modalInput, tip) {
+        $modalInput.focus();
+        $modalInput.val('');
+        $modalInput.attr('placeholder', tip);
     }
 
     //字符串转驼峰形式
@@ -113,53 +168,105 @@ window.onload = function () {
         return arr.join('');
     }
 
-    //填充用户数据
-    function fillData() {
-        $departmentName.children('p').text(userInfo.departmentName);
-        $realName.children('p').text(userInfo.realName);
-        $phone.children('p').text(userInfo.phone);
-        $idCode.children('p').text(userInfo.idCode);
-        $workId.children('p').text(userInfo.workId);
-        $email.children('p').text(userInfo.email);
+    //用户输入检测
+    function checkInput(key, value, $modalInput) {
+        if (value === '') {
+            errorTip($modalInput, '输入为空!');
+            return false;
+        }
+        var flag = true;
+        switch (key) {
+            case 'realName':
+                var reg = /^[\u4E00-\u9FA5]+$/;
+                if (!reg.test(value)) {
+                    errorTip($modalInput, '姓名格式错误!');
+                    flag = false;
+                }
+                break;
+            case 'idCode':
+                var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+                if (!reg.test(value)) {
+                    errorTip($modalInput, "身份证号格式错误!");
+                    flag = false;
+                }
+                break;
+            case 'phone':
+                var reg = /^1[34578]\d{9}$/;
+                if (!reg.test(value)) {
+                    errorTip($modalInput, "手机号格式错误!");
+                    flag = false;
+                }
+                break;
+            case 'email':
+                var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+                if (!reg.test(value)) {
+                    errorTip($modalInput, "邮箱格式错误!");
+                    flag = false;
+                }
+                break;
+        }
+        return flag;
     }
 
-    //打开模态窗
-    function openModalWindow($modalMask, $modalBox) {
-        $modalMask.stop().fadeIn(300);
-        $modalBox.stop().fadeIn(300);
+    //密码输入框判空
+    function pswIsEmpty($oldPsw, $newPsw) {
+        var $inputPsw = $oldPsw.add($newPsw);
+        for (var i = 0; i < $inputPsw.length; i++) {
+            $inputPsw.get(i).oninput = debounce(function () {
+                var oldVal = $oldPsw.val();
+                var newVal = $newPsw.val();
+                if (!oldVal) {
+                    $oldPsw.focus();
+                    flag = false;
+                    console.log(flag);
+                } else if (!newVal) {
+                    $newPsw.focus();
+                    flag = false;
+                    console.log(flag);
+                } else {
+                    flag = true;
+                    console.log(flag);
+                }
+            },300);
+        }
     }
 
-    //关闭模态窗
-    function closeModalWindow($modalMask, $modalBox) {
-        $modalMask.stop().fadeOut(300);
-        $modalBox.stop().fadeOut(300);
+    //发送密码修改请求
+    function sendPswModify(obj) {
+        $.ajax('/busposition/user/modify/pwd', {
+            type: 'post',
+            data: obj,
+            // contentType: 'application/json;charset=utf-8',
+            success: function (data) {
+                if (data.success === true) {
+                    var promptWindow = new PromptWindow(data.message);
+                    promptWindow.init();
+                } else {
+                    var promptWindow = new PromptWindow(data.message);
+                    promptWindow.init();
+                }
+            },
+            error: function () {
+                var promptWindow = new PromptWindow('密码修改请求发送失败');
+                promptWindow.init();
+            }
+        })
     }
 
-    //设置模态窗按下抬起样式
-    function setBtnStyle(oBtns) {
-        for (var i = 0; i < oBtns.length; i++) {
-            oBtns[i].addEventListener('touchstart', function () {
-                // alert('被点击了');
+    //设置列表按下抬起样式
+    function setDownUpStyle($eles){
+        for (var i = 0; i < $eles.length; i++) {
+            $eles.get(i).addEventListener('touchstart', function () {
                 $(this).css({
-                    'background-color': '#5bc0de',
-                    'color': '#fff'
+                    'background-color': '#ccc',
                 })
             }, false);
-            oBtns[i].addEventListener('touchend', function () {
-                // alert('被点击了');
+            $eles.get(i).addEventListener('touchend', function () {
                 $(this).css({
                     'background-color': '#fff',
-                    'color': '#5bc0de'
                 })
             }, false);
         }
     }
-
-    //初始化模态窗内容
-    function initModalWindow(text) {
-        $modalTitle.text(text);
-        $modalContent.children('input').attr('placeholder', '请输入要修改的' + text);
-    }
-
 
 };

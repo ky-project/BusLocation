@@ -20,9 +20,11 @@ public interface SbRouteStationService {
      * 实时查询路线站点信息
      * 将过滤不在运营时间内的路线
      *
+     * @param week 星期
+     * @param hour 小时
      * @return 返回Json数据
      */
-    ResultWrapper findRealTimeAllRouteStation();
+    ResultWrapper findRealTimeAllRouteStation(String week, String hour);
 
     /**
      * 查询所有路线和其对应的站点信息

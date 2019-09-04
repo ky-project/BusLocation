@@ -6,6 +6,7 @@ import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.service.SbRouteStationService;
 import com.ky.gps.util.JudgeTimeUtil;
 import com.ky.gps.util.ResultWrapperUtil;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,18 +28,23 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
     @Resource
     private SbBusRouteDao sbBusRouteDao;
 
+//    @Cacheable(value = "route_station_all", key = "#week + '_' + #hour")
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
-    public ResultWrapper findRealTimeAllRouteStation(){
+    public ResultWrapper findRealTimeAllRouteStation(String week, String hour){
         //获取集合,keys={routeId, routeName, stationName, longitude, latitude, departTime, startTime, endTime}
-        List<Map<String, Object>> routeStation = sbRouteStationDao.findRealTimeAllRouteStation(JudgeTimeUtil.getWeek());
+        List<Map<String, Object>> routeStation = sbRouteStationDao.findRealTimeAllRouteStation(week);
         //过滤非运营时间段数据
-        //TODO 开启过滤
-//        filterNowTime(routeStation);
-        //提取字段
-        List<Map<String, Object>> resultMapList = extractElementOutToMap(routeStation);
-        //封装进Json对象中返回
-        return ResultWrapperUtil.setSuccessOf(resultMapList);
+        //开启过滤
+        filterNowTime(routeStation);
+        if(routeStation.size() > 0) {
+            //提取字段
+            List<Map<String, Object>> resultMapList = extractElementOutToMap(routeStation);
+            //封装进Json对象中返回
+            return ResultWrapperUtil.setSuccessOf(resultMapList);
+        } else{
+            return ResultWrapperUtil.setSuccessOf(routeStation);
+        }
     }
 
     /**
@@ -180,6 +186,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
         return resultWrapper;
     }
 
+//    @Cacheable(value = "route_stations_info", key = "#routeId")
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public ResultWrapper findStationByRouteId(Integer routeId) {

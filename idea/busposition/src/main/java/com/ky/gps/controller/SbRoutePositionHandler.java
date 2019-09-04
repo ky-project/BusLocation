@@ -43,7 +43,7 @@ public class SbRoutePositionHandler {
             if(null == routeId || routeId <= 0){
                 resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR,"routeId > 0");
             } else{
-                resultWrapper = sbRoutePositionService.findLonAndLatByRouteId(routeId);
+                resultWrapper = sbRoutePositionService.findLonAndLatByRouteId(String.valueOf(routeId));
             }//空值判断end
         }catch (Exception e){
             //异常处理

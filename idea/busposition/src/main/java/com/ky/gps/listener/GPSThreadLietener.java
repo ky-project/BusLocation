@@ -18,11 +18,18 @@ public class GPSThreadLietener extends HttpServlet implements ServletContextList
 
     private final static Logger LOGGER = LoggerFactory.getLogger(GPSThreadLietener.class);
 
+    private Thread startThread;
+
     public GPSThreadLietener() {
 
     }
     @Override
     public void contextDestroyed(ServletContextEvent arg0) {
+        try{
+            startThread.stop();
+        }catch (Exception e){
+            LOGGER.error(e.getMessage(), e);
+        }
         LOGGER.info("----------- GPS解析系统停止 -----------");
     }
 
@@ -30,7 +37,7 @@ public class GPSThreadLietener extends HttpServlet implements ServletContextList
     public void contextInitialized(ServletContextEvent arg0) {
         LOGGER.info("----------- GPS解析系统启动 -----------");
         //创建主线程对象
-        Thread startThread = new Thread(new StartThread());
+        startThread = new Thread(new StartThread());
         startThread.setName("MyThread");
         //设置为守护线程
         startThread.setDaemon(true);

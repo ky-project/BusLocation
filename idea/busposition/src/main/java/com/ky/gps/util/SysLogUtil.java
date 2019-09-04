@@ -35,7 +35,6 @@ public class SysLogUtil {
         sysLog.setDepartmentName(baseInfo.get("departmentName").toString());
         //设置ip地址
         sysLog.setIpAddress(IpUtil.getIpAddress(request));
-        //TODO mac地址
         //设置创建者
         sysLog.setCreatedBy("System");
         //设置更新者

@@ -11,14 +11,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SysUserServiceTest {
-    private ApplicationContext applicationContext;
     private SysUserService sysUserService;
+
 
     @Before
     public void init(){
-        applicationContext =
+        ApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("spring/applicationContext-service.xml");
         sysUserService = applicationContext.getBean(SysUserService.class);
+    }
+
+    @Test
+    public void test05(){
+        ResultWrapper userList = sysUserService.findUserByDepartmentId(1, 0, 5);
+        System.out.println(userList);
+    }
+
+    @Test
+    public void test04(){
+        ResultWrapper userList = sysUserService.findUserByRealNameFuzzyPages("陆", 0, 5);
+        System.out.println(userList);
+    }
+
+    @Test
+    public void test03(){
+        ResultWrapper userList = sysUserService.findUserByWorkIdFuzzyPages("Xb", 0, 5);
+        System.out.println(userList);
     }
 
     @Test

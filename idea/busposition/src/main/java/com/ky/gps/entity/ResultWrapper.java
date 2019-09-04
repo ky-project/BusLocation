@@ -1,10 +1,12 @@
 package com.ky.gps.entity;
 
+import java.io.Serializable;
+
 /**
  * @author Daye
  * 存放操作信息和返回码等信息
  */
-public class ResultWrapper {
+public class ResultWrapper implements Serializable {
 
     /** 操作返回码：0-失败；1-成功 */
     private Integer code;

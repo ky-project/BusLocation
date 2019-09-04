@@ -5,6 +5,7 @@ import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbRoute;
 import com.ky.gps.service.SbRouteService;
 import com.ky.gps.util.ResultWrapperUtil;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,7 @@ public class SbRouteServiceImpl implements SbRouteService {
     @Resource
     private SbRouteDao sbRouteDao;
 
+//    @Cacheable(value = "route_base_info", key = "#id")
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public SbRoute findBaseInfoById(Integer id) {

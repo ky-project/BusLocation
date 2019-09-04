@@ -12,9 +12,9 @@
             //设置日期
             var date = new Date();
             date.setDate(date.getDate() + options.day);
-
             document.cookie = options.key+'='+options.value+';expires='+date.toGMTString()+';path='+options.path+';domain='+options.domain+';';
         },
+
         //获取cookie
         getCookie: function(key){
             var cookies = document.cookie.split(';');
@@ -24,6 +24,7 @@
                     return arr[1];
                 }
             }
+            return '';
         },
         //删除cookie
         //注意删除cookie要指定路径

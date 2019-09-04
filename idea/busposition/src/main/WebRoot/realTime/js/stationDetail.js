@@ -11,6 +11,7 @@ window.onload = function(){
     var $footer = $('.footer');
     var $stationTitle = $('.main .station-title');
     var $stationContent = $('.main .station-content');
+    var $my = $('.my');
     var $arrows = null;
     var $listItems = null;
 
@@ -35,22 +36,22 @@ window.onload = function(){
         history.go(-1);
     });
     //3.获取数据
-    $.ajax('http://60.12.85.238:8081/busposition/bus/route/station',{
+    $.ajax('/busposition/bus/route/station',{
         type: 'get',
         success: function(data){
             if(data.success === true){
                 routeMessage = data.data;
             }else {
-                alert(data.message);
+                var promptWindow = new PromptWindow(data.message);
+                promptWindow.init();
             }
         },
-        error: function(xhr){
-            alert(xhr.status);
+        error: function(){
+            var promptWindow = new PromptWindow('站点信息请求发送失败');
+            promptWindow.init();
         },
         async: false
     });
-    console.log(routeMessage);
-
     //4.设置route,routeId,stations
     for(var i = 0; i < routeMessage.length; i++){
         if(routeMessage[i].routeId === routeId){
@@ -69,19 +70,22 @@ window.onload = function(){
     $stationContent.css({
         'height': stationContentHeight + 'px'
     });
-    //8.初始化站点列表&列表项高度
+    //9.初始化站点列表&列表项高度
     $listItems = initStations($listUl,stations);
     listItemHeight = $listItems.eq(0).outerHeight();
-    //9.设置列表高度
+    //10.设置列表高度
     setListHeight($listUl,listItemHeight,$curItem);
-    //10.监听列表滚动事件
+    //11.监听列表滚动事件
     addScroll($listUl,stationContentHeight);
-    //11.监听箭头按钮点击事件
+    //12.监听箭头按钮点击事件
     $arrows = $('.arrow');
     addArrowsClick($arrows,$curItem,$listUl,listItemHeight,stationContentHeight);
-    //12.监听列表项点击事件
+    //13.监听列表项点击事件
     addItemsClick($listItems);
-
+    //14.监听我的按钮点击事件
+    $my.click(function(){
+        location.href = './wode.html';
+    })
 };
 //设置列表项点击事件
 function addItemsClick($listItems){

@@ -19,6 +19,7 @@ public class SbBusRouteServiceImpl implements SbBusRouteService {
     @Resource
     private SbBusRouteDao sbBusRouteDao;
 
+    @Deprecated
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public List<SbBusRoute> findAllRelation() {

@@ -4,6 +4,7 @@ import com.ky.gps.dao.SbRoutePositionDao;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.service.SbRoutePositionService;
 import com.ky.gps.util.ResultWrapperUtil;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,10 +24,11 @@ public class SbRoutePositionServiceImpl implements SbRoutePositionService {
     @Resource
     private SbRoutePositionDao sbRoutePositionDao;
 
+//    @Cacheable(value = "station_lon_lat", key = "#routeId")
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
-    public ResultWrapper findLonAndLatByRouteId(Integer routeId) {
-        List<Map<String, Object>> lonAndLatList = sbRoutePositionDao.findLonAndLatByRouteId(routeId);
+    public ResultWrapper findLonAndLatByRouteId(String routeId) {
+        List<Map<String, Object>> lonAndLatList = sbRoutePositionDao.findLonAndLatByRouteId(Integer.parseInt(routeId));
         Map<String, Object> resultMap = new HashMap<>(16);
         resultMap.put("routePosition", lonAndLatList);
         resultMap.put("routeId", routeId);

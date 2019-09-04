@@ -1,10 +1,8 @@
 package com.ky.gps.service;
 
 import com.ky.gps.entity.ResultWrapper;
-import com.ky.gps.entity.SbUserRole;
 import com.ky.gps.entity.SysUser;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,6 +10,78 @@ import java.util.Map;
  * 系统用户Service接口
  */
 public interface SysUserService {
+
+    /**
+     * 根据用户id查询用户基本信息
+     * @param userId 用户id
+     * @return 返回json格式
+     */
+    ResultWrapper findUserBaseInfoById(Integer userId);
+
+    /**
+     * 根据页大小返回总页数
+     *
+     * @param pageSize 页大小
+     * @return 返回json格式数据
+     */
+    ResultWrapper findTotalPages(Integer pageSize);
+
+    /**
+     * 根据depId进行查询，获取总记录数
+     *
+     * @param depId 部门id
+     * @param pageSize 页大小
+     * @return Json对象
+     */
+    ResultWrapper findTotalByDepartmentId(Integer depId, Integer pageSize);
+
+    /**
+     * 根据depId进行查询，并进行分页
+     *
+     * @param depId      部门id
+     * @param startIndex 查询记录索引
+     * @param pageSize   页大小
+     * @return keys={id, departmentName, workId, realName, idCode, phone, email}
+     */
+    ResultWrapper findUserByDepartmentId(Integer depId, Integer startIndex, Integer pageSize);
+
+
+    /**
+     * 根据realName进行模糊查询，返回记录总页数和总记录数
+     * @param realName 真实姓名
+     * @param pageSize 页大小
+     * @return Json对象
+     */
+    ResultWrapper findTotalByRealNameFuzzy(String realName, Integer pageSize);
+
+    /**
+     * 根据realName进行模糊查询，并进行分页
+     *
+     * @param realName   姓名
+     * @param startIndex 查询记录索引
+     * @param pageSize   页大小
+     * @return keys={id, departmentName, workId, realName, idCode, phone, email}
+     */
+    ResultWrapper findUserByRealNameFuzzyPages(String realName, Integer startIndex, Integer pageSize);
+
+    /**
+     * 根据workId进行模糊查询，获取总记录数
+     *
+     * @param wordId 工号
+     * @param pageSize 页大小
+     * @return Json对象
+     */
+    ResultWrapper findTotalByWorkIdFuzzyPages(String wordId, Integer pageSize);
+
+    /**
+     * 根据workId进行模糊查询，并进行分页
+     *
+     * @param wordId     工号
+     * @param startIndex 查询记录索引
+     * @param pageSize   页大小
+     * @return keys={id, departmentName, workId, realName, idCode, phone, email}
+     */
+    ResultWrapper findUserByWorkIdFuzzyPages(String wordId, Integer startIndex, Integer pageSize);
 
     /**
      * 根据用户账号/教工号、密码来查询用户信息
@@ -49,10 +119,10 @@ public interface SysUserService {
     /**
      * 添加用户的基本信息
      *
-     * @param sbUserRole 存放SysUser和SysRole对象，包含待添加的用户基本信息和用户所对应的部门id
+     * @param sysUser 包含待添加的用户基本信息和用户所对应的部门id
      * @return 返回刚添加的用户id
      */
-    ResultWrapper saveUserBaseInfo(SbUserRole sbUserRole);
+    ResultWrapper saveUserBaseInfo(SysUser sysUser);
 
     /**
      * 根据用户id删除用户
@@ -60,7 +130,6 @@ public interface SysUserService {
      *
      * @param userId   用户id
      * @param updateBy 更新者wordId
-     *
      * @return json对象
      */
     ResultWrapper deleteUserByUserId(Integer userId, String updateBy);
@@ -118,13 +187,15 @@ public interface SysUserService {
 
     /**
      * 根据email查询用户基本信息
+     *
      * @param email 邮箱
-     * @return 用户信息map,keys={sysUserId, realName, workId, departmentName}
+     * @return 用户信息map, keys={sysUserId, realName, workId, departmentName}
      */
     Map<String, Object> findBaseInfoByEmail(String email);
 
     /**
      * 根据邮箱来修改密码
+     *
      * @param sysUser 存放email、password、salt、lastPsdDate和updatedBy数据的对象
      * @return 返回json格式数据
      */

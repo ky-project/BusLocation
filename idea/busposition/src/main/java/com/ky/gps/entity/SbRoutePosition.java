@@ -73,11 +73,11 @@ public class SbRoutePosition extends AbstractEntity {
         this.id = id;
     }
 
-    public SbRoute getRouteId() {
+    public SbRoute getSbRoute() {
         return sbRoute;
     }
 
-    public void setRouteId(SbRoute sbRoute) {
+    public void setSbRoute(SbRoute sbRoute) {
         this.sbRoute = sbRoute;
     }
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日志下载</title>
+</head>
+<body>
+    <div id="content">
+
+    </div>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $.get("/busposition/file/read", function (obj) {
+                var data = obj.data;
+                for(var i = 0; i < data.length; i++){
+                    console.log(data[i]);
+                    //g,表示全部替换。
+                    // var reg = new RegExp("\\","g");
+                    data[i] = data[i].replace(/\\/g,"/");
+                    var name = data[i];
+                    data[i] = encodeURI(data[i]);
+                    $("#content").append("<p><a href='/busposition/file/download?filename=" + data[i] + "'>" + name + "</a></p>")
+                }
+            });
+        });
+    </script>
+</body>
+</html>

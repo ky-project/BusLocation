@@ -85,6 +85,8 @@ public class SysUserHandler {
                         SysLogUtil.setOperateInfoByObject(sysLog, "用户通过忘记密码修改密码", "/user/modify/pwd/email", "用户:" + baseInfo.get("workId") + "修改密码成功");
                         //记录日志
                         sysLogService.saveSysLog(sysLog);
+                        //清除该session，防止二次修改
+                        request.getSession().removeAttribute("emailModifyPwd");
                     } else {
                         //返回邮箱不存在提示
                         resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR, "验证码错误！");
@@ -154,7 +156,7 @@ public class SysUserHandler {
      * @param request     request域
      * @return json格式数据，data为null
      */
-    @RequestMapping(value = "/modify/pwd")
+    @RequestMapping(value = "/modify/pwd", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper modifyPassword(String oldPassword, String newPassword, HttpServletRequest request) {
         ResultWrapper resultWrapper;
@@ -209,8 +211,8 @@ public class SysUserHandler {
         try {
             //获取session中的log对象
             SysLog sysLog = (SysLog) request.getSession().getAttribute(SysLogUtil.SESSION_SYSLOG);
+            //获取封装好id对应基本信息的json对象
             resultWrapper = sysUserService.findSelfBaseInfoByUserId(sysLog.getUserId());
-            //TODO 获取封装好id对应基本信息的json对象
         } catch (Exception e) {
             //异常处理
             LOGGER.error("", e);
@@ -337,6 +339,7 @@ public class SysUserHandler {
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
             LOGGER.error("", e);
         }
+        LOGGER.debug(request.getSession().getId());
         return resultWrapper;
     }
 

@@ -7,7 +7,10 @@
 
     <context:component-scan base-package="com.ky.gps.dao"/>
 
+    <!-- 导入properties在redis中导入 -->
     <context:property-placeholder location="classpath:jdbc/jdbc.properties"/>
+    <!--<import resource="applicationContext-redis.xml"/>-->
+
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
         <!-- 数据库基本信息配置 -->
         <property name="url" value="${jdbc.url}"/>
@@ -72,6 +75,7 @@
     <!--&lt;!&ndash; 连接池的最大值，同一时间可以从池分配的最多连接数量，0时无限制   默认值是8 &ndash;&gt;-->
     <!--<property name="maxTotal" value="${jdbc.maxTotal}" />-->
     <!--</bean>-->
+
     <!-- 配置SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>

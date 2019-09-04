@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -28,7 +29,7 @@ public class GainPositionHandler {
      * 获取json格式的sbGps定位数据
      * @param sbBusPosition 定位数据存放的类
      */
-    @RequestMapping(value = "/gain")
+    @RequestMapping(value = "/gain", method = RequestMethod.POST)
     @ResponseBody
     public void gainPosition(@RequestBody SbBusPosition sbBusPosition){
         try {

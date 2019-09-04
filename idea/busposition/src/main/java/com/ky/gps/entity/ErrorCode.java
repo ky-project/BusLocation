@@ -30,4 +30,5 @@ public enum ErrorCode {
     @Override
     public String toString() {
         return errorMessage;
-    }}
+    }
+}

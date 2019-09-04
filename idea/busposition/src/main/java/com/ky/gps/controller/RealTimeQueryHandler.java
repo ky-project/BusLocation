@@ -4,6 +4,7 @@ import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.service.SbBusPositionService;
 import com.ky.gps.service.SbRouteStationService;
+import com.ky.gps.util.JudgeTimeUtil;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
 
 /**
  * @author Daye
@@ -67,7 +69,7 @@ public class RealTimeQueryHandler {
         ResultWrapper resultWrapper;
         try {
             //获取所有路线站点信息 原方法findAllRouteStation(未过滤)
-            resultWrapper = sbRouteStationService.findRealTimeAllRouteStation();
+            resultWrapper = sbRouteStationService.findRealTimeAllRouteStation(JudgeTimeUtil.getWeek(), String.valueOf(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)));
         } catch (Exception e) {
             //异常处理
             resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);

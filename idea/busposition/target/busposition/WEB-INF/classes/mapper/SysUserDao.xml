@@ -10,7 +10,7 @@
         <result column="real_name" jdbcType="VARCHAR" property="realName"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="salt" jdbcType="VARCHAR" property="salt"/>
-        <result column="id_code" jdbcType="VARCHAR" property="idCode"/>
+        <result column="id_card" jdbcType="VARCHAR" property="idCard"/>
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
         <result column="account_date" jdbcType="DATE" property="accountDate"/>
@@ -60,7 +60,7 @@
                b_department.`NAME` departmentName,
                sys_user.WORKID     workId,
                sys_user.REAL_NAME  realName,
-               sys_user.ID_CODE    idCode,
+               sys_user.ID_CARD    idCard,
                sys_user.PHONE      phone,
                sys_user.EMAIL      email
         FROM sys_user,
@@ -74,7 +74,7 @@
                b_department.`NAME` departmentName,
                sys_user.WORKID     workId,
                sys_user.REAL_NAME  realName,
-               sys_user.ID_CODE    idCode,
+               sys_user.ID_CARD    idCard,
                sys_user.PHONE      phone,
                sys_user.EMAIL      email
         FROM sys_user,
@@ -82,12 +82,13 @@
         WHERE sys_user.Valid = 1
           AND b_department.Valid = 1
           AND sys_user.DEPARTMENT_ID = b_department.ID
+        ORDER BY sys_user.ID
         LIMIT #{param1}, #{param2}
     </select>
     <insert id="saveUserBaseInfo" parameterType="SysUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        insert into sys_user(department_id, workid, real_name, password, salt, id_code, phone, email, account_date,
+        insert into sys_user(department_id, workid, real_name, password, salt, ID_CARD, phone, email, account_date,
                              created_by, updated_by, valid)
-        values (#{department.id}, #{workId}, #{realName}, #{password}, #{salt}, #{idCode}, #{phone}, #{email},
+        values (#{department.id}, #{workId}, #{realName}, #{password}, #{salt}, #{idCard}, #{phone}, #{email},
                 #{accountDate}, #{createdBy}, #{updatedBy}, 1)
     </insert>
     <update id="deleteUserByUserId">
@@ -116,8 +117,11 @@
             <if test="realName != null and realName != ''">
                 REAL_NAME = #{realName},
             </if>
-            <if test="idCode != null and idCode != ''">
-                ID_CODE = #{idCode},
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="idCard != null and idCard != ''">
+                ID_CARD = #{idCard} ,
             </if>
             <if test="phone != null and phone != ''">
                 PHONE = #{phone},
@@ -137,7 +141,7 @@
                b_department.`NAME` departmentName,
                sys_user.WORKID     workId,
                sys_user.REAL_NAME  realName,
-               sys_user.ID_CODE    idCode,
+               sys_user.ID_CARD    idCard,
                sys_user.PHONE      phone,
                sys_user.EMAIL      email
         FROM sys_user,
@@ -187,4 +191,104 @@
             UPDATED_BY    = #{updatedBy}
         where EMAIL = #{email}
     </update>
+    <!--根据workId进行模糊查询，并进行分页-->
+    <select id="findUserByWorkIdFuzzyPages" resultType="map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.WORKID LIKE #{wordId}
+        ORDER BY sys_user.ID
+        LIMIT #{startIndex} , #{pageSize}
+    </select>
+    <!--根据realName进行模糊查询，并进行分页-->
+    <select id="findUserByRealNameFuzzyPages" resultType="map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.REAL_NAME LIKE #{realName}
+        ORDER BY sys_user.ID
+        LIMIT #{startIndex} , #{pageSize}
+    </select>
+    <!--根据depId进行查询，并进行分页-->
+    <select id="findUserByDepartmentId" resultType="map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = #{depId}
+        ORDER BY sys_user.ID
+        LIMIT #{startIndex} , #{pageSize}
+    </select>
+    <!-- 查询用户的总记录数 -->
+    <select id="findTotalRecoding" resultType="int">
+        SELECT count(sys_user.ID)
+        FROM `sys_user`
+        where `sys_user`.Valid = 1
+    </select>
+    <!-- 根据realName进行模糊查询，获取所有记录数 -->
+    <select id="findTotalByRealNameFuzzy" resultType="int">
+        SELECT count(sys_user.ID)
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.REAL_NAME LIKE #{realName}
+    </select>
+    <!-- 根据depId进行查询，获取总记录数 -->
+    <select id="findTotalByDepartmentId" resultType="int">
+        SELECT count(sys_user.ID)
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = #{depId}
+    </select>
+    <!-- 根据depId进行查询，获取总记录数 -->
+    <select id="findTotalByWorkIdFuzzyPages" resultType="int">
+        SELECT count(sys_user.ID)
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.WORKID LIKE #{wordId}
+    </select>
+    <!--根据用户id查询用户基本信息-->
+    <select id="findUserBaseInfoById" resultType="java.util.Map" parameterType="integer">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.PASSWORD   password,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.ID = #{userId}
+    </select>
 </mapper>

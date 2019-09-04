@@ -9,6 +9,12 @@ import java.text.ParseException;
 public class JudgeTimeTest {
 
     @Test
+    public void test02(){
+        int x = (41 + 10 - 1) / 10;
+        System.out.println(x);
+    }
+
+    @Test
     public void test01() throws ParseException {
         String time = "2019-04-20 06:00:00";
         Timestamp timestamp = Timestamp.valueOf(time);

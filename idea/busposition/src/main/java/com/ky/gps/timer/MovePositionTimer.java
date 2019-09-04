@@ -25,6 +25,6 @@ public class MovePositionTimer {
     @Scheduled(cron = "0 0 23 * * ?")
     public void moveTable(){
         LOGGER.info("准备执行数据库表的迁移工作");
-//        sbBusPositionService.deletePositionAndMoveToHis();
+        sbBusPositionService.deletePositionAndMoveToHis();
     }
 }

@@ -20,7 +20,7 @@ public class DepartmentServiceTest {
 
     @Test
     public void test01(){
-        ResultWrapper nameResult = departmentService.findNameById(1);
+        ResultWrapper nameResult = departmentService.findNameById(String.valueOf(1));
         System.out.println(nameResult);
         if(nameResult.getData() == null){
             System.out.println("true");

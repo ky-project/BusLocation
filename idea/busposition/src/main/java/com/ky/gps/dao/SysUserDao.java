@@ -11,6 +11,74 @@ import java.util.Map;
  * 系统用户Dao类
  */
 public interface SysUserDao {
+
+    /**
+     * 根据用户id查询用户基本信息
+     * @param userId 用户id
+     * @return 返回map
+     */
+    Map<String, Object> findUserBaseInfoById(@Param("userId") Integer userId);
+
+    /**
+     * 查询用户的总记录数
+     * @return 总记录数
+     */
+    int findTotalRecoding();
+
+    /**
+     * 根据depId进行查询，获取总记录数
+     *
+     * @param depId 部门id
+     * @return 总记录数
+     */
+    int findTotalByDepartmentId(@Param("depId") Integer depId);
+
+    /**
+     * 根据depId进行查询，并进行分页
+     *
+     * @param depId 部门id
+     * @param startIndex 查询记录索引
+     * @param pageSize 页大小
+     * @return keys={id, departmentName, workId, realName, idCode, phone, email}
+     */
+    List<Map<String, Object>> findUserByDepartmentId(@Param("depId") Integer depId, @Param("startIndex") Integer startIndex, @Param("pageSize") Integer pageSize);
+
+
+    /**
+     * 根据realName进行模糊查询，获取所有记录数
+     * @param realName 真实姓名
+     * @return 返回总记录数
+     */
+    int findTotalByRealNameFuzzy(@Param("realName") String realName);
+
+    /**
+     * 根据realName进行模糊查询，并进行分页
+     *
+     * @param realName 姓名
+     * @param startIndex 查询记录索引
+     * @param pageSize 页大小
+     * @return keys={id, departmentName, workId, realName, idCode, phone, email}
+     */
+    List<Map<String, Object>> findUserByRealNameFuzzyPages(@Param("realName") String realName, @Param("startIndex") Integer startIndex, @Param("pageSize") Integer pageSize);
+
+    /**
+     * 根据workId进行模糊查询，获取总记录数
+     *
+     * @param wordId 工号
+     * @return 总记录数
+     */
+    int findTotalByWorkIdFuzzyPages(@Param("wordId") String wordId);
+
+    /**
+     * 根据workId进行模糊查询，并进行分页
+     *
+     * @param wordId 工号
+     * @param startIndex 查询记录索引
+     * @param pageSize 页大小
+     * @return keys={id, departmentName, workId, realName, idCode, phone, email}
+     */
+    List<Map<String, Object>> findUserByWorkIdFuzzyPages(@Param("wordId") String wordId, @Param("startIndex") Integer startIndex, @Param("pageSize") Integer pageSize);
+
     /**
      * 根据用户教工号、密码来查询普通用户信息
      *

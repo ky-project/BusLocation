@@ -1,19 +1,21 @@
 package com.ky.gps.controller;
 
-import com.ky.gps.entity.*;
+import com.ky.gps.entity.ErrorCode;
+import com.ky.gps.entity.ResultWrapper;
+import com.ky.gps.entity.SysLog;
+import com.ky.gps.entity.SysUser;
 import com.ky.gps.service.DepartmentService;
 import com.ky.gps.service.SysLogService;
 import com.ky.gps.service.SysRoleService;
 import com.ky.gps.service.SysUserService;
+import com.ky.gps.util.IntegerUtil;
 import com.ky.gps.util.ResultWrapperUtil;
+import com.ky.gps.util.StringUtil;
 import com.ky.gps.util.SysLogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -33,11 +35,173 @@ public class SysAdminUserHandler {
     @Resource
     private SysUserService sysUserService;
     @Resource
-    private SysRoleService sysRoleService;
-    @Resource
     private DepartmentService departmentService;
     @Resource
     private SysLogService sysLogService;
+
+    /**
+     * 根据depId查询用户，获取其总记录数和总页数
+     *
+     * @param depId 部门id
+     * @return Json格式数据
+     */
+    @RequestMapping(value = "/f/query/dep", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultWrapper fuzzyQueryByWorkIdTotalPages(Integer depId, Integer pageSize) {
+        ResultWrapper resultWrapper;
+        try {
+            //1. 判断传入的参数是否有效
+            if (IntegerUtil.isNotValid(depId) || IntegerUtil.isNotValid(pageSize)) {
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
+            } else {
+                //2. 获取Service层得到的json对象
+                resultWrapper = sysUserService.findTotalByDepartmentId(depId, pageSize);
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 根据depId查询用户
+     *
+     * @param depId 部门id
+     * @return Json格式数据
+     */
+    @RequestMapping(value = "/f/query/dep", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper fuzzyQueryByDepartment(Integer depId, Integer pageNow, Integer pageSize, HttpServletRequest request) {
+        ResultWrapper resultWrapper;
+        try {
+            //1. 空值判断
+            if (IntegerUtil.isNotValid(depId) || IntegerUtil.isNotValid(pageNow) || IntegerUtil.isNotValid(pageSize)) {
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
+            } else {
+                //1.5 计算开始查询的索引
+                Integer startIndex = (pageNow - 1) * pageSize;
+                //2. 查询数据
+                resultWrapper = sysUserService.findUserByDepartmentId(depId, startIndex, pageSize);
+                //3. 日志记录
+                sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "根据部门id模糊查询用户信息", "/admin/f/query/dep", "查询部门id为" + depId + ",第" + pageNow + "页, 页大小为" + pageSize + "的用户记录"));
+            }// if 空值判断 end
+        } catch (Exception e) {
+            //异常处理
+            LOGGER.error(e.getMessage(), e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 根据workId模糊查询，获取其总记录数和总页数
+     *
+     * @param workId 工号
+     * @return Json格式数据
+     */
+    @RequestMapping(value = "/f/query/workId", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultWrapper fuzzyQueryByWorkIdTotalPages(String workId, Integer pageSize) {
+        ResultWrapper resultWrapper;
+        try {
+            //1. 判断传入的参数是否有效
+            if (StringUtil.isEmpty(workId) || IntegerUtil.isNotValid(pageSize)) {
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
+            } else {
+                //2. 获取Service层得到的json对象
+                resultWrapper = sysUserService.findTotalByWorkIdFuzzyPages(workId, pageSize);
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 根据workId模糊查询
+     * @param workId 工号
+     * @return Json格式数据
+     */
+    @RequestMapping(value = "/f/query/workId", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper fuzzyQueryByWorkId(String workId, Integer pageNow, Integer pageSize, HttpServletRequest request) {
+        ResultWrapper resultWrapper;
+        try {
+            //1. 空值判断
+            if (StringUtil.isEmpty(workId) || IntegerUtil.isNotValid(pageNow) || IntegerUtil.isNotValid(pageSize)) {
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
+            } else {
+                //1.5 计算开始查询的索引
+                Integer startIndex = (pageNow - 1) * pageSize;
+                //2. 查询数据
+                resultWrapper = sysUserService.findUserByWorkIdFuzzyPages(workId, startIndex, pageSize);
+                //3. 日志记录
+                sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "根据workId模糊查询用户信息", "/admin/f/query/workId", "查询workId为" + workId + ",第" + pageNow + "页, 页大小为" + pageSize + "的用户记录"));
+            }// if 空值判断 end
+        } catch (Exception e) {
+            //异常处理
+            LOGGER.error(e.getMessage(), e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 根据realName模糊查询，获取其总记录数和总页数
+     *
+     * @param realName 姓名
+     * @return Json格式数据
+     */
+    @RequestMapping(value = "/f/query/name", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultWrapper fuzzyQueryByRealNameTotalPages(String realName, Integer pageSize) {
+        ResultWrapper resultWrapper;
+        try {
+            //1. 判断传入的参数是否有效
+            if (StringUtil.isEmpty(realName) || IntegerUtil.isNotValid(pageSize)) {
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
+            } else {
+                //2. 获取Service层得到的json对象
+                resultWrapper = sysUserService.findTotalByRealNameFuzzy(realName, pageSize);
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 根据realName模糊查询
+     *
+     * @param realName 姓名
+     * @return Json格式数据
+     */
+    @RequestMapping(value = "/f/query/name", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper fuzzyQueryByRealName(String realName, Integer pageNow, Integer pageSize, HttpServletRequest request) {
+        ResultWrapper resultWrapper;
+        try {
+            //1. 空值判断
+            if (StringUtil.isEmpty(realName) || IntegerUtil.isNotValid(pageNow) || IntegerUtil.isNotValid(pageSize)) {
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
+            } else {
+                //1.5 计算开始查询的索引
+                Integer startIndex = (pageNow - 1) * pageSize;
+                //2. 查询数据
+                resultWrapper = sysUserService.findUserByRealNameFuzzyPages(realName, startIndex, pageSize);
+                //3. 日志记录
+                sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "根据realName模糊查询用户信息", "/admin/f/query/name", "查询realName为" + realName + ",第" + pageNow + "页, 页大小为" + pageSize + "的用户记录"));
+            }// if 空值判断 end
+        } catch (Exception e) {
+            //异常处理
+            LOGGER.error(e.getMessage(), e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
 
     /**
      * 更新用户的基本信息
@@ -47,7 +211,7 @@ public class SysAdminUserHandler {
      */
     @RequestMapping(value = "/update/info", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper updateUserBaseInfo(SysUser sysUser, HttpServletRequest request) {
+    public ResultWrapper updateUserBaseInfo(@RequestBody SysUser sysUser, HttpServletRequest request) {
         ResultWrapper resultWrapper;
         try {
             //判断id是否为空，且id是否存在
@@ -64,6 +228,31 @@ public class SysAdminUserHandler {
                     //日志记录
                     sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "更新用户基本信息", "/admin/update/info", "更新用户(id):" + sysUser.getId()));
                 }
+            }
+        } catch (Exception e) {
+            //异常处理
+            LOGGER.error("", e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 根据用户id查询用户信息
+     *
+     * @param userId 用户id
+     * @return json格式数据
+     */
+    @RequestMapping(value = "/find/user", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper findUserByUserId(Integer userId, HttpServletRequest request) {
+        ResultWrapper resultWrapper;
+        try {
+            //判断id是否为空
+            if(IntegerUtil.isNotValid(userId)){
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.UPDATE_ERROR, "id为空");
+            }else {
+                resultWrapper = sysUserService.findUserBaseInfoById(userId);
             }
         } catch (Exception e) {
             //异常处理
@@ -117,16 +306,23 @@ public class SysAdminUserHandler {
      */
     @RequestMapping(value = "/info/add", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper saveUserBaseInfo(SysUser sysUser, Integer roleId, HttpServletRequest request) {
+    public ResultWrapper saveUserBaseInfo(@RequestBody SysUser sysUser, HttpServletRequest request) {
         ResultWrapper resultWrapper;
+        LOGGER.debug(sysUser.toString());
         try {
             //判断roleId和sysUser.getDepartment().getId()是否为空，且是否存在
-            if (!isEffectiveDepartmentAndRoleId(sysUser, roleId)) {
+            if (!isEffectiveDepartmentAndRoleId(sysUser)) {
                 resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR, "部门id或角色id不存在");
             } else {
                 //TODO 判断用户是否有权限
                 //获取session中的用户信息
+                LOGGER.debug(request.getSession().getId());
                 SysLog sysLog = (SysLog) request.getSession().getAttribute(SysLogUtil.SESSION_SYSLOG);
+                if(sysLog == null){
+                    LOGGER.debug("123");
+                }else {
+                    LOGGER.debug(sysLog.toString());
+                }
                 //将修改者workId记录到sysUser中
                 sysUser.setCreatedBy(sysLog.getWorkId());
                 sysUser.setUpdatedBy(sysLog.getWorkId());
@@ -135,21 +331,11 @@ public class SysAdminUserHandler {
                 //TODO 密码加密
                 sysUser.setSalt(sysUser.getPassword());
                 //判断是否存在空值
-                if (isSavedAllInfoNull(sysUser, roleId)) {
+                if (isSavedAllInfoNull(sysUser)) {
                     resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR, "用户信息存在空值");
                 } else {
-                    //创建用户和角色对应的实体类
-                    SbUserRole sbUserRole = new SbUserRole();
-                    //set用户对象
-                    sbUserRole.setSysUser(sysUser);
-                    //set角色对象，将roleId存入new的SysRole对象中
-                    sbUserRole.setSysRole(new SysRole(roleId));
-                    //set创建者，从用户对象中获取
-                    sbUserRole.setCreatedBy(sysUser.getCreatedBy());
-                    //set更新者，从用户对象中获取
-                    sbUserRole.setUpdatedBy(sysUser.getUpdatedBy());
                     //添加用户信息，并将返回的json对象赋值给resultWrapper
-                    resultWrapper = sysUserService.saveUserBaseInfo(sbUserRole);
+                    resultWrapper = sysUserService.saveUserBaseInfo(sysUser);
                     //记录到用户操作记录
                     sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "添加用户", "/admin/info/add", "添加用户:" + sysUser.getWorkId()));
                 }
@@ -167,40 +353,60 @@ public class SysAdminUserHandler {
      * 判断部门和角色id是否存在
      *
      * @param sysUser 传入的用户信息
-     * @param roleId  角色id
      * @return 有效:true; 无效:false
      */
-    private Boolean isEffectiveDepartmentAndRoleId(SysUser sysUser, Integer roleId) {
+    private Boolean isEffectiveDepartmentAndRoleId(SysUser sysUser) {
         if (null == sysUser.getDepartment()
-                || 0 >= sysUser.getDepartment().getId() || null == sysUser.getDepartment().getId()
-                || null == roleId || 0 >= roleId) {
+                || 0 >= sysUser.getDepartment().getId() || null == sysUser.getDepartment().getId()) {
             return false;
         }
         //判断部门和角色是否存在
-        return (null != departmentService.findNameById(sysUser.getDepartment().getId()).getData()
-                && null != sysRoleService.findNameById(roleId).getData());
+        return (null != departmentService.findNameById(String.valueOf(sysUser.getDepartment().getId())).getData());
     }
 
     /**
      * 判断待save的数据是否存在空值
      *
      * @param sysUser 待保存的用户信息
-     * @param roleId  用户对应的角色id
      * @return 空:true;不为空:false
      */
-    private Boolean isSavedAllInfoNull(SysUser sysUser, Integer roleId) {
-        return (null == roleId || 0 >= roleId
-                || null == sysUser.getDepartment().getId() || 0 >= sysUser.getDepartment().getId()
+    private Boolean isSavedAllInfoNull(SysUser sysUser) {
+        return (null == sysUser.getDepartment().getId() || 0 >= sysUser.getDepartment().getId()
                 || "".equals(sysUser.getWorkId()) || null == sysUser.getWorkId()
                 || "".equals(sysUser.getRealName()) || null == sysUser.getRealName()
                 || "".equals(sysUser.getPassword()) || null == sysUser.getPassword()
                 || "".equals(sysUser.getSalt()) || null == sysUser.getSalt()
-                || "".equals(sysUser.getIdCode()) || null == sysUser.getIdCode()
+                || "".equals(sysUser.getIdCard()) || null == sysUser.getIdCard()
                 || "".equals(sysUser.getPhone()) || null == sysUser.getPhone()
                 || "".equals(sysUser.getEmail()) || null == sysUser.getEmail()
                 || null == sysUser.getAccountDate()
                 || "".equals(sysUser.getCreatedBy()) || null == sysUser.getCreatedBy()
                 || "".equals(sysUser.getUpdatedBy()) || null == sysUser.getUpdatedBy());
+    }
+
+    /**
+     * 根据pageSize查询总页数
+     *
+     * @param pageSize 页大小
+     * @return 返回json格式数据
+     */
+    @RequestMapping(value = "/info/list/pages", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultWrapper userTotalPages(Integer pageSize) {
+        ResultWrapper resultWrapper;
+        try {
+            //1. 判断页大小是否有效
+            if (IntegerUtil.isNotValid(pageSize)) {
+                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
+            } else {
+                //2. 查询获得封装好的json对象
+                resultWrapper = sysUserService.findTotalPages(pageSize);
+            }//1. 判断页大小是否有效 End
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
+        }
+        return resultWrapper;
     }
 
     /**

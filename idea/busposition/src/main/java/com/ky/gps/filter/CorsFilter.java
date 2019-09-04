@@ -1,6 +1,7 @@
 package com.ky.gps.filter;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -16,11 +17,15 @@ public class CorsFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        httpResponse.addHeader("Access-Control-Allow-Origin", "*");
-        httpResponse.addHeader("Access-Control-Allow-Methods", "POST");
-        httpResponse.addHeader("Access-Control-Allow-Methods", "GET");
-        httpResponse.addHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
+        HttpServletResponse res = (HttpServletResponse) response;
+        HttpServletRequest req=(HttpServletRequest) request;
+        res.setContentType("text/html;charset=UTF-8");
+        res.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
+        res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        res.setHeader("Access-Control-Max-Age", "0");
+        res.setHeader("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With,userId,token");
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+        res.setHeader("XDomainRequestAllowed","1");
         chain.doFilter(request, response);
     }
 

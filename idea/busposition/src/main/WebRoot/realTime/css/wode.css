@@ -54,12 +54,14 @@ input:-webkit-autofill {
 }
 .main .info-list {
     background-color: #fff;
-    padding-left: 12px;
-    padding-right: 12px;
+    /*padding-left: 12px;*/
+    /*padding-right: 12px;*/
 }
 .main .info-list li {
     width: 100%;
     height: 40px;
+    padding-left: 12px;
+    padding-right: 12px;
     line-height: 40px;
     border-top: 1px solid #f1f1f1;
     /*padding-right: 15px;*/
@@ -99,7 +101,7 @@ input:-webkit-autofill {
 /*内容区结束*/
 
 /*模态窗开始*/
-.modal-mask {
+/*.modal-mask {
     display: none;
     width: 100%;
     height: 100%;
@@ -174,6 +176,5 @@ input:-webkit-autofill {
 }
 .modal-box .modal-footer .btn-ok {
     border-radius: 0 0 5px 0;
-}
-
+}*/
 /*模态窗结束*/

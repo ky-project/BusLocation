@@ -8,6 +8,7 @@
     <context:component-scan base-package="com.ky.gps.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+    <context:component-scan base-package="com.ky.gps.interceptor"/>
 
     <!--
         配置InternalResourceViewResolve
@@ -16,8 +17,8 @@
         loginOK => /WEB-INF/pages/loginOk.jsp
     -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".jsp"/>
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".html"/>
     </bean>
 
     <!--
@@ -29,10 +30,17 @@
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
         <property name="order" value="1"/>
     </bean>
+
+    <!-- 拦截器 -->
+    <!--<mvc:interceptors>-->
+    <!--&lt;!&ndash; 登录拦截器 &ndash;&gt;-->
+    <!--<ref bean="loginInterceptor"/>-->
+    <!--</mvc:interceptors>-->
+
     <!-- 加入两个常规配置，引入.js和.css文件 -->
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
     <mvc:resources location="/js/" mapping="/js/**"/>
-    <mvc:resources location="/css/" mapping="/css/**" />
-    <mvc:resources location="/images/" mapping="/images/**" />
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/images/" mapping="/images/**"/>
 </beans>

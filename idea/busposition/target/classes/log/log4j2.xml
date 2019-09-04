@@ -86,9 +86,9 @@
         <logger name="java.sql" level="info"/>
         <logger name="org.apache.ibatis" level="info"/>
         <logger name="io.netty" level="info"/>
-        <logger name="com.ky.gps" level="info" />
+        <logger name="com.ky.gps" level="debug" />
         <root level="all">
-            <appender-ref ref="Console"/>
+            <!--<appender-ref ref="Console"/>-->
             <appender-ref ref="ProDebugLog"/>
             <appender-ref ref="InfoLog"/>
             <appender-ref ref="WarnLog"/>

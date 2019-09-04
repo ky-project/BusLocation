@@ -26,4 +26,10 @@
         where Valid = 1
           and ID = #{id}
     </select>
+    <!--查询所有部门的id和部门名-->
+    <select id="findAllNameAndId" resultType="map">
+        select ID deptId, NAME deptName
+        from b_department
+        where Valid = 1
+    </select>
 </mapper>

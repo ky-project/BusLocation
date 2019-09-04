@@ -13,5 +13,5 @@ public interface SbRoutePositionService {
      * @param routeId 路线id
      * @return json格式数据
      */
-    ResultWrapper findLonAndLatByRouteId(Integer routeId);
+    ResultWrapper findLonAndLatByRouteId(String routeId);
 }

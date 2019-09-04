@@ -1,66 +1,81 @@
 function ModalWindow($targetEle){
     //1.创建遮罩
     this.$targetEle = $targetEle;
-    this.$mask = $('<div></div>');
-    this.$modalBox = $('<div></div>');
-    this.$modalTitle = $('<div></div>');
-    this.$modalContent = $('<div></div>');
-    this.$modalFooter = $('<div></div>');
-
+    this.$modalMask = $('<div class="modal-mask"></div>');
+    this.$modalBox = $('<div class="modal-box"></div>');
+    this.$modalTitle = $('<div class="modal-title"></div>');
+    this.$modalContent = $('<div class="modal-content"></div>');
+    this.$modalFooter = $('<div class="modal-footer"></div>');
+    this.$btnCancel = $('<button class="btn-cancel">取消</button>');
+    this.$btnOk = $('<button class="btn-ok">确定</button>');
+    var self = this;
 
     //渲染
     this.render = function(){
-        //添加遮罩
-        this.$mask.css({
-            'width': '100%',
-            'height': '100%',
-            'position':'fixed',
-            'left':0,
-            'top':0,
-            'background-color':'#000',
-            'opacity':0.5,
-            'z-index':999
-        });
-        this.$mask.addClass('modal-mask');
-        this.$targetEle.append(this.$mask);
+        self.$targetEle.append(self.$modalMask);
+        self.$targetEle.append(self.$modalBox);
+        self.$modalBox.append(self.$modalTitle);
+        self.$modalBox.append(self.$modalContent);
+        self.$modalBox.append(self.$modalFooter);
+        self.$modalFooter.append(self.$btnCancel);
+        self.$modalFooter.append(self.$btnOk);
+    };
+    //打开模态窗
+    this.openModalWindow = function() {
+        self.$modalMask.stop().fadeIn(300);
+        self.$modalBox.stop().fadeIn(300);
+    };
+    //关闭模态窗
+    this.closeModalWindow = function(callback){
+        self.$modalMask.stop().fadeOut(300,callback);
+        self.$modalBox.stop().fadeOut(300,callback);
+    };
+    //设置模态窗按下抬起样式
+    this.setBtnStyle = function() {
+        var $btns = self.$btnCancel.add(self.$btnOk);
+        for (var i = 0; i < $btns.length; i++) {
+            $btns.get(i).addEventListener('touchstart', function () {
+                // alert('被点击了');
+                $(this).css({
+                    'background-color': '#5bc0de',
+                    'color': '#fff'
+                })
+            }, false);
+            $btns.get(i).addEventListener('touchend', function () {
+                // alert('被点击了');
+                $(this).css({
+                    'background-color': '#fff',
+                    'color': '#5bc0de'
+                })
+            }, false);
+        }
+    };
+    //删除模态窗
+    this.bomb = function(){
+        self.$modalMask.remove();
+        self.$modalBox.remove();
+    };
+    //设置标题内容
+    this.setTitle = function(text){
+        self.$modalTitle.text(text);
+    };
+
+
+    //初始化
+    this.init = function(){
         //添加模态窗
-        this.$modalBox.css({
-            'width':'80%',
-            'position':'absolute',
-            'left':'50%',
-            'top':'50%',
-            'translate':'transform(-50%,-50%)',
-            'border-radius':'5px',
-            'border':'1px solid #fff',
-            'background-color':'#fff'
+        self.render();
+        //监听遮罩点击事件
+        self.$modalMask.click(function(){
+            self.closeModalWindow(self.bomb);
         });
-        this.$modalBox.addClass('modal-box');
-        this.$targetEle.append(this.$modalBox);
-        //添加模态窗标题
-        this.$modalTitle.css({
-            'width':'100%',
-            'height':'20px',
-            'line-height':'20px',
-            'text-align':'center',
-            'font-weight':'bold',
-            'font-size':'16px',
-            'border-bottom':'1px solid #ccc',
+        //监听取消按钮点击事件
+        self.$btnCancel.click(function () {
+            self.closeModalWindow(self.bomb);
         });
-        this.$modalTitle.addClass('modal-title');
-        this.$modalBox.append(this.$modalTitle);
-        //添加模态窗内容
-        this.$modalContent.css({
-            'padding':'10px 15px',
-        });
-        this.$modalContent.addClass('modal-content');
-        this.$modalBox.append(this.$modalContent);
-        //添加模态窗底部
-        this.$modalFooter.css({
-            'width':'100%',
-            'height':'30px',
-            'border-top':'1px solid #ccc'
-        });
-        this.$modalContent.addClass('modal-content');
-        this.$modalBox.append(this.$modalContent);
-    }
+        //设置模态窗按钮按下样式
+        self.setBtnStyle();
+    };
+    this.init();
+
 }
