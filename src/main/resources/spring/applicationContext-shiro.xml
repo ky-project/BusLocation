@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 配置自定义的userRealm -->
+    <bean id="userRealm" class="com.ky.gps.component.realm.UserRealm">
+        <!-- 密码需要加密 -->
+        <!--<property name="credentialsMatcher" ref="credentialsMatcher" />-->
+    </bean>
+
+    <!-- 配置安全管理器SecurityManager -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="userRealm"/>
+        <!-- 添加缓存 -->
+        <property name="cacheManager" ref="cacheManager"/>
+    </bean>
+
+    <!-- 定义ShiroFilter -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/login/warning"/>
+        <!--<property name="unauthorizedUrl" value="/permission/no"/>-->
+        <property name="filterChainDefinitions">
+            <value>
+                /logout = logout
+                / = anon
+                /apiTest/** = anon
+                /blockBreaker/** = anon
+                /BusLocationBMS/** = anon
+                /logFile/** = anon
+                /realTime/** = anon
+                /realTime1/** = anon
+
+                /routeposition/** = anon
+                /route/** = anon
+                /bus/** = anon
+
+                /user/login = anon
+                /user/admin/login = anon
+                /user/send/email = anon
+                /user/modify/pwd/email = anon
+                /api/** = anon
+                /login/** = anon
+                /code/** = anon
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+    <!-- 缓存管理器开始 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManager" ref="ehCacheManager"/>
+    </bean>
+    <bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:cache/shiro-ehcache.xml"/>
+        <property name="shared" value="true"/>
+    </bean>
+
+    <!-- 加密器 -->
+    <!--<bean id="credentialsMatcher"-->
+    <!--class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">-->
+    <!--&lt;!&ndash; 加密算法 &ndash;&gt;-->
+    <!--<property name="hashAlgorithmName" value="md5" />-->
+    <!--&lt;!&ndash; 散列次数 &ndash;&gt;-->
+    <!--<property name="hashIterations" value="3" />-->
+    <!--</bean>-->
+
+</beans>
