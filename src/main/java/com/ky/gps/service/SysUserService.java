@@ -3,6 +3,7 @@ package com.ky.gps.service;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SysUser;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,6 +11,16 @@ import java.util.Map;
  * 系统用户Service接口
  */
 public interface SysUserService {
+
+    /**
+     * 根据真实姓名，工号和部门id模糊查询
+     * @param params 存放参数的map
+     *          realName        真实姓名
+     *          workId          工号
+     *          departmentId    部门id
+     * @return 返回key={id,departmentName,workId,realName,idCard,phone,email}
+     */
+    ResultWrapper findBaseInfoLikeRealNameAndWorkIdAndDepartment(Map<String, Object> params);
 
     /**
      * 根据用户教工号来查询普通用户信息

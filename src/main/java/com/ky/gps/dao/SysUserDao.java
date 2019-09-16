@@ -13,6 +13,16 @@ import java.util.Map;
 public interface SysUserDao {
 
     /**
+     * 根据真实姓名，工号和部门id模糊查询
+     * @param params 存放参数的map
+     *          realName        真实姓名
+     *          workId          工号
+     *          departmentId    部门id
+     * @return 返回key={id,departmentName,workId,realName,idCard,phone,email}
+     */
+    List<Map<String, Object>> findBaseInfoLikeRealNameAndWorkIdAndDepartment(Map<String, Object> params);
+
+    /**
      * 根据用户教工号来查询普通用户信息
      *
      * @param workId 教工号

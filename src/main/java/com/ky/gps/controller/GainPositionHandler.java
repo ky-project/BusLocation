@@ -27,19 +27,15 @@ public class GainPositionHandler {
 
     /**
      * 获取json格式的sbGps定位数据
+     *
      * @param sbBusPosition 定位数据存放的类
      */
     @RequestMapping(value = "/gain", method = RequestMethod.POST)
     @ResponseBody
-    public void gainPosition(@RequestBody SbBusPosition sbBusPosition){
-        try {
-            System.out.println(sbBusPosition);
-            sbBusPosition.setSbGps(new SbGps("20190422"));
-            sbBusPosition.setCreatedBy("test");
-            sbBusPosition.setUpdatedBy("test");
-            sbBusPositionService.savePosition(sbBusPosition);
-        }catch (Exception e){
-            LOGGER.error("", e);
-        }
+    public void gainPosition(@RequestBody SbBusPosition sbBusPosition) {
+        sbBusPosition.setSbGps(new SbGps("20190422"));
+        sbBusPosition.setCreatedBy("test");
+        sbBusPosition.setUpdatedBy("test");
+        sbBusPositionService.savePosition(sbBusPosition);
     }
 }

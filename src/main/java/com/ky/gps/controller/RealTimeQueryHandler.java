@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Calendar;
 
 /**
@@ -23,7 +24,9 @@ import java.util.Calendar;
 @Controller
 @RequestMapping("/bus")
 public class RealTimeQueryHandler {
-    /** 日志打印对象 */
+    /**
+     * 日志打印对象
+     */
     private final static Logger LOGGER = LoggerFactory.getLogger(RealTimeQueryHandler.class);
 
     @Resource
@@ -39,21 +42,16 @@ public class RealTimeQueryHandler {
      */
     @RequestMapping(value = "/route/track", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper findRealTimeNewPositionByRouteId(Integer routeId){
+    public ResultWrapper findRealTimeNewPositionByRouteId(Integer routeId,
+                                                          HttpServletResponse response) {
         ResultWrapper resultWrapper;
-        try{
-            //空值判断
-            if(null == routeId || routeId <= 0){
-                //如果存在空值，返回错误信息
-                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR, "routeId <= 0");
-            } else{
-                //反之查询结果并返回
-                resultWrapper = sbBusPositionService.findNewPositionByRouteId(routeId);
-            }
-        }catch (Exception e){
-            //异常处理
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            LOGGER.error("", e);
+        //空值判断
+        if (null == routeId || routeId <= 0) {
+            //如果存在空值，返回错误信息
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, "routeId <= 0", response);
+        } else {
+            //反之查询结果并返回
+            resultWrapper = sbBusPositionService.findNewPositionByRouteId(routeId);
         }
         return resultWrapper;
     }
@@ -67,14 +65,8 @@ public class RealTimeQueryHandler {
     @ResponseBody
     public ResultWrapper getRealTimeStationByRoute() {
         ResultWrapper resultWrapper;
-        try {
-            //获取所有路线站点信息 原方法findAllRouteStation(未过滤)
-            resultWrapper = sbRouteStationService.findRealTimeAllRouteStation(JudgeTimeUtil.getWeek(), String.valueOf(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)));
-        } catch (Exception e) {
-            //异常处理
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            LOGGER.error("", e);
-        }
+        //获取所有路线站点信息 原方法findAllRouteStation(未过滤)
+        resultWrapper = sbRouteStationService.findRealTimeAllRouteStation(JudgeTimeUtil.getWeek(), String.valueOf(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)));
         return resultWrapper;
 
     }
@@ -90,14 +82,8 @@ public class RealTimeQueryHandler {
     public ResultWrapper getPositionByRoute() {
         //创建待返回的封装对象
         ResultWrapper resultWrapper;
-        try {
-            //获取结果
-            resultWrapper = sbBusPositionService.findAllEffectiveRoutePosition();
-        } catch (Exception e) {
-            //异常处理
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            LOGGER.error("", e);
-        }
+        //获取结果
+        resultWrapper = sbBusPositionService.findAllEffectiveRoutePosition();
         //返回结果对象
         return resultWrapper;
     }

@@ -18,16 +18,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 @ControllerAdvice
 public class MyException {
-	private static final Logger LOGGER = LoggerFactory.getLogger(MyException.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MyException.class);
 
-	@ExceptionHandler({Exception.class})
-	@ResponseBody
-	public ResultWrapper localException(Exception ex,
-										HttpServletRequest request,
-										HttpServletResponse response){
-		LOGGER.error(ex.getMessage(), ex);
-		response.setStatus(500);
-		ResultWrapper resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR, ex.getMessage());
-		return resultWrapper;
-	}
+    @ExceptionHandler({Exception.class})
+    @ResponseBody
+    public ResultWrapper localException(Exception ex,
+                                        HttpServletRequest request,
+                                        HttpServletResponse response) {
+        LOGGER.error(ex.getMessage(), ex);
+        response.setStatus(500);
+        ResultWrapper resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR, ex.getMessage());
+        return resultWrapper;
+    }
 }

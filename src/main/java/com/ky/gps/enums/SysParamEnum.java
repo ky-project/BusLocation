@@ -12,7 +12,9 @@ public enum SysParamEnum {
     /** 存入session中的用户登录类型 */
     SESSION_LOGIN_TYPE("loginType"),
     /** 学生source */
-    LOGIN_TYPE_STUDENT("student");
+    LOGIN_TYPE_STUDENT("student"),
+    /** 验证码 */
+    VERIFY_CODE_VAL("verifyCodeValue");
 
     private String paramName;
 

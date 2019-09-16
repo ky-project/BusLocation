@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Daye
@@ -22,7 +23,9 @@ import javax.annotation.Resource;
 @Controller
 @RequestMapping(value = "/route")
 public class SbRouteHandler {
-    /** 日志打印对象 */
+    /**
+     * 日志打印对象
+     */
     private final static Logger LOGGER = LoggerFactory.getLogger(SbRouteHandler.class);
 
     @Resource
@@ -41,20 +44,16 @@ public class SbRouteHandler {
     @RequestMapping(value = "/one/position", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper findRoutePositionByRouteIdAndStartIndex(@RequestParam(value = "routeId") Integer routeId,
-                                                    @RequestParam(value = "startIndex")Integer startIndex) {
+                                                                 @RequestParam(value = "startIndex") Integer startIndex,
+                                                                 HttpServletResponse response) {
         ResultWrapper resultWrapper;
-        try{
-            //检验参数是否合法
-            if(null == routeId || 0 >= routeId
-                    || null == startIndex || 0 > startIndex){
-                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR, "参数不合法,startIndex>0,startIndex>=0");
-            }else {
-                //接收service层封装好的json对象
-                resultWrapper = sbBusPositionService.findAllEffectiveRoutePositionByRouteId(routeId, startIndex);
-            }
-        }catch (Exception e){
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            LOGGER.error("", e);
+        //检验参数是否合法
+        if (null == routeId || 0 >= routeId
+                || null == startIndex || 0 > startIndex) {
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.SELECT_ERROR, "参数不合法,startIndex>0,startIndex>=0", response);
+        } else {
+            //接收service层封装好的json对象
+            resultWrapper = sbBusPositionService.findAllEffectiveRoutePositionByRouteId(routeId, startIndex);
         }
         return resultWrapper;
     }
@@ -67,20 +66,15 @@ public class SbRouteHandler {
      */
     @RequestMapping(value = "/station/info", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper findRouteStationByRouteId(@RequestParam(value = "routeId") Integer routeId) {
+    public ResultWrapper findRouteStationByRouteId(@RequestParam(value = "routeId") Integer routeId,
+                                                   HttpServletResponse response) {
         ResultWrapper resultWrapper;
-        try {
-            //判断routeId是否合法
-            if(null == routeId || 0 >= routeId){
-                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR, "routeId>0");
-            }else {
-                //获取站点信息
-                resultWrapper = sbRouteStationService.findStationByRouteId(routeId);
-            }
-        } catch (Exception e) {
-            //异常处理
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            LOGGER.error("", e);
+        //判断routeId是否合法
+        if (null == routeId || 0 >= routeId) {
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.SELECT_ERROR, "routeId>0", response);
+        } else {
+            //获取站点信息
+            resultWrapper = sbRouteStationService.findStationByRouteId(routeId);
         }
         return resultWrapper;
     }
@@ -94,14 +88,8 @@ public class SbRouteHandler {
     @ResponseBody
     public ResultWrapper findRouteNameAndId() {
         ResultWrapper resultWrapper;
-        try {
-            //获得封装对象
-            resultWrapper = sbRouteService.findAllIdAndName();
-        } catch (Exception e) {
-            //异常处理
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            LOGGER.error("", e);
-        }
+        //获得封装对象
+        resultWrapper = sbRouteService.findAllIdAndName();
         return resultWrapper;
     }
 }

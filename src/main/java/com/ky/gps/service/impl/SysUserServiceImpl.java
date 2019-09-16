@@ -31,6 +31,13 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
+    public ResultWrapper findBaseInfoLikeRealNameAndWorkIdAndDepartment(Map<String, Object> params) {
+        List<Map<String, Object>> userList = sysUserDao.findBaseInfoLikeRealNameAndWorkIdAndDepartment(params);
+        return ResultWrapperUtil.setSuccessOf(userList);
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
     public Map<String, Object> findBaseInfoByWorkId(String workId) {
         return sysUserDao.findBaseInfoByWorkId(workId);
     }
@@ -72,8 +79,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public ResultWrapper findUserByDepartmentId(Integer depId, Integer startIndex, Integer pageSize) {
         List<Map<String, Object>> userList = sysUserDao.findUserByDepartmentId(depId, startIndex, pageSize);
-        List<Map<String, Object>> newUserList = MapUtil.extractUserIdFromMap(userList);
-        return ResultWrapperUtil.setSuccessOf(newUserList);
+        return ResultWrapperUtil.setSuccessOf(userList);
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
@@ -90,8 +96,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public ResultWrapper findUserByRealNameFuzzyPages(String realName, Integer startIndex, Integer pageSize) {
         List<Map<String, Object>> userList = sysUserDao.findUserByRealNameFuzzyPages("%" + realName + "%", startIndex, pageSize);
-        List<Map<String, Object>> newUserList = MapUtil.extractUserIdFromMap(userList);
-        return ResultWrapperUtil.setSuccessOf(newUserList);
+        return ResultWrapperUtil.setSuccessOf(userList);
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
@@ -108,8 +113,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public ResultWrapper findUserByWorkIdFuzzyPages(String wordId, Integer startIndex, Integer pageSize) {
         List<Map<String, Object>> userList = sysUserDao.findUserByWorkIdFuzzyPages("%" + wordId + "%", startIndex, pageSize);
-        List<Map<String, Object>> newUserList = MapUtil.extractUserIdFromMap(userList);
-        return ResultWrapperUtil.setSuccessOf(newUserList);
+        return ResultWrapperUtil.setSuccessOf(userList);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -200,10 +204,8 @@ public class SysUserServiceImpl implements SysUserService {
     public ResultWrapper findUserByPages(Integer startIndex, Integer pageSize) {
         //获取所有用户的信息集合
         List<Map<String, Object>> userList = sysUserDao.findUserByPages(startIndex, pageSize);
-        //提取每条记录中的id
-        List<Map<String, Object>> newUserList = MapUtil.extractUserIdFromMap(userList);
         //返回json对象
-        return ResultWrapperUtil.setSuccessOf(newUserList);
+        return ResultWrapperUtil.setSuccessOf(userList);
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly =  true)
@@ -211,10 +213,8 @@ public class SysUserServiceImpl implements SysUserService {
     public ResultWrapper findUserList() {
         //获取所有用户信息集合
         List<Map<String, Object>> userList = sysUserDao.findAllUser();
-        //提取id
-        List<Map<String, Object>> newUserList = MapUtil.extractUserIdFromMap(userList);
         //返回json对象
-        return ResultWrapperUtil.setSuccessOf(newUserList);
+        return ResultWrapperUtil.setSuccessOf(userList);
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)

@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SysUserServiceTest {
@@ -19,6 +20,15 @@ public class SysUserServiceTest {
         ApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("spring/applicationContext-service.xml");
         sysUserService = applicationContext.getBean(SysUserService.class);
+    }
+
+    @Test
+    public void test06(){
+        Map<String, Object> params = new HashMap<>();
+        params.put("realName", "%陆%");
+        params.put("workId", "%Xb%");
+        params.put("departmentId", 1);
+        sysUserService.findBaseInfoLikeRealNameAndWorkIdAndDepartment(params);
     }
 
     @Test

@@ -4,14 +4,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 配置自定义的userRealm -->
-    <bean id="userRealm" class="com.ky.gps.component.realm.UserRealm">
+    <bean id="userRealm" class="com.ky.gps.component.shiro.realm.UserRealm">
         <!-- 密码需要加密 -->
         <!--<property name="credentialsMatcher" ref="credentialsMatcher" />-->
     </bean>
 
+    <bean id="mySessionManager" class="com.ky.gps.component.shiro.manager.MySessionManager"/>
+    <!--<bean id="mySessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager"/>-->
+
     <!-- 配置安全管理器SecurityManager -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="userRealm"/>
+        <property name="sessionManager" ref="mySessionManager"/>
         <!-- 添加缓存 -->
         <property name="cacheManager" ref="cacheManager"/>
     </bean>

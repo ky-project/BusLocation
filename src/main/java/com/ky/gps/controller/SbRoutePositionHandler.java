@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Daye
@@ -22,7 +23,9 @@ import javax.annotation.Resource;
 @Controller
 @RequestMapping(value = "/routeposition")
 public class SbRoutePositionHandler {
-    /** 日志打印对象 */
+    /**
+     * 日志打印对象
+     */
     private final static Logger LOGGER = LoggerFactory.getLogger(SbRoutePositionHandler.class);
 
     @Resource
@@ -36,20 +39,15 @@ public class SbRoutePositionHandler {
      */
     @RequestMapping(value = "/find/one", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper findLonAndLatByRouteId(Integer routeId){
+    public ResultWrapper findLonAndLatByRouteId(Integer routeId,
+                                                HttpServletResponse response) {
         ResultWrapper resultWrapper;
-        try{
-            //空值判断
-            if(null == routeId || routeId <= 0){
-                resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SELECT_ERROR,"routeId > 0");
-            } else{
-                resultWrapper = sbRoutePositionService.findLonAndLatByRouteId(String.valueOf(routeId));
-            }//空值判断end
-        }catch (Exception e){
-            //异常处理
-            resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR);
-            LOGGER.error("", e);
-        }
+        //空值判断
+        if (null == routeId || routeId <= 0) {
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.SELECT_ERROR, "routeId > 0", response);
+        } else {
+            resultWrapper = sbRoutePositionService.findLonAndLatByRouteId(String.valueOf(routeId));
+        }//空值判断end
         return resultWrapper;
     }
 }

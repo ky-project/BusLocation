@@ -7,5 +7,5 @@
     <context:component-scan base-package="com.ky.gps.timer"/>
 
     <!-- 设置定时任务 -->
-    <task:annotation-driven/>
+    <!--<task:annotation-driven/>-->
 </beans>

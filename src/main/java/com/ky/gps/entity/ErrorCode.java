@@ -13,7 +13,7 @@ public enum ErrorCode {
     /** 登录失败 */
     LOGIN_FAILURE("登录失败"),
     /** 未登录 */
-    LOGIN_WARNING("请先登录"),
+    LOGIN_WARNING("未登录"),
     /** 验证码错误 */
     VERIFY_ERROR("验证码错误"),
     /** 验证码为空 */
