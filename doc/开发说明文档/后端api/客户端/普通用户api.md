@@ -68,7 +68,7 @@ GET user/self/info
             departmentName: "开发小组",		//所在部门名
             realName: "陆宇豪",			//真实姓名
             phone: "17758178532",		  //手机号
-            idCode: "33108211111111111",  //身份证
+            idCard: "33108211111111111",  //身份证
             id: 1,						  //用户id-唯一识别码
             workId: "Xb16620208",		  //教工编号
             email: "ludaye1112@163.com"	  //邮箱
