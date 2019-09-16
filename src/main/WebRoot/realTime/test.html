@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        html,body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .body-in {
+            width: 600px;
+            height: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        .box {
+            width: 40px;
+            height: 40px;
+            background-color: red;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+
+
+
+
+</head>
+<body>
+    <div class="body-in">
+        <button class="open">打开列表</button>
+        <button class="close">关闭列表</button>
+    </div>
+<script>
+    var $box = $('<div class="box"></div>');
+    $('.body-in').append($box);
+    $box.data('id',1);
+    $('.open').click(function(){
+        console.log($box.data('id'));
+    })
+</script>
+</body>
+</html>

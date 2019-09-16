@@ -1,0 +1,210 @@
+/*头部开始*/
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /*background-color: #EFF1F3;*/
+    /*color: #25c2f2;*/
+}
+
+.body-in {
+    margin: 0 auto;
+    max-width: 991px;
+    position: relative;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+
+}
+
+.header {
+    width: 100%;
+    height: 42px;
+    padding-left: 12px;
+    padding-right: 12px;
+    line-height: 42px;
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #E6E6E6;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.header i {
+    color: #6F6F6F;
+}
+
+.header h3 {
+    font-size: 16px;
+    line-height: 42px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #212121;
+}
+/*头部区结束*/
+/*内容区开始*/
+.main {
+    width: 100%;
+}
+.main .station-title {
+    width: 100%;
+    height: 68px;
+    background-color: #fff;
+    border-bottom: 1px solid #ECECEC;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.main .station-title h3 {
+    margin-top: 12px;
+    line-height: 23px;
+    font-size: 16px;
+    color: #212121;
+}
+.main .station-title p {
+    line-height: 23px;
+    font-size: 12px;
+    color: #212121;
+}
+
+
+
+
+.main .station-content {
+    width: 100%;
+    background-color: #EFF1F3;
+    overflow: hidden;
+    position: relative;
+}
+
+.main .station-content .station-list {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding-left: 35px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.main  .station-list li {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    border-bottom: 1px solid #f8f8f8;
+
+}
+
+.main  .station-list li::before {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url('./../images/yuanquan.png') no-repeat;
+    position: absolute;
+    left: -22px;
+    top: 15px;
+}
+
+.main  .station-list li::after {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 29px;
+    background-color: #dcdfe0;
+    position: absolute;
+    left: -18px;
+    top: 27px;
+}
+
+.main  .station-list li:last-child::after {
+    display: none;
+}
+
+.main  .station-list li h3 {
+    line-height: 20px;
+    font-size: 15px;
+    color: #212121;
+}
+
+
+
+.main  .station-list li h3 i {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    float: right;
+    color: #adadad;
+    background:url(./../images/jiantouxia.png) no-repeat center;
+}
+
+.main .station-list li .detail {
+    display: none;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #F0F8FF;
+    border-radius: 3px;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    background-color: #f5faff;
+}
+
+.main .station-list li .detail p {
+    color: #71bbfe;
+    font-size: 12px;
+}
+
+.cur .detail{
+    display: flex !important;
+}
+
+.cur i {
+    background:url(./../images/jiantoushang.png) no-repeat center !important;
+}
+
+.cur::after {
+    height: 64px !important;
+}
+/*内容区结束*/
+/*底部区开始*/
+.footer {
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    border-top: 1px solid #E6E6E6;
+    display: flex;
+}
+
+.footer > div {
+    flex: 1;
+    height: 100%;
+    text-align: center;
+    color: #4388FF;
+    background-color: #FAFAFA;
+    border-right: 1px solid #E4E4E4;
+}
+
+.footer .real-time {
+    background-color: #4388FF;
+    color: #fff;
+}
+
+.footer > div:last-child {
+    border-right: none;
+}
+
+.footer > div i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+/*底部区结束*/
