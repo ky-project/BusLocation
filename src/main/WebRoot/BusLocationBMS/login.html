@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--为了保证在移动端能够正常的显示-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- 导入Bootstrap的CSS文件 -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>基于gps的校车定位系统</title>
+    <!--导入图标css-->
+    <link rel="stylesheet" href="font/iconfont.css">
+    <!--导入验证码css-->
+    <link rel="stylesheet" href="css/verify.css">
+    <!--导入自己的less-->
+    <link rel="stylesheet/less" href="css/login.less">
+    <script src="js/less.js"></script>
+</head>
+<body>
+    <div class="login">
+        <div class="login-top">
+            <h1>登&nbsp;录</h1>
+            <p>基于gps的校车定位管理系统</p>
+        </div>
+        <div class="login-bottom">
+            <div class="line">
+                <input type="text" name="workId">
+                <p>工号</p>
+            </div>
+            <div class="line">
+                <input type="password" name="password">
+                <i class="iconfont icon-yincang"></i>
+                <p>密码</p>
+            </div>
+            <div class="line" id="mpanel1">
+                <p>验证码</p>
+            </div>
+            <p>
+                <span class="error">用户名或密码错误</span>
+                <a href="#">忘记密码</a>
+            </p>
+            <button class="btn btn-primary" id="submit">登&nbsp;录</button>
+        </div>
+    </div>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="js/jquery-3.1.1.js"></script>
+<!--在Bootstrap4中很多的提示/弹窗都是通过popper.min.js实现的, 所以需要导入-->
+<script src="js/popper.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="js/bootstrap.js"></script>
+<!--ajax插件-->
+<script src="js/axios.min.js"></script>
+<!--导入验证码js-->
+<script src="js/verify.min.js"></script>
+<!--自己的工具类-->
+<script src="js/tools.js"></script>
+<!--导入自己的js-->
+<script src="js/login.js"></script>
+
+</body>
+</html>

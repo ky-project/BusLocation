@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实时查询</title>
+    <!--运行ie最新渲染模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--调整设备视口-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/scrollList.css">
+    <link rel="stylesheet" href="css/rollSwitch.css">
+    <link rel="stylesheet" href="css/realTimeRoute.css">
+</head>
+<body>
+<div class="body-in">
+    <!--头部开始-->
+    <div class="header">
+        <i class="back iconfont icon-xiazai6"></i>
+        <h3></h3>
+        <a href="javascript:;">列表</a>
+    </div>
+    <!--头部结束-->
+    <!--内容区开始-->
+    <div class="main">
+        <div id="map"></div>
+        <div class="route scroll-trigger">
+            <i class="iconfont icon-luxian"></i>
+            <span class="">路线</span>
+        </div>
+        <div class="btns">
+            <div class="zoom-btns">
+                <span class="enlarge-btn"><i class="iconfont icon-jia2"></i></span>
+                <span class="narrow-btn"><i class="iconfont icon-jian"></i></span>
+            </div>
+            <span class="pos-btn"><i class="iconfont icon-dingwei"></i></span>
+        </div>
+    </div>
+    <!--内容区结束-->
+    <!--底部区开始-->
+    <div class="footer">
+        <div class="news">
+            <i class="iconfont icon-gonggao"></i>
+            <span>公告</span>
+        </div>
+        <div class="real-time">
+            <i class="iconfont icon-shishi"></i>
+            <span>路线</span>
+        </div>
+        <div class="my">
+            <i class="iconfont icon-wo"></i>
+            <span>我的</span>
+        </div>
+    </div>
+    <!--底部区结束-->
+</div>
+<!--引入jQuery-->
+<script src="js/jquery-1.12.4.js"></script>
+<!--引入百度地图事件包装器-->
+<script src="js/EventWrapper.js"></script>
+<!--引入工具类-->
+<script src="js/tools.js"></script>
+<!--引入cookie插件-->
+<script src="js/jquery_cookie.js"></script>
+<!--引入弹窗插件-->
+<script src="js/PromptWindow.js"></script>
+<!--引入滑动列表组件-->
+<script src="js/scrollList2.js"></script>
+<!--引入滚动切换组件-->
+<script src="js/RollSwitch.js"></script>
+<!--引入轨迹类-->
+<script src="js/TrackRoute.js"></script>
+<!--引入路线类-->
+<script src="js/Route.js"></script>
+
+<script src="js/realTimeRoute.js"></script>
+
+</body>
+</html>

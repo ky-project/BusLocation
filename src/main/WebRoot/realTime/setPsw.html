@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>密码设置</title>
+    <!--运行ie最新渲染模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--调整设备视口-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/resetPsw.css">
+</head>
+<body>
+<div class="body-in">
+    <!--头部开始-->
+    <div class="header">
+        <a href="javascript:;" class="back iconfont icon-xiazai6
+"></a>
+        <h3>设置密码</h3>
+    </div>
+    <!--头部结束-->
+    <!--内容区开始-->
+    <div class="main">
+        <p class="mes">填完下面表单帮助你设置密码</p>
+        <div>
+            <input type="text" placeholder="请输入验证码" class="code">
+        </div>
+        <div>
+            <input type="password" placeholder="请输入新密码" class="new-psw">
+        </div>
+        <div>
+            <input type="password" placeholder="再次输入密码" class="confirm-psw">
+        </div>
+        <p class="error-mes"></p>
+        <button>设置密码</button>
+    </div>
+</div>
+
+<!--内容区结束-->
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/jquery_cookie.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/PromptWindow.js"></script>
+<script src="js/setPsw.js"></script>
+
+</body>
+</html>
