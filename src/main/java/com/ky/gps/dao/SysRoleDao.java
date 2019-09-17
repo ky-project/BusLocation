@@ -14,7 +14,15 @@ import java.util.Map;
 public interface SysRoleDao {
 
     /**
+     * 根据id更新角色记录
+     *
+     * @param sysRole 待更新的角色对象
+     */
+    void updateById(SysRole sysRole);
+
+    /**
      * 根据id查询角色信息
+     *
      * @param id 待查询的id
      * @return 返回map键值对
      */

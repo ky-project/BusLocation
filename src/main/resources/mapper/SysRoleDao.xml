@@ -29,6 +29,28 @@
         set Valid = #{value}
         where ID = #{roleId}
     </update>
+    <!--根据id更新角色记录-->
+    <update id="updateById" parameterType="SysRole">
+        update sys_role
+        <set>
+            <if test="srName != null and srName != ''">
+                SR_NAME = #{srName},
+            </if>
+            <if test="srSource != null and srSource != ''">
+                SR_SOURCE = #{srSource},
+            </if>
+            <if test="srManage != null">
+                SR_MANAGE = #{srManage},
+            </if>
+            <if test="srLevel != null">
+                SR_LEVEL = #{srLevel},
+            </if>
+            <if test="remark != null and remark != ''">
+                REMARK = #{remark}
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
     <select id="findNameById" resultType="java.lang.String" parameterType="integer">
         SELECT SR_NAME srName
         FROM sys_role

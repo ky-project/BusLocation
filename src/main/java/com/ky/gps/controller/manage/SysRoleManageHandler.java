@@ -32,6 +32,30 @@ public class SysRoleManageHandler {
     private SysRoleService sysRoleService;
 
     /**
+     * 更新角色记录
+     * @param sysRole 待更新的角色
+     * @param request 请求域
+     * @param response 响应域
+     * @return 返回json格式数据
+     */
+    @RequiresPermissions("role:update")
+    @PermissionName(displayName = "角色更新", group = "角色管理")
+    @ResponseBody
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ResultWrapper updateRole(@RequestBody SysRole sysRole,
+                                    HttpServletRequest request,
+                                    HttpServletResponse response){
+        ResultWrapper resultWrapper;
+        if(IntegerUtil.isValid(sysRole.getId())
+                && sysRoleService.findById(sysRole.getId()).getData() != null){
+            resultWrapper = sysRoleService.updateById(sysRole);
+        } else{
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, "更新的角色不存在", response);
+        }
+        return resultWrapper;
+    }
+
+    /**
      * 添加角色记录
      *
      * @param sysRole  待添加的角色对象

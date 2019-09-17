@@ -10,6 +10,14 @@ import com.ky.gps.entity.SysRole;
 public interface SysRoleService {
 
     /**
+     * 根据id更新角色记录
+     *
+     * @param sysRole 待更新的角色对象
+     * @return 返回json对象
+     */
+    ResultWrapper updateById(SysRole sysRole);
+
+    /**
      * 根据id查询角色信息
      * @param id 待查询的id
      * @return 返回json对象

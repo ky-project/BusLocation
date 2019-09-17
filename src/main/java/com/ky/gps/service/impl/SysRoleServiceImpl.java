@@ -28,6 +28,14 @@ public class SysRoleServiceImpl implements SysRoleService {
     private SbUserRoleDao sbUserRoleDao;
     private SbRoleAuthorityDao sbRoleAuthorityDao;
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public ResultWrapper updateById(SysRole sysRole) {
+        sysRoleDao.updateById(sysRole);
+        Map<String, Object> roleMap = sysRoleDao.findById(sysRole.getId());
+        return ResultWrapperUtil.setSuccessOf(roleMap);
+    }
+
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public ResultWrapper findById(Integer id) {
