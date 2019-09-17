@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author Daye
@@ -20,6 +21,12 @@ public class SbUserRoleServiceImpl implements SbUserRoleService {
 
     @Resource
     private SbUserRoleDao sbUserRoleDao;
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public List<String> findSysRoleSrSourceBySysUserId(Integer id) {
+        return sbUserRoleDao.findSysRoleSrSourceBySysUserId(id);
+    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override

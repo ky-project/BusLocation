@@ -22,9 +22,20 @@
     </insert>
     <update id="deleteUserRoleByUserId">
         UPDATE sb_user_role
-        SET Valid = 0,
+        SET Valid      = 0,
             UPDATED_BY = #{updateBy}
         WHERE USER_ID = #{userId}
     </update>
+    <!--根据用户id查询该用户的所有角色-->
+    <select id="findSysRoleSrSourceBySysUserId" resultType="java.lang.String" parameterType="integer">
+        select sr.SR_SOURCE srSource
+        from sb_user_role sur
+                 left join sys_role sr on sur.ROLE_ID = sr.ID
+                 left join sys_user su on sur.USER_ID = su.ID
+        where sr.Valid = 1
+          and su.Valid = 1
+          and sur.Valid = 1
+          and su.ID = #{id}
+    </select>
 
 </mapper>

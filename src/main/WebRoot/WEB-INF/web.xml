@@ -59,19 +59,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter>
-        <filter-name>shiroFilter</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <init-param>
-            <param-name>targetFilterLifecycle</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>shiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
     <!-- 连接池 启用Web监控统计功能  begin -->
     <filter>
         <filter-name>DruidWebStatFilter</filter-name>
@@ -123,6 +110,12 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!-- url-pattern不能加* 这样才能支持restful这种url请求形式 -->
+    <servlet-mapping>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
     <!-- 配置hiddenMethodFilter过滤器 -->
     <filter>
         <filter-name>hiddenHttpMethodFilter</filter-name>
@@ -133,9 +126,16 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- url-pattern不能加* 这样才能支持restful这种url请求形式 -->
-    <servlet-mapping>
-        <servlet-name>springDispatcherServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

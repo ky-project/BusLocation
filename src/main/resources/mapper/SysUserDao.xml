@@ -26,7 +26,7 @@
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
     <select id="findBaseInfoByWorkIdAndPassword" parameterType="map" resultType="map">
-        select sys_user.ID         sysUserId,
+        select sys_user.ID         id,
                sys_user.REAL_NAME  realName,
                sys_user.WORKID     workId,
                b_department.`NAME` departmentName
@@ -39,12 +39,12 @@
           and sys_user.DEPARTMENT_ID = b_department.ID
     </select>
     <select id="findAdminBaseInfoByWordIdAndPassword" resultType="map" parameterType="map">
-        SELECT admin_info.sysUserId,
+        SELECT admin_info.id,
                admin_info.realName,
                admin_info.workId,
                b_department.`NAME` departmentName
         FROM b_department,
-             (SELECT sys_user.ID        sysUserId,
+             (SELECT sys_user.ID        id,
                      sys_user.REAL_NAME realName,
                      sys_user.WORKID    workId,
                      sys_user.DEPARTMENT_ID
@@ -178,7 +178,7 @@
         where EMAIL = #{email}
     </select>
     <select id="findBaseInfoByEmail" resultType="map" parameterType="string">
-        select sys_user.ID         sysUserId,
+        select sys_user.ID         id,
                sys_user.REAL_NAME  realName,
                sys_user.WORKID     workId,
                b_department.`NAME` departmentName
@@ -298,7 +298,7 @@
           AND sys_user.ID = #{userId}
     </select>
     <select id="findAdminBaseInfoByWordId" resultType="java.util.Map" parameterType="string">
-        SELECT admin_info.sysUserId,
+        SELECT admin_info.id,
                admin_info.realName,
                admin_info.workId,
                admin_info.email,
@@ -307,7 +307,7 @@
                admin_info.password,
                b_department.`NAME` departmentName
         FROM b_department,
-             (SELECT sys_user.ID        sysUserId,
+             (SELECT sys_user.ID        id,
                      sys_user.REAL_NAME realName,
                      sys_user.WORKID    workId,
                      sys_user.EMAIL     email,
@@ -328,7 +328,7 @@
         LIMIT 1
     </select>
     <select id="findBaseInfoByWorkId" resultType="java.util.Map" parameterType="string">
-        select sys_user.ID         sysUserId,
+        select sys_user.ID         id,
                sys_user.REAL_NAME  realName,
                sys_user.WORKID     workId,
                sys_user.PASSWORD   password,

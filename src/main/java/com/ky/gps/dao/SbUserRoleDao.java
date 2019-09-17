@@ -3,12 +3,21 @@ package com.ky.gps.dao;
 import com.ky.gps.entity.SbUserRole;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author Daye
  * <p>
  * 用户和角色多对多对应表的Dao
  */
 public interface SbUserRoleDao {
+
+    /**
+     * 根据用户id查询该用户的所有角色
+     * @param id 用户id
+     * @return 返回角色名list
+     */
+    List<String> findSysRoleSrSourceBySysUserId(@Param("id") Integer id);
 
     /**
      * 根据userId和roleId将用户和角色关联起来
