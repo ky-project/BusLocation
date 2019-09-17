@@ -164,8 +164,9 @@ public class SysUserServiceImpl implements SysUserService {
     public ResultWrapper updateUserBaseInfo(SysUser sysUser) {
         //更新用户信息
         sysUserDao.updateUserBaseInfo(sysUser);
+        Map<String, Object> user = sysUserDao.findUserBaseInfoById(sysUser.getId());
         //返回json对象
-        return ResultWrapperUtil.setSuccessOf(null);
+        return ResultWrapperUtil.setSuccessOf(user);
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
@@ -195,8 +196,9 @@ public class SysUserServiceImpl implements SysUserService {
     public ResultWrapper saveUserBaseInfo(SysUser sysUser) {
         //添加用户信息
         sysUserDao.saveUserBaseInfo(sysUser);
+        Map<String, Object> user = sysUserDao.findUserBaseInfoById(sysUser.getId());
         //将添加完成后该用户的id返回
-        return ResultWrapperUtil.setSuccessOf(null);
+        return ResultWrapperUtil.setSuccessOf(user);
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
