@@ -30,4 +30,11 @@ public class MyException {
         ResultWrapper resultWrapper = ResultWrapperUtil.setErrorOf(ErrorCode.SYSTEM_ERROR, ex.getMessage());
         return resultWrapper;
     }
+
+    @ExceptionHandler({org.apache.shiro.authz.UnauthorizedException.class})
+    @ResponseBody
+    public ResultWrapper noPermissionException(HttpServletResponse response) {
+        ResultWrapper resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.INSUFFICIENT_PERMISSION, response);
+        return resultWrapper;
+    }
 }

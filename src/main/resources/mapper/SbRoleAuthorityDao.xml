@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ky.gps.dao.SbRoleAuthorityDao">
+    <resultMap id="BaseResultMap" type="com.ky.gps.entity.SbRoleAuthority">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="ROLE_ID" jdbcType="INTEGER" property="sysRole.id"/>
+        <result column="AUTHORITY_ID" jdbcType="INTEGER" property="sysAuthority.id"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="REMARK1" jdbcType="VARCHAR" property="remark1"/>
+        <result column="REMARK2" jdbcType="VARCHAR" property="remark2"/>
+        <result column="REMARK3" jdbcType="VARCHAR" property="remark3"/>
+        <result column="CREATED_DATE" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="UPDATED_DATE" jdbcType="TIMESTAMP" property="updatedDate"/>
+        <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="Valid" jdbcType="BOOLEAN" property="valid"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+            ID,
+            ROLE_ID,
+            AUTHORITY_ID,
+            REMARK,
+            REMARK1,
+            REMARK2,
+            REMARK3,
+            CREATED_DATE,
+            CREATED_BY,
+            UPDATED_DATE,
+            UPDATED_BY,
+            `Valid`
+    </sql>
+    <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.ky.gps.entity.SbRoleAuthority"
+            useGeneratedKeys="true">
+        insert into sb_role_authority
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                ROLE_ID,
+            </if>
+            <if test="authorityId != null">
+                AUTHORITY_ID,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="remark1 != null">
+                REMARK1,
+            </if>
+            <if test="remark2 != null">
+                REMARK2,
+            </if>
+            <if test="remark3 != null">
+                REMARK3,
+            </if>
+            <if test="createdDate != null">
+                CREATED_DATE,
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY,
+            </if>
+            <if test="updatedDate != null">
+                UPDATED_DATE,
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY,
+            </if>
+            <if test="valid != null">
+                `Valid`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="authorityId != null">
+                #{authorityId,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="remark1 != null">
+                #{remark1,jdbcType=VARCHAR},
+            </if>
+            <if test="remark2 != null">
+                #{remark2,jdbcType=VARCHAR},
+            </if>
+            <if test="remark3 != null">
+                #{remark3,jdbcType=VARCHAR},
+            </if>
+            <if test="createdDate != null">
+                #{createdDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedDate != null">
+                #{updatedDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedBy != null">
+                #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="valid != null">
+                #{valid,jdbcType=BOOLEAN},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ky.gps.entity.SbRoleAuthority">
+        update sb_role_authority
+        <set>
+            <if test="roleId != null">
+                ROLE_ID = #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="authorityId != null">
+                AUTHORITY_ID = #{authorityId,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="remark1 != null">
+                REMARK1 = #{remark1,jdbcType=VARCHAR},
+            </if>
+            <if test="remark2 != null">
+                REMARK2 = #{remark2,jdbcType=VARCHAR},
+            </if>
+            <if test="remark3 != null">
+                REMARK3 = #{remark3,jdbcType=VARCHAR},
+            </if>
+            <if test="createdDate != null">
+                CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedDate != null">
+                UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="valid != null">
+                `Valid` = #{valid,jdbcType=BOOLEAN},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <!--根据角色id将记录置为无效-->
+    <update id="updateValidByRoleId" parameterType="integer">
+        update sb_role_authority
+        set Valid = #{value}
+        where ROLE_ID = #{roleId}
+    </update>
+    <!--根据角色代码名查询角色所拥有的所有权限-->
+    <select id="findSaNameBySrSource" resultType="java.lang.String">
+        SELECT sa.SA_NAME
+        FROM sb_role_authority sra
+        LEFT JOIN sys_role sr ON sr.ID = sra.ROLE_ID
+        LEFT JOIN sys_authority sa ON sa.ID = sra.AUTHORITY_ID
+        WHERE sra.Valid = 1
+        AND sr.Valid = 1
+        AND sa.Valid = 1
+        AND sr.SR_SOURCE IN
+        <foreach collection="roles" open="(" close=")" item="role" separator=",">
+            #{role}
+        </foreach>
+    </select>
+</mapper>

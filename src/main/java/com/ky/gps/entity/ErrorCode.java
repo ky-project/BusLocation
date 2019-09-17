@@ -27,7 +27,9 @@ public enum ErrorCode {
     /** 异常错误 */
     SYSTEM_ERROR("操作异常"),
     /** 空值判断 */
-    EMPTY_ERROR("存在空值");
+    EMPTY_ERROR("存在空值"),
+    /** 无权限 */
+    INSUFFICIENT_PERMISSION("无操作权限");
 
     private String errorMessage;
 

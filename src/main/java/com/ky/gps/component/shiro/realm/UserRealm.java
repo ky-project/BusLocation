@@ -1,6 +1,8 @@
 package com.ky.gps.component.shiro.realm;
 
 import com.ky.gps.enums.SysParamEnum;
+import com.ky.gps.service.SbRoleAuthorityService;
+import com.ky.gps.service.SbUserRoleService;
 import com.ky.gps.service.SysUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -8,12 +10,15 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,8 +29,9 @@ import java.util.Map;
 public class UserRealm extends AuthorizingRealm {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRealm.class);
-    @Resource
     private SysUserService sysUserService;
+    private SbUserRoleService sbUserRoleService;
+    private SbRoleAuthorityService sbRoleAuthorityService;
 
     /**
      * 用户身份数组
@@ -39,7 +45,20 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        return null;
+        @SuppressWarnings("unchecked")
+        Map<String, Object> user = (Map<String, Object>)principals.getPrimaryPrincipal();
+        //查询用户的角色
+        List<String> roles = sbUserRoleService.findSysRoleSrSourceBySysUserId((Integer) user.get("id"));
+        //查询角色对应的权限
+        List<String> permissions = sbRoleAuthorityService.findSaNameBySrSource(roles);
+        //创建权限信息
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        //设置用户权限和角色
+        info.addStringPermissions(permissions);
+        info.addRoles(roles);
+        LOGGER.debug("用户" + user.get("workId") + "权限加载完毕");
+        //返回权限信息
+        return info;
     }
 
     /**
@@ -73,5 +92,20 @@ public class UserRealm extends AuthorizingRealm {
         SecurityUtils.getSubject().getSession().setAttribute(SysParamEnum.SESSION_USER_NAME.toString(), user);
         //返回认证信息
         return new SimpleAuthenticationInfo(user, user.get("password"), getName());
+    }
+
+    @Autowired
+    public void setSysUserService(SysUserService sysUserService) {
+        this.sysUserService = sysUserService;
+    }
+
+    @Autowired
+    public void setSbUserRoleService(SbUserRoleService sbUserRoleService) {
+        this.sbUserRoleService = sbUserRoleService;
+    }
+
+    @Autowired
+    public void setSbRoleAuthorityService(SbRoleAuthorityService sbRoleAuthorityService) {
+        this.sbRoleAuthorityService = sbRoleAuthorityService;
     }
 }

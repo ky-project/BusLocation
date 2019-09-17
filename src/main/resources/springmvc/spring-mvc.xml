@@ -20,7 +20,8 @@
         <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".html"/>
     </bean>
-
+    <!-- 用于遍历带有@RequestMapping和@Controller注解的处理器 -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
     <!--
         配置可以解析自定义的视图解析器
         1. BeanNameViewResolver:可以解析自定义视图的解析器
