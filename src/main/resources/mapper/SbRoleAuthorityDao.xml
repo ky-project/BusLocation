@@ -142,6 +142,12 @@
         </set>
         where ID = #{id,jdbcType=INTEGER}
     </update>
+    <!--根据角色id将记录置为无效-->
+    <update id="updateValidByRoleId" parameterType="integer">
+        update sb_role_authority
+        set Valid = #{value}
+        where ROLE_ID = #{roleId}
+    </update>
     <!--根据角色代码名查询角色所拥有的所有权限-->
     <select id="findSaNameBySrSource" resultType="java.lang.String">
         SELECT sa.SA_NAME

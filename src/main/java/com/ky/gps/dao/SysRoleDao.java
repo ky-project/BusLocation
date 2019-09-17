@@ -13,6 +13,13 @@ import java.util.Map;
 public interface SysRoleDao {
 
     /**
+     * 根据id将角色置为无效
+     * @param roleId 待更新的id
+     * @param value 待更新的值
+     */
+    void updateValidById(@Param("roleId") Integer roleId, @Param("value") Integer value);
+
+    /**
      * 查询所有角色信息
      * @return 返回角色信息list
      */

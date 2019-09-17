@@ -9,6 +9,21 @@ import com.ky.gps.entity.ResultWrapper;
 public interface SysRoleService {
 
     /**
+     * 根据角色id回复角色及用户角色中间表和角色权限中间表的记录
+     * @param id 角色id
+     * @return json对象
+     */
+    ResultWrapper rollbackById(Integer id);
+
+    /**
+     * 根据角色id删除角色及用户角色中间表和角色权限中间表的记录
+     *
+     * @param id 角色id
+     * @return Json对象
+     */
+    ResultWrapper deleteById(Integer id);
+
+    /**
      * 查询所有角色信息
      * @return 返回json格式数据
      */

@@ -26,6 +26,12 @@
             UPDATED_BY = #{updateBy}
         WHERE USER_ID = #{userId}
     </update>
+    <!--根据角色id将记录置为无效-->
+    <update id="updateValidByRoleId" parameterType="integer">
+        update sb_user_role
+        set Valid = #{value}
+        where ROLE_ID = #{roleId}
+    </update>
     <!--根据用户id查询该用户的所有角色-->
     <select id="findSysRoleSrSourceBySysUserId" resultType="java.lang.String" parameterType="integer">
         select sr.SR_SOURCE srSource

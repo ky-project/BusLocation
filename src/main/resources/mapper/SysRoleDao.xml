@@ -18,6 +18,12 @@
         <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
+    <!--根据id将角色置为无效-->
+    <update id="updateValidById" parameterType="integer">
+        update sys_role
+        set Valid = #{value}
+        where ID = #{roleId}
+    </update>
     <select id="findNameById" resultType="java.lang.String" parameterType="integer">
         SELECT SR_NAME srName
         FROM sys_role
