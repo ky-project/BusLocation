@@ -1,12 +1,28 @@
 package com.ky.gps.service;
 
 import com.ky.gps.entity.ResultWrapper;
+import com.ky.gps.entity.SysRole;
 
 /**
  * @author Daye
  * 角色表Service层接口类
  */
 public interface SysRoleService {
+
+    /**
+     * 根据id查询角色信息
+     * @param id 待查询的id
+     * @return 返回json对象
+     */
+    ResultWrapper findById(Integer id);
+
+    /**
+     * 插入角色记录
+     *
+     * @param sysRole 待插入的角色
+     * @return 返回json对象
+     */
+    ResultWrapper saveRole(SysRole sysRole);
 
     /**
      * 根据角色id回复角色及用户角色中间表和角色权限中间表的记录

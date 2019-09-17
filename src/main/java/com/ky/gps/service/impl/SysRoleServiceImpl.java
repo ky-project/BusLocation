@@ -4,6 +4,7 @@ import com.ky.gps.dao.SbRoleAuthorityDao;
 import com.ky.gps.dao.SbUserRoleDao;
 import com.ky.gps.dao.SysRoleDao;
 import com.ky.gps.entity.ResultWrapper;
+import com.ky.gps.entity.SysRole;
 import com.ky.gps.service.SbRoleAuthorityService;
 import com.ky.gps.service.SbUserRoleService;
 import com.ky.gps.service.SysRoleService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * @author Daye
@@ -25,6 +27,21 @@ public class SysRoleServiceImpl implements SysRoleService {
     private SysRoleDao sysRoleDao;
     private SbUserRoleDao sbUserRoleDao;
     private SbRoleAuthorityDao sbRoleAuthorityDao;
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper findById(Integer id) {
+        Map<String, Object> sysRole = sysRoleDao.findById(id);
+        return ResultWrapperUtil.setSuccessOf(sysRole);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public ResultWrapper saveRole(SysRole sysRole) {
+        sysRoleDao.saveRole(sysRole);
+        Map<String, Object> sysRoleMap = sysRoleDao.findById(sysRole.getId());
+        return ResultWrapperUtil.setSuccessOf(sysRoleMap);
+    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
