@@ -9,6 +9,12 @@ import com.ky.gps.entity.ResultWrapper;
 public interface SysRoleService {
 
     /**
+     * 查询所有角色信息
+     * @return 返回json格式数据
+     */
+    ResultWrapper findAllRole();
+
+    /**
      * 根据id查询角色名
      *
      * @param roleId 待查询的角色id

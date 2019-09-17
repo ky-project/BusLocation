@@ -1,5 +1,6 @@
 package com.ky.gps.controller.manage;
 
+import com.ky.gps.annotation.PermissionName;
 import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SysLog;
@@ -8,6 +9,7 @@ import com.ky.gps.service.DepartmentService;
 import com.ky.gps.service.SysLogService;
 import com.ky.gps.service.SysUserService;
 import com.ky.gps.util.*;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,8 @@ public class SysUserManageHandler {
      *
      * @return 返回json格式
      */
+//    @PermissionName(group = "用户管理", displayName = "根据workId模糊查询")
+//    @RequiresPermissions("user:fQueryWordId")
     @RequestMapping(value = "/f/query", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByRealNameAndWorkIdAndDepartment(@RequestBody Map<String, Object> params) {
@@ -60,6 +64,8 @@ public class SysUserManageHandler {
      * @param depId 部门id
      * @return Json格式数据
      */
+//    @PermissionName(group = "用户管理", displayName = "根据deptId查询")
+//    @RequiresPermissions("user:queryDeptId")
     @RequestMapping(value = "/f/query/dep", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper fuzzyQueryByWorkIdTotalPages(Integer depId,
@@ -85,6 +91,8 @@ public class SysUserManageHandler {
      *               pageSize 页大小
      * @return Json格式数据
      */
+//    @PermissionName(group = "用户管理", displayName = "根据deptId查询")
+//    @RequiresPermissions("user:queryDeptId")
     @RequestMapping(value = "/f/query/dep", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByDepartment(@RequestBody Map<String, Object> params,

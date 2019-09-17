@@ -5,6 +5,7 @@ import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.service.SysRoleService;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -19,6 +20,13 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Resource
     private SysRoleDao sysRoleDao;
 
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper findAllRole() {
+        return ResultWrapperUtil.setSuccessOf(sysRoleDao.findAllRole());
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public ResultWrapper findNameById(Integer roleId) {
         //获取该id的角色name

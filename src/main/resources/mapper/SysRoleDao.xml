@@ -18,8 +18,20 @@
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
     <select id="findNameById" resultType="java.lang.String" parameterType="integer">
-        SELECT SR_NAME
+        SELECT SR_NAME srName
         FROM sys_role
         WHERE Valid = 1 AND ID = #{roleId}
+    </select>
+    <select id="findAllRole" resultType="java.util.Map">
+        SELECT
+            ID id,
+            SR_NAME roleName,
+            SR_MANAGE srManage,
+            SR_LEVEL srLevel,
+            CREATED_DATE createdDate
+        FROM
+            sys_role
+        WHERE
+            Valid = 1
     </select>
 </mapper>
