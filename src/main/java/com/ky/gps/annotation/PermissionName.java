@@ -8,6 +8,13 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PermissionName {
+    /**
+     * 操作显示名
+     */
     String displayName();
+
+    /**
+     * 操作组
+     */
     String group();
 }

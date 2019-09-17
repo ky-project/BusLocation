@@ -27,8 +27,8 @@ public class SysRoleManageHandler {
      *
      * @return 返回json格式数据
      */
-//    @RequiresPermissions("role:query")
-//    @PermissionName(group = "角色管理", displayName = "查询角色")
+    @RequiresPermissions("role:query")
+    @PermissionName(group = "角色管理", displayName = "角色查询")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper findAllRole() {

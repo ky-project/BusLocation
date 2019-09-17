@@ -5,6 +5,7 @@
     <resultMap id="BaseSysRoleMap" type="sysrole">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="sr_name" jdbcType="VARCHAR" property="srName"/>
+        <result column="sr_source" jdbcType="VARCHAR" property="srSource"/>
         <result column="sr_manage" jdbcType="TINYINT" property="srManage"/>
         <result column="sr_level" jdbcType="INTEGER" property="srLevel"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
@@ -20,18 +21,18 @@
     <select id="findNameById" resultType="java.lang.String" parameterType="integer">
         SELECT SR_NAME srName
         FROM sys_role
-        WHERE Valid = 1 AND ID = #{roleId}
+        WHERE Valid = 1
+          AND ID = #{roleId}
     </select>
     <select id="findAllRole" resultType="java.util.Map">
-        SELECT
-            ID id,
-            SR_NAME roleName,
-            SR_MANAGE srManage,
-            SR_LEVEL srLevel,
-            CREATED_DATE createdDate
-        FROM
-            sys_role
-        WHERE
-            Valid = 1
+        SELECT ID           id,
+               SR_NAME      roleName,
+               SR_SOURCE    srSource,
+               SR_MANAGE    srManage,
+               SR_LEVEL     srLevel,
+               REMARK       remark,
+               CREATED_DATE createdDate
+        FROM sys_role
+        WHERE Valid = 1
     </select>
 </mapper>

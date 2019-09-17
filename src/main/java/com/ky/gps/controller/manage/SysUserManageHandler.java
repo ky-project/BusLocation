@@ -44,8 +44,8 @@ public class SysUserManageHandler {
      *
      * @return 返回json格式
      */
-//    @PermissionName(group = "用户管理", displayName = "根据workId模糊查询")
-//    @RequiresPermissions("user:fQueryWordId")
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByRealNameAndWorkIdAndDepartment(@RequestBody Map<String, Object> params) {
@@ -64,8 +64,8 @@ public class SysUserManageHandler {
      * @param depId 部门id
      * @return Json格式数据
      */
-//    @PermissionName(group = "用户管理", displayName = "根据deptId查询")
-//    @RequiresPermissions("user:queryDeptId")
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/dep", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper fuzzyQueryByWorkIdTotalPages(Integer depId,
@@ -91,8 +91,8 @@ public class SysUserManageHandler {
      *               pageSize 页大小
      * @return Json格式数据
      */
-//    @PermissionName(group = "用户管理", displayName = "根据deptId查询")
-//    @RequiresPermissions("user:queryDeptId")
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/dep", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByDepartment(@RequestBody Map<String, Object> params,
@@ -123,6 +123,8 @@ public class SysUserManageHandler {
      *               userId 用户id
      * @return json格式数据
      */
+    @RequiresPermissions("user:query")
+    @PermissionName(group = "用户管理", displayName = "用户查询")
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper findUserByUserId(@RequestBody Map<String, Object> params,
@@ -144,6 +146,8 @@ public class SysUserManageHandler {
      * @param workId 工号
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/workId", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper fuzzyQueryByWorkIdTotalPages(String workId,
@@ -169,6 +173,8 @@ public class SysUserManageHandler {
      *               pageSize 页大小
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/workId", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByWorkId(@RequestBody Map<String, Object> params,
@@ -198,6 +204,8 @@ public class SysUserManageHandler {
      * @param realName 姓名
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/name", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper fuzzyQueryByRealNameTotalPages(String realName,
@@ -223,6 +231,8 @@ public class SysUserManageHandler {
      *               pageSize 页大小
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/name", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByRealName(@RequestBody Map<String, Object> params,
@@ -252,6 +262,8 @@ public class SysUserManageHandler {
      * @param sysUser 待更新的用户对象
      * @return json格式数据
      */
+    @RequiresPermissions("user:update")
+    @PermissionName(group = "用户管理", displayName = "用户更新")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper updateUserBaseInfo(@RequestBody SysUser sysUser,
@@ -284,6 +296,8 @@ public class SysUserManageHandler {
      *               userId 用户id
      * @return 返回json格式数据
      */
+    @RequiresPermissions("user:delete")
+    @PermissionName(group = "用户管理", displayName = "用户删除")
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper deleteUserByUserId(@RequestBody Map<String, Object> params,
@@ -315,6 +329,8 @@ public class SysUserManageHandler {
      * @param sysUser 用户信息
      * @return 返回刚添加的用户id
      */
+    @RequiresPermissions("user:add")
+    @PermissionName(group = "用户管理", displayName = "用户添加")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper saveUserBaseInfo(@RequestBody SysUser sysUser,
@@ -355,6 +371,8 @@ public class SysUserManageHandler {
      * @param pageSize 页大小
      * @return 返回json格式数据
      */
+    @RequiresPermissions("user:query")
+    @PermissionName(group = "用户管理", displayName = "用户查询")
     @RequestMapping(value = "/list/pages", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper userTotalPages(Integer pageSize,
@@ -378,6 +396,8 @@ public class SysUserManageHandler {
      *               pageSize 一页查询的数量
      * @return 返回json格式数据
      */
+    @RequiresPermissions("user:query")
+    @PermissionName(group = "用户管理", displayName = "用户查询")
     @RequestMapping(value = "/list/pages", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper userListPages(@RequestBody Map<String, Object> params,
@@ -403,6 +423,8 @@ public class SysUserManageHandler {
      *
      * @return 返回json数据
      */
+    @RequiresPermissions("user:query")
+    @PermissionName(group = "用户管理", displayName = "用户查询")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper findAllUser() {
