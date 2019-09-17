@@ -28,7 +28,7 @@ import java.util.Map;
  * 权限处理器
  */
 @Controller
-@RequestMapping(value = "/authority")
+@RequestMapping(value = "/m/authority")
 public class SysAuthorityManageHandler {
     private final static Logger LOGGER = LoggerFactory.getLogger(SysAuthorityManageHandler.class);
 
@@ -37,10 +37,24 @@ public class SysAuthorityManageHandler {
     private SysAuthorityService sysAuthorityService;
 
     /**
+     * 查询所有权限
+     * @return 返回json格式数据
+     */
+    @PermissionName(displayName = "权限查询", group = "权限管理")
+    @RequiresPermissions("authority:query")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultWrapper findAll(){
+        return sysAuthorityService.findAll();
+    }
+
+    /**
      * 加载程序中的所有权限到数据库中
      *
      * @return 返回json数据
      */
+    @PermissionName(displayName = "权限重载", group = "权限管理")
+    @RequiresPermissions("authority:reload")
     @RequestMapping(value = "/reload", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper reloadPermission() {

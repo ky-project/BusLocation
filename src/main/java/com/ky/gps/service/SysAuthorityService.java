@@ -4,6 +4,7 @@ import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SysAuthority;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 权限service层-接口类
@@ -11,6 +12,12 @@ import java.util.List;
  * @author Daye
  */
 public interface SysAuthorityService {
+
+    /**
+     * 查询所有权限记录
+     * @return 返回json对象
+     */
+    ResultWrapper findAll();
 
     /**
      * 查询所有权限码
@@ -22,6 +29,7 @@ public interface SysAuthorityService {
      * 添加权限 - 检验空值
      *
      * @param sysAuthority 待添加的权限对象
+     * @return 返回json对象
      */
     ResultWrapper insertSelective(SysAuthority sysAuthority);
 

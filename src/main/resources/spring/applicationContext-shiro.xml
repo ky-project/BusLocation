@@ -23,7 +23,7 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login/warning"/>
-        <property name="unauthorizedUrl" value="/authority/no"/>
+        <property name="unauthorizedUrl" value="/m/authority/no"/>
         <property name="filterChainDefinitions">
             <value>
                 /logout = logout

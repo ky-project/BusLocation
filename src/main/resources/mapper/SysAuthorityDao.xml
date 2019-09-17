@@ -164,4 +164,23 @@
         FROM sys_authority
         WHERE Valid = 1
     </select>
+    <!--查询所有权限记录-->
+    <select id="findAll" resultType="java.util.Map">
+        select id,
+               sa_group        saGroup,
+               sa_display_name saDisplayName
+        from sys_authority
+        where Valid = 1
+        order by SA_GROUP
+    </select>
+    <!--根据id查询权限信息-->
+    <select id="findById" resultType="java.util.Map" parameterType="integer">
+        select id,
+               sa_group        saGroup,
+               sa_name         saName,
+               sa_display_name saDisplayName
+        from sys_authority
+        where Valid = 1
+          and ID = #{id}
+    </select>
 </mapper>
