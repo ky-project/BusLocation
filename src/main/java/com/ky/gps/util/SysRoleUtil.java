@@ -14,7 +14,7 @@ public class SysRoleUtil {
      * @return true or false
      */
     public static boolean checkEffectiveBeforeInsert(SysRole sysRole){
-        if(StringUtil.isNotEmpty(sysRole.getRemark())){
+        if(StringUtil.isEmpty(sysRole.getRemark())){
             sysRole.setRemark("");
         }
         return StringUtil.isNotEmpty(sysRole.getSrName()) && StringUtil.isNotEmpty(sysRole.getSrSource())
