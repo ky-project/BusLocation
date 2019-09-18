@@ -14,6 +14,13 @@ import java.util.List;
 public interface SbRoleAuthorityService {
 
     /**
+     * 根据角色id查询该角色的所有权限
+     * @param roleId 角色id
+     * @return 返回json对象
+     */
+    ResultWrapper findAllAuthorityByRoleId(Integer roleId);
+
+    /**
      * 根据roleId查询所有权限id
      * @param roleId 角色id
      * @return 返回json对象
