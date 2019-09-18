@@ -103,6 +103,17 @@
             </if>
         </trim>
     </insert>
+    <!--批量插入角色id和对应的权限id-->
+    <insert id="batchSaveRoleIdAndAuthorityId">
+        insert into sb_role_authority(ROLE_ID, AUTHORITY_ID)
+        values
+        <foreach collection="authorityIdList" item="authorityId" separator=",">
+            (
+            #{roleId} ,
+            #{authorityId}
+            )
+        </foreach>
+    </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.ky.gps.entity.SbRoleAuthority">
         update sb_role_authority
         <set>
@@ -161,5 +172,12 @@
         <foreach collection="roles" open="(" close=")" item="role" separator=",">
             #{role}
         </foreach>
+    </select>
+    <!--根据roleId查询所有权限id-->
+    <select id="findAuthorityIdByRoleId" resultType="java.lang.Integer" parameterType="integer">
+        select AUTHORITY_ID
+        from sb_role_authority
+        where Valid = 1
+          and ROLE_ID = #{roleId}
     </select>
 </mapper>

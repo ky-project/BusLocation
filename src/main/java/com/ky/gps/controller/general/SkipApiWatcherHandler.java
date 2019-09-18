@@ -53,12 +53,17 @@ public class SkipApiWatcherHandler {
     }
 
     @RequestMapping(value = "/roleManage", method = RequestMethod.GET)
-    public String toRoleManage(){
+    public String toRoleManage() {
         return "api/backstage/role_manage_api";
     }
 
     @RequestMapping(value = "/authorityManage", method = RequestMethod.GET)
-    public String toAuthorityManage(){
+    public String toAuthorityManage() {
         return "api/backstage/authority_manage_api";
+    }
+
+    @RequestMapping(value = "/roleAuthority", method = RequestMethod.GET)
+    public String toRoleAuthorityManage() {
+        return "api/backstage/roleauthority_manage_api";
     }
 }

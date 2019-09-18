@@ -12,6 +12,20 @@ import java.util.List;
 public interface SbRoleAuthorityDao {
 
     /**
+     * 根据roleId查询所有权限id
+     * @param roleId 角色id
+     * @return 返回权限id的list
+     */
+    List<Integer> findAuthorityIdByRoleId(@Param("roleId") Integer roleId);
+
+    /**
+     * 批量插入角色id和对应的权限id
+     * @param roleId 角色id
+     * @param authorityIdList 权限idList
+     */
+    void batchSaveRoleIdAndAuthorityId(@Param("roleId") Integer roleId, @Param("authorityIdList") List<Integer> authorityIdList);
+
+    /**
      * 根据角色id将记录置为无效
      * @param roleId 角色id
      * @param value 待更新的值
