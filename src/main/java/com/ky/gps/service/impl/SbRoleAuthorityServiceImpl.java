@@ -22,6 +22,22 @@ public class SbRoleAuthorityServiceImpl implements SbRoleAuthorityService {
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
+    public ResultWrapper findAuthorityIdByRoleId(Integer roleId) {
+        List<Integer> authorityIdList = sbRoleAuthorityDao.findAuthorityIdByRoleId(roleId);
+        return ResultWrapperUtil.setSuccessOf(authorityIdList);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public ResultWrapper batchSaveRoleIdAndAuthorityId(Integer roleId, List<Integer> authorityIdList) {
+        if(authorityIdList != null && authorityIdList.size() > 0){
+            sbRoleAuthorityDao.batchSaveRoleIdAndAuthorityId(roleId, authorityIdList);
+        }
+        return ResultWrapperUtil.setSuccessOf(null);
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
     public List<String> findSaNameBySrSource(List<String> roles) {
         return sbRoleAuthorityDao.findSaNameBySrSource(roles);
     }
