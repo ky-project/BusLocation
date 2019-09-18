@@ -23,6 +23,8 @@ import java.util.Date;
 import java.util.Map;
 
 /**
+ * 管理员自身信息管理处理器
+ *
  * @author Daye
  */
 @Controller
