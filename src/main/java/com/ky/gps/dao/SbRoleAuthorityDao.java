@@ -12,6 +12,14 @@ import java.util.List;
 public interface SbRoleAuthorityDao {
 
     /**
+     * 批量根据角色id和权限id更新记录的有效位
+     * @param roleId 角色id
+     * @param needDeleteIdList 待更新的权限id
+     * @param value 待更新的值
+     */
+    void batchUpdateValidByRoleId(@Param("roleId") Integer roleId, @Param("needDeleteIdList") List<Integer> needDeleteIdList, @Param("value") Integer value);
+
+    /**
      * 根据roleId查询所有权限id
      * @param roleId 角色id
      * @return 返回权限id的list

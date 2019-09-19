@@ -38,6 +38,7 @@
                 /route/** = anon
                 /bus/** = anon
 
+                /druid/** = anon
                 /user/login = anon
                 /user/admin/login = anon
                 /user/send/email = anon

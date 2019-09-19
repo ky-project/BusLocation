@@ -2,7 +2,6 @@ package com.ky.gps.service;
 
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbRoleAuthority;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,6 +11,15 @@ import java.util.List;
  * @author Daye
  */
 public interface SbRoleAuthorityService {
+
+    /**
+     * 根据角色id更新角色权限
+     * @param roleId 角色id
+     * @param idList 待添加的权限id
+     * @param needDeleteIdList 待删除的权限id
+     * @return 返回json对象
+     */
+    ResultWrapper updateByRoleId(Integer roleId, List<Integer> idList, List<Integer> needDeleteIdList);
 
     /**
      * 根据角色id查询该角色的所有权限
