@@ -37,6 +37,41 @@ public class SbRoleAuthorityManageHandler {
     private SbRoleAuthorityService sbRoleAuthorityService;
 
     /**
+     * 根据角色id修改该角色的权限
+     * @param params 参数map，包含
+     *               id:角色id
+     * @return 返回json格式数据
+     */
+    @SuppressWarnings("unchecked")
+    @PermissionName(displayName = "角色权限更新", group = "角色权限管理")
+    @RequiresPermissions("roleAuthority:update")
+    @ResponseBody
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ResultWrapper updateAuthorityByRoleId(@RequestBody Map<String, Object> params,
+                                                  HttpServletResponse response,
+                                                  HttpServletRequest request){
+        ResultWrapper resultWrapper;
+        //提取角色id
+        Integer id = (Integer) params.get("id");
+        //id不为空且存在
+        if (IntegerUtil.isValid(id) && sysRoleService.findById(id).getData() != null) {
+            //提取所有权限信息
+            List<Map<String, Object>> authorityMap = (List<Map<String, Object>>) params.get("authority");
+            //查询角色id的所有权限id
+            List<Integer> authorityIdList = (List<Integer>) sbRoleAuthorityService.findAuthorityIdByRoleId(id).getData();
+            //提取提交的权限信息中checked=true且当前没有的权限id
+            List<Integer> idList = SbRoleAuthorityUtil.extractIdFromParam(authorityMap, authorityIdList);
+            //提取提交的权限信息中checked=false且当前有的权限id(需要删除的权限)
+            List<Integer> needDeleteIdList = SbRoleAuthorityUtil.extractNeedDeleteIdFromParam(authorityMap, authorityIdList);
+            //更新角色权限
+            resultWrapper = sbRoleAuthorityService.updateByRoleId(id, idList, needDeleteIdList);
+        } else {
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, "角色id不存在或权限参数为空", response);
+        }
+        return resultWrapper;
+    }
+
+    /**
      * 根据角色id查询该角色的所有权限
      * @param params 参数map，包含
      *               id:角色id

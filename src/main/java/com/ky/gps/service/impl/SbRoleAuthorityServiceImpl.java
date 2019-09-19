@@ -27,6 +27,16 @@ public class SbRoleAuthorityServiceImpl implements SbRoleAuthorityService {
     private SysRoleDao sysRoleDao;
     private SysAuthorityDao sysAuthorityDao;
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public ResultWrapper updateByRoleId(Integer roleId, List<Integer> idList, List<Integer> needDeleteIdList) {
+        //批量添加权限
+        sbRoleAuthorityDao.batchSaveRoleIdAndAuthorityId(roleId, idList);
+        //批量将权限置为无效
+        sbRoleAuthorityDao.batchUpdateValidByRoleId(roleId, needDeleteIdList, 0);
+        return ResultWrapperUtil.setSuccessOf(null);
+    }
+
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public ResultWrapper findAllAuthorityByRoleId(Integer roleId) {
@@ -56,6 +66,9 @@ public class SbRoleAuthorityServiceImpl implements SbRoleAuthorityService {
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public List<String> findSaNameBySrSource(List<String> roles) {
+        if(roles == null || roles.size() <= 0){
+            return null;
+        }
         return sbRoleAuthorityDao.findSaNameBySrSource(roles);
     }
 

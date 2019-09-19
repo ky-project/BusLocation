@@ -159,6 +159,15 @@
         set Valid = #{value}
         where ROLE_ID = #{roleId}
     </update>
+    <update id="batchUpdateValidByRoleId">
+        update sb_role_authority
+        set Valid = #{value}
+        where ROLE_ID = #{roleId}
+        and AUTHORITY_ID in
+        <foreach collection="needDeleteIdList" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
     <!--根据角色代码名查询角色所拥有的所有权限-->
     <select id="findSaNameBySrSource" resultType="java.lang.String">
         SELECT sa.SA_NAME
