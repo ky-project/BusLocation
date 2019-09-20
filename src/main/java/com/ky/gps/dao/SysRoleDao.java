@@ -3,6 +3,7 @@ package com.ky.gps.dao;
 import com.ky.gps.entity.SysRole;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,14 @@ import java.util.Map;
  * 角色表Dao数据访问层
  */
 public interface SysRoleDao {
+
+    /**
+     * 根据创建日期查询角色信息
+     * @param startDate 开始时间
+     * @param endDate 结束时间
+     * @return 返回查询role结果list
+     */
+    List<Map<String, Object>> findByCreatedDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
     /**
      * 根据id更新角色记录

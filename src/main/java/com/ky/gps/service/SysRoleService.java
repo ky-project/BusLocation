@@ -3,11 +3,21 @@ package com.ky.gps.service;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SysRole;
 
+import java.util.Date;
+
 /**
  * @author Daye
  * 角色表Service层接口类
  */
 public interface SysRoleService {
+
+    /**
+     * 根据创建日期查询角色信息
+     * @param startDate 开始时间
+     * @param endDate 结束时间
+     * @return 返回json对象
+     */
+    ResultWrapper findByCreatedDate(Date startDate, Date endDate);
 
     /**
      * 根据id更新角色记录

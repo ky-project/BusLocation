@@ -8,6 +8,10 @@ public enum ErrorCode {
 
     /** 数据格式化错误 */
     PARAMETER_ERROR("参数类型错误！"),
+    /** 参数无效 */
+    PARAMETER_NOT_VALID("参数无效"),
+    /** 参数格式错误 */
+    PARAMETER_FORMAT_ERROR("参数格式错误"),
     /** 登录账号/密码错误 */
     Login_ERROR("账号/密码错误"),
     /** 登录失败 */

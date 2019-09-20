@@ -80,4 +80,19 @@
         WHERE Valid = 1
           and ID = #{id}
     </select>
+    <select id="findByCreatedDate" resultType="java.util.Map">
+        SELECT ID           id,
+               SR_NAME      srName,
+               SR_SOURCE    srSource,
+               SR_MANAGE    srManage,
+               SR_LEVEL     srLevel,
+               REMARK       remark,
+               CREATED_DATE createdDate
+        FROM sys_role
+        WHERE Valid = 1
+        <if test="endDate != null and startDate != null">
+            AND CREATED_DATE <![CDATA[>=]]> #{startDate}
+            AND CREATED_DATE <![CDATA[<=]]> #{endDate}
+        </if>
+    </select>
 </mapper>
