@@ -20,6 +20,17 @@
         insert into sb_user_role(role_id, user_id, created_by, updated_by, valid)
         VALUES (#{sysRole.id}, #{sysUser.id}, #{createdBy}, #{updatedBy}, 1)
     </insert>
+    <!--批量添加指定用户的角色信息-->
+    <insert id="batchSaveByUserId">
+        insert into sb_user_role(ROLE_ID, USER_ID)
+        values
+        <foreach collection="roleIdList" separator="," item="roleId">
+            (
+            #{roleId},
+            #{userId}
+            )
+        </foreach>
+    </insert>
     <update id="deleteUserRoleByUserId">
         UPDATE sb_user_role
         SET Valid      = 0,
@@ -31,6 +42,16 @@
         update sb_user_role
         set Valid = #{value}
         where ROLE_ID = #{roleId}
+    </update>
+    <!--批量更新指定用户的角色的标志位-->
+    <update id="batchUpdateValidByUserId">
+        update sb_user_role
+        set Valid = #{value}
+        where USER_ID = #{userId}
+        and ROLE_ID in
+        <foreach collection="roleIdList" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
     </update>
     <!--根据用户id查询该用户的所有角色-->
     <select id="findSysRoleSrSourceBySysUserId" resultType="java.lang.String" parameterType="integer">
@@ -74,5 +95,4 @@
           and su.Valid = 1
           and su.ID = #{userId}
     </select>
-
 </mapper>

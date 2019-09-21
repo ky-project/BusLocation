@@ -4,7 +4,6 @@ import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbUserRole;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Daye
@@ -13,6 +12,22 @@ import java.util.Map;
  */
 public interface SbUserRoleService {
 
+
+    /**
+     * 根据用户id批量更新用户角色记录
+     * @param id 用户id
+     * @param needDeleteIdList 待删除的角色id
+     * @param needAddIdList 待添加的角色id
+     * @return 返回json对象
+     */
+    ResultWrapper updateUserRoleByUserId(Integer id, List<Integer> needDeleteIdList, List<Integer> needAddIdList);
+
+    /**
+     * 根据用户id查询其拥有的所有角色id
+     * @param userId 用户id
+     * @return 角色id集合
+     */
+    ResultWrapper findRoleIdByUserId(Integer userId);
 
     /**
      * 根据用户id查询该用户的所有角色拥有情况

@@ -28,6 +28,25 @@ public class SbUserRoleServiceImpl implements SbUserRoleService {
     private SysUserDao sysUserDao;
     private SysRoleDao sysRoleDao;
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public ResultWrapper updateUserRoleByUserId(Integer id, List<Integer> needDeleteIdList, List<Integer> needAddIdList) {
+        if(needAddIdList != null){
+            sbUserRoleDao.batchSaveByUserId(id, needAddIdList);
+        }
+        if(needDeleteIdList != null){
+            sbUserRoleDao.batchUpdateValidByUserId(id, needDeleteIdList, 0);
+        }
+        return ResultWrapperUtil.setSuccessOf(null);
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper findRoleIdByUserId(Integer userId) {
+        List<Integer> roleIdList = sbUserRoleDao.findRoleIdByUserId(userId);
+        return ResultWrapperUtil.setSuccessOf(roleIdList);
+    }
+
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public ResultWrapper findUserRolesStatusByUserId(Integer userId) {

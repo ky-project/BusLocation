@@ -14,6 +14,21 @@ import java.util.Map;
 public interface SbUserRoleDao {
 
     /**
+     * 批量更新指定用户的角色的标志位
+     * @param userId 用户id
+     * @param roleIdList 待更新的角色记录集合
+     * @param value 更新的值
+     */
+    void batchUpdateValidByUserId(@Param("userId") Integer userId, @Param("roleIdList") List<Integer> roleIdList, @Param("value") Integer value);
+
+    /**
+     * 批量添加指定用户的角色信息
+     * @param userId 用户id
+     * @param roleIdList 角色idList
+     */
+    void batchSaveByUserId(@Param("userId") Integer userId, @Param("roleIdList") List<Integer> roleIdList);
+
+    /**
      * 根据用户id查询其拥有的所有角色id
      * @param userId 用户id
      * @return 角色id集合
