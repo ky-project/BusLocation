@@ -112,3 +112,60 @@ POST m/roleAuthority/role/authority
     }
 }
 ```
+
+## + 根据角色id修改角色权限
+
+【例】${url}/m/roleAuthority/update
+
+### - 接口
+
+POST m/roleAuthority/update
+
+### - 请求参数
+
+|  参数名   |      类型      | 必需 | 默认值 |   备注   |
+| :-------: | :------------: | :--: | :----: | :------: |
+|    id     |      int       |  Y   |        |  角色id  |
+| authority | `List<Object>` |  Y   |        | 权限集合 |
+
+### - Json请求
+
+```json
+{
+	"id":4,		//角色id
+	"authority":[
+			{
+                "id": 1,	//权限id
+                "saDisplayName": "部门查询",	//权限名称
+                "checked": false	//是否拥有权限
+            },
+			{
+                "id": 14,
+                "saDisplayName": "角色权限添加",
+                "checked": false
+            },
+            {
+                "id": 15,
+                "saDisplayName": "角色权限查询",
+                "checked": false
+            },
+            {
+                "id": 16,
+                "saDisplayName": "角色权限更新",
+                "checked": false
+            },
+        ...
+	]
+}
+```
+
+### - Json响应
+
+```json
+{
+    "code": 1,
+    "success": true,
+    "message": "操作成功！",
+    "data": null
+}
+```

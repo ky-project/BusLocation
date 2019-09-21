@@ -215,3 +215,55 @@ POST m/role/update
 }
 ```
 
+## + 根据时间筛选角色信息
+
+【例】${url}/m/role/f/query/date
+
+### - 接口
+
+POST m/role/f/query/date
+
+### - 请求参数
+
+|  参数名   |  类型  | 必需 | 默认值 |   备注   |
+| :-------: | :----: | :--: | :----: | :------: |
+| startDate | String |  Y   |        | 起始时间 |
+|  endDate  | String |  Y   |        | 结束时间 |
+
+### - Json请求
+
+```json
+{
+	"startDate":"2019-07-15",
+	"endDate":"2019-10-15"
+}
+```
+
+### - Json响应
+
+```json
+{
+    "code": 1,
+    "success": true,
+    "message": "操作成功！",
+    "data": [
+        {
+            "srName": "测试角色",	//角色名称
+            "createdDate": 1568786942000,	//创建时间-毫秒级时间戳
+            "srLevel": 10,		//角色等级
+            "srSource": "testRole",	//角色英文名
+            "srManage": false,	//是否是管理员
+            "id": 7	//角色id
+        },
+        {
+            "srName": "测试角色",
+            "createdDate": 1568789604000,
+            "srLevel": 10,
+            "srSource": "testRole",
+            "srManage": false,
+            "remark": "",
+            "id": 8
+        }
+    ]
+}
+```
