@@ -4,6 +4,7 @@ import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbUserRole;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Daye
@@ -11,6 +12,12 @@ import java.util.List;
  * 用户和角色表多对多关系的Service接口
  */
 public interface SbUserRoleService {
+
+    /**
+     * 查询所有用户和其角色信息
+     * @return 返回map集合
+     */
+    ResultWrapper findAllUserAndRole();
 
     /**
      * 根据用户id查询该用户的所有角色

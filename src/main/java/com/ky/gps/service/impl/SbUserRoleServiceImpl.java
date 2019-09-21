@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Daye
@@ -21,6 +22,13 @@ public class SbUserRoleServiceImpl implements SbUserRoleService {
 
     @Resource
     private SbUserRoleDao sbUserRoleDao;
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper findAllUserAndRole() {
+        List<Map<String, Object>> allUserAndRole = sbUserRoleDao.findAllUserAndRole();
+        return ResultWrapperUtil.setSuccessOf(allUserAndRole);
+    }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override

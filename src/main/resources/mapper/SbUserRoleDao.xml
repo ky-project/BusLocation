@@ -43,5 +43,32 @@
           and sur.Valid = 1
           and su.ID = #{id}
     </select>
+    <!--查询所有用户和其角色信息-->
+    <select id="findAllUserAndRole" resultType="map">
+        SELECT
+            u.REAL_NAME realName,
+            rl.workId,
+            rl.srNames
+        FROM
+            sys_user u,
+            (
+                SELECT
+                    u.WORKID workId,
+                    GROUP_CONCAT( r.SR_NAME SEPARATOR ',' ) AS srNames
+                FROM
+                    sb_user_role sur
+                        LEFT JOIN sys_user u ON u.ID = sur.USER_ID
+                        LEFT JOIN sys_role r ON r.ID = sur.ROLE_ID
+                WHERE
+                    sur.Valid = 1
+                  AND u.Valid = 1
+                  AND r.Valid = 1
+                GROUP BY
+                    workId
+            ) rl
+        WHERE
+            u.Valid = 1
+          AND u.WORKID = rl.workId
+    </select>
 
 </mapper>

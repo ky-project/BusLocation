@@ -4,6 +4,7 @@ import com.ky.gps.entity.SbUserRole;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Daye
@@ -11,6 +12,12 @@ import java.util.List;
  * 用户和角色多对多对应表的Dao
  */
 public interface SbUserRoleDao {
+
+    /**
+     * 查询所有用户和其角色信息
+     * @return 返回map集合
+     */
+    List<Map<String, Object>> findAllUserAndRole();
 
     /**
      * 根据角色id将记录置为无效
