@@ -95,4 +95,11 @@
             AND CREATED_DATE <![CDATA[<=]]> #{endDate}
         </if>
     </select>
+    <!--查询所有角色的id和name-->
+    <select id="findIdAndSrName" resultType="map">
+        select ID id,
+               SR_NAME srName
+        from sys_role
+        where Valid = 1
+    </select>
 </mapper>

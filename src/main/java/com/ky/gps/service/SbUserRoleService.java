@@ -13,9 +13,17 @@ import java.util.Map;
  */
 public interface SbUserRoleService {
 
+
+    /**
+     * 根据用户id查询该用户的所有角色拥有情况
+     * @param userId 用户id
+     * @return 返回json对象
+     */
+    ResultWrapper findUserRolesStatusByUserId(Integer userId);
+
     /**
      * 查询所有用户和其角色信息
-     * @return 返回map集合
+     * @return 返回json对象
      */
     ResultWrapper findAllUserAndRole();
 

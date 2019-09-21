@@ -1,10 +1,14 @@
 package com.ky.gps.service.impl;
 
 import com.ky.gps.dao.SbUserRoleDao;
+import com.ky.gps.dao.SysRoleDao;
+import com.ky.gps.dao.SysUserDao;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbUserRole;
 import com.ky.gps.service.SbUserRoleService;
 import com.ky.gps.util.ResultWrapperUtil;
+import com.ky.gps.util.SbUserRoleUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,8 +24,28 @@ import java.util.Map;
 @Service
 public class SbUserRoleServiceImpl implements SbUserRoleService {
 
-    @Resource
     private SbUserRoleDao sbUserRoleDao;
+    private SysUserDao sysUserDao;
+    private SysRoleDao sysRoleDao;
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper findUserRolesStatusByUserId(Integer userId) {
+        ResultWrapper  resultWrapper;
+        //查询用户拥有的角色id集合
+        List<Integer> userRoleIdList = sbUserRoleDao.findRoleIdByUserId(userId);
+        //查询所有角色集合
+        List<Map<String, Object>> roleList = sysRoleDao.findIdAndSrName();
+        //如果无角色，直接返回null
+        if(roleList == null){
+            resultWrapper = ResultWrapperUtil.setSuccessOf(null);
+        } else{
+            //判断用户是否拥有角色
+            List<Map<String, Object>> roleListRes = SbUserRoleUtil.checkUserHasRole(userRoleIdList, roleList);
+            resultWrapper = ResultWrapperUtil.setSuccessOf(roleListRes);
+        }
+        return resultWrapper;
+    }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
@@ -41,5 +65,20 @@ public class SbUserRoleServiceImpl implements SbUserRoleService {
     public ResultWrapper saveUserRole(SbUserRole sbUserRole) {
         sbUserRoleDao.saveUserRole(sbUserRole);
         return ResultWrapperUtil.setSuccessOf(null);
+    }
+
+    @Autowired
+    public void setSbUserRoleDao(SbUserRoleDao sbUserRoleDao) {
+        this.sbUserRoleDao = sbUserRoleDao;
+    }
+
+    @Autowired
+    public void setSysUserDao(SysUserDao sysUserDao) {
+        this.sysUserDao = sysUserDao;
+    }
+
+    @Autowired
+    public void setSysRoleDao(SysRoleDao sysRoleDao) {
+        this.sysRoleDao = sysRoleDao;
     }
 }

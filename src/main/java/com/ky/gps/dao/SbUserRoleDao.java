@@ -14,6 +14,13 @@ import java.util.Map;
 public interface SbUserRoleDao {
 
     /**
+     * 根据用户id查询其拥有的所有角色id
+     * @param userId 用户id
+     * @return 角色id集合
+     */
+    List<Integer> findRoleIdByUserId(@Param("userId") Integer userId);
+
+    /**
      * 查询所有用户和其角色信息
      * @return 返回map集合
      */
