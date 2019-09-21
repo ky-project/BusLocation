@@ -20,6 +20,17 @@
         insert into sb_user_role(role_id, user_id, created_by, updated_by, valid)
         VALUES (#{sysRole.id}, #{sysUser.id}, #{createdBy}, #{updatedBy}, 1)
     </insert>
+    <!--批量添加指定用户的角色信息-->
+    <insert id="batchSaveByUserId">
+        insert into sb_user_role(ROLE_ID, USER_ID)
+        values
+        <foreach collection="roleIdList" separator="," item="roleId">
+            (
+            #{roleId},
+            #{userId}
+            )
+        </foreach>
+    </insert>
     <update id="deleteUserRoleByUserId">
         UPDATE sb_user_role
         SET Valid      = 0,
@@ -32,6 +43,16 @@
         set Valid = #{value}
         where ROLE_ID = #{roleId}
     </update>
+    <!--批量更新指定用户的角色的标志位-->
+    <update id="batchUpdateValidByUserId">
+        update sb_user_role
+        set Valid = #{value}
+        where USER_ID = #{userId}
+        and ROLE_ID in
+        <foreach collection="roleIdList" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </update>
     <!--根据用户id查询该用户的所有角色-->
     <select id="findSysRoleSrSourceBySysUserId" resultType="java.lang.String" parameterType="integer">
         select sr.SR_SOURCE srSource
@@ -43,5 +64,35 @@
           and sur.Valid = 1
           and su.ID = #{id}
     </select>
-
+    <!--查询所有用户和其角色信息-->
+    <select id="findAllUserAndRole" resultType="map">
+        SELECT u.REAL_NAME realName,
+               rl.workId,
+               rl.srNames
+        FROM sys_user u,
+             (
+                 SELECT u.WORKID                                 workId,
+                        GROUP_CONCAT(r.SR_NAME SEPARATOR ',') AS srNames
+                 FROM sb_user_role sur
+                          LEFT JOIN sys_user u ON u.ID = sur.USER_ID
+                          LEFT JOIN sys_role r ON r.ID = sur.ROLE_ID
+                 WHERE sur.Valid = 1
+                   AND u.Valid = 1
+                   AND r.Valid = 1
+                 GROUP BY workId
+             ) rl
+        WHERE u.Valid = 1
+          AND u.WORKID = rl.workId
+    </select>
+    <!--根据用户id查询其拥有的所有角色id-->
+    <select id="findRoleIdByUserId" resultType="java.lang.Integer" parameterType="integer">
+        select sr.ID id
+        from sb_user_role sur
+                 left join sys_role sr on sur.ROLE_ID = sr.ID
+                 left join sys_user su on sur.USER_ID = su.ID
+        where sur.Valid = 1
+          and sr.Valid = 1
+          and su.Valid = 1
+          and su.ID = #{userId}
+    </select>
 </mapper>

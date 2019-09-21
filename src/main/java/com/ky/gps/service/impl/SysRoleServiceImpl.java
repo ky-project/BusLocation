@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +29,12 @@ public class SysRoleServiceImpl implements SysRoleService {
     private SysRoleDao sysRoleDao;
     private SbUserRoleDao sbUserRoleDao;
     private SbRoleAuthorityDao sbRoleAuthorityDao;
+
+    @Override
+    public ResultWrapper findByCreatedDate(Date startDate, Date endDate) {
+        List<Map<String, Object>> roleList = sysRoleDao.findByCreatedDate(startDate, endDate);
+        return ResultWrapperUtil.setSuccessOf(roleList);
+    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override

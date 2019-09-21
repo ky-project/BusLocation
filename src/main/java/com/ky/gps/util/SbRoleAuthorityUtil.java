@@ -17,6 +17,8 @@ public class SbRoleAuthorityUtil {
      */
     public static List<Integer> extractNeedDeleteIdFromParam(List<Map<String, Object>> authorityMap,
                                                    List<Integer> authorityIdList){
+        //null值处理
+        authorityIdList = authorityIdList == null ? new ArrayList<>() : authorityIdList;
         List<Integer> needDeleteIdList = new ArrayList<>();
         for (Map<String, Object> map : authorityMap) {
             Integer id = (Integer) map.get("id");
@@ -35,6 +37,8 @@ public class SbRoleAuthorityUtil {
      */
     public static List<Integer> extractIdFromParam(List<Map<String, Object>> authorityMap,
                                                    List<Integer> authorityIdList){
+        //null值处理
+        authorityIdList = authorityIdList == null ? new ArrayList<>() : authorityIdList;
         List<Integer> idList = new ArrayList<>();
         for (Map<String, Object> map : authorityMap) {
             Integer id = (Integer) map.get("id");
