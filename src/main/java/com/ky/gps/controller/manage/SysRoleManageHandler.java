@@ -7,6 +7,7 @@ import com.ky.gps.entity.SysRole;
 import com.ky.gps.service.SysRoleService;
 import com.ky.gps.util.IntegerUtil;
 import com.ky.gps.util.ResultWrapperUtil;
+import com.ky.gps.util.StringUtil;
 import com.ky.gps.util.SysRoleUtil;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
@@ -51,24 +52,34 @@ public class SysRoleManageHandler {
     @RequiresPermissions("role:fQuery")
     @ResponseBody
     @RequestMapping(value = "/f/query/date", method = RequestMethod.POST)
-    public ResultWrapper findByCreatedDate(@RequestBody Map<String, Object> params,
+    public ResultWrapper findByCreatedDate(@RequestBody(required = false) Map<String, Object> params,
                                                  HttpServletRequest request,
                                                  HttpServletResponse response) {
         ResultWrapper resultWrapper;
         try {
-            //获取参数中的时间
-            String startDateStr = params.get("startDate").toString();
-            String endDateStr = params.get("endDate").toString();
-            //日期格式化
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date startDate = simpleDateFormat.parse(startDateStr);
-            Date endDate = simpleDateFormat.parse(endDateStr);
-            //判断日期区间是否合法
-            if(startDate.compareTo(endDate) >= 1){
-                //如果起始时间>结束时间，给予提示
-                resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.PARAMETER_NOT_VALID, "起始时间应小于结束时间", response);
-            } else{
-                resultWrapper = sysRoleService.findByCreatedDate(startDate, endDate);
+            //判断参数是否为空
+            if(params == null || params.size() <= 1){
+                resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, response);
+            }else {
+                //获取参数中的时间
+                String startDateStr = params.containsKey("startDate") && params.get("startDate") != null ? params.get("startDate").toString() : null;
+                String endDateStr = params.containsKey("endDate") && params.get("endDate") != null ? params.get("endDate").toString() : null;
+                //判断参数是否为null
+                if(StringUtil.isEmpty(startDateStr) || StringUtil.isEmpty(endDateStr)){
+                    resultWrapper = sysRoleService.findByCreatedDate(null, null);
+                }else {
+                    //日期格式化
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date startDate = simpleDateFormat.parse(startDateStr);
+                    Date endDate = simpleDateFormat.parse(endDateStr);
+                    //判断日期区间是否合法
+                    if (startDate.compareTo(endDate) >= 1) {
+                        //如果起始时间>结束时间，给予提示
+                        resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.PARAMETER_NOT_VALID, "起始时间应小于结束时间", response);
+                    } else {
+                        resultWrapper = sysRoleService.findByCreatedDate(startDate, endDate);
+                    }
+                }
             }
         } catch (ParseException pe) {
             LOGGER.error(pe.getMessage(), pe);
