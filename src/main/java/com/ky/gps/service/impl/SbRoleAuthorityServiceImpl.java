@@ -18,6 +18,7 @@ import java.util.Map;
 
 /**
  * 角色权限service层-实现类
+ *
  * @author Daye
  */
 @Service
@@ -30,10 +31,14 @@ public class SbRoleAuthorityServiceImpl implements SbRoleAuthorityService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public ResultWrapper updateByRoleId(Integer roleId, List<Integer> idList, List<Integer> needDeleteIdList) {
-        //批量添加权限
-        sbRoleAuthorityDao.batchSaveRoleIdAndAuthorityId(roleId, idList);
-        //批量将权限置为无效
-        sbRoleAuthorityDao.batchUpdateValidByRoleId(roleId, needDeleteIdList, 0);
+        if (idList != null && idList.size() > 0) {
+            //批量添加权限
+            sbRoleAuthorityDao.batchSaveRoleIdAndAuthorityId(roleId, idList);
+        }
+        if (needDeleteIdList != null && needDeleteIdList.size() > 0) {
+            //批量将权限置为无效
+            sbRoleAuthorityDao.batchUpdateValidByRoleId(roleId, needDeleteIdList, 0);
+        }
         return ResultWrapperUtil.setSuccessOf(null);
     }
 
@@ -57,7 +62,7 @@ public class SbRoleAuthorityServiceImpl implements SbRoleAuthorityService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public ResultWrapper batchSaveRoleIdAndAuthorityId(Integer roleId, List<Integer> authorityIdList) {
-        if(authorityIdList != null && authorityIdList.size() > 0){
+        if (authorityIdList != null && authorityIdList.size() > 0) {
             sbRoleAuthorityDao.batchSaveRoleIdAndAuthorityId(roleId, authorityIdList);
         }
         return ResultWrapperUtil.setSuccessOf(null);
@@ -66,7 +71,7 @@ public class SbRoleAuthorityServiceImpl implements SbRoleAuthorityService {
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public List<String> findSaNameBySrSource(List<String> roles) {
-        if(roles == null || roles.size() <= 0){
+        if (roles == null || roles.size() <= 0) {
             return null;
         }
         return sbRoleAuthorityDao.findSaNameBySrSource(roles);
