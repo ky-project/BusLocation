@@ -7,7 +7,6 @@
         <result column="sbs_station" jdbcType="VARCHAR" property="sbsStation"/>
         <result column="sbs_longitude" jdbcType="DOUBLE" property="sbsLongitude"/>
         <result column="sbs_latitude" jdbcType="DOUBLE" property="sbsLatitude"/>
-        <result column="sbs_depart_time" jdbcType="VARCHAR" property="sbsDepartTime"/>
         <result column="sbs_desc" jdbcType="VARCHAR" property="sbsDesc"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
         <result column="remark1" jdbcType="VARCHAR" property="remark1"/>
@@ -19,4 +18,26 @@
         <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
+    <sql id="baseInfo">
+            ID            id,
+            SBS_STATION   sbsStation,
+            SBS_LONGITUDE sbsLongitude,
+            SBS_LATITUDE  sbsLatitude,
+            SBS_DESC      sbsDesc
+    </sql>
+    <!--查询所有站点信息-->
+    <select id="findAll" resultType="map">
+        select
+        <include refid="baseInfo"/>
+        from sb_station
+        where Valid = 1
+    </select>
+    <!--根据站点名模糊查询所有站点list-->
+    <select id="findFuzzyBySvsStation" resultType="map" parameterType="string">
+        select
+        <include refid="baseInfo"/>
+        from sb_station
+        where Valid = 1
+        and SBS_STATION like #{sbsStation}
+    </select>
 </mapper>

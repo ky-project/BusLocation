@@ -18,18 +18,16 @@ public class SbUserRoleUtil {
      * @param roleIdList 待排除的id集合
      * @return 返回角色id集合
      */
-    public static List<Integer> extractNeedAddIdFromParam(List<Map<String, Object>> roles,
+    public static List<Integer> extractNeedAddIdFromParam(List<Integer> roles,
                                                           List<Integer> roleIdList) {
         //null值处理
         roleIdList = roleIdList == null ? new ArrayList<>() : roleIdList;
         List<Integer> needAddIdList = new ArrayList<>();
         //遍历roles
-        for (Map<String, Object> role : roles) {
-            //提取id
-            Integer id = (Integer) role.get("id");
+        for (Integer roleId : roles) {
             //判断id是否在已有id集合中
-            if(!roleIdList.contains(id) && (boolean)role.get("checked")){
-                needAddIdList.add(id);
+            if(!roleIdList.contains(roleId)){
+                needAddIdList.add(roleId);
             }
         }
         return needAddIdList;
@@ -42,18 +40,15 @@ public class SbUserRoleUtil {
      * @param roleIdList 待排除的id集合
      * @return 返回角色id集合
      */
-    public static List<Integer> extractNeedDeleteIdFromParam(List<Map<String, Object>> roles,
+    public static List<Integer> extractNeedDeleteIdFromParam(List<Integer> roles,
                                                              List<Integer> roleIdList) {
         //null值处理
         roleIdList = roleIdList == null ? new ArrayList<>() : roleIdList;
         List<Integer> needDeleteIdList = new ArrayList<>();
         //遍历roles
-        for (Map<String, Object> role : roles) {
-            //提取id
-            Integer id = (Integer) role.get("id");
-            //判断id是否在已有id集合中
-            if(roleIdList.contains(id) && !(boolean)role.get("checked")){
-                needDeleteIdList.add(id);
+        for (Integer roleId : roleIdList) {
+            if(!roles.contains(roleId)){
+                needDeleteIdList.add(roleId);
             }
         }
         return needDeleteIdList;

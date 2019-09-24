@@ -10,5 +10,7 @@
         <setting name="aggressiveLazyLoading" value="false"/>
         <!-- 缓存级别为会话级别 -->
         <setting name="localCacheScope" value="SESSION"/>
+        <!--显示null值-->
+        <setting name="callSettersOnNulls" value="true"/>
     </settings>
 </configuration>

@@ -40,7 +40,7 @@ public class SysUserManageHandler {
     private SysLogService sysLogService;
 
     /**
-     * 根据workId
+     * 根据workId,realName
      *
      * @return 返回json格式
      */

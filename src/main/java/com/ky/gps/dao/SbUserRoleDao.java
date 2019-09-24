@@ -1,5 +1,6 @@
 package com.ky.gps.dao;
 
+import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbUserRole;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,6 +13,17 @@ import java.util.Map;
  * 用户和角色多对多对应表的Dao
  */
 public interface SbUserRoleDao {
+
+    /**
+     * 根据workId, realName, departmentId来查询用户角色list
+     *
+     * @param params 参数map，包含
+     *               workId 用户工号
+     *               realName 用户name
+     *               departmentId   部门id
+     * @return 返回json对象
+     */
+    List<Map<String, Object>> fuzzyQueryByWorkIdAndRealNameAndDepartmentId(Map<String, Object> params);
 
     /**
      * 批量更新指定用户的角色的标志位

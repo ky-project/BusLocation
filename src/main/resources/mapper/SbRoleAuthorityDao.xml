@@ -33,10 +33,10 @@
             useGeneratedKeys="true">
         insert into sb_role_authority
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="roleId != null">
+            <if test="sysRole.id != null">
                 ROLE_ID,
             </if>
-            <if test="authorityId != null">
+            <if test="sysAuthority.id != null">
                 AUTHORITY_ID,
             </if>
             <if test="remark != null">
@@ -68,11 +68,11 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="roleId != null">
-                #{roleId,jdbcType=INTEGER},
+            <if test="sysRole.id != null">
+                #{sysRole.id,jdbcType=INTEGER},
             </if>
-            <if test="authorityId != null">
-                #{authorityId,jdbcType=INTEGER},
+            <if test="sysAuthority.id != null">
+                #{sysAuthority.id,jdbcType=INTEGER},
             </if>
             <if test="remark != null">
                 #{remark,jdbcType=VARCHAR},
@@ -117,11 +117,11 @@
     <update id="updateByPrimaryKeySelective" parameterType="com.ky.gps.entity.SbRoleAuthority">
         update sb_role_authority
         <set>
-            <if test="roleId != null">
-                ROLE_ID = #{roleId,jdbcType=INTEGER},
+            <if test="sysRole.id != null">
+                ROLE_ID = #{sysRole.id,jdbcType=INTEGER},
             </if>
-            <if test="authorityId != null">
-                AUTHORITY_ID = #{authorityId,jdbcType=INTEGER},
+            <if test="sysAuthority.id != null">
+                AUTHORITY_ID = #{sysAuthority.id,jdbcType=INTEGER},
             </if>
             <if test="remark != null">
                 REMARK = #{remark,jdbcType=VARCHAR},
