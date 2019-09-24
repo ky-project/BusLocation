@@ -16,8 +16,6 @@ public class SbStation extends AbstractEntity {
     private Double sbsLongitude;
     /** 纬度 */
     private Double sbsLatitude;
-    /** 出发时间 */
-    private String sbsDepartTime;
     /** 站点描述 */
     private String sbsDesc;
 
@@ -28,12 +26,11 @@ public class SbStation extends AbstractEntity {
     /** 有参方法-自身方法 */
     public SbStation(Integer id, String sbsStation,
                      Double sbsLongitude, Double sbsLatitude,
-                     String sbsDepartTime, String sbsDesc) {
+                     String sbsDesc) {
         this.id = id;
         this.sbsStation = sbsStation;
         this.sbsLongitude = sbsLongitude;
         this.sbsLatitude = sbsLatitude;
-        this.sbsDepartTime = sbsDepartTime;
         this.sbsDesc = sbsDesc;
     }
 
@@ -44,8 +41,7 @@ public class SbStation extends AbstractEntity {
                      Timestamp updatedDate, String updatedBy,
                      Boolean valid, Integer id,
                      String sbsStation, Double sbsLongitude,
-                     Double sbsLatitude, String sbsDepartTime,
-                     String sbsDesc) {
+                     Double sbsLatitude, String sbsDesc) {
         super(remark, remark1,
                 remark2, remark3,
                 createdDate, createdBy,
@@ -55,8 +51,18 @@ public class SbStation extends AbstractEntity {
         this.sbsStation = sbsStation;
         this.sbsLongitude = sbsLongitude;
         this.sbsLatitude = sbsLatitude;
-        this.sbsDepartTime = sbsDepartTime;
         this.sbsDesc = sbsDesc;
+    }
+
+    @Override
+    public String toString() {
+        return "SbStation{" +
+                "id=" + id +
+                ", sbsStation='" + sbsStation + '\'' +
+                ", sbsLongitude=" + sbsLongitude +
+                ", sbsLatitude=" + sbsLatitude +
+                ", sbsDesc='" + sbsDesc + '\'' +
+                "} " + super.toString();
     }
 
     /** getter/setter */
@@ -90,14 +96,6 @@ public class SbStation extends AbstractEntity {
 
     public void setSbsLatitude(Double sbsLatitude) {
         this.sbsLatitude = sbsLatitude;
-    }
-
-    public String getSbsDepartTime() {
-        return sbsDepartTime;
-    }
-
-    public void setSbsDepartTime(String sbsDepartTime) {
-        this.sbsDepartTime = sbsDepartTime;
     }
 
     public String getSbsDesc() {
