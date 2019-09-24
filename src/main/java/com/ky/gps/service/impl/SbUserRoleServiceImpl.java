@@ -28,13 +28,20 @@ public class SbUserRoleServiceImpl implements SbUserRoleService {
     private SysUserDao sysUserDao;
     private SysRoleDao sysRoleDao;
 
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper fuzzyQueryByWorkIdAndRealNameAndDepartmentId(Map<String, Object> params) {
+        List<Map<String, Object>> userRoleList = sbUserRoleDao.fuzzyQueryByWorkIdAndRealNameAndDepartmentId(params);
+        return ResultWrapperUtil.setSuccessOf(userRoleList);
+    }
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public ResultWrapper updateUserRoleByUserId(Integer id, List<Integer> needDeleteIdList, List<Integer> needAddIdList) {
-        if(needAddIdList != null){
+        if(needAddIdList != null && needAddIdList.size() > 0){
             sbUserRoleDao.batchSaveByUserId(id, needAddIdList);
         }
-        if(needDeleteIdList != null){
+        if(needDeleteIdList != null && needDeleteIdList.size() > 0){
             sbUserRoleDao.batchUpdateValidByUserId(id, needDeleteIdList, 0);
         }
         return ResultWrapperUtil.setSuccessOf(null);

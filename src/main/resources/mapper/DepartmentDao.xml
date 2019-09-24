@@ -4,7 +4,7 @@
 <mapper namespace="com.ky.gps.dao.DepartmentDao">
     <resultMap id="BaseDepartmentMap" type="com.ky.gps.entity.Department">
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="name" jdbcType="VARCHAR" property="departmentName"/>
         <result column="code" jdbcType="VARCHAR" property="code"/>
         <result column="uplevel" jdbcType="VARCHAR" property="upLevel"/>
         <result column="parentid" jdbcType="INTEGER" property="parentId"/>

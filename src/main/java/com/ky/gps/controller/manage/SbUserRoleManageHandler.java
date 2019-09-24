@@ -36,13 +36,46 @@ public class SbUserRoleManageHandler {
     private SysUserService sysUserService;
 
     /**
+     * 根据workId, realName, departmentId来查询用户角色list
+     *
+     * @param params   参数map，包含
+     *                 workId 用户工号
+     *                 realName 用户name
+     *                 departmentId   部门id
+     * @param request  请求域
+     * @param response 响应域
+     * @return 返回json格式数据
+     */
+    @PermissionName(displayName = "用户角色筛选", group = "用户角色管理")
+    @RequiresPermissions("userRole:fQuery")
+    @ResponseBody
+    @RequestMapping(value = "/f/query", method = RequestMethod.POST)
+    public ResultWrapper getByFuzzyQuery(@RequestBody(required = false) Map<String, Object> params,
+                                         HttpServletRequest request,
+                                         HttpServletResponse response) {
+        ResultWrapper resultWrapper;
+        if (params == null){
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, response);
+        }else{
+            if(params.containsKey("workId")){
+                params.put("workId", "%" + params.get("workId") + "%");
+            }
+            if(params.containsKey("realName")){
+                params.put("realName", "%" + params.get("realName") + "%");
+            }
+            resultWrapper = sbUserRoleService.fuzzyQueryByWorkIdAndRealNameAndDepartmentId(params);
+        }
+        return resultWrapper;
+    }
+
+    /**
      * 根据用户id更新用户角色
      *
      * @param params   参数map，包含
      *                 id int 用户id
      *                 roles List<map> 用户权限状态
      * @param response 请求域
-     * @param request 响应域
+     * @param request  响应域
      * @return 返回json格式数据
      */
     @SuppressWarnings("unchecked")
@@ -64,7 +97,7 @@ public class SbUserRoleManageHandler {
             //判断id是否存在
             if (IntegerUtil.isValid(id) && sysUserService.findRealNameById(id).getData() != null) {
                 //获取角色信息
-                List<Map<String, Object>> roles = (List<Map<String, Object>>) params.get("roles");
+                List<Integer> roles = (List<Integer>) params.get("roles");
                 if (roles == null) {
                     resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, "角色信息不可为空", response);
                 } else {
@@ -73,8 +106,6 @@ public class SbUserRoleManageHandler {
                     List<Integer> roleIdList = data == null ? new ArrayList<>() : (List<Integer>) data;
                     List<Integer> needDeleteIdList = SbUserRoleUtil.extractNeedDeleteIdFromParam(roles, roleIdList);
                     List<Integer> needAddIdList = SbUserRoleUtil.extractNeedAddIdFromParam(roles, roleIdList);
-                    System.out.println(needAddIdList);
-                    System.out.println(needDeleteIdList);
                     sbUserRoleService.updateUserRoleByUserId(id, needDeleteIdList, needAddIdList);
                     resultWrapper = ResultWrapperUtil.setSuccessOf(null);
                 }
@@ -108,7 +139,7 @@ public class SbUserRoleManageHandler {
             //判断id是否存在
             if (IntegerUtil.isValid(userId) && sysUserService.findRealNameById(userId).getData() != null) {
                 //查询用户的角色拥有情况
-                resultWrapper = sbUserRoleService.findUserRolesStatusByUserId(userId);
+                resultWrapper = sbUserRoleService.findRoleIdByUserId(userId);
             } else {
                 resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.PARAMETER_NOT_VALID, "用户不存在", response);
             }
