@@ -6,7 +6,7 @@ import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbStation;
 import com.ky.gps.service.SbStationService;
 import com.ky.gps.util.ResultWrapperUtil;
-import com.ky.gps.util.StringUtil;
+import com.ky.gps.util.SbStationUtil;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +33,83 @@ public class SbStationManageHandler {
     private final static Logger LOGGER = LoggerFactory.getLogger(SbStationManageHandler.class);
 
     private SbStationService sbStationService;
+
+    /**
+     * 更新站点信息
+     *
+     * @param sbStation 待更新的站点对象
+     * @param request   请求域
+     * @param response  响应域
+     * @return 返回json格式数据
+     */
+    @PermissionName(displayName = "站点更新", group = "站点管理")
+    @RequiresPermissions("station:update")
+    @ResponseBody
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ResultWrapper update(@RequestBody(required = false) SbStation sbStation,
+                                HttpServletRequest request,
+                                HttpServletResponse response) {
+        ResultWrapper resultWrapper;
+        if (sbStation == null
+                || !SbStationUtil.verityContainId(sbStation)
+                || sbStationService.findById(sbStation.getId()).getData() == null) {
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, "参数为空/id不存在", response);
+        } else {
+            resultWrapper = sbStationService.updateInfoById(sbStation);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 根据id删除对应的站点信息
+     *
+     * @param params   参数map,包含
+     *                 id 站点id
+     * @param response 响应域
+     * @param request  请求域
+     * @return 返回json格式数据
+     */
+    @PermissionName(displayName = "站点删除", group = "站点管理")
+    @RequiresPermissions("station:delete")
+    @RequestMapping(value = "/del", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultWrapper delete(@RequestBody(required = false) Map<String, Object> params,
+                                HttpServletResponse response,
+                                HttpServletRequest request) {
+        ResultWrapper resultWrapper;
+        if (params == null || !params.containsKey("id") || params.get("id") == null) {
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, response);
+        } else {
+            Integer id = (Integer) params.get("id");
+            resultWrapper = sbStationService.delete(id, 0);
+        }
+        return resultWrapper;
+    }
+
+    /**
+     * 添加站点记录
+     *
+     * @param sbStation 站点对象
+     * @param request   请求域
+     * @param response  响应域
+     * @return 返回json对象
+     */
+    @PermissionName(displayName = "站点添加", group = "站点管理")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequiresPermissions("station:add")
+    @ResponseBody
+    public ResultWrapper insert(@RequestBody(required = false) SbStation sbStation,
+                                HttpServletRequest request,
+                                HttpServletResponse response) {
+        ResultWrapper resultWrapper;
+        //参数校验
+        if (sbStation == null || !SbStationUtil.verity(sbStation)) {
+            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, response);
+        } else {
+            resultWrapper = sbStationService.insert(sbStation);
+        }
+        return resultWrapper;
+    }
 
     /**
      * 根据站点名模糊查询所有站点基本信息
