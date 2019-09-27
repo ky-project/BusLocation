@@ -40,4 +40,43 @@
         where Valid = 1
         and SBS_STATION like #{sbsStation}
     </select>
+    <!--插入站点记录-->
+    <insert id="insert" parameterType="sbstation" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
+        insert into sb_station(sbs_station, sbs_longitude, sbs_latitude, sbs_desc)
+        values (#{sbsStation}, #{sbsLongitude}, #{sbsLatitude}, #{sbsDesc})
+    </insert>
+    <!--根据id更新记录的valid值-->
+    <update id="updateValidById">
+        update sb_station
+        set Valid = #{valid}
+        where ID = #{id}
+    </update>
+    <!--根据id更新站点信息-->
+    <update id="updateInfoById">
+        update sb_station
+        <set>
+            <if test="sbsStation != null and sbsStation != ''">
+                SBS_STATION = #{sbsStation},
+            </if>
+            <if test="sbsLatitude != null">
+                SBS_LATITUDE = #{sbsLatitude},
+            </if>
+            <if test="sbsLongitude != null">
+                SBS_LONGITUDE = #{sbsLongitude},
+            </if>
+            <if test="sbsDesc != null and sbsDesc != ''">
+                SBS_DESC = #{sbsDesc}
+            </if>
+        </set>
+        where Valid = 1
+        and ID = #{id}
+    </update>
+    <!--根据id查询站点信息-->
+    <select id="findById" resultType="map">
+        select
+        <include refid="baseInfo"/>
+        from sb_station
+        where valid = 1
+        and ID = #{id}
+    </select>
 </mapper>

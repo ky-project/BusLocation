@@ -12,6 +12,13 @@ import java.util.Map;
 public interface SbRouteStationDao {
 
     /**
+     * 根据站点id更新valid标志位
+     * @param stationId 站点id
+     * @param valid 标志位的值
+     */
+    void updateValidByStationId(@Param("stationId")Integer stationId, @Param("valid") Integer valid);
+
+    /**
      * 查找路线id对应的所有有效站点
      * @param routeId 路线id
      * @return 所有有效站点List集合

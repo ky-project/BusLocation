@@ -72,4 +72,10 @@
           AND sb_bus_route.SBBR_WEEK = #{week,jdbcType=VARCHAR}
         ORDER BY rsr.routeId
     </select>
+    <!--根据站点id更新valid标志位-->
+    <update id="updateValidByStationId">
+        update sb_route_station
+        set Valid = #{valid}
+        where STATION_ID = #{stationId}
+    </update>
 </mapper>
