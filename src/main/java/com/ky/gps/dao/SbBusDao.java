@@ -1,15 +1,57 @@
 package com.ky.gps.dao;
 
+import com.ky.gps.entity.SbBus;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+import java.util.Map;
+
 /**
- * @author Daye
  * 校车类的Dao
+ *
+ * @author Daye
  */
 public interface SbBusDao {
 
     /**
+     * 插入校车记录
+     * @param sbBus 待插入的校车对象
+     */
+    void insert(SbBus sbBus);
+
+    /**
+     * 根据id更新valid值
+     *
+     * @param id    校车id
+     * @param valid 值
+     */
+    void updateValidById(@Param("id") Integer id, @Param("valid") Integer valid);
+
+    /**
+     * 根据id查询校车信息
+     *
+     * @param id 校车id
+     * @return 返回校车信息
+     */
+    Map<String, Object> findById(@Param("id") Integer id);
+
+    /**
+     * 根据id更新校车信息
+     *
+     * @param sbBus 待更新的校车对象
+     */
+    void update(SbBus sbBus);
+
+    /**
+     * 查询所有校车记录
+     *
+     * @return 返回校车信息集合
+     */
+    List<Map<String, Object>> find();
+
+    /**
      * 根据id查询校车的车牌号
+     *
      * @param id 待查询的校车id
      * @return 车牌号
      */

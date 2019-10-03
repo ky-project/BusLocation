@@ -4,11 +4,11 @@
 <mapper namespace="com.ky.gps.dao.SbBusDao">
     <resultMap id="BaseSbBus" type="com.ky.gps.entity.SbBus">
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="ssb_seat_num" jdbcType="INTEGER" property="ssbSeatNum"/>
-        <result column="ssb_bus_type" jdbcType="VARCHAR" property="ssbBusType"/>
-        <result column="ssb_plate_number" jdbcType="VARCHAR" property="ssbPlateNumber"/>
-        <result column="ssb_driver_name" jdbcType="VARCHAR" property="ssbDriverName"/>
-        <result column="ssb_driver_tel" jdbcType="VARCHAR" property="ssbDriverTel"/>
+        <result column="ssb_seat_num" jdbcType="INTEGER" property="sbbSeatNum"/>
+        <result column="ssb_bus_type" jdbcType="VARCHAR" property="sbbBusType"/>
+        <result column="ssb_plate_number" jdbcType="VARCHAR" property="sbbPlateNumber"/>
+        <result column="ssb_driver_name" jdbcType="VARCHAR" property="sbbDriverName"/>
+        <result column="ssb_driver_tel" jdbcType="VARCHAR" property="sbbDriverTel"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
         <result column="remark1" jdbcType="VARCHAR" property="remark1"/>
         <result column="remark2" jdbcType="VARCHAR" property="remark2"/>
@@ -19,6 +19,23 @@
         <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
+    <sql id="selectAllParams">
+        id id,
+        sbb_seat_num sbbSeatNum,
+        sbb_bus_type sbbBusType,
+        sbb_plate_number sbbPlateNumber,
+        sbb_driver_name sbbDriverName,
+        sbb_driver_tel sbbDriverTel,
+        remark
+    </sql>
+    <sql id="allParams">
+            sbb_seat_num,
+            sbb_bus_type,
+            sbb_plate_number,
+            sbb_driver_name,
+            sbb_driver_tel,
+            remark
+    </sql>
     <select id="findPlateNumberById" resultType="string" parameterType="integer">
         <if test="_parameter != null and _parameter > 0">
             select SBB_PLATE_NUMBER
@@ -26,4 +43,56 @@
             where Valid=1 and ID=#{id}
         </if>
     </select>
+    <!--查询所有校车记录-->
+    <select id="find" resultType="map">
+        select
+        <include refid="selectAllParams"/>
+        from sb_bus
+        where Valid = 1
+    </select>
+    <!--根据id更新校车信息-->
+    <update id="update" parameterType="sbbus">
+        update sb_bus
+        <set>
+            <if test="sbbSeatNum != null">
+                SBB_SEAT_NUM = #{sbbSeatNum} ,
+            </if>
+            <if test="sbbBusType != null and sbbBusType != ''">
+                SBB_BUS_TYPE = #{sbbBusType} ,
+            </if>
+            <if test="sbbPlateNumber != null and sbbPlateNumber != ''">
+                SBB_PLATE_NUMBER = #{sbbPlateNumber} ,
+            </if>
+            <if test="sbbDriverName != null and sbbDriverName != ''">
+                SBB_DRIVER_NAME = #{sbbDriverName},
+            </if>
+            <if test="sbbDriverTel != null and sbbDriverTel != ''">
+                SBB_DRIVER_TEL = #{sbbDriverTel},
+            </if>
+            <if test="remark != null and remark != ''">
+                REMARK = #{remark}
+            </if>
+        </set>
+        where Valid = 1
+        and ID = #{id}
+    </update>
+    <!--根据id查询校车信息-->
+    <select id="findById" resultType="map">
+        select
+        <include refid="selectAllParams"/>
+        from sb_bus
+        where Valid = 1
+        and ID = #{id}
+    </select>
+    <!--根据id更新valid值-->
+    <update id="updateValidById">
+        update sb_bus
+        set Valid = #{valid}
+        where ID = #{id}
+    </update>
+    <!--插入校车记录-->
+    <insert id="insert" parameterType="sbbus" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
+        insert into sb_bus(<include refid="allParams"/>)
+        values (#{sbbSeatNum}, #{sbbBusType}, #{sbbPlateNumber}, #{sbbDriverName}, #{sbbDriverTel}, #{remark} )
+    </insert>
 </mapper>
