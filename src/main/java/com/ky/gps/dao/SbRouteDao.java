@@ -13,6 +13,32 @@ import java.util.Map;
 public interface SbRouteDao {
 
     /**
+     * 插入路线信息
+     * @param sbRoute 待插入的路线对象
+     */
+    void save(SbRoute sbRoute);
+
+    /**
+     * 根据id更新valid值
+     * @param id 路线id
+     * @param valid 标志位的值
+     */
+    void updateValidById(@Param("id") Integer id, @Param("valid")Integer valid);
+
+    /**
+     * 根据id查询所有基本属性
+     * @param id 待查询的路线id
+     * @return 返回路线对象
+     */
+    Map<String, Object> findById(@Param("id") Integer id);
+
+    /**
+     * 根据id更新记录
+     * @param sbRoute 待更新的记录
+     */
+    void updateById(SbRoute sbRoute);
+
+    /**
      * 根据id查询路线的基本信息
      * @param id 查询id
      * @return 返回对象

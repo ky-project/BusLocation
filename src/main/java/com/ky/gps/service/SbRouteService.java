@@ -13,6 +13,26 @@ import java.util.Map;
 public interface SbRouteService {
 
     /**
+     * 插入路线信息
+     * @param sbRoute 待插入的路线对象
+     * @return 返回添加后的路线信息
+     */
+    Map<String, Object> save(SbRoute sbRoute);
+
+    /**
+     * 根据id删除路线
+     * @param id 路线id
+     */
+    void deleteById(Integer id);
+
+    /**
+     * 根据id更新记录
+     * @param sbRoute 待更新的记录
+     * @return 返回更新后的对象信息
+     */
+    Map<String, Object> updateById(SbRoute sbRoute);
+
+    /**
      * 根据id查询路线的基本信息
      * @param id 查询id
      * @return 返回对象

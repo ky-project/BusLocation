@@ -23,7 +23,27 @@ public class SbRouteServiceImpl implements SbRouteService {
     @Resource
     private SbRouteDao sbRouteDao;
 
-//    @Cacheable(value = "route_base_info", key = "#id")
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Map<String, Object> save(SbRoute sbRoute) {
+        sbRouteDao.save(sbRoute);
+        return sbRouteDao.findById(sbRoute.getId());
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void deleteById(Integer id) {
+        sbRouteDao.updateValidById(id, 0);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Map<String, Object> updateById(SbRoute sbRoute) {
+        sbRouteDao.updateById(sbRoute);
+        return sbRouteDao.findById(sbRoute.getId());
+    }
+
+    //    @Cacheable(value = "route_base_info", key = "#id")
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public SbRoute findBaseInfoById(Integer id) {
@@ -39,7 +59,6 @@ public class SbRouteServiceImpl implements SbRouteService {
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public List<Map<String, Object>> findAllBaseInfo() {
-        //TODO 判断当前时间是否在开始结束时间内
         return sbRouteDao.findAllBaseInfo();
     }
 

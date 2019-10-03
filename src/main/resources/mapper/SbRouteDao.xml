@@ -20,6 +20,21 @@
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
 
+    <sql id="selectBaseParams">
+        ID,
+        sbr_routename routeName,
+        sbr_start_station startStation,
+        sbr_end_station endStation,
+        sbr_depart_time departTime,
+        sbr_desc `desc`
+    </sql>
+    <sql id="updateParams">
+            sbr_routename,
+            sbr_start_station,
+            sbr_end_station,
+            sbr_depart_time,
+            sbr_desc
+    </sql>
     <select id="findBaseInfoById" parameterType="integer" resultType="sbroute">
         <if test="_parameter != null and _parameter > 0">
             select id, sbr_routename, sbr_start_station, sbr_end_station, sbr_depart_time, sbr_desc
@@ -34,12 +49,8 @@
           and Valid = 1
     </select>
     <select id="findAllBaseInfo" resultType="java.util.Map">
-        select id,
-               sbr_routename     routeName,
-               sbr_start_station startStation,
-               sbr_end_station   endStation,
-               sbr_depart_time   departTime,
-               sbr_desc          `desc`
+        select
+        <include refid="selectBaseParams"/>
         from sb_route
         where Valid = 1
     </select>
@@ -48,4 +59,46 @@
         from sb_route
         where Valid = 1
     </select>
+    <!--根据id更新记录-->
+    <update id="updateById" parameterType="sbroute">
+        update sb_route
+        <set>
+            <if test="sbrRouteName != null and sbrRouteName != ''">
+                SBR_ROUTENAME = #{sbrRouteName},
+            </if>
+            <if test="sbrStartStation != null and sbrStartStation != ''">
+                SBR_START_STATION = #{sbrStartStation},
+            </if>
+            <if test="sbrEndStation != null and sbrEndStation != ''">
+                SBR_END_STATION = #{sbrEndStation},
+            </if>
+            <if test="sbrDepartTime != null and sbrDepartTime != ''">
+                SBR_DEPART_TIME = #{sbrDepartTime},
+            </if>
+            <if test="sbrDesc != null and sbrDesc != ''">
+                SBR_DESC = #{sbrDesc}
+            </if>
+        </set>
+        where Valid = 1
+        and ID = #{id}
+    </update>
+    <!--根据id查询所有基本属性-->
+    <select id="findById" resultType="map">
+        select
+        <include refid="selectBaseParams"/>
+        from sb_route
+        where Valid = 1
+        and ID = #{id}
+    </select>
+    <!--根据id更新valid值-->
+    <update id="updateValidById">
+        update sb_route
+        set Valid = #{valid}
+        where ID = #{id}
+    </update>
+    <!--插入路线信息-->
+    <insert id="save" parameterType="sbroute" keyColumn="id" useGeneratedKeys="true" keyProperty="id">
+        insert into sb_route(<include refid="updateParams"/>)
+        values (#{sbrRouteName}, #{sbrStartStation}, #{sbrEndStation}, #{sbrDepartTime}, #{sbrDesc})
+    </insert>
 </mapper>
