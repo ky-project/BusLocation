@@ -13,6 +13,13 @@ import java.util.Map;
 public interface SbRouteDao {
 
     /**
+     * 根据路线名模糊查询路线信息
+     * @param sbrRouteName 路线名
+     * @return 返回路线信息集合
+     */
+    List<Map<String, Object>> findByNameFuzzy(@Param("sbrRouteName") String sbrRouteName);
+
+    /**
      * 插入路线信息
      * @param sbRoute 待插入的路线对象
      */

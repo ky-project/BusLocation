@@ -8,6 +8,7 @@ import com.ky.gps.service.SbBusService;
 import com.ky.gps.util.IntegerUtil;
 import com.ky.gps.util.ResultWrapperUtil;
 import com.ky.gps.util.SbBusUtil;
+import com.ky.gps.util.StringUtil;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +37,47 @@ public class SbBusManageHandler {
     private SbBusService sbBusService;
 
     /**
+     * 查询所有校车类型
+     *
+     * @return 返回类型list
+     */
+    @PermissionName(displayName = "校车查询", group = "校车管理")
+    @RequiresPermissions("bus:query")
+    @ResponseBody
+    @RequestMapping(value = "/type", method = RequestMethod.GET)
+    public ResultWrapper findAllBusType() {
+        ResultWrapper resultWrapper;
+        resultWrapper = ResultWrapperUtil.setSuccessOf(sbBusService.findType());
+        return resultWrapper;
+    }
+
+    /**
+     * 根据司机名字和车辆类型模糊查询校车信息集合
+     *
+     * @param sbBus 待查询的校车对象
+     * @return 返回校车信息集合
+     */
+    @PermissionName(displayName = "校车筛选", group = "校车管理")
+    @RequiresPermissions("bus:fQuery")
+    @ResponseBody
+    @RequestMapping(value = "/f/nameAndType", method = RequestMethod.POST)
+    public ResultWrapper findByDriverNameAndBusTypeFuzzy(@RequestBody(required = false) SbBus sbBus,
+                                                         HttpServletRequest request,
+                                                         HttpServletResponse response) {
+        String sbbDriverName = "";
+        String sbbBusType = "";
+        if (StringUtil.isNotEmpty(sbBus.getSbbDriverName())) {
+            sbbDriverName = sbBus.getSbbDriverName();
+        }
+        if (StringUtil.isNotEmpty(sbBus.getSbbBusType())) {
+            sbbBusType = sbBus.getSbbBusType();
+        }
+        return ResultWrapperUtil.setSuccessOf(sbBusService.findByDriverNameAndBusType(sbbDriverName, sbbBusType));
+    }
+
+    /**
      * 插入校车记录
+     *
      * @param sbBus 待插入的校车记录
      * @return 返回插入的校车记录信息
      */
@@ -45,8 +86,8 @@ public class SbBusManageHandler {
     @ResponseBody
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResultWrapper save(@RequestBody(required = false) SbBus sbBus,
-                             HttpServletRequest request,
-                             HttpServletResponse response){
+                              HttpServletRequest request,
+                              HttpServletResponse response) {
         ResultWrapper resultWrapper;
         if (SbBusUtil.verifyBusExcludeId(sbBus)) {
             resultWrapper = ResultWrapperUtil.setSuccessOf(sbBusService.insert(sbBus));

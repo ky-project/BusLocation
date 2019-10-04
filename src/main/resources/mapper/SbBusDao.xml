@@ -95,4 +95,23 @@
         insert into sb_bus(<include refid="allParams"/>)
         values (#{sbbSeatNum}, #{sbbBusType}, #{sbbPlateNumber}, #{sbbDriverName}, #{sbbDriverTel}, #{remark} )
     </insert>
+    <!--根据司机名和车辆类型模糊查询-->
+    <select id="findByDriverNameAndBusType" resultType="map">
+        select
+        <include refid="selectAllParams"/>
+        from sb_bus
+        where Valid = 1
+        <if test="sbbDriverName != null and sbbDriverName != ''">
+            and SBB_DRIVER_NAME like #{sbbDriverName}
+        </if>
+        <if test="sbbBusType != null and sbbBusType != ''">
+            and SBB_BUS_TYPE like #{sbbBusType}
+        </if>
+    </select>
+    <!--查询所有校车类型-->
+    <select id="findType" resultType="java.lang.String">
+        SELECT DISTINCT  SBB_BUS_TYPE
+        from sb_bus
+        WHERE Valid = 1
+    </select>
 </mapper>

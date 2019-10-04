@@ -4,7 +4,9 @@ import com.ky.gps.dao.SbRouteDao;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbRoute;
 import com.ky.gps.service.SbRouteService;
+import com.ky.gps.util.JudgeTimeUtil;
 import com.ky.gps.util.ResultWrapperUtil;
+import com.ky.gps.util.StringUtil;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,24 @@ public class SbRouteServiceImpl implements SbRouteService {
 
     @Resource
     private SbRouteDao sbRouteDao;
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public List<Map<String, Object>> findByNameAndTimeFuzzy(String sbrRouteName, String startTime, String endTime) {
+        List<Map<String, Object>> routeList = sbRouteDao.findByNameFuzzy("%" + sbrRouteName + "%");
+        if (routeList == null) {
+            return null;
+        }
+        if (StringUtil.isNotEmpty(startTime) && StringUtil.isNotEmpty(endTime)) {
+            for (int i = 0; i < routeList.size(); i++) {
+                if (!JudgeTimeUtil.isTimeEffectiveDate(routeList.get(i).get("sbrDepartTime").toString(), startTime, endTime)) {
+                    routeList.remove(i);
+                    i--;
+                }
+            }
+        }
+        return routeList;
+    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
