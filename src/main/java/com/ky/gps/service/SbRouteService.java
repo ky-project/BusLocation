@@ -2,6 +2,7 @@ package com.ky.gps.service;
 
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbRoute;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,15 @@ import java.util.Map;
  * 路线实体类的Service接口
  */
 public interface SbRouteService {
+
+    /**
+     * 根据路线名和发车区间模糊查询路线信息
+     * @param sbrRouteName 路线名
+     * @param startTime 起始时间
+     * @param endTime 结束时间
+     * @return 返回路线信息集合
+     */
+    List<Map<String, Object>> findByNameAndTimeFuzzy(String sbrRouteName, String startTime, String endTime);
 
     /**
      * 插入路线信息

@@ -22,11 +22,16 @@
 
     <sql id="selectBaseParams">
         ID,
-        sbr_routename routeName,
-        sbr_start_station startStation,
-        sbr_end_station endStation,
-        sbr_depart_time departTime,
-        sbr_desc `desc`
+        sbr_routename
+        sbrRouteName,
+        sbr_start_station
+        sbrStartStation,
+        sbr_end_station
+        sbrEndStation,
+        sbr_depart_time
+        sbrDepartTime,
+        sbr_desc
+        sbrDesc
     </sql>
     <sql id="updateParams">
             sbr_routename,
@@ -101,4 +106,14 @@
         insert into sb_route(<include refid="updateParams"/>)
         values (#{sbrRouteName}, #{sbrStartStation}, #{sbrEndStation}, #{sbrDepartTime}, #{sbrDesc})
     </insert>
+    <!--根据路线名和发车区间模糊查询路线信息-->
+    <select id="findByNameFuzzy" resultType="map">
+        select
+        <include refid="selectBaseParams"/>
+        from sb_route
+        where Valid = 1
+        <if test="sbrRouteName != null and sbrRouteName != ''">
+            and SBR_ROUTENAME like #{sbrRouteName}
+        </if>
+    </select>
 </mapper>

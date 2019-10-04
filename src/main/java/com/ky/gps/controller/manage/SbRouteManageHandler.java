@@ -5,9 +5,7 @@ import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbRoute;
 import com.ky.gps.service.SbRouteService;
-import com.ky.gps.util.IntegerUtil;
-import com.ky.gps.util.ResultWrapperUtil;
-import com.ky.gps.util.SbRouteUtil;
+import com.ky.gps.util.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.ParseException;
 import java.util.Map;
 
 /**
@@ -37,7 +36,45 @@ public class SbRouteManageHandler {
     private SbRouteService sbRouteService;
 
     /**
+     * 根据name和发车时间模糊查询路线信息
+     *
+     * @return 返回路线信息集合
+     */
+    @PermissionName(displayName = "路线筛选", group = "路线管理")
+    @RequiresPermissions("route:fQuery")
+    @ResponseBody
+    @RequestMapping(value = "/f/nameAndTime", method = RequestMethod.POST)
+    public ResultWrapper fuzzyQueryByNameAndTime(@RequestBody(required = false) Map<String, Object> params,
+                                                 HttpServletResponse response,
+                                                 HttpServletRequest request) throws ParseException {
+        ResultWrapper resultWrapper = null;
+        String sbrRouteName = "";
+        String startTime = "";
+        String endTime = "";
+        //空值校验
+        if (params != null) {
+            if(params.get("sbrRouteName") != null) {
+                sbrRouteName = params.get("sbrRouteName").toString();
+            }
+            if(params.get("startTime") != null
+                    && params.get("endTime") != null) {
+                startTime = params.get("startTime").toString();
+                endTime = params.get("endTime").toString();
+            }
+            //判断时间区间是否正规
+            if (StringUtil.isNotEmpty(startTime) && StringUtil.isNotEmpty(endTime) && !DateUtil.verifyHour(startTime, endTime)) {
+                resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.PARAMETER_NOT_VALID, "时间区间错误", response);
+            }
+        }
+        if(resultWrapper == null) {
+            resultWrapper = ResultWrapperUtil.setSuccessOf(sbRouteService.findByNameAndTimeFuzzy(sbrRouteName, startTime, endTime));
+        }
+        return resultWrapper;
+    }
+
+    /**
      * 添加路线信息
+     *
      * @param sbRoute 待添加的路线对象
      * @return 返回json数据，data为新增的路线信息
      */
@@ -47,12 +84,12 @@ public class SbRouteManageHandler {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResultWrapper save(@RequestBody(required = false) SbRoute sbRoute,
                               HttpServletRequest request,
-                              HttpServletResponse response){
+                              HttpServletResponse response) {
         ResultWrapper resultWrapper;
         //空值校验
         if (SbRouteUtil.veritySbRouteExcludeId(sbRoute)) {
             resultWrapper = ResultWrapperUtil.setSuccessOf(sbRouteService.save(sbRoute));
-        } else{
+        } else {
             resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, "基本参数不可为空", response);
         }
         return resultWrapper;
@@ -81,7 +118,7 @@ public class SbRouteManageHandler {
             Integer id = (Integer) params.get("id");
             sbRouteService.deleteById(id);
             resultWrapper = ResultWrapperUtil.setSuccessOf(null);
-        } else{
+        } else {
             resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, "id不可为空", response);
         }
         return resultWrapper;
