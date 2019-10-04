@@ -14,6 +14,12 @@ import java.util.Map;
 public interface SbBusService {
 
     /**
+     * 查询所有校车类型
+     * @return 返回校车类型list
+     */
+    List<String> findType();
+
+    /**
      * 根据司机名和车辆类型模糊查询
      *
      * @param sbbDriverName 司机名

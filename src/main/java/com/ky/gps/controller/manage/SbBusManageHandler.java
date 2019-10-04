@@ -37,7 +37,23 @@ public class SbBusManageHandler {
     private SbBusService sbBusService;
 
     /**
+     * 查询所有校车类型
+     *
+     * @return 返回类型list
+     */
+    @PermissionName(displayName = "校车查询", group = "校车管理")
+    @RequiresPermissions("bus:query")
+    @ResponseBody
+    @RequestMapping(value = "/type", method = RequestMethod.GET)
+    public ResultWrapper findAllBusType() {
+        ResultWrapper resultWrapper;
+        resultWrapper = ResultWrapperUtil.setSuccessOf(sbBusService.findType());
+        return resultWrapper;
+    }
+
+    /**
      * 根据司机名字和车辆类型模糊查询校车信息集合
+     *
      * @param sbBus 待查询的校车对象
      * @return 返回校车信息集合
      */
@@ -50,10 +66,10 @@ public class SbBusManageHandler {
                                                          HttpServletResponse response) {
         String sbbDriverName = "";
         String sbbBusType = "";
-        if(StringUtil.isNotEmpty(sbBus.getSbbDriverName())) {
+        if (StringUtil.isNotEmpty(sbBus.getSbbDriverName())) {
             sbbDriverName = sbBus.getSbbDriverName();
         }
-        if(StringUtil.isNotEmpty(sbBus.getSbbBusType())) {
+        if (StringUtil.isNotEmpty(sbBus.getSbbBusType())) {
             sbbBusType = sbBus.getSbbBusType();
         }
         return ResultWrapperUtil.setSuccessOf(sbBusService.findByDriverNameAndBusType(sbbDriverName, sbbBusType));

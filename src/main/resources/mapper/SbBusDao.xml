@@ -108,4 +108,10 @@
             and SBB_BUS_TYPE like #{sbbBusType}
         </if>
     </select>
+    <!--查询所有校车类型-->
+    <select id="findType" resultType="java.lang.String">
+        SELECT DISTINCT  SBB_BUS_TYPE
+        from sb_bus
+        WHERE Valid = 1
+    </select>
 </mapper>

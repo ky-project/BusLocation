@@ -23,6 +23,12 @@ public class SbBusServiceImpl implements SbBusService {
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
+    public List<String> findType() {
+        return sbBusDao.findType();
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
     public List<Map<String, Object>> findByDriverNameAndBusType(String sbbDriverName, String sbbBusType) {
         return sbBusDao.findByDriverNameAndBusType("%" + sbbDriverName + "%", "%" + sbbBusType + "%");
     }
