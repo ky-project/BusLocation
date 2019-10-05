@@ -21,7 +21,7 @@
     </resultMap>
 
     <sql id="selectBaseParams">
-        ID,
+        id,
         sbr_routename
         sbrRouteName,
         sbr_start_station
