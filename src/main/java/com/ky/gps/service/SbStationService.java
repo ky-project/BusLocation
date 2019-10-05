@@ -3,12 +3,20 @@ package com.ky.gps.service;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbStation;
 
+import java.util.List;
+
 /**
  * 站点表service层-接口
  *
  * @author Daye
  */
 public interface SbStationService {
+
+    /**
+     * 查询所有站点名
+     * @return 返回站点名集合
+     */
+    List<String> findNames();
 
     /**
      * 根据id查询站点信息

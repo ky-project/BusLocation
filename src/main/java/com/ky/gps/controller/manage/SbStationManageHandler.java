@@ -35,6 +35,21 @@ public class SbStationManageHandler {
     private SbStationService sbStationService;
 
     /**
+     * 获取所有站点名
+     *
+     * @return 返回所有站点名
+     */
+    @PermissionName(displayName = "站点查询", group = "站点管理")
+    @RequiresPermissions("station:query")
+    @ResponseBody
+    @RequestMapping(value = "/names", method = RequestMethod.GET)
+    public ResultWrapper findStationNames() {
+        ResultWrapper resultWrapper;
+        resultWrapper = ResultWrapperUtil.setSuccessOf(sbStationService.findNames());
+        return resultWrapper;
+    }
+
+    /**
      * 更新站点信息
      *
      * @param sbStation 待更新的站点对象

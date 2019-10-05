@@ -79,4 +79,10 @@
         where valid = 1
         and ID = #{id}
     </select>
+    <!--查询所有站点名-->
+    <select id="findNames" resultType="java.lang.String">
+        select distinct SBS_STATION sbsStation
+        from sb_station
+        where Valid = 1
+    </select>
 </mapper>
