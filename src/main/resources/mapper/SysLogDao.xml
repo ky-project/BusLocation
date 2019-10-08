@@ -23,7 +23,36 @@
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
     <insert id="saveSysLog" parameterType="syslog">
-        insert into sys_log(sl_user, sl_name, sl_department, sl_operator, sl_module, sl_ip, sl_mac, sl_content, created_by, updated_by, valid)
-        values(#{workId}, #{realName}, #{departmentName}, #{operate}, #{module}, #{ipAddress}, #{macAddress}, #{content}, #{createdBy}, #{updatedBy}, 1)
+        insert into sys_log(sl_user, sl_name, sl_department, sl_operator, sl_module, sl_ip, sl_mac, sl_content,
+                            created_by, updated_by, valid)
+        values (#{workId}, #{realName}, #{departmentName}, #{operate}, #{module}, #{ipAddress}, #{macAddress},
+                #{content}, #{createdBy}, #{updatedBy}, 1)
     </insert>
+    <!--根据用户number、name、operator模糊查询记录-->
+    <!--根据日期精确查询指定日期记录-->
+    <select id="findByUserAndNameAndOperatorAndCreatedDate"
+            resultType="map">
+        select sl_user slUser,
+        sl_name slName,
+        sl_department slDepartment,
+        sl_operator slOperator,
+        sl_ip slIp,
+        sl_content slContent,
+        created_date createdDate
+        from sys_log
+        where Valid = 1
+        <if test="userNumber != null and userNumber != ''">
+            and SL_USER like #{userNumber}
+        </if>
+        <if test="name != null and name != ''">
+            and SL_NAME like #{name}
+        </if>
+        <if test="operator != null and operator != ''">
+            and SL_OPERATOR like #{operator}
+        </if>
+        <if test="createdDate != null and createdDate != ''">
+            and DATE_FORMAT(CREATED_DATE, '%Y-%m-%d') = DATE_FORMAT(#{createdDate} ,'%Y-%m-%d')
+        </if>
+        order by created_date
+    </select>
 </mapper>
