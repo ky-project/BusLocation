@@ -26,6 +26,12 @@ public class SbStationServiceImpl implements SbStationService {
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
+    public List<String> findNames() {
+        return sbStationDao.findNames();
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
     public ResultWrapper findById(Integer id) {
         return ResultWrapperUtil.setSuccessOf(sbStationDao.findById(id));
     }

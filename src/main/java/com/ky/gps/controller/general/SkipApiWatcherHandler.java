@@ -91,4 +91,19 @@ public class SkipApiWatcherHandler {
     public String toRouteStationManage(){
         return "api/backstage/routestation_manage_api";
     }
+
+    @RequestMapping(value = "/busRouteManage", method = RequestMethod.GET)
+    public String toBusRouteManage(){
+        return "api/backstage/busroute_manage_api";
+    }
+
+    @RequestMapping(value = "/logManage", method = RequestMethod.GET)
+    public String toLogManage(){
+        return "api/backstage/log_manage_api";
+    }
+
+    @RequestMapping(value = "/busPositionHis", method = RequestMethod.GET)
+    public String toBusPositionHisManage(){
+        return "api/backstage/buspositionHis_manage_api";
+    }
 }

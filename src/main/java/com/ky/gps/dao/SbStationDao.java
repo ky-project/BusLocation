@@ -13,6 +13,12 @@ import java.util.Map;
 public interface SbStationDao {
 
     /**
+     * 查询所有站点名
+     * @return 返回站点名集合
+     */
+    List<String> findNames();
+
+    /**
      * 根据id查询站点信息
      * @param id 查询的站点id
      * @return 返回map
