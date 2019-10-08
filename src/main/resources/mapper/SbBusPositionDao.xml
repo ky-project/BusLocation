@@ -5,6 +5,7 @@
     <resultMap id="BaseSbBusPositionMap" type="com.ky.gps.entity.SbBusPosition">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="gps_id" jdbcType="INTEGER" property="sbGps.id"/>
+        <result column="route_id" jdbcType="INTEGER" property="routeId"/>
         <result column="sbp_recode_time" jdbcType="TIMESTAMP" property="sbpRecodeTime"/>
         <result column="sbp_longitude" jdbcType="DOUBLE" property="sbpLongitude"/>
         <result column="sbp_latitude" jdbcType="DOUBLE" property="sbpLatitude"/>
