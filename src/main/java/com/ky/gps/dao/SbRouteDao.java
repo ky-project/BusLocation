@@ -13,6 +13,13 @@ import java.util.Map;
 public interface SbRouteDao {
 
     /**
+     * 根据gpsId查询
+     * @param gpsId gpsId
+     * @return 返回路线信息
+     */
+    List<Map<String, Object>> findByGpsId(@Param("id") String gpsId);
+
+    /**
      * 根据路线名模糊查询路线信息
      * @param sbrRouteName 路线名
      * @return 返回路线信息集合
