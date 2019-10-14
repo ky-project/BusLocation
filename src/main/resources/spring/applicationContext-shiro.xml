@@ -28,8 +28,8 @@
             <value>
                 /logout = logout
                 / = anon
+                /bms/** = anon
                 /blockBreaker/** = anon
-                /BusLocationBMS/** = anon
                 /logFile/** = anon
                 /realTime/** = anon
                 /realTime1/** = anon
