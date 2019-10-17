@@ -81,7 +81,7 @@ public class SbUserRoleManageHandler {
     @SuppressWarnings("unchecked")
     @PermissionName(displayName = "用户角色更新", group = "用户角色管理")
     @RequiresPermissions("userRole:update")
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper updateUserRoles(@RequestBody(required = false) Map<String, Object> params,
                                          HttpServletResponse response,

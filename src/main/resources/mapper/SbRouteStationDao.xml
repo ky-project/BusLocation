@@ -28,9 +28,11 @@
             sbs_depart_time
     </sql>
     <select id="findStationByRouteId" resultType="java.util.Map" parameterType="integer">
-        SELECT ss.SBS_STATION      stationName,
-               ss.SBS_LONGITUDE    longtidue,
-               ss.SBS_LATITUDE     latitude,
+        SELECT ss.id               id,
+               ss.SBS_STATION      sbsStation,
+               ss.SBS_LONGITUDE    sbsLongitude,
+               ss.SBS_LATITUDE     sbsLatitude,
+               ss.SBS_DESC         sbsDesc,
                srs.SBS_DEPART_TIME departTime
         FROM sb_route_station srs
                  LEFT JOIN sb_station ss ON srs.STATION_ID = ss.ID

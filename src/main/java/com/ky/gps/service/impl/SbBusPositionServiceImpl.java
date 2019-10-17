@@ -34,6 +34,12 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
+    public Map<String, Object> findByRouteId(Integer routeId) {
+        return sbBusPositionDao.findByRouteId(routeId);
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
     public ResultWrapper findNewPositionByRouteId(Integer routeId) {
         Map<String, Object> trackRoute = sbBusPositionDao.findNewPositionByRouteId(JudgeTimeUtil.getWeek(), routeId);
         Map<String, Object> resultMap = new HashMap<>(16);

@@ -331,6 +331,9 @@
         select sys_user.ID         id,
                sys_user.REAL_NAME  realName,
                sys_user.WORKID     workId,
+               sys_user.EMAIL      email,
+               sys_user.PHONE      phone,
+               sys_user.ID_CARD    idCard,
                sys_user.PASSWORD   password,
                b_department.`NAME` departmentName
         from sys_user,
@@ -341,26 +344,26 @@
           and sys_user.DEPARTMENT_ID = b_department.ID
     </select>
     <select id="findBaseInfoLikeRealNameAndWorkIdAndDepartment" resultType="java.util.Map">
-        SELECT sys_user.ID         id,
-               b_department.`NAME` departmentName,
-               sys_user.WORKID     workId,
-               sys_user.REAL_NAME  realName,
-               sys_user.ID_CARD    idCard,
-               sys_user.PHONE      phone,
-               sys_user.EMAIL      email
+        SELECT sys_user.ID id,
+        b_department.`NAME` departmentName,
+        sys_user.WORKID workId,
+        sys_user.REAL_NAME realName,
+        sys_user.ID_CARD idCard,
+        sys_user.PHONE phone,
+        sys_user.EMAIL email
         FROM sys_user,
-             b_department
+        b_department
         WHERE sys_user.Valid = 1
-          AND b_department.Valid = 1
-          AND sys_user.DEPARTMENT_ID = b_department.ID
-          <if test="departmentId != null">
-              AND sys_user.DEPARTMENT_ID = #{departmentId}
-          </if>
-          <if test="realName != null">
-              AND sys_user.REAL_NAME like #{realName}
-          </if>
-          <if test="workId != null">
-              AND sys_user.WORKID like #{workId}
-          </if>
+        AND b_department.Valid = 1
+        AND sys_user.DEPARTMENT_ID = b_department.ID
+        <if test="departmentId != null">
+            AND sys_user.DEPARTMENT_ID = #{departmentId}
+        </if>
+        <if test="realName != null">
+            AND sys_user.REAL_NAME like #{realName}
+        </if>
+        <if test="workId != null">
+            AND sys_user.WORKID like #{workId}
+        </if>
     </select>
 </mapper>

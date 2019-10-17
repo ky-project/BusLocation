@@ -23,9 +23,11 @@
     </resultMap>
 
     <insert id="savePosition" parameterType="sbbusposition">
-        insert into sb_busposition(GPS_ID, ROUTE_ID,sbp_recode_time, sbp_longitude, sbp_latitude, sbp_velocity, sbp_direction,
+        insert into sb_busposition(GPS_ID, ROUTE_ID, sbp_recode_time, sbp_longitude, sbp_latitude, sbp_velocity,
+                                   sbp_direction,
                                    created_by, updated_by, valid)
-        values (#{sbGps.id}, #{routeId}, #{sbpRecodeTime}, #{sbpLongitude}, #{sbpLatitude}, #{sbpVelocity}, #{sbpDirection},
+        values (#{sbGps.id}, #{routeId}, #{sbpRecodeTime}, #{sbpLongitude}, #{sbpLatitude}, #{sbpVelocity},
+                #{sbpDirection},
                 'system', 'system', #{valid})
     </insert>
 
@@ -137,6 +139,19 @@
           AND sb_busposition.Valid = 1
         ORDER BY sb_busposition.SBP_RECODE_TIME DESC
         LIMIT 1
+    </select>
+    <!--根据路线id查询路线最新定位-->
+    <select id="findByRouteId" resultType="map">
+        select SBP_RECODE_TIME sbpRecodeTime,
+               SBP_LONGITUDE   sbpLongitude,
+               SBP_LATITUDE    sbpLatitude,
+               SBP_VELOCITY    sbpVelocity,
+               SBP_DIRECTION   sbpDirection
+        from sb_busposition
+        where Valid = 1
+        and ROUTE_ID = #{routeId}
+        order by SBP_RECODE_TIME desc
+        limit 1
     </select>
 
 </mapper>
