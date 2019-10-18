@@ -284,13 +284,13 @@
     <!--根据用户id查询用户基本信息-->
     <select id="findUserBaseInfoById" resultType="java.util.Map" parameterType="integer">
         SELECT sys_user.ID         id,
-               b_department.`NAME` departmentName,
                sys_user.WORKID     workId,
                sys_user.REAL_NAME  realName,
                sys_user.PASSWORD   password,
                sys_user.ID_CARD    idCard,
                sys_user.PHONE      phone,
-               sys_user.EMAIL      email
+               sys_user.EMAIL      email,
+               b_department.`NAME` departmentName
         FROM sys_user
                  LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
         WHERE sys_user.Valid = 1

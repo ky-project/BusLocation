@@ -10,6 +10,10 @@ import com.ky.gps.service.SysUserService;
 import com.ky.gps.util.ResultWrapperUtil;
 import com.ky.gps.util.SendMail;
 import com.ky.gps.util.SysLogUtil;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.SimplePrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -193,19 +197,18 @@ public class SysUserHandler {
 
     /**
      * 获取自己的个人信息
-     * id, departmentName, workId, realName, idCode, phone, email
      *
      * @param request request域
      * @return json格式对象
      */
+    @SuppressWarnings("unchecked")
     @RequestMapping(value = "/self/info", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper getUserSelfInfo(HttpServletRequest request) {
         ResultWrapper resultWrapper;
-        //获取session中的log对象
-        SysLog sysLog = (SysLog) request.getSession().getAttribute(SysLogUtil.SESSION_SYSLOG);
+        Map<String, Object> user = (Map<String, Object>) SecurityUtils.getSubject().getPrincipal();
         //获取封装好id对应基本信息的json对象
-        resultWrapper = sysUserService.findSelfBaseInfoByUserId(sysLog.getUserId());
+        resultWrapper = ResultWrapperUtil.setSuccessOf(user);
         return resultWrapper;
     }
 
@@ -217,18 +220,32 @@ public class SysUserHandler {
      * @param request request域
      * @return json个数数据，data为null
      */
+    @SuppressWarnings("unchecked")
     @RequestMapping(value = "/update/info", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper updateSelfInfo(@RequestBody SysUser sysUser, HttpServletRequest request) {
         ResultWrapper resultWrapper;
+
         //获取session中的log对象
         SysLog sysLog = (SysLog) request.getSession().getAttribute(SysLogUtil.SESSION_SYSLOG);
         //设置待更新的用户id
         sysUser.setId(sysLog.getUserId());
         //设置更新者workId
         sysUser.setUpdatedBy(sysLog.getWorkId());
-        //更新对象
-        resultWrapper = sysUserService.updateUserBaseInfo(sysUser);
+
+        //更新用户信息
+        Map<String, Object> user = sysUserService.updateUserBaseInfo(sysUser);
+
+        //更新session中的信息
+        Subject subject = SecurityUtils.getSubject();
+        //创建一个PrincipalCollection对象
+        PrincipalCollection newPrincipalCollection = new SimplePrincipalCollection(user, user.get("password").toString());
+        //调用subject的runAs方法，把新的PrincipalCollection放到session里面
+        subject.runAs(newPrincipalCollection);
+
+        user.remove("password");
+        //封装
+        resultWrapper = ResultWrapperUtil.setSuccessOf(user);
         //日志记录
         sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "用户更新自身基本信息", "/user/update/info", "更新用户(id):" + sysUser.getId()));
         return resultWrapper;

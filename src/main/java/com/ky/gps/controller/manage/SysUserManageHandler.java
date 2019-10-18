@@ -280,7 +280,7 @@ public class SysUserManageHandler {
                 //设置更新者workId
                 sysUser.setUpdatedBy(((SysLog) request.getSession().getAttribute(SysLogUtil.SESSION_SYSLOG)).getWorkId());
                 //更新对象
-                resultWrapper = sysUserService.updateUserBaseInfo(sysUser);
+                resultWrapper = ResultWrapperUtil.setSuccessOf(sysUserService.updateUserBaseInfo(sysUser));
                 //日志记录
                 sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "更新用户基本信息", "/admin/update/info", "更新用户(id):" + sysUser.getId()));
             }
