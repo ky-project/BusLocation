@@ -27,16 +27,6 @@ public class SkipApiWatcherHandler {
         return "api/general/simulation_posision_api";
     }
 
-    @RequestMapping(value = "/realTimeQuery", method = RequestMethod.GET)
-    public String toRealTimeQueryApi() {
-        return "api/client/real_time_query_api";
-    }
-
-    @RequestMapping(value = "/simpleUser", method = RequestMethod.GET)
-    public String toSimpleUserApi() {
-        return "api/client/simple_user_api";
-    }
-
     @RequestMapping(value = "/deptManage", method = RequestMethod.GET)
     public String toDeptManageApi() {
         return "api/backstage/dept_manage_api";
@@ -68,42 +58,66 @@ public class SkipApiWatcherHandler {
     }
 
     @RequestMapping(value = "/userRoleManage", method = RequestMethod.GET)
-    public String toUserRoleManage(){
+    public String toUserRoleManage() {
         return "api/backstage/userrole_manage_api";
     }
 
     @RequestMapping(value = "/stationManage", method = RequestMethod.GET)
-    public String toStationManage(){
+    public String toStationManage() {
         return "api/backstage/station_manage_api";
     }
 
     @RequestMapping(value = "/routeManage", method = RequestMethod.GET)
-    public String toRouteManage(){
+    public String toRouteManage() {
         return "api/backstage/route_manage_api";
     }
 
     @RequestMapping(value = "/busManage", method = RequestMethod.GET)
-    public String toBusManage(){
+    public String toBusManage() {
         return "api/backstage/bus_manage_api";
     }
 
     @RequestMapping(value = "/routeStationManage", method = RequestMethod.GET)
-    public String toRouteStationManage(){
+    public String toRouteStationManage() {
         return "api/backstage/routestation_manage_api";
     }
 
     @RequestMapping(value = "/busRouteManage", method = RequestMethod.GET)
-    public String toBusRouteManage(){
+    public String toBusRouteManage() {
         return "api/backstage/busroute_manage_api";
     }
 
     @RequestMapping(value = "/logManage", method = RequestMethod.GET)
-    public String toLogManage(){
+    public String toLogManage() {
         return "api/backstage/log_manage_api";
     }
 
     @RequestMapping(value = "/busPositionHis", method = RequestMethod.GET)
-    public String toBusPositionHisManage(){
+    public String toBusPositionHisManage() {
         return "api/backstage/buspositionHis_manage_api";
     }
+
+    @RequestMapping(value = "/routeStationQuery", method = RequestMethod.GET)
+    public String toRouteStationQuery() {
+        return "api/client/routestation_query_api";
+    }
+
+    @RequestMapping(value = "/routeQuery", method = RequestMethod.GET)
+    public String toRouteQuery() {
+        return "api/client/route_query_api";
+    }
+
+    @RequestMapping(value = "/busPositionQuery", method = RequestMethod.GET)
+    public String toBusPositionQuery() {
+        return "api/client/busposition_query_api";
+    }
+    @RequestMapping(value = "/emailApi", method = RequestMethod.GET)
+    public String toEmailApi() {
+        return "api/client/email_api";
+    }
+    @RequestMapping(value = "/userSelf", method = RequestMethod.GET)
+    public String toUserSelf() {
+        return "api/client/user_self_api";
+    }
+
 }

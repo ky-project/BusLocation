@@ -13,6 +13,14 @@ import java.util.Map;
 public interface SbBusPositionDao {
 
     /**
+     * 根据路线id查询路线最新定位
+     *
+     * @param routeId 路线id
+     * @return 返回最新定位信息
+     */
+    Map<String, Object> findByRouteId(@Param("routeId")Integer routeId);
+
+    /**
      * 插入校车位置记录
      *
      * @param sbBusPosition 校车位置对象

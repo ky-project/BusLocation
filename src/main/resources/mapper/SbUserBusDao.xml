@@ -22,5 +22,15 @@
             UPDATED_BY = #{updateBy}
         WHERE USER_ID = #{userId}
     </update>
+    <!--根据用户id查询该用户能查看的所有路线id和name-->
+    <select id="findRouteIdAndRouteNameByUserId" resultType="map">
+        select sr.id            id,
+               sr.sbr_routename sbrRouteName
+        from sb_user_bus sub
+                 left join sb_route sr on sub.ROUTE_ID = sr.ID
+        where sr.Valid = 1
+          and sub.Valid = 1
+          and sub.USER_ID = #{userId}
+    </select>
 
 </mapper>

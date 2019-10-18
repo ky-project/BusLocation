@@ -28,15 +28,11 @@
             <value>
                 /logout = logout
                 / = anon
+                /bms/** = anon
                 /blockBreaker/** = anon
-                /BusLocationBMS/** = anon
                 /logFile/** = anon
                 /realTime/** = anon
                 /realTime1/** = anon
-
-                /routeposition/** = anon
-                /route/** = anon
-                /bus/** = anon
 
                 /druid/** = anon
                 /user/login = anon

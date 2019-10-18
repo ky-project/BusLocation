@@ -1,0 +1,114 @@
+{
+  "id": "1172861",
+  "name": "busLocation",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "720964",
+      "name": "箭头",
+      "font_class": "xiazai6",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "1046183",
+      "name": "我",
+      "font_class": "wo",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "1215755",
+      "name": "加",
+      "font_class": "jia2",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "1244005",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "1365373",
+      "name": "公告",
+      "font_class": "gonggao",
+      "unicode": "e683",
+      "unicode_decimal": 59011
+    },
+    {
+      "icon_id": "1411037",
+      "name": "路线11",
+      "font_class": "luxian",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "1954200",
+      "name": "实时",
+      "font_class": "shishi",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "1980999",
+      "name": "箭头_右",
+      "font_class": "jiantou1",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "2402040",
+      "name": "箭头",
+      "font_class": "jiantou",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "2570182",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "2674927",
+      "name": "箭头 上",
+      "font_class": "jiantoushang",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "2674929",
+      "name": "箭头 下",
+      "font_class": "jiantouxia",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "4425822",
+      "name": "减",
+      "font_class": "jian",
+      "unicode": "e794",
+      "unicode_decimal": 59284
+    },
+    {
+      "icon_id": "5604593",
+      "name": "定位",
+      "font_class": "dingwei",
+      "unicode": "e93f",
+      "unicode_decimal": 59711
+    },
+    {
+      "icon_id": "7533287",
+      "name": "验证码",
+      "font_class": "yanzhengma",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    }
+  ]
+}

@@ -161,13 +161,11 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public ResultWrapper updateUserBaseInfo(SysUser sysUser) {
+    public Map<String, Object> updateUserBaseInfo(SysUser sysUser) {
         //更新用户信息
         sysUserDao.updateUserBaseInfo(sysUser);
-        Map<String, Object> user = sysUserDao.findUserBaseInfoById(sysUser.getId());
-        //返回json对象
-        return ResultWrapperUtil.setSuccessOf(user);
-    }
+        return  sysUserDao.findUserBaseInfoById(sysUser.getId());
+}
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override

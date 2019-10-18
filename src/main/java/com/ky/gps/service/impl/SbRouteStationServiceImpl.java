@@ -236,11 +236,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
             station.put("prevStation", "无");
             station.put("nextStation", "无");
         }
-        //存放站点信息和路线id
-        Map<String, Object> resultMap = new HashMap<>(16);
-        resultMap.put("stationInfo", stationList);
-        resultMap.put("routeId", routeId);
-        return ResultWrapperUtil.setSuccessOf(resultMap);
+        return ResultWrapperUtil.setSuccessOf(stationList);
     }
 
     /**
@@ -338,17 +334,17 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
                 //如果是第一站，则上一站为无
                 station.put("prevStation", "无");
                 //下一站为index+1的stationName
-                station.put("nextStation", sortRouteStationList.get(index + 1).get("stationName"));
+                station.put("nextStation", sortRouteStationList.get(index + 1).get("sbsStation"));
             } else if (index + 1 >= sortRouteStationList.size()) {
                 //如果是终点站，则上一站位index-1的stationName
-                station.put("prevStation", sortRouteStationList.get(index - 1).get("stationName"));
+                station.put("prevStation", sortRouteStationList.get(index - 1).get("sbsStation"));
                 //下一站为无
                 station.put("nextStation", "无");
             } else {
                 //如果为中间站,则上一站位index-1的stationName
-                station.put("prevStation", sortRouteStationList.get(index - 1).get("stationName"));
+                station.put("prevStation", sortRouteStationList.get(index - 1).get("sbsStation"));
                 //下一站为index+1的stationName
-                station.put("nextStation", sortRouteStationList.get(index + 1).get("stationName"));
+                station.put("nextStation", sortRouteStationList.get(index + 1).get("sbsStation"));
             }
         }
     }
