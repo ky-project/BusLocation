@@ -4,26 +4,31 @@ import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SysLog;
 import com.ky.gps.entity.SysUser;
-import com.ky.gps.enums.SysParamEnum;
+import com.ky.gps.service.EmailService;
 import com.ky.gps.service.SysLogService;
 import com.ky.gps.service.SysUserService;
+import com.ky.gps.util.RandomUtil;
 import com.ky.gps.util.ResultWrapperUtil;
 import com.ky.gps.util.SendMail;
 import com.ky.gps.util.SysLogUtil;
+import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -38,29 +43,30 @@ public class SysUserHandler {
      * 日志打印对象
      */
     private final static Logger LOGGER = LoggerFactory.getLogger(SysUserHandler.class);
-    /**
-     * 用户身份数组
-     */
-    private final static String[] LOGIN_TYPE = {"admin", "simple"};
 
     @Resource
     private SysUserService sysUserService;
     @Resource
     private SysLogService sysLogService;
+    @Autowired
+    private EmailService emailService;
 
     /**
      * 用户忘记密码，通过邮箱来更改密码
      *
-     * @param password 待修改的密码
+     * @param params 参数map
+     *               password  待修改的密码
+     *               checkCode 验证码
      * @return json格式数据
      */
     @RequestMapping(value = "/modify/pwd/email", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper modifyPasswordByEmail(String password,
-                                               String checkCode,
+    public ResultWrapper modifyPasswordByEmail(@RequestBody Map<String, Object> params,
                                                HttpServletRequest request,
                                                HttpServletResponse response) {
         ResultWrapper resultWrapper;
+        String password = params.get("password").toString();
+        String checkCode = params.get("checkCode").toString();
         //判断是否存在空值
         if (null == checkCode || "".equals(checkCode)
                 || null == password || "".equals(password)) {
@@ -109,24 +115,25 @@ public class SysUserHandler {
      * 发送email给用户邮箱
      * 忘记密码使用
      *
-     * @param email 邮箱
      * @return 返回json格式数据
      */
     @RequestMapping(value = "/send/email", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper sendEmail(String email,
+    public ResultWrapper sendEmail(@RequestBody Map<String, Object> params,
                                    HttpServletRequest request,
                                    HttpServletResponse response) throws Exception {
         ResultWrapper resultWrapper;
+        String email = params.get("email").toString();
         //空值判断
         if (null == email || "".equals(email)) {
             resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.EMPTY_ERROR, response);
         } else {
             //邮箱验证
             if (sysUserService.isEffectiveEmail(email)) {
-                String checkCode = "817264";
+                //随机产生验证码
+                String checkCode = RandomUtil.randomNumberChar(5);
                 //邮箱发送
-                SendMail.sendEmil(email, checkCode);
+                emailService.sendEmail(email, checkCode);
                 //将邮箱存入session中
                 String[] emailModifyPwd = {email, checkCode};
                 request.getSession().setAttribute("emailModifyPwd", emailModifyPwd);
@@ -142,7 +149,7 @@ public class SysUserHandler {
                 sysLogService.saveSysLog(sysLog);
             } else {
                 //返回邮箱不存在提示
-                resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.SELECT_ERROR, "邮箱不存在", response);
+                resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.SELECT_ERROR, "邮箱未绑定账号", response);
             }
         }
         return resultWrapper;
@@ -151,18 +158,19 @@ public class SysUserHandler {
     /**
      * 修改用户自身密码
      *
-     * @param oldPassword 旧密码
-     * @param newPassword 新密码
-     * @param request     request域
+     * @param params  参数map
+     * @param request request域
      * @return json格式数据，data为null
      */
+    @SuppressWarnings("unchecked")
     @RequestMapping(value = "/modify/pwd", method = RequestMethod.POST)
     @ResponseBody
-    public ResultWrapper modifyPassword(String oldPassword,
-                                        String newPassword,
+    public ResultWrapper modifyPassword(@RequestBody Map<String, Object> params,
                                         HttpServletRequest request,
                                         HttpServletResponse response) {
         ResultWrapper resultWrapper;
+        String oldPassword = params.get("oldPassword").toString();
+        String newPassword = params.get("newPassword").toString();
         //判断是否含有空值
         if (null == oldPassword || "".equals(oldPassword)
                 || null == newPassword || "".equals(newPassword)) {
@@ -184,6 +192,16 @@ public class SysUserHandler {
                 sysUser.setSalt(newPassword);
                 //修改密码
                 resultWrapper = sysUserService.updatePassword(sysUser);
+
+                //更新session中的信息
+                Subject subject = SecurityUtils.getSubject();
+                Map<String, Object> user = (Map<String, Object>) subject.getPrincipal();
+                user.put("password", sysUser.getPassword());
+                //创建一个PrincipalCollection对象
+                PrincipalCollection newPrincipalCollection = new SimplePrincipalCollection(user, user.get("password").toString());
+                //调用subject的runAs方法，把新的PrincipalCollection放到session里面
+                subject.runAs(newPrincipalCollection);
+
                 //设置密码修改日期
                 sysUser.setLastPsdDate(new Date());
                 //设置更新者workId
@@ -248,110 +266,6 @@ public class SysUserHandler {
         resultWrapper = ResultWrapperUtil.setSuccessOf(user);
         //日志记录
         sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "用户更新自身基本信息", "/user/update/info", "更新用户(id):" + sysUser.getId()));
-        return resultWrapper;
-    }
-
-    /**
-     * 管理员用户登录接口
-     *
-     * @param workId   登录账号:职工编号
-     * @param password 登录密码
-     * @param request  request请求
-     * @return 返回json格式数据
-     */
-    @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
-    @ResponseBody
-    public ResultWrapper adminLoginCheck(@RequestParam(value = "workId") String workId,
-                                         @RequestParam(value = "password") String password,
-                                         @RequestParam(value = "verifyCode") String verifyCode,
-                                         HttpServletRequest request,
-                                         HttpServletResponse response) {
-        if (request.getSession().getAttribute(SysParamEnum.VERIFY_CODE_VAL.toString()) == null) {
-            return ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.VERIFY_EMPTY_ERROR, response);
-        } else if (verifyCode.toUpperCase().equals(request.getSession().getAttribute(SysParamEnum.VERIFY_CODE_VAL.toString()).toString().toUpperCase())) {
-            request.getSession().removeAttribute("verifyCodeValue");
-            return loginWrapper(workId, password, request, response, LOGIN_TYPE[0]);
-        } else {
-            response.setStatus(400);
-            return ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.VERIFY_ERROR, response);
-        }
-    }
-
-    /**
-     * 普通用户登录接口
-     *
-     * @param workId   登录账号:职工编号
-     * @param password 登录密码
-     * @param request  request请求
-     * @return 返回json格式数据
-     */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    public ResultWrapper loginCheck(@RequestParam(value = "workId") String workId,
-                                    @RequestParam(value = "password") String password,
-                                    HttpServletRequest request,
-                                    HttpServletResponse response) {
-        return loginWrapper(workId, password, request, response, LOGIN_TYPE[1]);
-    }
-
-    /**
-     * 根据workId和password来进行用户登录验证
-     *
-     * @param workId    教工号
-     * @param password  密码
-     * @param request   request域
-     * @param loginType 用户类型，admin or simple
-     * @return 返回json对象
-     */
-    private ResultWrapper loginWrapper(String workId,
-                                       String password,
-                                       HttpServletRequest request,
-                                       HttpServletResponse response,
-                                       String loginType) {
-        //对参数进行判断
-        if ("".equals(workId) || null == workId || "".equals(password) || null == password) {
-            return ResultWrapperUtil.setErrorOf(ErrorCode.EMPTY_ERROR);
-        }
-        //待返回的结果对象
-        ResultWrapper resultWrapper;
-        //存放登录账号/密码的键值对
-        Map<String, Object> map = new HashMap<>(16);
-        //将账号密码存入map中
-        map.put("workId", workId);
-        map.put("password", password);
-        String module = "";
-        try {
-            //获取用户验证后的信息，如果通过，则获取基本信息，反之为null
-            Map<String, Object> baseInfo = null;
-            //管理员/普通用户登录
-            if (LOGIN_TYPE[0].equals(loginType)) {
-                //管理员登录
-                baseInfo = sysUserService.adminUserLogin(map);
-                module = "/user/admin/login";
-            } else if (LOGIN_TYPE[1].equals(loginType)) {
-                //普通用户登录
-                baseInfo = sysUserService.simpleUserLogin(map);
-                module = "/user/login";
-            }
-            //对返回结果进行判断
-            if (null == baseInfo) {
-                response.setStatus(400);
-                //如果为null，则说明验证失败
-                return ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.Login_ERROR, response);
-            }
-            //获取封装好的syslog对象
-            SysLog sysLog = SysLogUtil.initSysLog(baseInfo, request);
-            //将基本日志信息存入session中
-            request.getSession().setAttribute(SysLogUtil.SESSION_SYSLOG, sysLog);
-            //将用户操作记录记入数据库
-            sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "登录", module, "成功登录"));
-            //将存放用户的基本信息的map封装进result中
-            resultWrapper = ResultWrapperUtil.setSuccessOf(baseInfo);
-        } catch (Exception e) {
-            resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.SYSTEM_ERROR, response);
-            LOGGER.error("", e);
-        }
-        LOGGER.debug(request.getSession().getId());
         return resultWrapper;
     }
 

@@ -111,6 +111,13 @@ public class SkipApiWatcherHandler {
     public String toBusPositionQuery() {
         return "api/client/busposition_query_api";
     }
-
+    @RequestMapping(value = "/emailApi", method = RequestMethod.GET)
+    public String toEmailApi() {
+        return "api/client/email_api";
+    }
+    @RequestMapping(value = "/userSelf", method = RequestMethod.GET)
+    public String toUserSelf() {
+        return "api/client/user_self_api";
+    }
 
 }
