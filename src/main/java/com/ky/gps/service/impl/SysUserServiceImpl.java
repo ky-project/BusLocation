@@ -165,7 +165,7 @@ public class SysUserServiceImpl implements SysUserService {
     public Map<String, Object> updateUserBaseInfo(SysUser sysUser) {
         if (!StringUtils.isEmpty(sysUser.getEmail())) {
             Integer exists = sysUserDao.findIdByEmail(sysUser.getEmail());
-            if (exists != null && exists.equals(sysUser.getId())) {
+            if (exists != null && !exists.equals(sysUser.getId())) {
                 return null;
             }
         }
