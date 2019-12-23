@@ -2,6 +2,7 @@ package com.ky.gps.service.impl;
 
 import com.ky.gps.dao.SbBusPositionDao;
 import com.ky.gps.dao.SbBusPositionHisDao;
+import com.ky.gps.dao.SbRouteDao;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusPosition;
 import com.ky.gps.service.SbBusPositionService;
@@ -25,9 +26,17 @@ import java.util.Map;
 public class SbBusPositionServiceImpl implements SbBusPositionService {
 
     @Resource
+    private SbRouteDao sbRouteDao;
+    @Resource
     private SbBusPositionDao sbBusPositionDao;
     @Resource
     private SbBusPositionHisDao sbBusPositionHisDao;
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public Map<String, Object> findByRouteId(Integer routeId) {
+        return sbBusPositionDao.findByRouteId(routeId);
+    }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
@@ -51,6 +60,22 @@ public class SbBusPositionServiceImpl implements SbBusPositionService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void savePosition(SbBusPosition sbBusPosition) {
+        List<Map<String, Object>> routeList = sbRouteDao.findByGpsId(sbBusPosition.getSbGps().getId());
+        for (Map<String, Object> route : routeList) {
+            String sbbrWeek = route.get("sbbrWeek").toString();
+            String sbbrStartTime = route.get("sbbrStartTime").toString();
+            String sbbrEndTime = route.get("sbbrEndTime").toString();
+            //判断路线是否在当前时间范围内
+            if (JudgeTimeUtil.isEffectiveDate(sbbrStartTime, sbbrEndTime)
+                    && JudgeTimeUtil.getWeek().equals(sbbrWeek)) {
+                //设置定位的路线id
+                sbBusPosition.setRouteId((Integer) route.get("id"));
+                break;
+            }
+        }
+        if(sbBusPosition.getRouteId() == null){
+            sbBusPosition.setRouteId(-1);
+        }
         sbBusPositionDao.savePosition(sbBusPosition);
     }
 

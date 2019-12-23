@@ -20,11 +20,115 @@
         insert into sb_user_role(role_id, user_id, created_by, updated_by, valid)
         VALUES (#{sysRole.id}, #{sysUser.id}, #{createdBy}, #{updatedBy}, 1)
     </insert>
+    <!--批量添加指定用户的角色信息-->
+    <insert id="batchSaveByUserId">
+        insert into sb_user_role(ROLE_ID, USER_ID)
+        values
+        <foreach collection="roleIdList" separator="," item="roleId">
+            (
+            #{roleId},
+            #{userId}
+            )
+        </foreach>
+    </insert>
     <update id="deleteUserRoleByUserId">
         UPDATE sb_user_role
-        SET Valid = 0,
+        SET Valid      = 0,
             UPDATED_BY = #{updateBy}
         WHERE USER_ID = #{userId}
     </update>
-
+    <!--根据角色id将记录置为无效-->
+    <update id="updateValidByRoleId" parameterType="integer">
+        update sb_user_role
+        set Valid = #{value}
+        where ROLE_ID = #{roleId}
+    </update>
+    <!--批量更新指定用户的角色的标志位-->
+    <update id="batchUpdateValidByUserId">
+        update sb_user_role
+        set Valid = #{value}
+        where USER_ID = #{userId}
+        and ROLE_ID in
+        <foreach collection="roleIdList" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </update>
+    <!--根据用户id查询该用户的所有角色-->
+    <select id="findSysRoleSrSourceBySysUserId" resultType="java.lang.String" parameterType="integer">
+        select sr.SR_SOURCE srSource
+        from sb_user_role sur
+                 left join sys_role sr on sur.ROLE_ID = sr.ID
+                 left join sys_user su on sur.USER_ID = su.ID
+        where sr.Valid = 1
+          and su.Valid = 1
+          and sur.Valid = 1
+          and su.ID = #{id}
+    </select>
+    <!--查询所有用户和其角色信息-->
+    <select id="findAllUserAndRole" resultType="map">
+        SELECT u.ID        id,
+               u.REAL_NAME realName,
+               rl.workId,
+               d.NAME      departmentName,
+               rl.srNames
+        FROM sys_user u,
+             b_department d,
+             (
+                 SELECT u.WORKID                              AS workId,
+                        GROUP_CONCAT(r.SR_NAME SEPARATOR ',') AS srNames
+                 FROM (SELECT ID, WORKID FROM sys_user WHERE Valid = 1) u
+                          LEFT JOIN (SELECT USER_ID, ROLE_ID FROM sb_user_role WHERE Valid = 1) sur
+                                    ON sur.USER_ID = u.ID
+                          LEFT JOIN (SELECT ID, SR_NAME FROM sys_role WHERE Valid = 1) r ON sur.ROLE_ID = r.ID
+                 GROUP BY u.WORKID
+             ) rl
+        WHERE u.Valid = 1
+          AND d.Valid = 1
+          AND d.ID = u.DEPARTMENT_ID
+          AND u.WORKID = rl.workId
+    </select>
+    <!--根据用户id查询其拥有的所有角色id-->
+    <select id="findRoleIdByUserId" resultType="java.lang.Integer" parameterType="integer">
+        select sr.ID id
+        from sb_user_role sur
+                 left join sys_role sr on sur.ROLE_ID = sr.ID
+                 left join sys_user su on sur.USER_ID = su.ID
+        where sur.Valid = 1
+          and sr.Valid = 1
+          and su.Valid = 1
+          and su.ID = #{userId}
+    </select>
+    <!--根据workId, realName, departmentId来查询用户角色list-->
+    <select id="fuzzyQueryByWorkIdAndRealNameAndDepartmentId"
+            resultType="map">
+        SELECT u.ID        id,
+               u.REAL_NAME realName,
+               rl.workId,
+               d.NAME      departmentName,
+               rl.srNames
+        FROM sys_user u,
+             b_department d,
+             (
+                 SELECT u.WORKID                              AS workId,
+                        GROUP_CONCAT(r.SR_NAME SEPARATOR ',') AS srNames
+                 FROM (SELECT ID, WORKID FROM sys_user WHERE Valid = 1) u
+                          LEFT JOIN (SELECT USER_ID, ROLE_ID FROM sb_user_role WHERE Valid = 1) sur
+                                    ON sur.USER_ID = u.ID
+                          LEFT JOIN (SELECT ID, SR_NAME FROM sys_role WHERE Valid = 1) r ON sur.ROLE_ID = r.ID
+                 GROUP BY u.WORKID
+             ) rl
+        WHERE u.Valid = 1
+          AND d.Valid = 1
+          AND d.ID = u.DEPARTMENT_ID
+          AND u.WORKID = rl.workId
+        <if test="departmentId != null">
+            AND u.DEPARTMENT_ID = #{departmentId}
+        </if>
+        <if test="realName != null">
+            AND u.REAL_NAME like #{realName}
+        </if>
+        <if test="workId != null">
+            AND u.WORKID like #{workId}
+        </if>
+    </select>
 </mapper>

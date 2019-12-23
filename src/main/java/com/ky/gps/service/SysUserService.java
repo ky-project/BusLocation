@@ -175,7 +175,7 @@ public interface SysUserService {
      * @param sysUser 待更新的用户对象
      * @return json对象
      */
-    ResultWrapper updateUserBaseInfo(SysUser sysUser);
+    Map<String, Object> updateUserBaseInfo(SysUser sysUser);
 
     /**
      * 根据用户id查询该id的所有基本信息

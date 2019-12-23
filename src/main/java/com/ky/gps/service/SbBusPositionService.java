@@ -2,7 +2,6 @@ package com.ky.gps.service;
 
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SbBusPosition;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +11,14 @@ import java.util.Map;
  * 校车位置类的Dao
  */
 public interface SbBusPositionService {
+
+    /**
+     * 根据路线id查询路线最新定位
+     *
+     * @param routeId 路线id
+     * @return 返回最新定位信息
+     */
+    Map<String, Object> findByRouteId(Integer routeId);
 
     /**
      * 插入校车位置记录

@@ -111,6 +111,7 @@ public class LoginHandler {
                 user.remove("password");
                 //将存放用户的基本信息的map封装进result中
                 resultWrapper = ResultWrapperUtil.setSuccessOf(user);
+                LOGGER.debug("用户" + user.get("workId") + "登录系统");
             } else if (resultWrapper != null) {
                 //如果已登录一个账号，则注销
                 if (subject.isAuthenticated()) {

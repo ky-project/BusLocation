@@ -6,8 +6,6 @@
 
 ## + 添加用户所有基本信息
 
-**【注】必须登录才可使用**
-
 【例】${url}/m/user/add
 
 ### - 接口
@@ -26,7 +24,7 @@ POST m/user/add
 |     phone     | String |  Y   |        |                           联系方式                           |
 |     email     | String |  Y   |        |                    邮箱（确保是邮箱格式）                    |
 
-### 1.3 Json请求
+### - Json请求
 
 ```json
 {
@@ -558,15 +556,15 @@ GET m/user/find
     code: 1,				//0-失败；1-成功
     success: true,			//true-成功；false-失败
     message: "操作成功！",	 //提示信息
-    data: {
-        departmentName: "开发小组",		//部门名
-        realName: "陆宇豪",			//真实姓名
-        phone: "17758178532",		  //电话号码
-        idCode: "33108211111111111",  //身份证					  
-        workId: "Xb16620208",		  //职工编号
-        email: "ludaye1112@163.com"	  //邮箱
-        password: "456",				//密码
-        id: 1,							//用户id
+    data: {							
+        "departmentName": "开发小组",		//部门名
+        "realName": "管理员",				//真实姓名
+        "password": "12345",				//密码
+        "phone": "15868163726",				//职工编号
+        "idCard": "332624199812102117",		//身份证
+        "id": 4,						//用户id
+        "workId": "admin",				//工号
+        "email": "1445830802@qq.com"	//邮箱
     }
 }
 ```

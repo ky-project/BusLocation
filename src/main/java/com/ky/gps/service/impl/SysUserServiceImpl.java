@@ -9,6 +9,7 @@ import com.ky.gps.util.MapUtil;
 import com.ky.gps.util.ResultWrapperUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -161,11 +162,16 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public ResultWrapper updateUserBaseInfo(SysUser sysUser) {
+    public Map<String, Object> updateUserBaseInfo(SysUser sysUser) {
+        if (!StringUtils.isEmpty(sysUser.getEmail())) {
+            Integer exists = sysUserDao.findIdByEmail(sysUser.getEmail());
+            if (exists != null && !exists.equals(sysUser.getId())) {
+                return null;
+            }
+        }
         //更新用户信息
         sysUserDao.updateUserBaseInfo(sysUser);
-        //返回json对象
-        return ResultWrapperUtil.setSuccessOf(null);
+        return sysUserDao.findUserBaseInfoById(sysUser.getId());
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
@@ -181,7 +187,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public ResultWrapper deleteUserByUserId(Integer userId, String updateBy) {
         //删除用户和校车的对应关系
-        sbUserBusDao.deleteUserBusByUserId(userId,updateBy);
+        sbUserBusDao.deleteUserBusByUserId(userId, updateBy);
         //删除用户和角色的对应关系
         sbUserRoleDao.deleteUserRoleByUserId(userId, updateBy);
         //删除用户
@@ -193,10 +199,14 @@ public class SysUserServiceImpl implements SysUserService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public ResultWrapper saveUserBaseInfo(SysUser sysUser) {
+        if (!StringUtils.isEmpty(sysUser.getEmail()) && sysUserDao.findIdByEmail(sysUser.getEmail()) != null) {
+            return null;
+        }
         //添加用户信息
         sysUserDao.saveUserBaseInfo(sysUser);
+        Map<String, Object> user = sysUserDao.findUserBaseInfoById(sysUser.getId());
         //将添加完成后该用户的id返回
-        return ResultWrapperUtil.setSuccessOf(null);
+        return ResultWrapperUtil.setSuccessOf(user);
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
@@ -208,7 +218,7 @@ public class SysUserServiceImpl implements SysUserService {
         return ResultWrapperUtil.setSuccessOf(userList);
     }
 
-    @Transactional(rollbackFor = Exception.class, readOnly =  true)
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public ResultWrapper findUserList() {
         //获取所有用户信息集合

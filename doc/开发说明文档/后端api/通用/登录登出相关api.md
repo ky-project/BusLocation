@@ -59,14 +59,14 @@ POST login
     code: 1,	//0-失败；1-成功
     success: true,	//true-成功；false-失败
     message: "操作成功！",	//提示信息
-    data: {
-        "departmentName": "开发小组",	//所在部门
-        "realName": "陆宇豪",			//真实姓名
-        "phone": "17758178533",			//手机号码
-        "idCard": "331082177422238849",	//身份证
-        "sysUserId": 1,					//用户id
-        "workId": "Xb16620208",			//工号
-        "email": "ludaye1112@163.com"	//邮箱
+    data: {	
+        "departmentName": "开发小组",		//所在部门
+        "realName": "管理员",				//真实姓名
+        "phone": "15868163726",				//手机号码
+        "idCard": "332624199812102117",		//身份证
+        "id": 4,						//用户id
+        "workId": "admin",				//工号
+        "email": "1445830802@qq.com"	//邮箱
     }
 }
 ```

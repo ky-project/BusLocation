@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="font/iconfont.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
     <div class="body-in">
         <!--头部开始-->
@@ -26,11 +28,17 @@
             <form action="" autocomplete="off">
                 <div class="line focus">
                     <label class="iconfont icon-yonghu" for="workId"></label>
-                    <input id="workId" type="text" placeholder="你的手机号/邮箱">
+                    <input id="workId" type="text" placeholder="请输入工号">
                 </div>
                 <div class="line">
                     <label class="iconfont icon-mima" for="password"></label>
                     <input id="password" type="password" placeholder="请输入密码">
+                </div>
+                <div class="line">
+                    <label class="iconfont icon-yanzhengma" for="password"></label>
+                    <input id="verify_code" type="input" placeholder="请输入验证码">
+                    <img class="code-img" src="/busposition/code/getVerifyCode">
+                    <!-- <div class="code-img"></div> -->
                 </div>
                 <div class="line">
                     <button>登录</button>
@@ -46,4 +54,5 @@
 
     </div>
 </body>
+
 </html>

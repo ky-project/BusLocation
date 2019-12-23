@@ -3,10 +3,10 @@ package com.ky.gps.service.impl;
 import com.ky.gps.dao.SbBusRouteDao;
 import com.ky.gps.dao.SbRouteStationDao;
 import com.ky.gps.entity.ResultWrapper;
+import com.ky.gps.entity.SbRouteStation;
 import com.ky.gps.service.SbRouteStationService;
 import com.ky.gps.util.JudgeTimeUtil;
 import com.ky.gps.util.ResultWrapperUtil;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,21 +28,53 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
     @Resource
     private SbBusRouteDao sbBusRouteDao;
 
-//    @Cacheable(value = "route_station_all", key = "#week + '_' + #hour")
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
-    public ResultWrapper findRealTimeAllRouteStation(String week, String hour){
+    public List<Map<String, Object>> findByRouteId(Integer routeId) {
+        return sbRouteStationDao.findByRouteId(routeId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Map<String, Object> updateDepartTimeByRouteIdAndStationId(Integer stationId, Integer routeId, String sbsDepartTime) {
+        sbRouteStationDao.updateDepartTimeByRouteIdAndStationId(stationId, routeId, sbsDepartTime);
+        return sbRouteStationDao.findByRouteIdAndStationId(routeId, stationId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void delete(Integer stationId, Integer routeId) {
+        sbRouteStationDao.updateValidByRouteIdAndStationId(stationId, routeId, 0);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Map<String, Object> save(Integer stationId, Integer routeId, String sbsDepartTime) {
+        sbRouteStationDao.save(stationId, routeId, sbsDepartTime);
+        return sbRouteStationDao.findByRouteIdAndStationId(routeId, stationId);
+    }
+
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public Map<String, Object> findByRouteIdAndStationId(Integer routeId, Integer stationId) {
+        return sbRouteStationDao.findByRouteIdAndStationId(routeId, stationId);
+    }
+
+    //    @Cacheable(value = "route_station_all", key = "#week + '_' + #hour")
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    @Override
+    public ResultWrapper findRealTimeAllRouteStation(String week, String hour) {
         //获取集合,keys={routeId, routeName, stationName, longitude, latitude, departTime, startTime, endTime}
         List<Map<String, Object>> routeStation = sbRouteStationDao.findRealTimeAllRouteStation(week);
         //过滤非运营时间段数据
         //开启过滤
         filterNowTime(routeStation);
-        if(routeStation.size() > 0) {
+        if (routeStation.size() > 0) {
             //提取字段
             List<Map<String, Object>> resultMapList = extractElementOutToMap(routeStation);
             //封装进Json对象中返回
             return ResultWrapperUtil.setSuccessOf(resultMapList);
-        } else{
+        } else {
             return ResultWrapperUtil.setSuccessOf(routeStation);
         }
     }
@@ -54,13 +86,13 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
      * @param routeStation 待提取的集合
      * @return 将提取的元素放入到外层map中
      */
-    private List<Map<String, Object>> extractElementOutToMap(List<Map<String, Object>> routeStation){
+    private List<Map<String, Object>> extractElementOutToMap(List<Map<String, Object>> routeStation) {
         //定义最后存放结果的map
         List<Map<String, Object>> resultMapList = new ArrayList<>();
         //定义存放一组路线的站点map集合
         List<Map<String, Object>> stationInfo = new ArrayList<>();
         //获取第一个记录的路线id
-        Integer routeId = (Integer)routeStation.get(0).get("routeId");
+        Integer routeId = (Integer) routeStation.get(0).get("routeId");
         //获取第一个记录路线name
         String routeName = routeStation.get(0).get("routeName").toString();
         //获取第一个记录路线的startTime
@@ -70,7 +102,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
         //遍历待提取的map集合
         for (Map<String, Object> map : routeStation) {
             //如果名字不同，则说明到达下一组记录
-            if(!routeName.equals(map.get("routeName").toString())){
+            if (!routeName.equals(map.get("routeName").toString())) {
                 //根据站点最晚发车时间排序
                 sortByDepartTime(stationInfo);
                 //计算前一站和下一站
@@ -79,7 +111,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
                 extractLastData(resultMapList, stationInfo, routeId, routeName, startTime, endTime);
                 //初始化进行下一轮提取
                 stationInfo = new ArrayList<>();
-                routeId = (Integer)map.get("routeId");
+                routeId = (Integer) map.get("routeId");
                 routeName = map.get("routeName").toString();
                 startTime = map.get("startTime").toString();
                 endTime = map.get("endTime").toString();
@@ -103,12 +135,12 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
     /**
      * //提取最后一组数据
      *
-     * @param resultMap 待存入的map
+     * @param resultMap   待存入的map
      * @param stationInfo 站点信息list
-     * @param routeId 路线id
-     * @param routeName 路线name
-     * @param startTime 开始时间
-     * @param endTime 结束时间
+     * @param routeId     路线id
+     * @param routeName   路线name
+     * @param startTime   开始时间
+     * @param endTime     结束时间
      */
     private void extractLastData(List<Map<String, Object>> resultMap, List<Map<String, Object>> stationInfo, Integer routeId, String routeName, String startTime, String endTime) {
         //创建临时map
@@ -128,15 +160,15 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
      *
      * @param routeStation 路线的站点信息集合
      */
-    private void filterNowTime(List<Map<String, Object>> routeStation){
+    private void filterNowTime(List<Map<String, Object>> routeStation) {
         //遍历集合
-        for(int i = 0; i < routeStation.size(); i++){
+        for (int i = 0; i < routeStation.size(); i++) {
             //获取开始时间
             String startTime = routeStation.get(i).get("startTime").toString();
             //获取结束时间
             String endTime = routeStation.get(i).get("endTime").toString();
             //检测是否在时间段内
-            if(!JudgeTimeUtil.isEffectiveDate(startTime, endTime)){
+            if (!JudgeTimeUtil.isEffectiveDate(startTime, endTime)) {
                 //当前时间不在运营时间段内，删除该记录
                 routeStation.remove(i--);
             }//检测End
@@ -159,7 +191,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
         //创建临时的路线名，初始化为第一条路线的name
         String routeName = allRouteStationMapList.get(0).get("routeName").toString();
         //创建临时的路线id，初始化为第一条路线的id
-        Integer routeId = (Integer)allRouteStationMapList.get(0).get("routeId");
+        Integer routeId = (Integer) allRouteStationMapList.get(0).get("routeId");
         //创建临时站点信息list
         List<Map<String, Object>> sortRouteStationList = new ArrayList<>();
         //keys={routeName, stationName, longitude, latitude, departTime}
@@ -171,7 +203,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
                 sortRouteStationList = new ArrayList<>();
                 //对routeName进行重新赋值
                 routeName = allRouteStationMap.get("routeName").toString();
-                routeId = (Integer)allRouteStationMap.get("routeId");
+                routeId = (Integer) allRouteStationMap.get("routeId");
             }
             //移除routeName字段
             allRouteStationMap.remove("routeName");
@@ -186,7 +218,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
         return resultWrapper;
     }
 
-//    @Cacheable(value = "route_stations_info", key = "#routeId")
+    //    @Cacheable(value = "route_stations_info", key = "#routeId")
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     @Override
     public ResultWrapper findStationByRouteId(Integer routeId) {
@@ -204,11 +236,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
             station.put("prevStation", "无");
             station.put("nextStation", "无");
         }
-        //存放站点信息和路线id
-        Map<String, Object> resultMap = new HashMap<>(16);
-        resultMap.put("stationInfo", stationList);
-        resultMap.put("routeId", routeId);
-        return ResultWrapperUtil.setSuccessOf(resultMap);
+        return ResultWrapperUtil.setSuccessOf(stationList);
     }
 
     /**
@@ -232,7 +260,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
         Map<String, Object> startAndEndTimeMap = sbBusRouteDao.findStartAndEndTimeByRouteId(routeId);
         //TODO 如果运营时间map为null，说明未给这条路安排bus，需要处理
         //null值处理
-        if(null == startAndEndTimeMap) {
+        if (null == startAndEndTimeMap) {
             startAndEndTimeMap = new HashMap<>(2);
             startAndEndTimeMap.put("startTime", "0:00");
             startAndEndTimeMap.put("endTime", "0:00");
@@ -257,6 +285,7 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
 
     /**
      * 根据departTime对list进行排序
+     *
      * @param sortRouteStationList 待排序的list
      */
     private void sortByDepartTime(List<Map<String, Object>> sortRouteStationList) {
@@ -305,17 +334,17 @@ public class SbRouteStationServiceImpl implements SbRouteStationService {
                 //如果是第一站，则上一站为无
                 station.put("prevStation", "无");
                 //下一站为index+1的stationName
-                station.put("nextStation", sortRouteStationList.get(index + 1).get("stationName"));
+                station.put("nextStation", sortRouteStationList.get(index + 1).get("sbsStation"));
             } else if (index + 1 >= sortRouteStationList.size()) {
                 //如果是终点站，则上一站位index-1的stationName
-                station.put("prevStation", sortRouteStationList.get(index - 1).get("stationName"));
+                station.put("prevStation", sortRouteStationList.get(index - 1).get("sbsStation"));
                 //下一站为无
                 station.put("nextStation", "无");
             } else {
                 //如果为中间站,则上一站位index-1的stationName
-                station.put("prevStation", sortRouteStationList.get(index - 1).get("stationName"));
+                station.put("prevStation", sortRouteStationList.get(index - 1).get("sbsStation"));
                 //下一站为index+1的stationName
-                station.put("nextStation", sortRouteStationList.get(index + 1).get("stationName"));
+                station.put("nextStation", sortRouteStationList.get(index + 1).get("sbsStation"));
             }
         }
     }

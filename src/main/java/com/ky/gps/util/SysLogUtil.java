@@ -26,7 +26,7 @@ public class SysLogUtil {
         //备份一份基本信息，封装到SysLog对象中，用于存入session，方便之后操作的查询和日志打印
         SysLog sysLog = new SysLog();
         //设置用户id
-        sysLog.setUserId((int)baseInfo.get("sysUserId"));
+        sysLog.setUserId((int)baseInfo.get("id"));
         //设置用户教工号
         sysLog.setWorkId(baseInfo.get("workId").toString());
         //设置真实姓名

@@ -6,7 +6,18 @@ import com.ky.gps.entity.SysUser;
 import com.ky.gps.util.JwtUtil;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class JwtUtilTest {
+
+    @Test
+    public void test02(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("startDate", null);
+        System.out.println(map.containsKey("startDate"));
+        System.out.println(map.get("startDate").toString());
+    }
 
     @Test
     public void test01() throws JsonProcessingException {

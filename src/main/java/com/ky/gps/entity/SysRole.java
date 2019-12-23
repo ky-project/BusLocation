@@ -12,6 +12,8 @@ public class SysRole extends AbstractEntity {
     private Integer id;
     /** 角色名 */
     private String srName;
+    /** 角色代码 */
+    private String srSource;
     /** 是否有管理权限 0-否;1-是 */
     private Boolean srManage;
     /** 角色等级 0-管理员;1-经销商;2-个人 */
@@ -27,9 +29,11 @@ public class SysRole extends AbstractEntity {
     }
 
     /** 有参构造方法-自身属性 */
-    public SysRole(Integer id, String srName, Boolean srManage, Integer srLevel) {
+    public SysRole(Integer id, String srName,
+                   String srSource, Boolean srManage, Integer srLevel) {
         this.id = id;
         this.srName = srName;
+        this.srSource = srSource;
         this.srManage = srManage;
         this.srLevel = srLevel;
     }
@@ -40,8 +44,8 @@ public class SysRole extends AbstractEntity {
                    Timestamp createdDate, String createdBy,
                    Timestamp updatedDate, String updatedBy,
                    Boolean valid, Integer id,
-                   String srName, Boolean srManage,
-                   Integer srLevel) {
+                   String srName, String srSource,
+                   Boolean srManage, Integer srLevel) {
         super(remark, remark1,
                 remark2, remark3,
                 createdDate, createdBy,
@@ -49,6 +53,7 @@ public class SysRole extends AbstractEntity {
                 valid);
         this.id = id;
         this.srName = srName;
+        this.srSource = srSource;
         this.srManage = srManage;
         this.srLevel = srLevel;
     }
@@ -62,14 +67,27 @@ public class SysRole extends AbstractEntity {
         return "SysRole{" +
                 "id=" + id +
                 ", srName='" + srName + '\'' +
+                ", srSource='" + srSource + '\'' +
                 ", srManage=" + srManage +
                 ", srLevel=" + srLevel +
-                '}';
+                "} " + super.toString();
     }
 
     /** getter/setter */
     public String getSrName() {
         return srName;
+    }
+
+    public void setSrName(String srName) {
+        this.srName = srName;
+    }
+
+    public String getSrSource() {
+        return srSource;
+    }
+
+    public void setSrSource(String srSource) {
+        this.srSource = srSource;
     }
 
     public Integer getId() {
@@ -78,10 +96,6 @@ public class SysRole extends AbstractEntity {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setSrName(String srName) {
-        this.srName = srName;
     }
 
     public Boolean getSrManage() {
