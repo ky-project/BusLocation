@@ -32,5 +32,60 @@
         WHERE ROUTE_ID = #{routeId}
         LIMIT 1
     </select>
+    <!--根据路线id查询路线的校车绑定信息-->
+    <select id="findByRouteId" resultType="map">
+        select sbr.ID id,
+        sbr.BUS_ID busId,
+        sbr.SBBR_WEEK sbbrWeek,
+        sbr.SBBR_START_TIME sbbrStartTime,
+        sbr.SBBR_END_TIME sbbrEndTime,
+        sb.SBB_PLATE_NUMBER sbbPlateNumber,
+        sb.SBB_DRIVER_NAME sbbDriverName,
+        sb.SBB_DRIVER_TEL sbbDriverTel
+        from sb_bus_route sbr
+        inner join sb_bus sb on sbr.BUS_ID = sb.ID
+        where sb.Valid = 1
+        and sbr.Valid = 1
+        and sbr.ROUTE_ID = #{routeId}
+        <if test="week != null and week != ''">
+            and SBBR_WEEK = #{week}
+        </if>
+    </select>
+    <!--根据id更新有效位-->
+    <update id="updateValidById">
+        update sb_bus_route
+        set Valid = #{valid}
+        where ID = #{id}
+    </update>
+    <!--插入记录-->
+    <insert id="save" parameterType="sbbusroute" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into sb_bus_route(bus_id, route_id, sbbr_week, sbbr_start_time, sbbr_end_time)
+        values (#{sbBus.id}, #{sbRoute.id}, #{sbbrWeek}, #{sbbrStartTime}, #{sbbrEndTime})
+    </insert>
+    <!--根据id查询绑定信息-->
+    <select id="findById" resultType="map">
+        select sbr.ID              id,
+               sbr.BUS_ID          busId,
+               sbr.SBBR_WEEK       sbbrWeek,
+               sbr.SBBR_START_TIME sbbrStartTime,
+               sbr.SBBR_END_TIME   sbbrEndTime,
+               sb.SBB_PLATE_NUMBER sbbPlateNumber,
+               sb.SBB_DRIVER_NAME  sbbDriverName,
+               sb.SBB_DRIVER_TEL   sbbDriverTel
+        from sb_bus_route sbr
+                 inner join sb_bus sb on sbr.BUS_ID = sb.ID
+        where sb.Valid = 1
+          and sbr.Valid = 1
+          and sbr.ID = #{id}
+    </select>
+    <!--更新绑定信息-->
+    <update id="update" parameterType="sbbusroute">
+        update sb_bus_route
+        set SBBR_WEEK       = #{sbbrWeek},
+            SBBR_START_TIME = #{sbbrStartTime},
+            SBBR_END_TIME   = #{sbbrEndTime}
+        where Valid = 1
+          and ID = #{id}
+    </update>
 
 </mapper>

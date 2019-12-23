@@ -1,5 +1,6 @@
 package com.ky.gps.controller.manage;
 
+import com.ky.gps.annotation.PermissionName;
 import com.ky.gps.entity.ErrorCode;
 import com.ky.gps.entity.ResultWrapper;
 import com.ky.gps.entity.SysLog;
@@ -8,6 +9,7 @@ import com.ky.gps.service.DepartmentService;
 import com.ky.gps.service.SysLogService;
 import com.ky.gps.service.SysUserService;
 import com.ky.gps.util.*;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +40,12 @@ public class SysUserManageHandler {
     private SysLogService sysLogService;
 
     /**
-     * 根据workId
+     * 根据workId,realName
      *
      * @return 返回json格式
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByRealNameAndWorkIdAndDepartment(@RequestBody Map<String, Object> params) {
@@ -60,6 +64,8 @@ public class SysUserManageHandler {
      * @param depId 部门id
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/dep", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper fuzzyQueryByWorkIdTotalPages(Integer depId,
@@ -85,6 +91,8 @@ public class SysUserManageHandler {
      *               pageSize 页大小
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/dep", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByDepartment(@RequestBody Map<String, Object> params,
@@ -115,6 +123,8 @@ public class SysUserManageHandler {
      *               userId 用户id
      * @return json格式数据
      */
+    @RequiresPermissions("user:query")
+    @PermissionName(group = "用户管理", displayName = "用户查询")
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper findUserByUserId(@RequestBody Map<String, Object> params,
@@ -136,6 +146,8 @@ public class SysUserManageHandler {
      * @param workId 工号
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/workId", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper fuzzyQueryByWorkIdTotalPages(String workId,
@@ -161,6 +173,8 @@ public class SysUserManageHandler {
      *               pageSize 页大小
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/workId", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByWorkId(@RequestBody Map<String, Object> params,
@@ -190,6 +204,8 @@ public class SysUserManageHandler {
      * @param realName 姓名
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/name", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper fuzzyQueryByRealNameTotalPages(String realName,
@@ -215,6 +231,8 @@ public class SysUserManageHandler {
      *               pageSize 页大小
      * @return Json格式数据
      */
+    @RequiresPermissions("user:fQuery")
+    @PermissionName(group = "用户管理", displayName = "用户筛选")
     @RequestMapping(value = "/f/query/name", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper fuzzyQueryByRealName(@RequestBody Map<String, Object> params,
@@ -244,6 +262,8 @@ public class SysUserManageHandler {
      * @param sysUser 待更新的用户对象
      * @return json格式数据
      */
+    @RequiresPermissions("user:update")
+    @PermissionName(group = "用户管理", displayName = "用户更新")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper updateUserBaseInfo(@RequestBody SysUser sysUser,
@@ -260,7 +280,12 @@ public class SysUserManageHandler {
                 //设置更新者workId
                 sysUser.setUpdatedBy(((SysLog) request.getSession().getAttribute(SysLogUtil.SESSION_SYSLOG)).getWorkId());
                 //更新对象
-                resultWrapper = sysUserService.updateUserBaseInfo(sysUser);
+                Map<String, Object> res = sysUserService.updateUserBaseInfo(sysUser);
+                if(res != null) {
+                    resultWrapper = ResultWrapperUtil.setSuccessOf(res);
+                } else{
+                    resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.UPDATE_ERROR, "邮箱已存在", response);
+                }
                 //日志记录
                 sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "更新用户基本信息", "/admin/update/info", "更新用户(id):" + sysUser.getId()));
             }
@@ -276,6 +301,8 @@ public class SysUserManageHandler {
      *               userId 用户id
      * @return 返回json格式数据
      */
+    @RequiresPermissions("user:delete")
+    @PermissionName(group = "用户管理", displayName = "用户删除")
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper deleteUserByUserId(@RequestBody Map<String, Object> params,
@@ -307,6 +334,8 @@ public class SysUserManageHandler {
      * @param sysUser 用户信息
      * @return 返回刚添加的用户id
      */
+    @RequiresPermissions("user:add")
+    @PermissionName(group = "用户管理", displayName = "用户添加")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper saveUserBaseInfo(@RequestBody SysUser sysUser,
@@ -334,6 +363,9 @@ public class SysUserManageHandler {
             } else {
                 //添加用户信息，并将返回的json对象赋值给resultWrapper
                 resultWrapper = sysUserService.saveUserBaseInfo(sysUser);
+                if(resultWrapper == null){
+                    resultWrapper = ResultWrapperUtil.setErrorAndStatusOf(ErrorCode.SAVE_ERROR, "邮箱已存在", response);
+                }
                 //记录到用户操作记录
                 sysLogService.saveSysLog(SysLogUtil.setOperateInfo(request, "添加用户", "/admin/info/add", "添加用户:" + sysUser.getWorkId()));
             }
@@ -347,6 +379,8 @@ public class SysUserManageHandler {
      * @param pageSize 页大小
      * @return 返回json格式数据
      */
+    @RequiresPermissions("user:query")
+    @PermissionName(group = "用户管理", displayName = "用户查询")
     @RequestMapping(value = "/list/pages", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper userTotalPages(Integer pageSize,
@@ -370,6 +404,8 @@ public class SysUserManageHandler {
      *               pageSize 一页查询的数量
      * @return 返回json格式数据
      */
+    @RequiresPermissions("user:query")
+    @PermissionName(group = "用户管理", displayName = "用户查询")
     @RequestMapping(value = "/list/pages", method = RequestMethod.POST)
     @ResponseBody
     public ResultWrapper userListPages(@RequestBody Map<String, Object> params,
@@ -395,6 +431,8 @@ public class SysUserManageHandler {
      *
      * @return 返回json数据
      */
+    @RequiresPermissions("user:query")
+    @PermissionName(group = "用户管理", displayName = "用户查询")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public ResultWrapper findAllUser() {

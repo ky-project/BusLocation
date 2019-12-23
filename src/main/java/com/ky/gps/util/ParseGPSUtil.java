@@ -196,8 +196,9 @@ public class ParseGPSUtil {
 		// 计算校验和
 		for (i = 2; i < b.length; i++)
 		{
-			if (b[i] == '*')
+			if (b[i] == '*') {
 				break;
+			}
 			cb = (byte) (cb ^ b[i]);
 			System.out.print(cb + " ");
 		}

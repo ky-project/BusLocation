@@ -26,7 +26,7 @@
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
     <select id="findBaseInfoByWorkIdAndPassword" parameterType="map" resultType="map">
-        select sys_user.ID         sysUserId,
+        select sys_user.ID         id,
                sys_user.REAL_NAME  realName,
                sys_user.WORKID     workId,
                b_department.`NAME` departmentName
@@ -39,12 +39,12 @@
           and sys_user.DEPARTMENT_ID = b_department.ID
     </select>
     <select id="findAdminBaseInfoByWordIdAndPassword" resultType="map" parameterType="map">
-        SELECT admin_info.sysUserId,
+        SELECT admin_info.id,
                admin_info.realName,
                admin_info.workId,
                b_department.`NAME` departmentName
         FROM b_department,
-             (SELECT sys_user.ID        sysUserId,
+             (SELECT sys_user.ID        id,
                      sys_user.REAL_NAME realName,
                      sys_user.WORKID    workId,
                      sys_user.DEPARTMENT_ID
@@ -175,10 +175,12 @@
     <select id="findIdByEmail" resultType="java.lang.Integer" parameterType="string">
         SELECT ID id
         FROM sys_user
-        where EMAIL = #{email}
+        where Valid = 1
+          AND EMAIL = #{email}
+        LIMIT 1
     </select>
     <select id="findBaseInfoByEmail" resultType="map" parameterType="string">
-        select sys_user.ID         sysUserId,
+        select sys_user.ID         id,
                sys_user.REAL_NAME  realName,
                sys_user.WORKID     workId,
                b_department.`NAME` departmentName
@@ -284,13 +286,13 @@
     <!--根据用户id查询用户基本信息-->
     <select id="findUserBaseInfoById" resultType="java.util.Map" parameterType="integer">
         SELECT sys_user.ID         id,
-               b_department.`NAME` departmentName,
                sys_user.WORKID     workId,
                sys_user.REAL_NAME  realName,
                sys_user.PASSWORD   password,
                sys_user.ID_CARD    idCard,
                sys_user.PHONE      phone,
-               sys_user.EMAIL      email
+               sys_user.EMAIL      email,
+               b_department.`NAME` departmentName
         FROM sys_user
                  LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
         WHERE sys_user.Valid = 1
@@ -298,7 +300,7 @@
           AND sys_user.ID = #{userId}
     </select>
     <select id="findAdminBaseInfoByWordId" resultType="java.util.Map" parameterType="string">
-        SELECT admin_info.sysUserId,
+        SELECT admin_info.id,
                admin_info.realName,
                admin_info.workId,
                admin_info.email,
@@ -307,7 +309,7 @@
                admin_info.password,
                b_department.`NAME` departmentName
         FROM b_department,
-             (SELECT sys_user.ID        sysUserId,
+             (SELECT sys_user.ID        id,
                      sys_user.REAL_NAME realName,
                      sys_user.WORKID    workId,
                      sys_user.EMAIL     email,
@@ -328,9 +330,12 @@
         LIMIT 1
     </select>
     <select id="findBaseInfoByWorkId" resultType="java.util.Map" parameterType="string">
-        select sys_user.ID         sysUserId,
+        select sys_user.ID         id,
                sys_user.REAL_NAME  realName,
                sys_user.WORKID     workId,
+               sys_user.EMAIL      email,
+               sys_user.PHONE      phone,
+               sys_user.ID_CARD    idCard,
                sys_user.PASSWORD   password,
                b_department.`NAME` departmentName
         from sys_user,
@@ -341,26 +346,26 @@
           and sys_user.DEPARTMENT_ID = b_department.ID
     </select>
     <select id="findBaseInfoLikeRealNameAndWorkIdAndDepartment" resultType="java.util.Map">
-        SELECT sys_user.ID         id,
-               b_department.`NAME` departmentName,
-               sys_user.WORKID     workId,
-               sys_user.REAL_NAME  realName,
-               sys_user.ID_CARD    idCard,
-               sys_user.PHONE      phone,
-               sys_user.EMAIL      email
+        SELECT sys_user.ID id,
+        b_department.`NAME` departmentName,
+        sys_user.WORKID workId,
+        sys_user.REAL_NAME realName,
+        sys_user.ID_CARD idCard,
+        sys_user.PHONE phone,
+        sys_user.EMAIL email
         FROM sys_user,
-             b_department
+        b_department
         WHERE sys_user.Valid = 1
-          AND b_department.Valid = 1
-          AND sys_user.DEPARTMENT_ID = b_department.ID
-          <if test="departmentId != null">
-              AND sys_user.DEPARTMENT_ID = #{departmentId}
-          </if>
-          <if test="realName != null">
-              AND sys_user.REAL_NAME like #{realName}
-          </if>
-          <if test="workId != null">
-              AND sys_user.WORKID like #{workId}
-          </if>
+        AND b_department.Valid = 1
+        AND sys_user.DEPARTMENT_ID = b_department.ID
+        <if test="departmentId != null">
+            AND sys_user.DEPARTMENT_ID = #{departmentId}
+        </if>
+        <if test="realName != null">
+            AND sys_user.REAL_NAME like #{realName}
+        </if>
+        <if test="workId != null">
+            AND sys_user.WORKID like #{workId}
+        </if>
     </select>
 </mapper>

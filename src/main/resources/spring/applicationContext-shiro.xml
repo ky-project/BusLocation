@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 配置自定义的userRealm -->
     <bean id="userRealm" class="com.ky.gps.component.shiro.realm.UserRealm">
@@ -10,7 +10,6 @@
     </bean>
 
     <bean id="mySessionManager" class="com.ky.gps.component.shiro.manager.MySessionManager"/>
-    <!--<bean id="mySessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager"/>-->
 
     <!-- 配置安全管理器SecurityManager -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -24,22 +23,19 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login/warning"/>
-        <!--<property name="unauthorizedUrl" value="/permission/no"/>-->
+        <property name="unauthorizedUrl" value="/m/authority/no"/>
         <property name="filterChainDefinitions">
             <value>
                 /logout = logout
                 / = anon
-                /apiTest/** = anon
+                /bms/** = anon
                 /blockBreaker/** = anon
-                /BusLocationBMS/** = anon
                 /logFile/** = anon
                 /realTime/** = anon
                 /realTime1/** = anon
+                /bcs/** = anon
 
-                /routeposition/** = anon
-                /route/** = anon
-                /bus/** = anon
-
+                /druid/** = anon
                 /user/login = anon
                 /user/admin/login = anon
                 /user/send/email = anon

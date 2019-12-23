@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class Department extends AbstractEntity {
 
     private Integer id;
-    private String name;
+    private String departmentName;
     private String code;
     private String upLevel;
     private Integer parentId;
@@ -19,11 +19,11 @@ public class Department extends AbstractEntity {
     }
 
     /** 有参构造方法-自身属性 */
-    public Department(Integer id, String name,
+    public Department(Integer id, String departmentName,
                       String code, String upLevel,
                       Integer parentId, Byte leaf) {
         this.id = id;
-        this.name = name;
+        this.departmentName = departmentName;
         this.code = code;
         this.upLevel = upLevel;
         this.parentId = parentId;
@@ -36,7 +36,7 @@ public class Department extends AbstractEntity {
                       Timestamp createdDate, String createdBy,
                       Timestamp updatedDate, String updatedBy,
                       Boolean valid, Integer id,
-                      String name, String code,
+                      String departmentName, String code,
                       String upLevel, Integer parentId,
                       Byte leaf) {
         super(remark, remark1,
@@ -45,7 +45,7 @@ public class Department extends AbstractEntity {
                 updatedDate, updatedBy,
                 valid);
         this.id = id;
-        this.name = name;
+        this.departmentName = departmentName;
         this.code = code;
         this.upLevel = upLevel;
         this.parentId = parentId;
@@ -60,7 +60,7 @@ public class Department extends AbstractEntity {
     public String toString() {
         return "Department{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", departmentName='" + departmentName + '\'' +
                 ", code='" + code + '\'' +
                 ", upLevel='" + upLevel + '\'' +
                 ", parentId=" + parentId +
@@ -78,12 +78,12 @@ public class Department extends AbstractEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDepartmentName(String ndepartmentNameame) {
+        this.departmentName = departmentName;
     }
 
     public String getCode() {

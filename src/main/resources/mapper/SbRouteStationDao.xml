@@ -16,10 +16,23 @@
         <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
+    <sql id="selectBaseParamsPre">
+        ss.id stationId,
+        ss.SBS_STATION sbsStation,
+        srs.SBS_DEPART_TIME sbsDepartTime,
+        ss.SBS_DESC sbsDesc
+    </sql>
+    <sql id="insertParams">
+            station_id,
+            route_id,
+            sbs_depart_time
+    </sql>
     <select id="findStationByRouteId" resultType="java.util.Map" parameterType="integer">
-        SELECT ss.SBS_STATION      stationName,
-               ss.SBS_LONGITUDE    longtidue,
-               ss.SBS_LATITUDE     latitude,
+        SELECT ss.id               id,
+               ss.SBS_STATION      sbsStation,
+               ss.SBS_LONGITUDE    sbsLongitude,
+               ss.SBS_LATITUDE     sbsLatitude,
+               ss.SBS_DESC         sbsDesc,
                srs.SBS_DEPART_TIME departTime
         FROM sb_route_station srs
                  LEFT JOIN sb_station ss ON srs.STATION_ID = ss.ID
@@ -71,5 +84,62 @@
           AND sb_bus_route.ROUTE_ID = rsr.routeId
           AND sb_bus_route.SBBR_WEEK = #{week,jdbcType=VARCHAR}
         ORDER BY rsr.routeId
+    </select>
+    <!--根据站点id更新valid标志位-->
+    <update id="updateValidByStationId">
+        update sb_route_station
+        set Valid = #{valid}
+        where STATION_ID = #{stationId}
+    </update>
+    <!--根据站点id和路线id查询记录-->
+    <select id="findByRouteIdAndStationId" resultType="map">
+        select
+        <include refid="selectBaseParamsPre"/>
+        from sb_route_station srs
+        inner join sb_station ss on srs.STATION_ID = ss.ID
+        where srs.Valid = 1
+        and ss.Valid = 1
+        and srs.STATION_ID = #{stationId}
+        and srs.ROUTE_ID = #{routeId}
+    </select>
+    <!--添加路线站点绑定信息-->
+    <insert id="save">
+        insert into sb_route_station(<include refid="insertParams"/>)
+        values (#{stationId}, #{routeId}, #{sbsDepartTime})
+    </insert>
+    <!--根据id查询记录-->
+    <select id="findById" resultType="map">
+        select
+        <include refid="selectBaseParamsPre"/>
+        from sb_route_station srs
+        inner join sb_station ss on srs.STATION_ID = ss.ID
+        where srs.Valid = 1
+        and ss.Valid = 1
+        and srs.ID = #{id}
+    </select>
+    <!--根据路线id和站点id更新valid值-->
+    <update id="updateValidByRouteIdAndStationId">
+        update sb_route_station
+        set Valid = #{valid}
+        where ROUTE_ID = #{routeId}
+          and STATION_ID = #{stationId}
+    </update>
+    <!--修改路线站点绑定信息-->
+    <update id="updateDepartTimeByRouteIdAndStationId">
+        update sb_route_station
+        set SBS_DEPART_TIME = #{sbsDepartTime}
+        where Valid = 1
+          and ROUTE_ID = #{routeId}
+          and STATION_ID = #{stationId}
+    </update>
+    <!--根据路线id查询所有站点信息-->
+    <select id="findByRouteId" resultType="map">
+        select
+        <include refid="selectBaseParamsPre"/>
+        from sb_route_station srs
+        inner join sb_station ss on srs.STATION_ID = ss.ID
+        where srs.Valid = 1
+        and ss.Valid = 1
+        and srs.ROUTE_ID = #{routeId}
     </select>
 </mapper>

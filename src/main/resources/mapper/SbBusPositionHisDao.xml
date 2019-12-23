@@ -5,6 +5,7 @@
     <resultMap id="BaseSbBusPositionHisMap" type="com.ky.gps.entity.SbBusPosition">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="gps_id" jdbcType="INTEGER" property="sbGps.id"/>
+        <result column="route_id" javaType="INTEGER" property="routeId"/>
         <result column="sbp_recode_time" jdbcType="TIMESTAMP" property="sbpRecodeTime"/>
         <result column="sbp_longitude" jdbcType="DOUBLE" property="sbpLongitude"/>
         <result column="sbp_latitude" jdbcType="DOUBLE" property="sbpLatitude"/>
@@ -21,10 +22,11 @@
         <result column="valid" jdbcType="TINYINT" property="valid"/>
     </resultMap>
     <insert id="insertFromSbBusPosition">
-        INSERT INTO sb_busposition_his(GPS_ID, SBP_RECODE_TIME, SBP_LONGITUDE, SBP_LATITUDE, SBP_VELOCITY,
+        INSERT INTO sb_busposition_his(GPS_ID, ROUTE_ID, SBP_RECODE_TIME, SBP_LONGITUDE, SBP_LATITUDE, SBP_VELOCITY,
                                        SBP_DIRECTION, REMARK, REMARK1, REMARK2, REMARK3, CREATED_DATE, CREATED_BY,
                                        UPDATED_DATE, UPDATED_BY, Valid)
         SELECT sbp.GPS_ID,
+               ROUTE_ID,
                sbp.SBP_RECODE_TIME,
                sbp.SBP_LONGITUDE,
                sbp.SBP_LATITUDE,
@@ -41,4 +43,13 @@
                sbp.Valid
         FROM sb_busposition sbp
     </insert>
+    <!--根据日期和路线id查询定位-->
+    <select id="findByRouteIdAndCreatedDate" resultType="map">
+        select sbp_longitude, sbp_latitude
+        from sb_busposition_his
+        where Valid = 1
+        and ROUTE_ID = #{routeId}
+        and DATE_FORMAT(SBP_RECODE_TIME, '%Y-%m-%d') = DATE_FORMAT(#{recodeTime}  ,'%Y-%m-%d')
+        order by SBP_RECODE_TIME
+    </select>
 </mapper>

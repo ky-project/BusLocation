@@ -11,15 +11,15 @@ public class SbBus extends AbstractEntity {
     /** 位置id */
     private Integer id;
     /** 座位数 */
-    private Integer ssbSeatNum;
+    private Integer sbbSeatNum;
     /** 车辆类型 */
-    private String ssbBusType;
+    private String sbbBusType;
     /** 车牌号 */
-    private String ssbPlateNumber;
+    private String sbbPlateNumber;
     /** 驾驶员 */
-    private String ssbDriverName;
+    private String sbbDriverName;
     /** 联系电话 */
-    private String ssbDriverTel;
+    private String sbbDriverTel;
 
     /** 无参构造方法 */
     public SbBus() {
@@ -31,15 +31,15 @@ public class SbBus extends AbstractEntity {
     }
 
     /** 有参构造方法-自身属性 */
-    public SbBus(Integer id, Integer ssbSeatNum,
-                 String ssbBusType, String ssbPlateNumber,
-                 String ssbDriverName, String ssbDriverTel) {
+    public SbBus(Integer id, Integer sbbSeatNum,
+                 String sbbBusType, String sbbPlateNumber,
+                 String sbbDriverName, String sbbDriverTel) {
         this.id = id;
-        this.ssbSeatNum = ssbSeatNum;
-        this.ssbBusType = ssbBusType;
-        this.ssbPlateNumber = ssbPlateNumber;
-        this.ssbDriverName = ssbDriverName;
-        this.ssbDriverTel = ssbDriverTel;
+        this.sbbSeatNum = sbbSeatNum;
+        this.sbbBusType = sbbBusType;
+        this.sbbPlateNumber = sbbPlateNumber;
+        this.sbbDriverName = sbbDriverName;
+        this.sbbDriverTel = sbbDriverTel;
     }
 
     /** 有参构造方法-所有属性 */
@@ -47,16 +47,16 @@ public class SbBus extends AbstractEntity {
                  String remark2, String remark3,
                  Timestamp createdDate, String createdBy,
                  Timestamp updatedDate, String updatedBy,
-                 Boolean valid, Integer id, Integer ssbSeatNum,
-                 String ssbBusType, String ssbPlateNumber,
-                 String ssbDriverName, String ssbDriverTel) {
+                 Boolean valid, Integer id, Integer sbbSeatNum,
+                 String sbbBusType, String sbbPlateNumber,
+                 String sbbDriverName, String sbbDriverTel) {
         super(remark, remark1, remark2, remark3, createdDate, createdBy, updatedDate, updatedBy, valid);
         this.id = id;
-        this.ssbSeatNum = ssbSeatNum;
-        this.ssbBusType = ssbBusType;
-        this.ssbPlateNumber = ssbPlateNumber;
-        this.ssbDriverName = ssbDriverName;
-        this.ssbDriverTel = ssbDriverTel;
+        this.sbbSeatNum = sbbSeatNum;
+        this.sbbBusType = sbbBusType;
+        this.sbbPlateNumber = sbbPlateNumber;
+        this.sbbDriverName = sbbDriverName;
+        this.sbbDriverTel = sbbDriverTel;
     }
 
     /**
@@ -67,12 +67,12 @@ public class SbBus extends AbstractEntity {
     public String toString() {
         return "SbBus{" +
                 "id=" + id +
-                ", ssbSeatNum=" + ssbSeatNum +
-                ", ssbBusType='" + ssbBusType + '\'' +
-                ", ssbPlateNumber='" + ssbPlateNumber + '\'' +
-                ", ssbDriverName='" + ssbDriverName + '\'' +
-                ", ssbDriverTel='" + ssbDriverTel + '\'' +
-                '}';
+                ", sbbSeatNum=" + sbbSeatNum +
+                ", sbbBusType='" + sbbBusType + '\'' +
+                ", sbbPlateNumber='" + sbbPlateNumber + '\'' +
+                ", sbbDriverName='" + sbbDriverName + '\'' +
+                ", sbbDriverTel='" + sbbDriverTel + '\'' +
+                "} " + super.toString();
     }
 
     /** getter/setter */
@@ -84,43 +84,43 @@ public class SbBus extends AbstractEntity {
         this.id = id;
     }
 
-    public Integer getSsbSeatNum() {
-        return ssbSeatNum;
+    public Integer getSbbSeatNum() {
+        return sbbSeatNum;
     }
 
-    public void setSsbSeatNum(Integer ssbSeatNum) {
-        this.ssbSeatNum = ssbSeatNum;
+    public void setSbbSeatNum(Integer sbbSeatNum) {
+        this.sbbSeatNum = sbbSeatNum;
     }
 
-    public String getSsbBusType() {
-        return ssbBusType;
+    public String getSbbBusType() {
+        return sbbBusType;
     }
 
-    public void setSsbBusType(String ssbBusType) {
-        this.ssbBusType = ssbBusType;
+    public void setSbbBusType(String sbbBusType) {
+        this.sbbBusType = sbbBusType;
     }
 
-    public String getSsbPlateNumber() {
-        return ssbPlateNumber;
+    public String getSbbPlateNumber() {
+        return sbbPlateNumber;
     }
 
-    public void setSsbPlateNumber(String ssbPlateNumber) {
-        this.ssbPlateNumber = ssbPlateNumber;
+    public void setSbbPlateNumber(String sbbPlateNumber) {
+        this.sbbPlateNumber = sbbPlateNumber;
     }
 
-    public String getSsbDriverName() {
-        return ssbDriverName;
+    public String getSbbDriverName() {
+        return sbbDriverName;
     }
 
-    public void setSsbDriverName(String ssbDriverName) {
-        this.ssbDriverName = ssbDriverName;
+    public void setSbbDriverName(String sbbDriverName) {
+        this.sbbDriverName = sbbDriverName;
     }
 
-    public String getSsbDriverTel() {
-        return ssbDriverTel;
+    public String getSbbDriverTel() {
+        return sbbDriverTel;
     }
 
-    public void setSsbDriverTel(String ssbDriverTel) {
-        this.ssbDriverTel = ssbDriverTel;
+    public void setSbbDriverTel(String sbbDriverTel) {
+        this.sbbDriverTel = sbbDriverTel;
     }
 }
