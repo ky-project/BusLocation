@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.gps.dao.SbRouteDao">
+    <resultMap id="BaseSbRouteMap" type="com.ky.gps.entity.SbRoute">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="sbr_route_name" jdbcType="VARCHAR" property="sbrRouteName"/>
+        <result column="sbr_start_station" jdbcType="VARCHAR" property="sbrStartStation"/>
+        <result column="sbr_end_station" jdbcType="VARCHAR" property="sbrEndStation"/>
+        <result column="sbr_depart_time" jdbcType="VARCHAR" property="sbrDepartTime"/>
+        <result column="sbr_desc" jdbcType="VARCHAR" property="sbrDesc"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="remark1" jdbcType="VARCHAR" property="remark1"/>
+        <result column="remark2" jdbcType="VARCHAR" property="remark2"/>
+        <result column="remark3" jdbcType="VARCHAR" property="remark3"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="valid" jdbcType="TINYINT" property="valid"/>
+    </resultMap>
+
+    <sql id="selectBaseParams">
+        id,
+        sbr_routename
+        sbrRouteName,
+        sbr_start_station
+        sbrStartStation,
+        sbr_end_station
+        sbrEndStation,
+        sbr_depart_time
+        sbrDepartTime,
+        sbr_desc
+        sbrDesc
+    </sql>
+    <sql id="updateParams">
+            sbr_routename,
+            sbr_start_station,
+            sbr_end_station,
+            sbr_depart_time,
+            sbr_desc
+    </sql>
+    <select id="findBaseInfoById" parameterType="integer" resultType="sbroute">
+        <if test="_parameter != null and _parameter > 0">
+            select id, sbr_routename, sbr_start_station, sbr_end_station, sbr_depart_time, sbr_desc
+            from sb_route
+            where Valid=1 and ID=#{id}
+        </if>
+    </select>
+    <select id="findNameById" resultType="string" parameterType="integer">
+        select SBR_ROUTENAME
+        from sb_route
+        where ID = #{id}
+          and Valid = 1
+    </select>
+    <select id="findAllBaseInfo" resultType="java.util.Map">
+        select
+        <include refid="selectBaseParams"/>
+        from sb_route
+        where Valid = 1
+    </select>
+    <select id="findAllIdAndName" resultType="map">
+        select id, SBR_ROUTENAME routeName
+        from sb_route
+        where Valid = 1
+    </select>
+    <!--根据id更新记录-->
+    <update id="updateById" parameterType="sbroute">
+        update sb_route
+        <set>
+            <if test="sbrRouteName != null and sbrRouteName != ''">
+                SBR_ROUTENAME = #{sbrRouteName},
+            </if>
+            <if test="sbrStartStation != null and sbrStartStation != ''">
+                SBR_START_STATION = #{sbrStartStation},
+            </if>
+            <if test="sbrEndStation != null and sbrEndStation != ''">
+                SBR_END_STATION = #{sbrEndStation},
+            </if>
+            <if test="sbrDepartTime != null and sbrDepartTime != ''">
+                SBR_DEPART_TIME = #{sbrDepartTime},
+            </if>
+            <if test="sbrDesc != null and sbrDesc != ''">
+                SBR_DESC = #{sbrDesc}
+            </if>
+        </set>
+        where Valid = 1
+        and ID = #{id}
+    </update>
+    <!--根据id查询所有基本属性-->
+    <select id="findById" resultType="map">
+        select
+        <include refid="selectBaseParams"/>
+        from sb_route
+        where Valid = 1
+        and ID = #{id}
+    </select>
+    <!--根据id更新valid值-->
+    <update id="updateValidById">
+        update sb_route
+        set Valid = #{valid}
+        where ID = #{id}
+    </update>
+    <!--插入路线信息-->
+    <insert id="save" parameterType="sbroute" keyColumn="id" useGeneratedKeys="true" keyProperty="id">
+        insert into sb_route(<include refid="updateParams"/>)
+        values (#{sbrRouteName}, #{sbrStartStation}, #{sbrEndStation}, #{sbrDepartTime}, #{sbrDesc})
+    </insert>
+    <!--根据路线名和发车区间模糊查询路线信息-->
+    <select id="findByNameFuzzy" resultType="map">
+        select
+        <include refid="selectBaseParams"/>
+        from sb_route
+        where Valid = 1
+        <if test="sbrRouteName != null and sbrRouteName != ''">
+            and SBR_ROUTENAME like #{sbrRouteName}
+        </if>
+    </select>
+    <!--根据gpsId查询-->
+    <select id="findByGpsId" resultType="map">
+        select sr.id               id,
+               sbr.SBBR_WEEK       sbbrWeek,
+               sbr.SBBR_START_TIME sbbrStartTime,
+               sbr.SBBR_END_TIME   sbbrEndTime
+        from sb_route sr
+                 inner join sb_bus_route sbr on sr.ID = sbr.ROUTE_ID
+                 inner join sb_bus sb on sbr.BUS_ID = sb.ID
+                 inner join sb_gps sg on sb.ID = sg.BUS_ID
+        where sr.Valid = 1
+          and sbr.Valid = 1
+          and sb.Valid = 1
+          and sg.Valid = 1
+          and sg.ID = #{id}
+        order by sbbrStartTime
+    </select>
+</mapper>

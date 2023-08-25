@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.gps.dao.SysUserDao">
+
+    <resultMap id="BaseSysUserMap" type="com.ky.gps.entity.SysUser">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="department_id" jdbcType="INTEGER" property="department.id"/>
+        <result column="workid" jdbcType="VARCHAR" property="workId"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="id_card" jdbcType="VARCHAR" property="idCard"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="account_date" jdbcType="DATE" property="accountDate"/>
+        <result column="last_psd_date" jdbcType="DATE" property="lastPsdDate"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="remark1" jdbcType="VARCHAR" property="remark1"/>
+        <result column="remark2" jdbcType="VARCHAR" property="remark2"/>
+        <result column="remark3" jdbcType="VARCHAR" property="remark3"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="valid" jdbcType="TINYINT" property="valid"/>
+    </resultMap>
+    <select id="findBaseInfoByWorkIdAndPassword" parameterType="map" resultType="map">
+        select sys_user.ID         id,
+               sys_user.REAL_NAME  realName,
+               sys_user.WORKID     workId,
+               b_department.`NAME` departmentName
+        from sys_user,
+             b_department
+        where sys_user.Valid = 1
+          and b_department.Valid = 1
+          and sys_user.WORKID = #{workId}
+          and sys_user.PASSWORD = #{password}
+          and sys_user.DEPARTMENT_ID = b_department.ID
+    </select>
+    <select id="findAdminBaseInfoByWordIdAndPassword" resultType="map" parameterType="map">
+        SELECT admin_info.id,
+               admin_info.realName,
+               admin_info.workId,
+               b_department.`NAME` departmentName
+        FROM b_department,
+             (SELECT sys_user.ID        id,
+                     sys_user.REAL_NAME realName,
+                     sys_user.WORKID    workId,
+                     sys_user.DEPARTMENT_ID
+              FROM sb_user_role
+                       LEFT JOIN sys_user ON sb_user_role.USER_ID = sys_user.ID
+                       LEFT JOIN sys_role ON sb_user_role.ROLE_ID = sys_role.ID
+              WHERE sb_user_role.Valid = 1
+                AND sys_user.Valid = 1
+                AND sys_role.Valid = 1
+                AND sys_role.SR_MANAGE = 1
+                AND sys_user.WORKID = #{workId}
+                AND sys_user.`PASSWORD` = #{password}) admin_info
+        WHERE b_department.Valid = 1
+          AND b_department.ID = admin_info.DEPARTMENT_ID
+        LIMIT 1
+    </select>
+    <select id="findAllUser" resultType="java.util.Map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user,
+             b_department
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = b_department.ID
+    </select>
+    <select id="findUserByPages" resultType="java.util.Map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user,
+             b_department
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = b_department.ID
+        ORDER BY sys_user.ID
+        LIMIT #{param1}, #{param2}
+    </select>
+    <insert id="saveUserBaseInfo" parameterType="SysUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into sys_user(department_id, workid, real_name, password, salt, ID_CARD, phone, email, account_date,
+                             created_by, updated_by, valid)
+        values (#{department.id}, #{workId}, #{realName}, #{password}, #{salt}, #{idCard}, #{phone}, #{email},
+                #{accountDate}, #{createdBy}, #{updatedBy}, 1)
+    </insert>
+    <update id="deleteUserByUserId">
+        UPDATE sys_user
+        SET Valid      = 0,
+            UPDATED_BY = #{updateBy}
+        WHERE ID = #{userId}
+    </update>
+    <select id="findRealNameById" resultType="java.lang.String" parameterType="integer">
+        select REAL_NAME
+        from sys_user
+        where Valid = 1
+          and ID = #{id}
+    </select>
+    <update id="updateUserBaseInfo" parameterType="sysuser">
+        UPDATE sys_user
+        <set>
+            <if test="null != department">
+                <if test="0 != department.id and null != department.id">
+                    DEPARTMENT_ID = #{department.id},
+                </if>
+            </if>
+            <if test="workId != null and workId != ''">
+                WORKID = #{workId},
+            </if>
+            <if test="realName != null and realName != ''">
+                REAL_NAME = #{realName},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="idCard != null and idCard != ''">
+                ID_CARD = #{idCard} ,
+            </if>
+            <if test="phone != null and phone != ''">
+                PHONE = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                EMAIL = #{email},
+            </if>
+            <if test="updatedBy != null and updatedBy != ''">
+                UPDATED_BY = #{updatedBy}
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
+
+    <select id="findSelfBaseInfoByUserId" resultType="java.util.Map" parameterType="integer">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user,
+             b_department
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = b_department.ID
+          AND sys_user.ID = #{userId};
+    </select>
+    <select id="findRealNameByPasswordAndUserId" resultType="java.lang.String">
+        SELECT REAL_NAME
+        FROM sys_user
+        WHERE Valid = 1
+          AND ID = #{userId}
+          AND `PASSWORD` = #{password}
+    </select>
+    <update id="updatePassword" parameterType="SysUser">
+        UPDATE sys_user
+        SET `PASSWORD`    = #{password},
+            SALT          = #{salt},
+            LAST_PSD_DATE = #{lastPsdDate},
+            UPDATED_BY    = #{updatedBy}
+        WHERE ID = #{id}
+    </update>
+    <select id="findIdByEmail" resultType="java.lang.Integer" parameterType="string">
+        SELECT ID id
+        FROM sys_user
+        where Valid = 1
+          AND EMAIL = #{email}
+        LIMIT 1
+    </select>
+    <select id="findBaseInfoByEmail" resultType="map" parameterType="string">
+        select sys_user.ID         id,
+               sys_user.REAL_NAME  realName,
+               sys_user.WORKID     workId,
+               b_department.`NAME` departmentName
+        from sys_user,
+             b_department
+        where sys_user.Valid = 1
+          and b_department.Valid = 1
+          and sys_user.EMAIL = #{email}
+          and sys_user.DEPARTMENT_ID = b_department.ID
+    </select>
+    <update id="updatePasswordByEmail">
+        UPDATE sys_user
+        SET `PASSWORD`    = #{password},
+            SALT          = #{salt},
+            LAST_PSD_DATE = #{lastPsdDate},
+            UPDATED_BY    = #{updatedBy}
+        where EMAIL = #{email}
+    </update>
+    <!--根据workId进行模糊查询，并进行分页-->
+    <select id="findUserByWorkIdFuzzyPages" resultType="map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.WORKID LIKE #{wordId}
+        ORDER BY sys_user.ID
+        LIMIT #{startIndex} , #{pageSize}
+    </select>
+    <!--根据realName进行模糊查询，并进行分页-->
+    <select id="findUserByRealNameFuzzyPages" resultType="map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.REAL_NAME LIKE #{realName}
+        ORDER BY sys_user.ID
+        LIMIT #{startIndex} , #{pageSize}
+    </select>
+    <!--根据depId进行查询，并进行分页-->
+    <select id="findUserByDepartmentId" resultType="map">
+        SELECT sys_user.ID         id,
+               b_department.`NAME` departmentName,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = #{depId}
+        ORDER BY sys_user.ID
+        LIMIT #{startIndex} , #{pageSize}
+    </select>
+    <!-- 查询用户的总记录数 -->
+    <select id="findTotalRecoding" resultType="int">
+        SELECT count(sys_user.ID)
+        FROM `sys_user`
+        where `sys_user`.Valid = 1
+    </select>
+    <!-- 根据realName进行模糊查询，获取所有记录数 -->
+    <select id="findTotalByRealNameFuzzy" resultType="int">
+        SELECT count(sys_user.ID)
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.REAL_NAME LIKE #{realName}
+    </select>
+    <!-- 根据depId进行查询，获取总记录数 -->
+    <select id="findTotalByDepartmentId" resultType="int">
+        SELECT count(sys_user.ID)
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.DEPARTMENT_ID = #{depId}
+    </select>
+    <!-- 根据depId进行查询，获取总记录数 -->
+    <select id="findTotalByWorkIdFuzzyPages" resultType="int">
+        SELECT count(sys_user.ID)
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.WORKID LIKE #{wordId}
+    </select>
+    <!--根据用户id查询用户基本信息-->
+    <select id="findUserBaseInfoById" resultType="java.util.Map" parameterType="integer">
+        SELECT sys_user.ID         id,
+               sys_user.WORKID     workId,
+               sys_user.REAL_NAME  realName,
+               sys_user.PASSWORD   password,
+               sys_user.ID_CARD    idCard,
+               sys_user.PHONE      phone,
+               sys_user.EMAIL      email,
+               b_department.`NAME` departmentName
+        FROM sys_user
+                 LEFT JOIN b_department ON sys_user.DEPARTMENT_ID = b_department.ID
+        WHERE sys_user.Valid = 1
+          AND b_department.Valid = 1
+          AND sys_user.ID = #{userId}
+    </select>
+    <select id="findAdminBaseInfoByWordId" resultType="java.util.Map" parameterType="string">
+        SELECT admin_info.id,
+               admin_info.realName,
+               admin_info.workId,
+               admin_info.email,
+               admin_info.phone,
+               admin_info.idCard,
+               admin_info.password,
+               b_department.`NAME` departmentName
+        FROM b_department,
+             (SELECT sys_user.ID        id,
+                     sys_user.REAL_NAME realName,
+                     sys_user.WORKID    workId,
+                     sys_user.EMAIL     email,
+                     sys_user.PHONE     phone,
+                     sys_user.ID_CARD   idCard,
+                     sys_user.PASSWORD  password,
+                     sys_user.DEPARTMENT_ID
+              FROM sb_user_role
+                       LEFT JOIN sys_user ON sb_user_role.USER_ID = sys_user.ID
+                       LEFT JOIN sys_role ON sb_user_role.ROLE_ID = sys_role.ID
+              WHERE sb_user_role.Valid = 1
+                AND sys_user.Valid = 1
+                AND sys_role.Valid = 1
+                AND sys_role.SR_MANAGE = 1
+                AND sys_user.WORKID = #{workId}) admin_info
+        WHERE b_department.Valid = 1
+          AND b_department.ID = admin_info.DEPARTMENT_ID
+        LIMIT 1
+    </select>
+    <select id="findBaseInfoByWorkId" resultType="java.util.Map" parameterType="string">
+        select sys_user.ID         id,
+               sys_user.REAL_NAME  realName,
+               sys_user.WORKID     workId,
+               sys_user.EMAIL      email,
+               sys_user.PHONE      phone,
+               sys_user.ID_CARD    idCard,
+               sys_user.PASSWORD   password,
+               b_department.`NAME` departmentName
+        from sys_user,
+             b_department
+        where sys_user.Valid = 1
+          and b_department.Valid = 1
+          and sys_user.WORKID = #{workId}
+          and sys_user.DEPARTMENT_ID = b_department.ID
+    </select>
+    <select id="findBaseInfoLikeRealNameAndWorkIdAndDepartment" resultType="java.util.Map">
+        SELECT sys_user.ID id,
+        b_department.`NAME` departmentName,
+        sys_user.WORKID workId,
+        sys_user.REAL_NAME realName,
+        sys_user.ID_CARD idCard,
+        sys_user.PHONE phone,
+        sys_user.EMAIL email
+        FROM sys_user,
+        b_department
+        WHERE sys_user.Valid = 1
+        AND b_department.Valid = 1
+        AND sys_user.DEPARTMENT_ID = b_department.ID
+        <if test="departmentId != null">
+            AND sys_user.DEPARTMENT_ID = #{departmentId}
+        </if>
+        <if test="realName != null">
+            AND sys_user.REAL_NAME like #{realName}
+        </if>
+        <if test="workId != null">
+            AND sys_user.WORKID like #{workId}
+        </if>
+    </select>
+</mapper>

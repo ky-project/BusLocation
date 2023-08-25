@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.gps.dao.SysRoleDao">
+    <resultMap id="BaseSysRoleMap" type="sysrole">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="sr_name" jdbcType="VARCHAR" property="srName"/>
+        <result column="sr_source" jdbcType="VARCHAR" property="srSource"/>
+        <result column="sr_manage" jdbcType="TINYINT" property="srManage"/>
+        <result column="sr_level" jdbcType="INTEGER" property="srLevel"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="remark1" jdbcType="VARCHAR" property="remark1"/>
+        <result column="remark2" jdbcType="VARCHAR" property="remark2"/>
+        <result column="remark3" jdbcType="VARCHAR" property="remark3"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="valid" jdbcType="TINYINT" property="valid"/>
+    </resultMap>
+    <!--插入角色记录-->
+    <insert id="saveRole" parameterType="SysRole" keyColumn="ID" keyProperty="id" useGeneratedKeys="true">
+        insert into sys_role(sr_name, sr_source, sr_manage, sr_level, remark)
+        values (#{srName}, #{srSource}, #{srManage}, #{srLevel}, #{remark})
+    </insert>
+    <!--根据id将角色置为无效-->
+    <update id="updateValidById" parameterType="integer">
+        update sys_role
+        set Valid = #{value}
+        where ID = #{roleId}
+    </update>
+    <!--根据id更新角色记录-->
+    <update id="updateById" parameterType="SysRole">
+        update sys_role
+        <set>
+            <if test="srName != null and srName != ''">
+                SR_NAME = #{srName},
+            </if>
+            <if test="srSource != null and srSource != ''">
+                SR_SOURCE = #{srSource},
+            </if>
+            <if test="srManage != null">
+                SR_MANAGE = #{srManage},
+            </if>
+            <if test="srLevel != null">
+                SR_LEVEL = #{srLevel},
+            </if>
+            <if test="remark != null and remark != ''">
+                REMARK = #{remark}
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
+    <select id="findNameById" resultType="java.lang.String" parameterType="integer">
+        SELECT SR_NAME srName
+        FROM sys_role
+        WHERE Valid = 1
+          AND ID = #{roleId}
+    </select>
+    <select id="findAllRole" resultType="java.util.Map">
+        SELECT ID           id,
+               SR_NAME      srName,
+               SR_SOURCE    srSource,
+               SR_MANAGE    srManage,
+               SR_LEVEL     srLevel,
+               REMARK       remark,
+               CREATED_DATE createdDate
+        FROM sys_role
+        WHERE Valid = 1
+    </select>
+    <select id="findById" resultType="java.util.Map" parameterType="integer">
+        SELECT ID           id,
+               SR_NAME      srName,
+               SR_SOURCE    srSource,
+               SR_MANAGE    srManage,
+               SR_LEVEL     srLevel,
+               REMARK       remark,
+               CREATED_DATE createdDate
+        FROM sys_role
+        WHERE Valid = 1
+          and ID = #{id}
+    </select>
+    <select id="findByCreatedDate" resultType="java.util.Map">
+        SELECT ID           id,
+               SR_NAME      srName,
+               SR_SOURCE    srSource,
+               SR_MANAGE    srManage,
+               SR_LEVEL     srLevel,
+               REMARK       remark,
+               CREATED_DATE createdDate
+        FROM sys_role
+        WHERE Valid = 1
+        <if test="endDate != null and startDate != null">
+            AND CREATED_DATE <![CDATA[>=]]> #{startDate}
+            AND CREATED_DATE <![CDATA[<=]]> #{endDate}
+        </if>
+    </select>
+    <!--查询所有角色的id和name-->
+    <select id="findIdAndSrName" resultType="map">
+        select ID id,
+               SR_NAME srName
+        from sys_role
+        where Valid = 1
+    </select>
+</mapper>

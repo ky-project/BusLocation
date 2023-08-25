@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.gps.dao.SbRouteStationDao">
+    <resultMap id="BaseSbRouteStationMap" type="com.ky.gps.entity.SbRouteStation">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="station_id" jdbcType="INTEGER" property="sbStation.id"/>
+        <result column="route_id" jdbcType="INTEGER" property="sbRoute.id"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="remark1" jdbcType="VARCHAR" property="remark1"/>
+        <result column="remark2" jdbcType="VARCHAR" property="remark2"/>
+        <result column="remark3" jdbcType="VARCHAR" property="remark3"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="valid" jdbcType="TINYINT" property="valid"/>
+    </resultMap>
+    <sql id="selectBaseParamsPre">
+        ss.id stationId,
+        ss.SBS_STATION sbsStation,
+        srs.SBS_DEPART_TIME sbsDepartTime,
+        ss.SBS_DESC sbsDesc
+    </sql>
+    <sql id="insertParams">
+            station_id,
+            route_id,
+            sbs_depart_time
+    </sql>
+    <select id="findStationByRouteId" resultType="java.util.Map" parameterType="integer">
+        SELECT ss.id               id,
+               ss.SBS_STATION      sbsStation,
+               ss.SBS_LONGITUDE    sbsLongitude,
+               ss.SBS_LATITUDE     sbsLatitude,
+               ss.SBS_DESC         sbsDesc,
+               srs.SBS_DEPART_TIME departTime
+        FROM sb_route_station srs
+                 LEFT JOIN sb_station ss ON srs.STATION_ID = ss.ID
+        WHERE srs.Valid = 1
+          and ss.Valid = 1
+          and srs.ROUTE_ID = #{routeId}
+    </select>
+    <select id="findAllRouteStation" resultType="java.util.Map">
+        SELECT sb_route.ID                      routeId,
+               sb_route.SBR_ROUTENAME           routeName,
+               sb_station.SBS_STATION           stationName,
+               sb_station.SBS_LONGITUDE         longitude,
+               sb_station.SBS_LATITUDE          latitude,
+               sb_route_station.SBS_DEPART_TIME departTime
+        FROM sb_route_station
+                 LEFT JOIN sb_station ON sb_station.ID = sb_route_station.STATION_ID
+                 LEFT JOIN sb_route ON sb_route.ID = sb_route_station.ROUTE_ID
+        WHERE sb_route.Valid = 1
+          AND sb_station.Valid = 1
+          AND sb_route_station.Valid = 1
+        ORDER BY sb_route.SBR_ROUTENAME
+
+    </select>
+    <select id="findRealTimeAllRouteStation" resultType="map" parameterType="string">
+        SELECT rsr.routeId,
+               rsr.routeName,
+               rsr.stationName,
+               rsr.longitude,
+               rsr.latitude,
+               rsr.departTime,
+               sb_bus_route.SBBR_START_TIME startTime,
+               sb_bus_route.SBBR_END_TIME   endTime
+        FROM sb_bus_route,
+             (
+                 SELECT sb_route.ID                      routeId,
+                        sb_route.SBR_ROUTENAME           routeName,
+                        sb_station.SBS_STATION           stationName,
+                        sb_station.SBS_LONGITUDE         longitude,
+                        sb_station.SBS_LATITUDE          latitude,
+                        sb_route_station.SBS_DEPART_TIME departTime
+                 FROM sb_route_station
+                          LEFT JOIN sb_station ON sb_station.ID = sb_route_station.STATION_ID
+                          LEFT JOIN sb_route ON sb_route.ID = sb_route_station.ROUTE_ID
+                 WHERE sb_route.Valid = 1
+                   AND sb_station.Valid = 1
+                   AND sb_route_station.Valid = 1
+             ) rsr
+        WHERE sb_bus_route.Valid = 1
+          AND sb_bus_route.ROUTE_ID = rsr.routeId
+          AND sb_bus_route.SBBR_WEEK = #{week,jdbcType=VARCHAR}
+        ORDER BY rsr.routeId
+    </select>
+    <!--根据站点id更新valid标志位-->
+    <update id="updateValidByStationId">
+        update sb_route_station
+        set Valid = #{valid}
+        where STATION_ID = #{stationId}
+    </update>
+    <!--根据站点id和路线id查询记录-->
+    <select id="findByRouteIdAndStationId" resultType="map">
+        select
+        <include refid="selectBaseParamsPre"/>
+        from sb_route_station srs
+        inner join sb_station ss on srs.STATION_ID = ss.ID
+        where srs.Valid = 1
+        and ss.Valid = 1
+        and srs.STATION_ID = #{stationId}
+        and srs.ROUTE_ID = #{routeId}
+    </select>
+    <!--添加路线站点绑定信息-->
+    <insert id="save">
+        insert into sb_route_station(<include refid="insertParams"/>)
+        values (#{stationId}, #{routeId}, #{sbsDepartTime})
+    </insert>
+    <!--根据id查询记录-->
+    <select id="findById" resultType="map">
+        select
+        <include refid="selectBaseParamsPre"/>
+        from sb_route_station srs
+        inner join sb_station ss on srs.STATION_ID = ss.ID
+        where srs.Valid = 1
+        and ss.Valid = 1
+        and srs.ID = #{id}
+    </select>
+    <!--根据路线id和站点id更新valid值-->
+    <update id="updateValidByRouteIdAndStationId">
+        update sb_route_station
+        set Valid = #{valid}
+        where ROUTE_ID = #{routeId}
+          and STATION_ID = #{stationId}
+    </update>
+    <!--修改路线站点绑定信息-->
+    <update id="updateDepartTimeByRouteIdAndStationId">
+        update sb_route_station
+        set SBS_DEPART_TIME = #{sbsDepartTime}
+        where Valid = 1
+          and ROUTE_ID = #{routeId}
+          and STATION_ID = #{stationId}
+    </update>
+    <!--根据路线id查询所有站点信息-->
+    <select id="findByRouteId" resultType="map">
+        select
+        <include refid="selectBaseParamsPre"/>
+        from sb_route_station srs
+        inner join sb_station ss on srs.STATION_ID = ss.ID
+        where srs.Valid = 1
+        and ss.Valid = 1
+        and srs.ROUTE_ID = #{routeId}
+    </select>
+</mapper>
